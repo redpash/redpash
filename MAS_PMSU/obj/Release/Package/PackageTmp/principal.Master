@@ -1,0 +1,229 @@
+﻿.
+
+<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="principal.master.vb" Inherits="MAS_PMSU.principal" %>
+
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>RED PASH</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <%--<link href="~/vendor/bootstrap/css/datepicker3.css" rel="stylesheet">--%>
+
+    <!-- MetisMenu CSS -->
+    <link href="~/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="~/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+        <%--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">--%>
+        <%--<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>--%>
+        <%--<script type="text/javascript" src="../vendor/jquery/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="../vendor/jquery/jquery-ui.js"></script>--%>
+        <%-- <script type="text/javascript">
+            $(function () {
+                $("#txtdatepicker").datepicker();
+            });
+        </script>
+        <style type="text/css">
+            .ui-datepicker {
+                font-size: 10pt !important;
+            }
+        </style>
+        <style type="text/css">
+            .ui-datepicker {
+                font-size: 10pt !important;
+            }
+        </style>--%>
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Inicio.aspx">REDPASH - MAS 2.0</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <%--   <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                        <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li class="divider"></li>
+                        <li>
+
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>--%>
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <AnonymousTemplate>
+                            <%--<li><a href="Register.aspx"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>--%>
+                            <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span>Iniciar sesion</a></li>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>
+                                Bienvenido:
+                                <asp:LoginName ID="LoginName1" runat="server" />
+                            </a></li>
+                            <li>
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                            </li>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+
+                            <li>
+                                <a href="#"><i class="fa fa-dashboard fa-fw"></i>Indicadores<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="TC_REGISTRO_BCS.aspx"><i class="fa fa-area-chart"></i>Tablero control: Registro de bancos</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-folder fa-fw"></i>Registro Nuevos<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#"><i class="fa fa-user fa-fw"></i>Nuevos<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="Registro_Banco_Semilla.aspx"><i class="fa fa-university"></i>Nuevos Bancos</a>
+                                            </li>
+
+                                            <li>
+
+                                                <a href="Registro_ops_new.aspx"><i class="fa fa-users"></i>Nuevos Organizaciones</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="Portal_Sag.aspx"><i class="fa fa-university"></i>Plan de producción de semilla</a>
+                            </li>
+                          <%--  <li>
+                                <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-university"></i>Solicitud Inscripción De Lotes</a>
+                            </li>
+                             <li>
+                                <a href="Registro_Portal_Sag.aspx"><i class="fa fa-envelope"></i>Inscripción SENASA</a>
+                            </li>--%>
+
+                          
+
+                              <li>
+                                <a href="#"><i class="fa fa-database fa-fw"></i>Biblioteca de Documentos<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="https://drive.google.com/drive/folders/1nAXxDDvLCSOyfsuxob042WJPfvW29gaI?usp=sharing"><i class="fa fa-folder fa-fw"></i>BCS Respaldos</a>
+                                    </li>
+                                 
+                               
+                                
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <div id="page-wrapper">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+    </form>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/prueba/jquery.min.js"></script>
+    <%--<script src="../vendor/jquery/prueba/jquery.min.js"></script>--%>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <%--  <script src="../vendor/flot/excanvas.min.js"></script>
+    <script src="../vendor/flot/jquery.flot.js"></script>
+    <script src="../vendor/flot/jquery.flot.pie.js"></script>
+    <script src="../vendor/flot/jquery.flot.resize.js"></script>
+    <script src="../vendor/flot/jquery.flot.time.js"></script>
+    <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+    <script src="../data/flot-data.js"></script>--%>
+
+    <!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+</body>
+<%--<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>--%>
