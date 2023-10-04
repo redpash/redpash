@@ -184,6 +184,7 @@
     <Content Include="pages\msubcs_visitaat.aspx" />
     <Content Include="pages\plan_produccion_semilla_frijol.aspx" />
     <Content Include="pages\Portal_Sag.aspx" />
+    <Content Include="pages\InscripcionSENASA.aspx" />
     <Content Include="pages\Registro_Banco_Semilla.aspx" />
     <Content Include="pages\Registro_ops_new.aspx" />
     <Content Include="pages\Registro_Portal_Sag.aspx" />
@@ -373,6 +374,13 @@
     </Compile>
     <Compile Include="pages\Portal_Sag.aspx.vb">
       <DependentUpon>Portal_Sag.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\InscripcionSENASA.aspx.designer.vb">
+      <DependentUpon>InscripcionSENASA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\InscripcionSENASA.aspx.vb">
+      <DependentUpon>InscripcionSENASA.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Registro_Banco_Semilla.aspx.designer.vb">

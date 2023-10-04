@@ -1,0 +1,5 @@
+navicat
+port:3306
+host:info-mas.org
+user:usu_redpash
+contraseña:Redpash0801
