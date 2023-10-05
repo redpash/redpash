@@ -118,7 +118,11 @@
                             <label>Departamento</label>
                             <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
 
-                            <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True"></asp:DropDownList>
+                            <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True">
+                                <asp:ListItem Text=""></asp:ListItem>
+                                <asp:ListItem id="frijol1" Text="Frijol"></asp:ListItem>
+                                <asp:ListItem id="maiz1" Text="Maiz"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
 
@@ -127,7 +131,10 @@
 
                             <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
 
-                            <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True"></asp:DropDownList>
+                            <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True">
+                                <asp:ListItem id="frijol2" Text="Frijol"></asp:ListItem>
+                                <asp:ListItem id="maiz2" Text="Maiz"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
 
@@ -136,7 +143,10 @@
 
                             <label>Aldea</label>
                             <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True"></asp:DropDownList>
+                            <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True">
+                                <asp:ListItem id="frijol3" Text="Frijol"></asp:ListItem>
+                                <asp:ListItem id="maiz3" Text="Maiz"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
 
@@ -146,7 +156,10 @@
                             <label>Caserio</label>
                             <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
 
-                            <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True"></asp:DropDownList>
+                            <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True">
+                                <asp:ListItem id="frijol4" Text="Frijol"></asp:ListItem>
+                                <asp:ListItem id="maiz4" Text="Maiz"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
                 </section>
@@ -197,45 +210,12 @@
                 <section id="Section1" runat="server">
                     <div class="col-lg-3">
                         <div class="form-group">
-
-                            
-
-                          <div class="form-group">
-                       <label>Variedad Frijol</label>
+                            <label>Variedad </label>
                             <asp:Label ID="Label3" class="label label-warning" runat="server" Text=""></asp:Label>
-                          <asp:DropDownList CssClass="form-control" ID="DdlCultivoFrijol" runat="server" AutoPostBack="False">
-                           <asp:ListItem Text=""></asp:ListItem>
-                           <asp:ListItem id="Amadeus77" Text="Amadeus-77"></asp:ListItem>
-                           <asp:ListItem id="Carrizalito" Text="Carrizalito"></asp:ListItem>
-                           <asp:ListItem id="Azabache" Text="Azabache"></asp:ListItem>
-                           <asp:ListItem id="Paraisitomejorado" Text="Paraisito mejorado PM-2"></asp:ListItem>
-                           <asp:ListItem id="Deorho" Text="Deorho"></asp:ListItem>
-                           <asp:ListItem id="IntaCardenas" Text="Inta Cárdenas"></asp:ListItem>
-                           <asp:ListItem id="Lencaprecoz" Text="Lenca precoz"></asp:ListItem>
-                           <asp:ListItem id="Rojochortí" Text="Rojo chortí"></asp:ListItem>
-                           <asp:ListItem id="Tolupanrojo" Text="Tolupan rojo"></asp:ListItem>
-                           <asp:ListItem id="Otro" Text="Otro"></asp:ListItem>
-                         </asp:DropDownList>
-                    </div>
+                            <asp:TextBox CssClass="form-control" ID="TextVariedad" runat="server" AutoPostBack="True"></asp:TextBox>
                         </div>
                     </div>
-        </section>
-                <section id="Section2" runat="server">
-                    <div class="col-lg-3">
-                        <div class="form-group">
-
-                            <label>Variedades Maiz</label><asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-
-                            <asp:DropDownList CssClass="form-control" ID="DdlCultivoMaiz" runat="server" AutoPostBack="True">
-                                <asp:ListItem  Text=""></asp:ListItem>
-                                <asp:ListItem id="DictaMaya" Text="Dicta Maya"></asp:ListItem>
-                                <asp:ListItem id="DictaVictoria" Text="Dicta Victoria"></asp:ListItem>
-                                <asp:ListItem id="OtroMaiz" Text="Otro"></asp:ListItem>
-
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                      </section>
+                </section>
                   
                
                 <div class="col-lg-3">
@@ -425,5 +405,9 @@
                     </div>
             </div>
         </div>
+    </div>
+
+    <div>
+        <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote"/>
     </div>
 </asp:Content>

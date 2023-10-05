@@ -14697,6 +14697,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol1">
+<summary>
+Control frijol1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz1">
+<summary>
+Control maiz1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._lb_mun_new">
 <summary>
 Control lb_mun_new.
@@ -14709,6 +14727,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._gb_municipio_new">
 <summary>
 Control gb_municipio_new.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol2">
+<summary>
+Control frijol2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz2">
+<summary>
+Control maiz2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -14733,6 +14769,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol3">
+<summary>
+Control frijol3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz3">
+<summary>
+Control maiz3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._lb_caserio_new">
 <summary>
 Control lb_caserio_new.
@@ -14745,6 +14799,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._gb_caserio_new">
 <summary>
 Control gb_caserio_new.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol4">
+<summary>
+Control frijol4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz4">
+<summary>
+Control maiz4.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -14859,153 +14931,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DdlCultivoFrijol">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TextVariedad">
 <summary>
-Control DdlCultivoFrijol.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Amadeus77">
-<summary>
-Control Amadeus77.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Carrizalito">
-<summary>
-Control Carrizalito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Azabache">
-<summary>
-Control Azabache.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Paraisitomejorado">
-<summary>
-Control Paraisitomejorado.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Deorho">
-<summary>
-Control Deorho.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._IntaCardenas">
-<summary>
-Control IntaCardenas.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Lencaprecoz">
-<summary>
-Control Lencaprecoz.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Rojochortí">
-<summary>
-Control Rojochortí.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Tolupanrojo">
-<summary>
-Control Tolupanrojo.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Otro">
-<summary>
-Control Otro.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Section2">
-<summary>
-Control Section2.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label4">
-<summary>
-Control Label4.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DdlCultivoMaiz">
-<summary>
-Control DdlCultivoMaiz.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DictaMaya">
-<summary>
-Control DictaMaya.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DictaVictoria">
-<summary>
-Control DictaVictoria.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._OtroMaiz">
-<summary>
-Control OtroMaiz.
+Control TextVariedad.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15528,6 +15456,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._ambas">
 <summary>
 Control ambas.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._btnGuardarLote">
+<summary>
+Control btnGuardarLote.
 </summary>
 <remarks>
 Campo generado automáticamente.
