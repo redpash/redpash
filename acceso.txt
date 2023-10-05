@@ -1,4 +1,0 @@
-Navicat
-
-usuario:usu_redpash
-pass:Redpash0801
