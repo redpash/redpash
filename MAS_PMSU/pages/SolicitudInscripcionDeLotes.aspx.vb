@@ -38,7 +38,7 @@ Public Class SolicitudInscripcionDeLotes
             End If
 
             If Date.TryParse(TextBox6.Text, año) Then
-                año.ToString("dd-MM-yyyy")
+                año.ToString("yyyy")
             End If
 
             If Date.TryParse(TxtFechaSiembra.Text, año) Then
