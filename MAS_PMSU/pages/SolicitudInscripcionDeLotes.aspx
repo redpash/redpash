@@ -119,9 +119,6 @@
                             <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
 
                             <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True">
-                                <asp:ListItem Text=""></asp:ListItem>
-                                <asp:ListItem id="frijol1" Text="Frijol"></asp:ListItem>
-                                <asp:ListItem id="maiz1" Text="Maiz"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -132,8 +129,6 @@
                             <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
 
                             <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True">
-                                <asp:ListItem id="frijol2" Text="Frijol"></asp:ListItem>
-                                <asp:ListItem id="maiz2" Text="Maiz"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -144,8 +139,6 @@
                             <label>Aldea</label>
                             <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True">
-                                <asp:ListItem id="frijol3" Text="Frijol"></asp:ListItem>
-                                <asp:ListItem id="maiz3" Text="Maiz"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -157,8 +150,6 @@
                             <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
 
                             <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True">
-                                <asp:ListItem id="frijol4" Text="Frijol"></asp:ListItem>
-                                <asp:ListItem id="maiz4" Text="Maiz"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -366,13 +357,6 @@
                         <label>Fecha Aproximada de Cosecha</label>
                         <asp:Label ID="Label17" class="label label-warning" runat="server" Text=""></asp:Label>
                         <asp:TextBox CssClass="form-control" ID="TxtCosecha" runat="server" AutoPostBack="True"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <label>Fecha Aproximada de Cosecha</label>
-                        <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
-                        <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" AutoPostBack="True"></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-lg-3">

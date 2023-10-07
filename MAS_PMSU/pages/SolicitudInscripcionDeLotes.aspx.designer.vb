@@ -239,24 +239,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents gb_departamento_new As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control frijol1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents frijol1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control maiz1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents maiz1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
     '''Control lb_mun_new.
     '''</summary>
     '''<remarks>
@@ -273,24 +255,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents gb_municipio_new As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control frijol2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents frijol2 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control maiz2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents maiz2 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control lb_aldea_new.
@@ -311,24 +275,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents gb_aldea_new As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control frijol3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents frijol3 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control maiz3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents maiz3 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
     '''Control lb_caserio_new.
     '''</summary>
     '''<remarks>
@@ -345,24 +291,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents gb_caserio_new As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control frijol4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents frijol4 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control maiz4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents maiz4 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control LblPersonaFinca.
@@ -903,24 +831,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtCosecha As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control Label18.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label18 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control TextBox2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label19.

@@ -9720,24 +9720,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol1">
-<summary>
-Control frijol1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz1">
-<summary>
-Control maiz1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._lb_mun_new">
 <summary>
 Control lb_mun_new.
@@ -9750,24 +9732,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._gb_municipio_new">
 <summary>
 Control gb_municipio_new.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol2">
-<summary>
-Control frijol2.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz2">
-<summary>
-Control maiz2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -9792,24 +9756,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol3">
-<summary>
-Control frijol3.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz3">
-<summary>
-Control maiz3.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._lb_caserio_new">
 <summary>
 Control lb_caserio_new.
@@ -9822,24 +9768,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._gb_caserio_new">
 <summary>
 Control gb_caserio_new.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._frijol4">
-<summary>
-Control frijol4.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._maiz4">
-<summary>
-Control maiz4.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -10380,24 +10308,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TxtCosecha">
 <summary>
 Control TxtCosecha.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label18">
-<summary>
-Control Label18.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TextBox2">
-<summary>
-Control TextBox2.
 </summary>
 <remarks>
 Campo generado automáticamente.
