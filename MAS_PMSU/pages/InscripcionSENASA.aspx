@@ -17,17 +17,9 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        Registros de Bancos Comunitarios de Semilla
+                        PLAN PRODUCCIÓN DE SEMILLA DE FRIJOL
                     </div>
                     <div class="panel-body">
-                        <asp:TextBox CssClass="form-control" ID="Txt_Id_Eliminar" runat="server" AutoPostBack="True" Visible="False"></asp:TextBox>
-                        <%--<form role="form" runat="server">--%>
-                        <%--  <ul class="nav nav-pills">
-                                    <li class="active"><a href="#Datos" data-toggle="tab">Datos</a>
-                                    </li>
-                                    <%--<li><a href="#Graficos" data-toggle="tab">Graficos</a>
-                        </li>--%>
-                        <%--</ul>--%>
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="Datos">
                                 <div class="panel-body">
@@ -35,9 +27,8 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group">
-                                                <label>Seleccione asesor:</label>
-
-                                                <asp:DropDownList CssClass="form-control" ID="TxtEntrenador" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                                <label>Ciclo de siembra:</label>
+                                                <asp:DropDownList CssClass="form-control" ID="DDL_CicloSiembra" runat="server" AutoPostBack="True"></asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -48,8 +39,8 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
-                                                <label>Seleccione Tipo banco:</label>
-                                                <asp:DropDownList CssClass="form-control" ID="cmborganizacion" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                                <label>Productor:</label>
+                                                <asp:DropDownList CssClass="form-control" ID="DDL_Productor" runat="server" AutoPostBack="True"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>

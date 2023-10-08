@@ -18,8 +18,8 @@ Public Class InscripcionSENASA
                 adap.Fill(dt)
 
                 llenarcomboDepto()
-                llenarcomboEntrenador()
-                llenarcomboOP()
+                llenarcomboCicloSiembra()
+                llenarcomboProductor()
                 llenarcomboComboTipoBanco()
                 llenagrid()
             End If
@@ -35,6 +35,7 @@ Public Class InscripcionSENASA
     End Sub
 
     Private Sub llenarcomboDepto()
+        'ListBox Departamento
         Dim StrCombo As String = "SELECT '00' as Depto_Cod, 'Todos' as Depto_Descripcion UNION SELECT DISTINCT Depto_Cod ,Depto_Descripcion FROM `vista_banco_semilla_todo` "
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -45,26 +46,28 @@ Public Class InscripcionSENASA
         TxTdepto.DataBind()
     End Sub
 
-    Private Sub llenarcomboEntrenador()
+    Private Sub llenarcomboCicloSiembra()
+        'ListBox Ciclo de Siembra
         Dim StrCombo As String = "SELECT '00' as ec_codigo,' Todos' as ec_nombre UNION SELECT DISTINCT ec_codigo,ec_nombre FROM `vista_banco_semilla_todo` WHERE Depto_Cod = '" & TxTdepto.SelectedValue & "' ORDER BY ec_nombre"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
-        TxtEntrenador.DataSource = DtCombo
-        TxtEntrenador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtEntrenador.DataTextField = DtCombo.Columns(1).ToString()
-        TxtEntrenador.DataBind()
+        DDL_CicloSiembra.DataSource = DtCombo
+        DDL_CicloSiembra.DataValueField = DtCombo.Columns(0).ToString()
+        DDL_CicloSiembra.DataTextField = DtCombo.Columns(1).ToString()
+        DDL_CicloSiembra.DataBind()
     End Sub
 
-    Private Sub llenarcomboOP()
-        Dim StrCombo As String = "SELECT '00' as cod_TIPO_BCS,' Todas' as TIPO_BCS UNION SELECT DISTINCT TIPO_BCS as cod_TIPO_BCS, TIPO_BCS FROM `vista_banco_semilla_todo` WHERE ec_codigo = '" & TxtEntrenador.SelectedValue & "' ORDER BY TIPO_BCS "
+    Private Sub llenarcomboProductor()
+        'ListBox Productor
+        Dim StrCombo As String = "SELECT '00' as cod_TIPO_BCS,' Todas' as TIPO_BCS UNION SELECT DISTINCT TIPO_BCS as cod_TIPO_BCS, TIPO_BCS FROM `vista_banco_semilla_todo` WHERE ec_codigo = '" & DDL_CicloSiembra.SelectedValue & "' ORDER BY TIPO_BCS "
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
-        cmborganizacion.DataSource = DtCombo
-        cmborganizacion.DataValueField = DtCombo.Columns(0).ToString()
-        cmborganizacion.DataTextField = DtCombo.Columns(1).ToString()
-        cmborganizacion.DataBind()
+        DDL_Productor.DataSource = DtCombo
+        DDL_Productor.DataValueField = DtCombo.Columns(0).ToString()
+        DDL_Productor.DataTextField = DtCombo.Columns(1).ToString()
+        DDL_Productor.DataBind()
 
     End Sub
 
@@ -74,16 +77,16 @@ Public Class InscripcionSENASA
             Me.SqlDataSource1.SelectCommand = "SELECT * " +
             "FROM `vista_banco_semilla_todo`  ORDER BY Id,Depto_Descripcion,ec_nombre,OP_NOMBRE "
         Else
-            If TxtEntrenador.SelectedValue = "00" Then
+            If DDL_CicloSiembra.SelectedValue = "00" Then
                 Me.SqlDataSource1.SelectCommand = "SELECT * " +
                 "FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE "
             Else
-                If (cmborganizacion.SelectedValue = "00") Then
+                If (DDL_Productor.SelectedValue = "00") Then
                     Me.SqlDataSource1.SelectCommand = "SELECT * " +
-                    "FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "'  ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE "
+                    "FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "'  ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE "
                 Else
                     Me.SqlDataSource1.SelectCommand = "SELECT * " +
-                    "FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "' AND TIPO_BCS='" & cmborganizacion.SelectedValue & "'   ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE "
+                    "FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "' AND TIPO_BCS='" & DDL_Productor.SelectedValue & "'   ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE "
                 End If
             End If
         End If
@@ -104,8 +107,6 @@ Public Class InscripcionSENASA
             Dim dt As New DataTable
             adap.Fill(dt)
 
-            Txt_Id_Eliminar.Text = dt.Rows(0)("Id").ToString()
-
             'Label1.Text = "¿Esta seguro que desea eliminar el registro?"
             'BConfirm.Visible = False
 
@@ -123,8 +124,6 @@ Public Class InscripcionSENASA
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
-
-            Txt_Id_Eliminar.Text = dt.Rows(0)("Id").ToString()
 
             If dt.Rows(0)("TIPO_BCS").ToString() = "Organizacion" Then
 
@@ -154,18 +153,18 @@ Public Class InscripcionSENASA
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxTdepto.SelectedIndexChanged
-        llenarcomboEntrenador()
-        llenarcomboOP()
+        llenarcomboCicloSiembra()
+        llenarcomboProductor()
         llenagrid()
 
     End Sub
 
-    Protected Sub TxtEntrenador_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtEntrenador.SelectedIndexChanged
-        llenarcomboOP()
+    Protected Sub DDL_CicloSiembra_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_CicloSiembra.SelectedIndexChanged
+        llenarcomboProductor()
         llenagrid()
     End Sub
 
-    Protected Sub cmborganizacion_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmborganizacion.SelectedIndexChanged
+    Protected Sub DDL_Productor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_Productor.SelectedIndexChanged
         llenagrid()
     End Sub
 
@@ -254,7 +253,6 @@ Public Class InscripcionSENASA
     End Sub
 
     Protected Sub btnsi_Click(sender As Object, e As EventArgs) Handles btnsiActualizarOrg.Click
-        Dim id = Txt_Id_Eliminar.Text
         Dim TipoBanco = "Organizacion"
         Try
             Dim conex As New MySqlConnection(conn)
@@ -338,19 +336,19 @@ Public Class InscripcionSENASA
                 "SELECT * FROM `vista_banco_semilla_in`   ORDER BY Depto_Descripcion; " +
                 "SELECT * FROM `vista_banco_semilla_org` ORDER BY Depto_Descripcion "
         Else
-            If TxtEntrenador.SelectedValue = "00" Then
+            If DDL_CicloSiembra.SelectedValue = "00" Then
                 query = "SELECT *  FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE; " +
                      "SELECT *  FROM `vista_banco_semilla_in` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' ORDER BY Depto_Descripcion; " +
                       "SELECT *  FROM `vista_banco_semilla_org` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' ORDER BY Depto_Descripcion "
             Else
-                If (cmborganizacion.SelectedValue = "00") Then
-                    query = "SELECT * FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "'  ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE; " +
-                        "SELECT * FROM `vista_banco_semilla_in` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "'  ORDER BY Depto_Descripcion; " +
-                                   "SELECT * FROM `vista_banco_semilla_org` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "'  ORDER BY Depto_Descripcion "
+                If (DDL_Productor.SelectedValue = "00") Then
+                    query = "SELECT * FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "'  ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE; " +
+                        "SELECT * FROM `vista_banco_semilla_in` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "'  ORDER BY Depto_Descripcion; " +
+                                   "SELECT * FROM `vista_banco_semilla_org` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "'  ORDER BY Depto_Descripcion "
                 Else
-                    query = "SELECT * FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "' AND TIPO_BCS='" & cmborganizacion.SelectedValue & "'   ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE; " +
-                        "SELECT * FROM `vista_banco_semilla_in` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "' AND TIPO_BCS='" & cmborganizacion.SelectedValue & "'   ORDER BY Depto_Descripcion; " +
-                         "SELECT * FROM `vista_banco_semilla_org` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & TxtEntrenador.SelectedValue & "' AND TIPO_BCS='" & cmborganizacion.SelectedValue & "'   ORDER BY Depto_Descripcion "
+                    query = "SELECT * FROM `vista_banco_semilla_todo` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "' AND TIPO_BCS='" & DDL_Productor.SelectedValue & "'   ORDER BY Depto_Descripcion,ec_nombre,OP_NOMBRE; " +
+                        "SELECT * FROM `vista_banco_semilla_in` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "' AND TIPO_BCS='" & DDL_Productor.SelectedValue & "'   ORDER BY Depto_Descripcion; " +
+                         "SELECT * FROM `vista_banco_semilla_org` WHERE Depto_Cod='" & TxTdepto.SelectedValue & "' AND ec_codigo='" & DDL_CicloSiembra.SelectedValue & "' AND TIPO_BCS='" & DDL_Productor.SelectedValue & "'   ORDER BY Depto_Descripcion "
                 End If
             End If
         End If

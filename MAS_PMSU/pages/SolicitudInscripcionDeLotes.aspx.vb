@@ -30,12 +30,8 @@ Public Class SolicitudInscripcionDeLotes
 
             Dim fechaConvertida As DateTime
             Dim fechaConvertida2 As DateTime
-<<<<<<< HEAD
             Dim fechaConvertida3 As DateTime
             Dim fechaConvertida4 As DateTime
-=======
-            Dim fechaConvertida3 As Date
-            Dim fechaConvertida4 As Date
             Dim año As Date
 
 
@@ -58,7 +54,6 @@ Public Class SolicitudInscripcionDeLotes
             If Date.TryParse(TxtCosecha.Text, año) Then
                 fechaConvertida4.ToString("dd-MM-yyyy")
             End If
->>>>>>> 0a64b8c19a7401bd87b3449cd483f9570bbe621d
 
             Using cmd As New MySqlCommand(query, connection)
 
@@ -83,7 +78,7 @@ Public Class SolicitudInscripcionDeLotes
                 cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
                 'cmd.Parameters.AddWithValue("@croquis", )
                 cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@variedad", TextVariedad.Text)
+                'cmd.Parameters.AddWithValue("@variedad", TextVariedad.Text)
                 cmd.Parameters.AddWithValue("@lote_no", TextBox3.Text)
                 If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
                     cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
@@ -242,4 +237,81 @@ Public Class SolicitudInscripcionDeLotes
     Protected Sub TxtProHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProHectareas.TextChanged
         TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * 0.7)
     End Sub
+
+    Protected Sub btnSubir_Click(ByVal sender As Object, ByVal e As EventArgs)
+        ' Verifica si se ha cargado un archivo
+        If fileUpload.HasFile Then
+            ' Obtiene la extensión del archivo cargado
+            Dim fileExtension As String = System.IO.Path.GetExtension(fileUpload.FileName).ToLower()
+
+            ' Verifica si la extensión es una imagen (puedes agregar más extensiones según tus necesidades)
+            If fileExtension = ".jpg" OrElse fileExtension = ".jpeg" OrElse fileExtension = ".png" Then
+                ' Define la ruta donde se guardará la imagen en el servidor (cambia la ruta según tus necesidades)
+                Dim uploadFolderPath As String = Server.MapPath("~/Uploads/")
+
+                ' Crea el directorio si no existe
+                If Not System.IO.Directory.Exists(uploadFolderPath) Then
+                    System.IO.Directory.CreateDirectory(uploadFolderPath)
+                End If
+
+                ' Guarda la imagen en el servidor con un nombre único
+                Dim fileName As String = Guid.NewGuid().ToString() & fileExtension
+                fileUpload.SaveAs(System.IO.Path.Combine(uploadFolderPath, fileName))
+
+                ' Puedes almacenar el nombre del archivo en una base de datos o realizar cualquier otro procesamiento necesario
+                ' También puedes mostrar un mensaje de éxito o redirigir a otra página
+
+                ' Limpia la TextBox después de la carga
+                TextBox5.Text = ""
+
+                ' Muestra un mensaje de éxito
+                Label5.Text = "Imagen cargada exitosamente."
+                Label5.CssClass = "label label-success"
+            Else
+                ' Muestra un mensaje de error si el archivo no es una imagen válida
+                Label5.Text = "Por favor, seleccione una imagen válida (jpg, jpeg o png)."
+                Label5.CssClass = "label label-danger"
+            End If
+        Else
+            ' Muestra un mensaje de error si no se ha seleccionado ningún archivo
+            Label5.Text = "Por favor, seleccione un archivo para cargar."
+            Label5.CssClass = "label label-danger"
+        End If
+    End Sub
+
+    Protected Sub CmbTipoSemilla_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        ' Obtiene el valor seleccionado en la DropDownList
+        Dim selectedValue As String = CmbTipoSemilla.SelectedValue
+
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If selectedValue = "Frijol" Then
+            VariedadFrijol.Visible = True
+            VariedadMaiz.Visible = False
+        ElseIf selectedValue = "Maiz" Then
+            VariedadMaiz.Visible = True
+            VariedadFrijol.Visible = False
+        Else
+            VariedadMaiz.Visible = False
+            VariedadFrijol.Visible = False
+        End If
+    End Sub
+
+    Protected Sub DropDownList3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        ' Obtiene el valor seleccionado en la DropDownList
+        Dim selectedValue As String = DropDownList3.SelectedValue
+
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If selectedValue = "Frijol" Then
+            variedadfrijol2.Visible = True
+            variedadmaiz2.Visible = False
+        ElseIf selectedValue = "Maiz" Then
+            variedadmaiz2.Visible = True
+            variedadfrijol2.Visible = False
+        Else
+            variedadmaiz2.Visible = False
+            variedadfrijol2.Visible = False
+        End If
+    End Sub
+
 End Class
+

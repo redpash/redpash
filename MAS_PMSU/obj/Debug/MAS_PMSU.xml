@@ -53,151 +53,6 @@ MAS_PMSU
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
-<member name="T:MAS_PMSU.BDCrystal">
-<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2DataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2Row">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2RowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20opsTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20resumen2TableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20prodnoTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20prodTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20resumenfirmTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager">
-<summary>
-TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
-</summary>
-</member>
-<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateUpdatedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Update rows in top-down order.
-</summary>
-</member>
-<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateInsertedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Insert rows in top-down order.
-</summary>
-</member>
-<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateDeletedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Delete rows in bottom-up order.
-</summary>
-</member>
-<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
-</summary>
-</member>
-<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateAll(MAS_PMSU.BDCrystal)">
-<summary>
-Update all changes to the dataset.
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateOrderOption">
-<summary>
-Update Order Option
-</summary>
-</member>
-<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.SelfReferenceComparer">
-<summary>
-Used to sort self-referenced table's rows
-</summary>
-</member>
 <member name="F:MAS_PMSU.LPlanesSA._GridDatos">
 <summary>
 Control GridDatos.
@@ -2151,9 +2006,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.InscripcionSENASA._Txt_Id_Eliminar">
+<member name="F:MAS_PMSU.InscripcionSENASA._DDL_CicloSiembra">
 <summary>
-Control Txt_Id_Eliminar.
+Control DDL_CicloSiembra.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2169,18 +2024,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.InscripcionSENASA._TxtEntrenador">
+<member name="F:MAS_PMSU.InscripcionSENASA._DDL_Productor">
 <summary>
-Control TxtEntrenador.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.InscripcionSENASA._cmborganizacion">
-<summary>
-Control cmborganizacion.
+Control DDL_Productor.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -9513,6 +9359,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._btnNuevoProductor">
+<summary>
+Control btnNuevoProductor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._LB_RepresentanteLegal">
 <summary>
 Control LB_RepresentanteLegal.
@@ -9828,6 +9683,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._btnSubir">
+<summary>
+Control btnSubir.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._fileUpload">
+<summary>
+Control fileUpload.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label2">
 <summary>
 Control Label2.
@@ -9873,6 +9746,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._VariedadFrijol">
+<summary>
+Control VariedadFrijol.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label3">
 <summary>
 Control Label3.
@@ -9882,9 +9764,144 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TextVariedad">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DropDownList5">
 <summary>
-Control TextVariedad.
+Control DropDownList5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Amadeus77v1">
+<summary>
+Control Amadeus77v1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Carrizalitov1">
+<summary>
+Control Carrizalitov1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Azabachev1">
+<summary>
+Control Azabachev1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Paraisitomejoradov1">
+<summary>
+Control Paraisitomejoradov1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Deorhov1">
+<summary>
+Control Deorhov1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._IntaCardenasv1">
+<summary>
+Control IntaCardenasv1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Lencaprecozv1">
+<summary>
+Control Lencaprecozv1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Rojochortív1">
+<summary>
+Control Rojochortív1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Tolupanrojov1">
+<summary>
+Control Tolupanrojov1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._VariedadMaiz">
+<summary>
+Control VariedadMaiz.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label4">
+<summary>
+Control Label4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DropDownList6">
+<summary>
+Control DropDownList6.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DictaMayav1">
+<summary>
+Control DictaMayav1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DictaVictoriav1">
+<summary>
+Control DictaVictoriav1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._OtroMaizv1">
+<summary>
+Control OtroMaizv1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -10089,6 +10106,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._variedadfrijol2">
+<summary>
+Control variedadfrijol2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label15">
 <summary>
 Control Label15.
@@ -10191,6 +10217,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Section5">
 <summary>
 Control Section5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._variedadmaiz2">
+<summary>
+Control variedadmaiz2.
 </summary>
 <remarks>
 Campo generado automáticamente.

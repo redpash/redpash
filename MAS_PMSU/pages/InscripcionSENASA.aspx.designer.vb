@@ -23,22 +23,13 @@ Partial Public Class InscripcionSENASA
     Protected WithEvents divdatos As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control Txt_Id_Eliminar.
+    '''Control DDL_CicloSiembra.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Txt_Id_Eliminar As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control TxtEntrenador.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtEntrenador As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_CicloSiembra As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control TxTdepto.
@@ -50,13 +41,13 @@ Partial Public Class InscripcionSENASA
     Protected WithEvents TxTdepto As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control cmborganizacion.
+    '''Control DDL_Productor.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cmborganizacion As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Productor As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control LabelTot.
