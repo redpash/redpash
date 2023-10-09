@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports DocumentFormat.OpenXml.Office.Word
+Imports MySql.Data.MySqlClient
 
 Public Class SolicitudInscripcionDeLotes
     Inherits System.Web.UI.Page
@@ -8,6 +9,7 @@ Public Class SolicitudInscripcionDeLotes
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
             If IsPostBack Then
+
             Else
                 llenarcomboDepto()
             End If
@@ -21,12 +23,12 @@ Public Class SolicitudInscripcionDeLotes
 
             Dim query As String = "INSERT INTO solicitud_inscripcion_delotes 
             (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-            cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, tipo_cultivo,
-            variedad, lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
-            fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino) VALUES (@nombre_productor, @representante_legal, @identidad_productor, @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador,
-            @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento, @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @tipo_cultivo,
-            @variedad, @lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz,
-            @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino)"
+            cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo,
+            lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
+            fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
+            @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
+            @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @tipo_cultivo,@lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, 
+            @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino)"
 
             Dim fechaConvertida As DateTime
             Dim fechaConvertida2 As DateTime
@@ -76,9 +78,15 @@ Public Class SolicitudInscripcionDeLotes
                 cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
                 cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
                 cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                'cmd.Parameters.AddWithValue("@croquis", )
+                If fileUpload.HasFile Then
+                    ' Obtener el contenido del archivo
+                    Dim fileBytes As Byte() = fileUpload.FileBytes
+
+
+                    cmd.Parameters.AddWithValue("@croquis", fileBytes)
+                End If
                 cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
-                'cmd.Parameters.AddWithValue("@variedad", TextVariedad.Text)
+            
                 cmd.Parameters.AddWithValue("@lote_no", TextBox3.Text)
                 If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
                     cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
@@ -238,46 +246,37 @@ Public Class SolicitudInscripcionDeLotes
         TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * 0.7)
     End Sub
 
-    Protected Sub btnSubir_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Verifica si se ha cargado un archivo
-        If fileUpload.HasFile Then
-            ' Obtiene la extensión del archivo cargado
-            Dim fileExtension As String = System.IO.Path.GetExtension(fileUpload.FileName).ToLower()
-
-            ' Verifica si la extensión es una imagen (puedes agregar más extensiones según tus necesidades)
-            If fileExtension = ".jpg" OrElse fileExtension = ".jpeg" OrElse fileExtension = ".png" Then
-                ' Define la ruta donde se guardará la imagen en el servidor (cambia la ruta según tus necesidades)
-                Dim uploadFolderPath As String = Server.MapPath("~/Uploads/")
-
-                ' Crea el directorio si no existe
-                If Not System.IO.Directory.Exists(uploadFolderPath) Then
-                    System.IO.Directory.CreateDirectory(uploadFolderPath)
-                End If
-
-                ' Guarda la imagen en el servidor con un nombre único
-                Dim fileName As String = Guid.NewGuid().ToString() & fileExtension
-                fileUpload.SaveAs(System.IO.Path.Combine(uploadFolderPath, fileName))
-
-                ' Puedes almacenar el nombre del archivo en una base de datos o realizar cualquier otro procesamiento necesario
-                ' También puedes mostrar un mensaje de éxito o redirigir a otra página
-
-                ' Limpia la TextBox después de la carga
-                TextBox5.Text = ""
-
-                ' Muestra un mensaje de éxito
-                Label5.Text = "Imagen cargada exitosamente."
-                Label5.CssClass = "label label-success"
-            Else
-                ' Muestra un mensaje de error si el archivo no es una imagen válida
-                Label5.Text = "Por favor, seleccione una imagen válida (jpg, jpeg o png)."
-                Label5.CssClass = "label label-danger"
-            End If
-        Else
-            ' Muestra un mensaje de error si no se ha seleccionado ningún archivo
-            Label5.Text = "Por favor, seleccione un archivo para cargar."
-            Label5.CssClass = "label label-danger"
-        End If
-    End Sub
+    'Protected Sub btnSubir_Click(ByVal sender As Object, ByVal e As EventArgs)
+    '    If fileUpload.HasFile Then
+    '        ' Obtener el contenido del archivo
+    '        Dim fileBytes As Byte() = fileUpload.FileBytes
+    '
+    '        ' Crear una conexión a la base de datos
+    '        Dim connectionString As String = conn
+    '        Using con As New MySqlConnection(connectionString)
+    '            'con.Open()
+    '
+    '            ' Query para insertar el archivo en el campo 'croquis' de la tabla (asumiendo que tienes una tabla llamada 'tu_tabla' con un campo 'croquis' de tipo LONGBLOB)
+    '            Dim query As String = "INSERT INTO solicitud_inscripcion_delotes (croquis) VALUES (@croquis)"
+    '
+    '            Using cmd As New MySqlCommand(query, con)
+    '                cmd.Parameters.AddWithValue("@croquis", fileBytes)
+    '
+    '                ' Ejecutar la consulta
+    '                cmd.ExecuteNonQuery()
+    '            End Using
+    '        End Using
+    '
+    '        ' Limpia la etiqueta de advertencia (si la tienes)
+    '        Label5.Text = ""
+    '
+    '        ' Opcional: Mostrar un mensaje de éxito
+    '        ' Response.Write("Archivo subido exitosamente")
+    '    Else
+    '        ' Mostrar un mensaje de advertencia si no se seleccionó ningún archivo
+    '        Label5.Text = "Por favor, seleccione un archivo para subir."
+    '    End If
+    'End Sub
 
     Protected Sub CmbTipoSemilla_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         ' Obtiene el valor seleccionado en la DropDownList
