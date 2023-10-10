@@ -113,10 +113,49 @@ Public Class SolicitudInscripcionDeLotes
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
+
+                vaciar()
+                Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud de inscripción de lotes!') </script>")
             End Using
         End Using
     End Sub
 
+    Protected Sub vaciar()
+        txt_nombre_prod_new.Text = " "
+        Txt_Representante_Legal.Text = " "
+        TxtIdentidad.Text = " "
+        TextBox1.Text = " "
+        TxtResidencia.Text = " "
+        TxtTelefono.Text = " "
+        txtNoRegistro.Text = " "
+        txtNombreRe.Text = " "
+        txtIdentidadRe.Text = " "
+        TxtTelefonoRe.Text = " "
+        TxtNombreFinca.Text = " "
+        gb_departamento_new.SelectedItem.Text = " "
+        gb_municipio_new.SelectedItem.Text = " "
+        gb_aldea_new.SelectedItem.Text = " "
+        gb_caserio_new.SelectedItem.Text = " "
+        TxtPersonaFinca.Text = " "
+        TxtLote.Text = " "
+        'FileUpload
+        CmbTipoSemilla.SelectedItem.Text = " "
+        TextBox3.Text = " "
+        TextBox4.Text = " "
+        TextBox6.Text = " "
+        DdlCategoria.SelectedItem.Text = " "
+        DdlTipo.SelectedItem.Text = " "
+        DropDownList3.SelectedItem.Text = " "
+        DropDownList1.SelectedItem.Text = " "
+        DropDownList2.SelectedItem.Text = " "
+        TxtHectareas.Text = " "
+        TxtSuperficieMZ.Text = " "
+        TxtFechaSiembra.Text = " "
+        TxtCosecha.Text = " "
+        TxtProHectareas.Text = " "
+        TextBox7.Text = " "
+        DropDownList4.SelectedItem.Text = " "
+    End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -241,9 +280,9 @@ Public Class SolicitudInscripcionDeLotes
     Protected Sub buscar_productor(sender As Object, e As EventArgs)
         llenarProdutor()
     End Sub
-    Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
-        llenarProdutor()
-    End Sub
+    'Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
+    ' llenarProdutor()
+    'End Sub
 
     Protected Sub llenarProdutor()
         Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
