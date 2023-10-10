@@ -298,6 +298,7 @@
                                     <label>Tipo</label>
                                     <asp:Label ID="Label7" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:DropDownList CssClass="form-control" ID="DdlTipo" runat="server" AutoPostBack="true">
+                                        <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem id="linea" Text="Linea"></asp:ListItem>
                                         <asp:ListItem id="variedad" Text="Variedad"></asp:ListItem>
                                         <asp:ListItem id="hibrido" Text="Hibrido"></asp:ListItem>

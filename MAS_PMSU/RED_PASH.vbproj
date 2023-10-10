@@ -13,7 +13,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MAS_PMSU</RootNamespace>
     <AssemblyName>MAS_PMSU</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -275,6 +275,7 @@
     <None Include="BDCrystal.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDCrystal.Designer.vb</LastGenOutput>
     </None>
     <Content Include="BDCrystal.xss">
       <DependentUpon>BDCrystal.xsd</DependentUpon>
@@ -300,6 +301,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="autenticacion.vb" />
+    <Compile Include="BDCrystal.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDCrystal.xsd</DependentUpon>
+    </Compile>
     <Compile Include="forms.aspx.designer.vb">
       <DependentUpon>forms.aspx</DependentUpon>
     </Compile>
