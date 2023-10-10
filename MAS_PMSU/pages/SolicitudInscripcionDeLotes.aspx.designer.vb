@@ -23,15 +23,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''Control Updatepanel2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Updatepanel2 As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
     '''Control lb_nombre_new.
     '''</summary>
     '''<remarks>
@@ -50,6 +41,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents txt_nombre_prod_new As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control btnbuscarProductor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnbuscarProductor As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control btnNuevoProductor.
     '''</summary>
     '''<remarks>
@@ -57,6 +57,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnNuevoProductor As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control PanelA1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelA1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control LB_RepresentanteLegal.
@@ -167,6 +176,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents txtNoRegistro As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control PanelA2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelA2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''Control lbNombreRe.
     '''</summary>
     '''<remarks>
@@ -219,6 +237,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtTelefonoRe As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control PanelB.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelB As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control LblNombreFinca.
@@ -381,6 +408,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Updatepanel666 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Control PanelC.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelC As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label2.
@@ -651,6 +687,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Updatepanel1 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Control PanelD.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelD As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label6.

@@ -238,6 +238,12 @@ Public Class SolicitudInscripcionDeLotes
     '
     '    Return nombre = DtCombo.Rows(0)("PROD_NOMBRE").ToString()
     'End Function
+    Protected Sub buscar_productor(sender As Object, e As EventArgs)
+        llenarProdutor()
+    End Sub
+    Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
+        llenarProdutor()
+    End Sub
 
     Protected Sub llenarProdutor()
         Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
@@ -250,11 +256,17 @@ Public Class SolicitudInscripcionDeLotes
             txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
             TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
             TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
+            btnNuevoProductor.Visible = False
+            PanelA1.Visible = True
+            PanelA2.Visible = True
+            PanelB.Visible = True
+            PanelC.Visible = True
+            PanelD.Visible = True
+            btnGuardarLote.Visible = True
         Else
             btnNuevoProductor.Visible = True
             Response.Write("<script>window.alert('¡No existe productor en la base de datos!') </script>")
         End If
-        'End If
     End Sub
 
     Protected Sub gb_departamento_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_departamento_new.SelectedIndexChanged
@@ -269,9 +281,6 @@ Public Class SolicitudInscripcionDeLotes
         llenarCaserio()
     End Sub
 
-    Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
-        llenarProdutor()
-    End Sub
     Protected Sub TxtHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtHectareas.TextChanged
         TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) * 0.7)
     End Sub

@@ -9224,18 +9224,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Updatepanel1">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._ScriptManager1">
 <summary>
-Control Updatepanel1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._ScriptManager2">
-<summary>
-Control ScriptManager2.
+Control ScriptManager1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -9260,9 +9251,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._btnbuscarProductor">
+<summary>
+Control btnbuscarProductor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._btnNuevoProductor">
 <summary>
 Control btnNuevoProductor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._PanelA1">
+<summary>
+Control PanelA1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -9377,6 +9386,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._PanelA2">
+<summary>
+Control PanelA2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._lbNombreRe">
 <summary>
 Control lbNombreRe.
@@ -9431,18 +9449,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Updatepanel2">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._PanelB">
 <summary>
-Control Updatepanel2.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._ScriptManager3">
-<summary>
-Control ScriptManager3.
+Control PanelB.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -9611,9 +9620,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._ScriptManager1">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._PanelC">
 <summary>
-Control ScriptManager1.
+Control PanelC.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -9881,18 +9890,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Updatepanel3">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Updatepanel1">
 <summary>
-Control Updatepanel3.
+Control Updatepanel1.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._ScriptManager4">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._PanelD">
 <summary>
-Control ScriptManager4.
+Control PanelD.
 </summary>
 <remarks>
 Campo generado automáticamente.
