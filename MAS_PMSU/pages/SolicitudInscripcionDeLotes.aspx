@@ -49,7 +49,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Extendida En :</label><asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" AutoPostBack="true"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TextBox1" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -253,7 +253,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha de Analisis</label><asp:Label ID="Label9" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TextBox4" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -375,14 +375,14 @@
                         <div class="form-group">
                             <label>Fecha Aproximada de Siembra </label>
                             <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" runat="server" AutoPostBack="true"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Fecha Aproximada de Cosecha</label>
                             <asp:Label ID="Label17" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtCosecha" runat="server" AutoPostBack="true"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtCosecha" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
