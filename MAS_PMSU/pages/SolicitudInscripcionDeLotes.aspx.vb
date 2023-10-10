@@ -13,6 +13,7 @@ Public Class SolicitudInscripcionDeLotes
 
             Else
                 llenarcomboDepto()
+                btnNuevoProductor.Visible = False
             End If
         End If
     End Sub
@@ -244,10 +245,15 @@ Public Class SolicitudInscripcionDeLotes
         adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", txt_nombre_prod_new.Text)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
-        txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
-        TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
-        TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
 
+        If DtCombo.Rows.Count > 0 Then
+            txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
+            TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
+            TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
+        Else
+            btnNuevoProductor.Visible = True
+            Response.Write("<script>window.alert('¡No existe productor en la base de datos!') </script>")
+        End If
         'End If
     End Sub
 
@@ -272,6 +278,10 @@ Public Class SolicitudInscripcionDeLotes
 
     Protected Sub TxtProHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProHectareas.TextChanged
         TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * 0.7)
+    End Sub
+
+    Protected Sub btnNuevoProductor_click(ByVal sender As Object, ByVal e As EventArgs) Handles btnNuevoProductor.Click
+        Response.Redirect("Registro_Banco_Semilla.aspx")
     End Sub
 
     'Protected Sub btnSubir_Click(ByVal sender As Object, ByVal e As EventArgs)

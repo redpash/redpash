@@ -35,25 +35,25 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Representante Legal</label><asp:Label ID="LB_RepresentanteLegal" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="Txt_Representante_Legal" runat="server" AutoPostBack="true></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="Txt_Representante_Legal" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Cedula de Identidad</label><asp:Label ID="Lb_CedulaIdentidad" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtIdentidad" runat="server" AutoPostBack="true></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtIdentidad" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Extendida En :</label><asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" AutoPostBack="true></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Residencia</label><asp:Label ID="LbResidencia" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtResidencia" runat="server" AutoPostBack="true></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtResidencia" runat="server" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">

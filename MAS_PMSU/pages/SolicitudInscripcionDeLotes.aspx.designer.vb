@@ -50,6 +50,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents LB_RepresentanteLegal As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Control Txt_Representante_Legal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Txt_Representante_Legal As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Lb_CedulaIdentidad.
     '''</summary>
     '''<remarks>
@@ -57,6 +66,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Lb_CedulaIdentidad As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtIdentidad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtIdentidad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label1.
@@ -68,6 +86,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Control TextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control LbResidencia.
     '''</summary>
     '''<remarks>
@@ -75,6 +102,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents LbResidencia As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtResidencia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtResidencia As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LblTelefono.
