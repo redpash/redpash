@@ -1,4 +1,5 @@
-﻿Imports DocumentFormat.OpenXml.Office.Word
+﻿Imports CrystalDecisions.[Shared].Json
+Imports DocumentFormat.OpenXml.Office.Word
 Imports MySql.Data.MySqlClient
 
 Public Class SolicitudInscripcionDeLotes
@@ -86,7 +87,7 @@ Public Class SolicitudInscripcionDeLotes
                     cmd.Parameters.AddWithValue("@croquis", fileBytes)
                 End If
                 cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
-            
+
                 cmd.Parameters.AddWithValue("@lote_no", TextBox3.Text)
                 If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
                     cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
@@ -226,6 +227,30 @@ Public Class SolicitudInscripcionDeLotes
         'End If
     End Sub
 
+    'Private Function existeProductor(ByVal cadena As String)
+    '    Dim nombre As String = ""
+    '    Dim StrCOmbo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
+    '    Dim adaptcombo As New MySqlDataAdapter(StrCOmbo, conn)
+    'adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", "")
+    '    Dim DtCombo As New DataTable
+    '    adaptcombo.Fill(DtCombo)
+    '
+    '    Return nombre = DtCombo.Rows(0)("PROD_NOMBRE").ToString()
+    'End Function
+
+    Protected Sub llenarProdutor()
+        Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", txt_nombre_prod_new.Text)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
+        TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
+        TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
+
+        'End If
+    End Sub
+
     Protected Sub gb_departamento_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_departamento_new.SelectedIndexChanged
         llenarmunicipio()
     End Sub
@@ -238,6 +263,9 @@ Public Class SolicitudInscripcionDeLotes
         llenarCaserio()
     End Sub
 
+    Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
+        llenarProdutor()
+    End Sub
     Protected Sub TxtHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtHectareas.TextChanged
         TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) * 0.7)
     End Sub
