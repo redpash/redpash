@@ -2,14 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>    
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header"> Solicitud de Inscripción de Lotes</h1>
         </div>
     </div>
 
+        <asp:UpdatePanel
+    runat="server" ID="Updatepanel2"> 
+        <ContentTemplate>
     <div class="row">
 
         <div class="panel panel-primary">
@@ -94,7 +98,8 @@
             </div>
         </div>
     </div>
-
+    </ContentTemplate>
+</asp:UpdatePanel>
     <div class="row">
 
         <div class="panel panel-primary">
@@ -187,7 +192,7 @@
     <asp:UpdatePanel
     runat="server" ID="Updatepanel666"> 
         <ContentTemplate>
-         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
+
       <div class="row">
 
     <div class="panel panel-primary">
@@ -269,7 +274,10 @@
 </div>       
     </ContentTemplate>
 </asp:UpdatePanel>
-   
+
+  <asp:UpdatePanel
+ runat="server" ID="Updatepanel1"> 
+     <ContentTemplate>
         <div class="row">
 
         <div class="panel panel-primary">
@@ -415,7 +423,8 @@
             </div>
         </div>
     </div>
-
+    </ContentTemplate>
+</asp:UpdatePanel>
     <div>
         <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote"/>
     </div>

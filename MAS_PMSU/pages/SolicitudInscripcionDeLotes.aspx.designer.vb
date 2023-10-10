@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class SolicitudInscripcionDeLotes
 
     '''<summary>
+    '''Control ScriptManager1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
+    '''Control Updatepanel2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Updatepanel2 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Control lb_nombre_new.
     '''</summary>
     '''<remarks>
@@ -365,15 +383,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents Updatepanel666 As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''Control ScriptManager1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
-
-    '''<summary>
     '''Control Label2.
     '''</summary>
     '''<remarks>
@@ -633,6 +642,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TextBox6 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Updatepanel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Updatepanel1 As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''Control Label6.
