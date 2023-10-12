@@ -14,6 +14,7 @@ Public Class SolicitudInscripcionDeLotes
             Else
                 llenarcomboDepto()
                 btnNuevoProductor.Visible = False
+                VerificarTextBox()
             End If
         End If
     End Sub
@@ -155,6 +156,7 @@ Public Class SolicitudInscripcionDeLotes
         TxtProHectareas.Text = " "
         TextBox7.Text = " "
         DropDownList4.SelectedItem.Text = " "
+        VerificarTextBox()
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -168,6 +170,7 @@ Public Class SolicitudInscripcionDeLotes
         gb_departamento_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_departamento_new.Items.Insert(0, newitem)
+        VerificarTextBox()
     End Sub
 
     Private Function DevolverValorDepart(cadena As String)
@@ -185,6 +188,7 @@ Public Class SolicitudInscripcionDeLotes
         End If
 
         Return 0
+        VerificarTextBox()
     End Function
 
     Private Function DevolverValorMuni(cadena As String)
@@ -200,6 +204,7 @@ Public Class SolicitudInscripcionDeLotes
             Return codigoMunicipio
         End If
         Return 0
+        VerificarTextBox()
     End Function
 
     Private Function DevolverValorAlde(cadena As String)
@@ -215,6 +220,7 @@ Public Class SolicitudInscripcionDeLotes
             Return codigoCaserio
         End If
         Return 0
+        VerificarTextBox()
     End Function
     Private Sub llenarmunicipio()
         'If gb_departamento_new.SelectedItem.Text <> " " Then
@@ -230,6 +236,7 @@ Public Class SolicitudInscripcionDeLotes
         gb_municipio_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_municipio_new.Items.Insert(0, newitem)
+        VerificarTextBox()
         'End If
     End Sub
 
@@ -247,6 +254,7 @@ Public Class SolicitudInscripcionDeLotes
         gb_aldea_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_aldea_new.Items.Insert(0, newitem)
+        VerificarTextBox()
         'End If
     End Sub
 
@@ -264,6 +272,7 @@ Public Class SolicitudInscripcionDeLotes
         gb_caserio_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_caserio_new.Items.Insert(0, newitem)
+        VerificarTextBox()
         'End If
     End Sub
 
@@ -279,6 +288,7 @@ Public Class SolicitudInscripcionDeLotes
     'End Function
     Protected Sub buscar_productor(sender As Object, e As EventArgs)
         llenarProdutor()
+        VerificarTextBox()
     End Sub
     'Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
     ' llenarProdutor()
@@ -306,26 +316,42 @@ Public Class SolicitudInscripcionDeLotes
             btnNuevoProductor.Visible = True
             Response.Write("<script>window.alert('¡No existe productor en la base de datos!') </script>")
         End If
+        VerificarTextBox()
     End Sub
 
     Protected Sub gb_departamento_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_departamento_new.SelectedIndexChanged
         llenarmunicipio()
+        VerificarTextBox()
     End Sub
 
     Protected Sub gb_municipio_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_municipio_new.SelectedIndexChanged
         llenarAldea()
+        VerificarTextBox()
     End Sub
 
     Protected Sub gb_aldea_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_aldea_new.SelectedIndexChanged
         llenarCaserio()
+        VerificarTextBox()
     End Sub
 
     Protected Sub TxtHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtHectareas.TextChanged
-        TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) * 0.7)
+        If TxtHectareas.Text <> "" Then
+            TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) * 0.7)
+            VerificarTextBox()
+        Else
+            TxtSuperficieMZ.Text = ""
+            VerificarTextBox()
+        End If
     End Sub
 
     Protected Sub TxtProHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProHectareas.TextChanged
-        TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * 0.7)
+        If TxtProHectareas.Text <> "" Then
+            TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * 0.7)
+            VerificarTextBox()
+        Else
+            TextBox7.Text = ""
+            VerificarTextBox()
+        End If
     End Sub
 
     Protected Sub btnNuevoProductor_click(ByVal sender As Object, ByVal e As EventArgs) Handles btnNuevoProductor.Click
@@ -379,6 +405,8 @@ Public Class SolicitudInscripcionDeLotes
             VariedadMaiz.Visible = False
             VariedadFrijol.Visible = False
         End If
+
+        VerificarTextBox()
     End Sub
 
     Protected Sub DropDownList3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -396,6 +424,228 @@ Public Class SolicitudInscripcionDeLotes
             variedadmaiz2.Visible = False
             variedadfrijol2.Visible = False
         End If
+
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub VerificarTextBox()
+
+        If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
+            lb_nombre_new.Text = "*"
+        Else
+            lb_nombre_new.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
+            LB_RepresentanteLegal.Text = "*"
+        Else
+            LB_RepresentanteLegal.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtIdentidad.Text) Then
+            Lb_CedulaIdentidad.Text = "*"
+        Else
+            Lb_CedulaIdentidad.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TextBox1.Text) Then
+            Label1.Text = "*"
+        Else
+            Label1.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtResidencia.Text) Then
+            LbResidencia.Text = "*"
+        Else
+            LbResidencia.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtTelefono.Text) Then
+            LblTelefono.Text = "*"
+        Else
+            LblTelefono.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(txtNoRegistro.Text) Then
+            LbNoRegistro.Text = "*"
+        Else
+            LbNoRegistro.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(txtNombreRe.Text) Then
+            lbNombreRe.Text = "*"
+        Else
+            lbNombreRe.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
+            lbIdentidadRe.Text = "*"
+        Else
+            lbIdentidadRe.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
+            LbTelefonoRe.Text = "*"
+        Else
+            LbTelefonoRe.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtNombreFinca.Text) Then
+            LblNombreFinca.Text = "*"
+        Else
+            LblNombreFinca.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(gb_departamento_new.Text) Then
+            lb_dept_new.Text = "*"
+        Else
+            lb_dept_new.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(gb_municipio_new.Text) Then
+            lb_mun_new.Text = "*"
+        Else
+            lb_mun_new.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(gb_aldea_new.Text) Then
+            lb_aldea_new.Text = "*"
+        Else
+            lb_aldea_new.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(gb_caserio_new.Text) Then
+            lb_caserio_new.Text = "*"
+        Else
+            lb_caserio_new.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
+            LblPersonaFinca.Text = "*"
+        Else
+            LblPersonaFinca.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtLote.Text) Then
+            LbLote.Text = "*"
+        Else
+            LbLote.Text = ""
+        End If
+
+        'If String.IsNullOrEmpty(***Label5) Then
+        '    Label1.Text = "*"
+        'Else
+        '    Label1.Text = ""
+        'End If
+
+        If String.IsNullOrEmpty(CmbTipoSemilla.Text) Then
+            Label2.Text = "*"
+        Else
+            Label2.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DropDownList5.Text) Then
+            Label3.Text = "*"
+        Else
+            Label3.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DropDownList6.Text) Then
+            Label4.Text = "*"
+        Else
+            Label4.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TextBox3.Text) Then
+            Label8.Text = "*"
+        Else
+            Label8.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TextBox4.Text) Then
+            Label9.Text = "*"
+        Else
+            Label9.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TextBox6.Text) Then
+            Label10.Text = "*"
+        Else
+            Label10.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DdlCategoria.Text) Then
+            Label6.Text = "*"
+        Else
+            Label6.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DdlTipo.Text) Then
+            Label7.Text = "*"
+        Else
+            Label7.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DropDownList3.Text) Then
+            Label11.Text = "*"
+        Else
+            Label11.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DropDownList1.Text) Then
+            Label15.Text = "*"
+        Else
+            Label15.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DropDownList2.Text) Then
+            Label16.Text = "*"
+        Else
+            Label16.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtHectareas.Text) Then
+            Label12.Text = "*"
+        Else
+            Label12.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtSuperficieMZ.Text) Then
+            Label13.Text = "*"
+        Else
+            Label13.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtFechaSiembra.Text) Then
+            Label14.Text = "*"
+        Else
+            Label14.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtCosecha.Text) Then
+            Label17.Text = "*"
+        Else
+            Label17.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TxtProHectareas.Text) Then
+            Label19.Text = "*"
+        Else
+            Label19.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(TextBox7.Text) Then
+            Label20.Text = "*"
+        Else
+            Label20.Text = ""
+        End If
+
+        If String.IsNullOrEmpty(DropDownList4.Text) Then
+            Label21.Text = "*"
+        Else
+            Label21.Text = ""
+        End If
+
     End Sub
 
 End Class
