@@ -35,20 +35,20 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String
-
-        StrCombo = "SELECT concat( 'BCS-', `registros_bancos_semilla`.`Depto_Cod`, '-00', `registros_bancos_semilla`.`Id` ) AS `COD_BCS`, CONCAT(COALESCE(OP_NOMBRE, ''), COALESCE(PROD_NOMBRE, '')) AS Nombres_registros_organizacion_y_Individual
-        FROM registros_bancos_semilla WHERE Depto_Descripcion = '" & TxtDepto.SelectedValue & "' "
-
-        'StrCombo = "SELECT * FROM vista_registro_org_in"
-
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-        TxtProductor.DataSource = DtCombo
-        TxtProductor.DataValueField = DtCombo.Columns(0).ToString()
-        TxtProductor.DataTextField = DtCombo.Columns(1).ToString()
-        TxtProductor.DataBind()
+        'Dim StrCombo As String
+        '
+        'StrCombo = "SELECT concat( 'BCS-', `registros_bancos_semilla`.`Depto_Cod`, '-00', `registros_bancos_semilla`.`Id` ) AS `COD_BCS`, CONCAT(COALESCE(OP_NOMBRE, ''), COALESCE(PROD_NOMBRE, '')) AS Nombres_registros_organizacion_y_Individual
+        'FROM registros_bancos_semilla WHERE Depto_Descripcion = '" & TxtDepto.SelectedValue & "' "
+        '
+        ''StrCombo = "SELECT * FROM vista_registro_org_in"
+        '
+        'Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        'Dim DtCombo As New DataTable
+        'adaptcombo.Fill(DtCombo)
+        'TxtProductor.DataSource = DtCombo
+        'TxtProductor.DataValueField = DtCombo.Columns(0).ToString()
+        'TxtProductor.DataTextField = DtCombo.Columns(1).ToString()
+        'TxtProductor.DataBind()
     End Sub
 
     Sub llenagrid()

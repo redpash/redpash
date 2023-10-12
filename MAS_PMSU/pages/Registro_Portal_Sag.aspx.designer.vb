@@ -284,13 +284,13 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents TxtCantLotes As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txtNombreFinca.
+    '''Control DDL_Nlote.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtNombreFinca As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_Nlote As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control TxtProduccionQQMZ.

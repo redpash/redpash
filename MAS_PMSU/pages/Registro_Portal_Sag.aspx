@@ -329,7 +329,8 @@
                              
                                      <label for="txtNombreFinca">
                                         Nombre o No. del lote dentro de la finca</label>                           
-                                    <asp:TextBox ID="txtNombreFinca" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="false"></asp:DropDownList>
+
                                      <br />
                                    
                                       <label for="TxtProduccionQQMZ">
