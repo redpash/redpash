@@ -7,69 +7,87 @@ Public Class Registro_Portal_Sag
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        llenagrid()
-        llenarcomboProductor()
-        llenarcomboDepto()
-        div_nuevo_prod.Visible = False
+        Page.MaintainScrollPositionOnPostBack = True
+        If User.Identity.IsAuthenticated = True Then
+            If IsPostBack Then
+
+            Else
+                'llenagrid()
+                llenarcomboCiclo()
+                llenarcomboDepto()
+                div_nuevo_prod.Visible = False
+            End If
+        End If
+
 
     End Sub
 
-    Private Sub llenarcomboDepto()
-        Dim StrCombo As String
-
-        If TxtCiclo.SelectedValue = "Todos" Then
-            StrCombo = "SELECT ' Todos' as Depto_Descripcion "
-        Else
-            'MsgBox("entro")
-
-            StrCombo = "SELECT 'Todos' as Depto_Descripcion UNION SELECT DISTINCT Depto_Descripcion FROM `registros_bancos_semilla` "
-        End If
-
+    Private Sub llenarcomboCiclo()
+        Dim StrCombo As String = "SELECT * FROM redpash_ciclo"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
+
+        TxtCiclo.DataSource = DtCombo
+        TxtCiclo.DataValueField = DtCombo.Columns(0).ToString()
+        TxtCiclo.DataTextField = DtCombo.Columns(1).ToString
+        TxtCiclo.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        TxtCiclo.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboDepto()
+        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
         TxtDepto.DataSource = DtCombo
         TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
-        TxtDepto.DataTextField = DtCombo.Columns(0).ToString()
+        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
         TxtDepto.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        TxtDepto.Items.Insert(0, newitem)
     End Sub
 
+
     Private Sub llenarcomboProductor()
-        'Dim StrCombo As String
-        '
-        'StrCombo = "SELECT concat( 'BCS-', `registros_bancos_semilla`.`Depto_Cod`, '-00', `registros_bancos_semilla`.`Id` ) AS `COD_BCS`, CONCAT(COALESCE(OP_NOMBRE, ''), COALESCE(PROD_NOMBRE, '')) AS Nombres_registros_organizacion_y_Individual
-        'FROM registros_bancos_semilla WHERE Depto_Descripcion = '" & TxtDepto.SelectedValue & "' "
-        '
-        ''StrCombo = "SELECT * FROM vista_registro_org_in"
-        '
-        'Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        'Dim DtCombo As New DataTable
-        'adaptcombo.Fill(DtCombo)
-        'TxtProductor.DataSource = DtCombo
-        'TxtProductor.DataValueField = DtCombo.Columns(0).ToString()
-        'TxtProductor.DataTextField = DtCombo.Columns(1).ToString()
-        'TxtProductor.DataBind()
+        If TxtDepto.SelectedItem.Text <> " " Then
+            Dim StrCombo As String = "SELECT DISTINCT PROD_NOMBRE FROM registros_bancos_semilla WHERE Depto_Descripcion = @nombre ORDER BY PROD_NOMBRE ASC"
+            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+            adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
+            Dim DtCombo As New DataTable
+            adaptcombo.Fill(DtCombo)
+            TxtProductor.DataSource = DtCombo
+            TxtProductor.DataValueField = "PROD_NOMBRE"
+            TxtProductor.DataTextField = "PROD_NOMBRE"
+            TxtProductor.DataBind()
+            Dim newitem As New ListItem(" ", " ")
+            TxtProductor.Items.Insert(0, newitem)
+        End If
+        If TxtDepto.SelectedItem.Text = " " Then
+            TxtProductor.SelectedValue = " "
+        End If
     End Sub
 
     Sub llenagrid()
         BAgregar.Visible = False
         'import.Visible = False
 
-        If TxtCiclo.SelectedValue = "Todos" Then
+        If TxtCiclo.SelectedItem.Text = " " Then
             Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
         Else
 
-            If (TxtDepto.SelectedValue = " Todos") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedValue & "'  AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            If (TxtDepto.SelectedItem.Text = " ") Then
+                Me.SqlDataSource1.SelectCommand = " SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
             Else
 
-                If (TxtProductor.Text = "Todos") Then
-                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                If (TxtProductor.SelectedItem.Text = " ") Then
+                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                 Else
 
                     BAgregar.Visible = True
 
-                    Me.SqlDataSource1.SelectCommand = " SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "'  AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
 
                 End If
             End If
@@ -81,8 +99,8 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub TxtCiclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCiclo.SelectedIndexChanged
-        llenarcomboDepto()
-        llenarcomboProductor()
+        '    'llenarcomboDepto()
+        '    'llenarcomboProductor()
         llenagrid()
     End Sub
 
@@ -98,7 +116,7 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
-        Dim fecha2 As Date
+        'Dim fecha2 As Date
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
@@ -129,10 +147,10 @@ Public Class Registro_Portal_Sag
                 TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
                 TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
 
-                fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
-                TxtDia.SelectedValue = fecha2.Day
-                TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-                TxtAno.SelectedValue = fecha2.Year
+                'fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
+                'TxtDia.SelectedValue = fecha2.Day
+                'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
+                'TxtAno.SelectedValue = fecha2.Year
 
 
 
@@ -278,13 +296,17 @@ Public Class Registro_Portal_Sag
 
     End Sub
 
+    Protected Sub llenarPlan()
+
+    End Sub
+
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
 
-        If TxtCiclo.Text = "2022-Ciclo A" Or TxtCiclo.Text = "2022-Ciclo B" Or TxtCiclo.Text = "2022-Ciclo C" Or TxtCiclo.Text = "2023-Ciclo A" Or TxtCiclo.Text = "2023-Ciclo B" Or TxtCiclo.Text = "2023-Ciclo C" Then
+        If TxtCiclo.SelectedItem.Text <> " " Then
 
             TxtID.Text = ""
 
-            Dim fecha2 As Date
+            ' Dim fecha2 As Date
 
             TxtNom.Text = TxtProductor.SelectedItem.Text
             TxtCicloD.Text = TxtCiclo.SelectedItem.Text
@@ -292,10 +314,10 @@ Public Class Registro_Portal_Sag
             TxtCategoria.SelectedIndex = 0
 
 
-            fecha2 = Now
-            TxtDia.SelectedValue = fecha2.Day
-            TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-            TxtAno.SelectedValue = fecha2.Year
+            'fecha2 = Now
+            'TxtDia.SelectedValue = fecha2.Day
+            'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
+            'TxtAno.SelectedValue = fecha2.Year
 
 
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
@@ -309,11 +331,10 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub BGuardar_Click(sender As Object, e As EventArgs) Handles BGuardar.Click
-        Dim fecha As String
-        Dim mes As Integer
-        mes = TxtMes.SelectedIndex + 1
-        fecha = TxtDia.SelectedValue.ToString + "/" + mes.ToString + "/" + TxtAno.SelectedValue.ToString
-
+        Dim fecha As Date
+        If Date.TryParse(TxtFechaSiembra.Text, fecha) Then
+            fecha.ToString("dd-MM-yyyy")
+        End If
         Dim conex As New MySqlConnection(conn)
 
         conex.Open()
@@ -332,7 +353,7 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedValue)
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedValue)
 
-            cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", Convert.ToDateTime(fecha))
+            cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
 
             cmd2.Parameters.AddWithValue("@Estado", "1")
 
@@ -354,7 +375,7 @@ Public Class Registro_Portal_Sag
                 cmd2.Parameters.AddWithValue("@FECHA_SEMBRARA", Convert.ToDateTime(fecha))
                 cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Decimal.Parse(TxtRegistradaQQ.Text))
                 cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Decimal.Parse(TxtCantLotes.Text))
-                cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", txtNombreFinca.Text)
+                'cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", txtNombreFinca.Text)
                 cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Decimal.Parse(TxtProduccionQQMZ.Text))
                 Dim areaQQ = Decimal.Parse(TxtProduccionQQMZ.Text) / areaha
                 Dim roundedTotal1 As String = areaQQ.ToString("0.00")
@@ -417,7 +438,7 @@ Public Class Registro_Portal_Sag
         TxT_AreaMZ.Text = ""
         TxtRegistradaQQ.Text = ""
         TxtCantLotes.Text = ""
-        txtNombreFinca.Text = ""
+        'txtNombreFinca.Text = ""
         TxtProduccionQQMZ.Text = ""
         TxtSemillaQQ.Text = ""
 

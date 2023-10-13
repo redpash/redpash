@@ -23,17 +23,6 @@
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtCiclo" runat="server" AutoPostBack="True">
-                                    <asp:ListItem>Todos</asp:ListItem>
-
-                                    <asp:ListItem>2023-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2023-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2023-Ciclo C</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo C</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2026-Ciclo C</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -205,21 +194,24 @@
                                     <label for="TxtVariedad">
                                         Variedad</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
-                                        <asp:ListItem>PM-2</asp:ListItem>
-                                        <asp:ListItem>Amadeus-77</asp:ListItem>
-                                        <asp:ListItem>HONDURAS NUTRITIVO</asp:ListItem>
-                                        <asp:ListItem>CARRIZALITO</asp:ListItem>
-                                        <asp:ListItem>DEOHRO</asp:ListItem>
-                                        <asp:ListItem>AZABACHE 40</asp:ListItem>
-                                        <asp:ListItem>Inta Cárdenas</asp:ListItem>
-                                        <asp:ListItem>Lenca precoz</asp:ListItem>
-                                        <asp:ListItem>Rojo Chorti</asp:ListItem>
-                                        <asp:ListItem>Tolupan Rojo</asp:ListItem>
+                                            <asp:ListItem Text=""></asp:ListItem>
+                                            <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
+                                            <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
+                                            <asp:ListItem id="Deorho" Text="Deorho"></asp:ListItem>
+                                            <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
+                                            <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
+                                            <asp:ListItem id="Honduras_nutritivo" Text="Honduras nutritivo"></asp:ListItem>
+                                            <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
+                                            <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
+                                            <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
+                                            <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
+                                            <asp:ListItem id="OtraVariedad" Text="Otra variedad"></asp:ListItem>
                                     </asp:DropDownList>
                                     <br />
                                     <label for="TxtCategoria">
                                         Categoria</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtCategoria" runat="server">
+                                        <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem>Certificada</asp:ListItem>
                                         <asp:ListItem>Comercial</asp:ListItem>
                                     </asp:DropDownList>
@@ -244,75 +236,11 @@
                                  </script>
                                     <label for="TxtFecha">Fecha que siembrarà:</label>
                                     <div class="row">
-                                        <div class="col-lg-2">
-                                            <div class="form-group">
-                                                <label>Dia</label>
-                                                <asp:DropDownList CssClass="form-control" ID="TxtDia" runat="server">
-                                                    <asp:ListItem>1</asp:ListItem>
-                                                    <asp:ListItem>2</asp:ListItem>
-                                                    <asp:ListItem>3</asp:ListItem>
-                                                    <asp:ListItem>4</asp:ListItem>
-                                                    <asp:ListItem>5</asp:ListItem>
-                                                    <asp:ListItem>6</asp:ListItem>
-                                                    <asp:ListItem>7</asp:ListItem>
-                                                    <asp:ListItem>8</asp:ListItem>
-                                                    <asp:ListItem>9</asp:ListItem>
-                                                    <asp:ListItem>10</asp:ListItem>
-                                                    <asp:ListItem>11</asp:ListItem>
-                                                    <asp:ListItem>12</asp:ListItem>
-                                                    <asp:ListItem>13</asp:ListItem>
-                                                    <asp:ListItem>14</asp:ListItem>
-                                                    <asp:ListItem>15</asp:ListItem>
-                                                    <asp:ListItem>16</asp:ListItem>
-                                                    <asp:ListItem>17</asp:ListItem>
-                                                    <asp:ListItem>18</asp:ListItem>
-                                                    <asp:ListItem>19</asp:ListItem>
-                                                    <asp:ListItem>20</asp:ListItem>
-                                                    <asp:ListItem>21</asp:ListItem>
-                                                    <asp:ListItem>22</asp:ListItem>
-                                                    <asp:ListItem>23</asp:ListItem>
-                                                    <asp:ListItem>24</asp:ListItem>
-                                                    <asp:ListItem>25</asp:ListItem>
-                                                    <asp:ListItem>26</asp:ListItem>
-                                                    <asp:ListItem>27</asp:ListItem>
-                                                    <asp:ListItem>28</asp:ListItem>
-                                                    <asp:ListItem>29</asp:ListItem>
-                                                    <asp:ListItem>30</asp:ListItem>
-                                                    <asp:ListItem>31</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Mes</label>
-                                                <asp:DropDownList CssClass="form-control" ID="TxtMes" runat="server">
-                                                    <asp:ListItem>Enero</asp:ListItem>
-                                                    <asp:ListItem>Febrero</asp:ListItem>
-                                                    <asp:ListItem>Marzo</asp:ListItem>
-                                                    <asp:ListItem>Abril</asp:ListItem>
-                                                    <asp:ListItem>Mayo</asp:ListItem>
-                                                    <asp:ListItem>Junio</asp:ListItem>
-                                                    <asp:ListItem>Julio</asp:ListItem>
-                                                    <asp:ListItem>Agosto</asp:ListItem>
-                                                    <asp:ListItem>Septiembre</asp:ListItem>
-                                                    <asp:ListItem>Octubre</asp:ListItem>
-                                                    <asp:ListItem>Noviembre</asp:ListItem>
-                                                    <asp:ListItem>Diciembre</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                                                <label>Año</label>
-                                                <asp:DropDownList CssClass="form-control" ID="TxtAno" runat="server">
-                                                    <asp:ListItem>2018</asp:ListItem>
-                                                    <asp:ListItem>2019</asp:ListItem>
-                                                    <asp:ListItem>2020</asp:ListItem>
-                                                    <asp:ListItem>2021</asp:ListItem>
-                                                    <asp:ListItem>2022</asp:ListItem>
-                                                    <asp:ListItem>2023</asp:ListItem>
-                                                    <asp:ListItem>2024</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>

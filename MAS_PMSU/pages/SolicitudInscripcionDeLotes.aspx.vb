@@ -336,7 +336,7 @@ Public Class SolicitudInscripcionDeLotes
 
     Protected Sub TxtHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtHectareas.TextChanged
         If TxtHectareas.Text <> "" Then
-            TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) * 0.7)
+            TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) / 0.7)
             VerificarTextBox()
         Else
             TxtSuperficieMZ.Text = ""
