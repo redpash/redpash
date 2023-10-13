@@ -12,9 +12,9 @@ Public Class Registro_Portal_Sag
             If IsPostBack Then
 
             Else
-                'llenagrid()
                 llenarcomboCiclo()
                 llenarcomboDepto()
+                llenagrid()
                 div_nuevo_prod.Visible = False
             End If
         End If
@@ -52,14 +52,14 @@ Public Class Registro_Portal_Sag
 
     Private Sub llenarcomboProductor()
         If TxtDepto.SelectedItem.Text <> " " Then
-            Dim StrCombo As String = "SELECT DISTINCT PROD_NOMBRE FROM registros_bancos_semilla WHERE Depto_Descripcion = @nombre ORDER BY PROD_NOMBRE ASC"
+            Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM solicitud_inscripcion_delotes WHERE departamento = @nombre ORDER BY nombre_productor ASC"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
             TxtProductor.DataSource = DtCombo
-            TxtProductor.DataValueField = "PROD_NOMBRE"
-            TxtProductor.DataTextField = "PROD_NOMBRE"
+            TxtProductor.DataValueField = "nombre_productor"
+            TxtProductor.DataTextField = "nombre_productor"
             TxtProductor.DataBind()
             Dim newitem As New ListItem(" ", " ")
             TxtProductor.Items.Insert(0, newitem)
@@ -146,6 +146,21 @@ Public Class Registro_Portal_Sag
                 TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
                 TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
                 TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
+
+                TxT_AreaMZ.Text = dt.Rows(0)("AREA_SEMBRADA_MZ").ToString()
+                Txt_AreaHa.Text = dt.Rows(0)("AREA_SEMBRADA_HA").ToString()
+                TxtFechaSiembra.Text = DirectCast(dt.Rows(0)("FECHA_SIEMBRA"), DateTime).ToString("yyyy-MM-dd")
+
+
+
+                TxtRegistradaQQ.Text = dt.Rows(0)("REQUERIEMIENTO_REGISTRADA_QQ").ToString()
+                TxtCantLotes.Text = dt.Rows(0)("CANTIDAD_LOTES_SEMBRAR").ToString()
+                obtener_numero_lote(TxtNom.Text)
+                TxtProduccionQQMZ.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_MZ").ToString()
+                TxtProduccionQQHA.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_HA").ToString()
+                TxtSemillaQQ.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQ").ToString()
+                TxtEstimadoProducir.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQHA").ToString()
+
 
                 'fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
                 'TxtDia.SelectedValue = fecha2.Day
@@ -296,8 +311,19 @@ Public Class Registro_Portal_Sag
 
     End Sub
 
-    Protected Sub llenarPlan()
+    Protected Sub obtener_numero_lote(cadena As String)
 
+        Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDL_Nlote.DataSource = DtCombo
+        DDL_Nlote.DataValueField = "nombre_lote"
+        DDL_Nlote.DataTextField = "nombre_lote"
+        DDL_Nlote.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DDL_Nlote.Items.Insert(0, newitem)
     End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
@@ -312,6 +338,8 @@ Public Class Registro_Portal_Sag
             TxtCicloD.Text = TxtCiclo.SelectedItem.Text
             TxtVariedad.SelectedIndex = 0
             TxtCategoria.SelectedIndex = 0
+            obtener_numero_lote(TxtProductor.SelectedItem.Text)
+
 
 
             'fecha2 = Now
@@ -342,20 +370,32 @@ Public Class Registro_Portal_Sag
         Dim cmd2 As New MySqlCommand()
 
         If (TxtID.Text = "") Then
-            Sql = "INSERT INTO bcs_inscripcion_senasa (COD_BCS,CICLO, Productor,VARIEDAD,CATEGORIA,AREA_SEMBRADA,FECHA_SIEMBRA,PRONOSTICO_COSECHA, Departamento, Estado, QQ_PRODUCCION) VALUES (@COD_BCS,@CICLO, @Productor,@VARIEDAD,@CATEGORIA,@AREA_SEMBRADA,@FECHA_SIEMBRA,@PRONOSTICO_COSECHA, @Departamento, @Estado, @QQ_PRODUCCION) "
+            Sql = "INSERT INTO bcs_inscripcion_senasa (Productor, CICLO, Departamento, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado)
+            VALUES(@Productor, @CICLO, @Departamento, @VARIEDAD, @CATEGORIA, @AREA_SEMBRADA_MZ, @AREA_SEMBRADA_HA, @FECHA_SIEMBRA, @REQUERIEMIENTO_REGISTRADA_QQ, @CANTIDAD_LOTES_SEMBRAR, @NOMBRE_LOTE_FINCA, @ESTIMADO_PRO_QQ_MZ, @ESTIMADO_PRO_QQ_HA, @ESTIMADO_PRODUCIR_QQ, @ESTIMADO_PRODUCIR_QQHA, @Estado)"
+
             cmd2.Connection = conex
             cmd2.CommandText = Sql
 
-            cmd2.Parameters.AddWithValue("@COD_BCS", TxtProductor.SelectedValue)
-            cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedValue)
             cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedValue)
-            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedValue)
-            cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedValue)
+            cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
+            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
+            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(TxT_AreaMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
             cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
 
+
+            cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Convert.ToDouble(TxtRegistradaQQ.Text))
+            cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Convert.ToInt64(TxtCantLotes.Text))
+            cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtSemillaQQ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
             cmd2.Parameters.AddWithValue("@Estado", "1")
+            'cmd2.Parameters.AddWithValue("@FECHA_SEMBRARA", Convert.ToDateTime(fecha))
 
             cmd2.ExecuteNonQuery()
             conex.Close()
@@ -364,25 +404,44 @@ Public Class Registro_Portal_Sag
         Else
 
             Try
-                Sql = "UPDATE bcs_inscripcion_senasa SET AREA_SEMBRADA_MZ=@AREA_SEMBRADA_MZ,AREA_SEMBRADA_HA=@AREA_SEMBRADA_HA,FECHA_SEMBRARA=@FECHA_SEMBRARA,REQUERIEMIENTO_REGISTRADA_QQ=@REQUERIEMIENTO_REGISTRADA_QQ,CANTIDAD_LOTES_SEMBRAR=@CANTIDAD_LOTES_SEMBRAR,NOMBRE_LOTE_FINCA=@NOMBRE_LOTE_FINCA,ESTIMADO_PRO_QQ_MZ=@ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA=@ESTIMADO_PRO_QQ_HA,ESTIMADO_PRODUCIR_QQ=@ESTIMADO_PRODUCIR_QQ,ESTIMADO_PRODUCIR_QQHA=@ESTIMADO_PRODUCIR_QQHA WHERE ID=" & TxtID.Text & " "
+                Sql = "UPDATE bcs_inscripcion_senasa SET
+                    Productor = @Productor,
+                    CICLO = @CICLO,
+                    VARIEDAD = @VARIEDAD,
+                    CATEGORIA = @CATEGORIA,
+                    AREA_SEMBRADA_MZ = @AREA_SEMBRADA_MZ,
+                    AREA_SEMBRADA_HA = @AREA_SEMBRADA_HA,
+                    FECHA_SIEMBRA = @FECHA_SIEMBRA,
+                    REQUERIEMIENTO_REGISTRADA_QQ = @REQUERIEMIENTO_REGISTRADA_QQ,
+                    CANTIDAD_LOTES_SEMBRAR = @CANTIDAD_LOTES_SEMBRAR,
+                    NOMBRE_LOTE_FINCA = @NOMBRE_LOTE_FINCA,
+                    ESTIMADO_PRO_QQ_MZ = @ESTIMADO_PRO_QQ_MZ,
+                    ESTIMADO_PRO_QQ_HA = @ESTIMADO_PRO_QQ_HA,
+                    ESTIMADO_PRODUCIR_QQ = @ESTIMADO_PRODUCIR_QQ,
+                    ESTIMADO_PRODUCIR_QQHA = @ESTIMADO_PRODUCIR_QQHA,
+                    Estado = @Estado
+                WHERE ID=" & TxtID.Text & " "
                 cmd2.Connection = conex
                 cmd2.CommandText = Sql
 
-                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Decimal.Parse(TxT_AreaMZ.Text))
-                Dim areaha = Decimal.Parse(TxT_AreaMZ.Text) * 0.6988
-                Dim roundedTotal As String = areaha.ToString("0.00")
-                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", roundedTotal)
-                cmd2.Parameters.AddWithValue("@FECHA_SEMBRARA", Convert.ToDateTime(fecha))
-                cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Decimal.Parse(TxtRegistradaQQ.Text))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Decimal.Parse(TxtCantLotes.Text))
-                'cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", txtNombreFinca.Text)
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Decimal.Parse(TxtProduccionQQMZ.Text))
-                Dim areaQQ = Decimal.Parse(TxtProduccionQQMZ.Text) / areaha
-                Dim roundedTotal1 As String = areaQQ.ToString("0.00")
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", roundedTotal1)
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Decimal.Parse(TxtSemillaQQ.Text))
-                Dim areaQQha = Decimal.Parse(TxtSemillaQQ.Text) / areaha
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", areaQQha.ToString("0.00"))
+                cmd2.Parameters.AddWithValue("@Productor", TxtNom.Text)
+                cmd2.Parameters.AddWithValue("@CICLO", TxtCicloD.Text)
+                cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
+
+                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
+                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(TxT_AreaMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+                cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
+
+
+                cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Convert.ToDouble(TxtRegistradaQQ.Text))
+                cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Convert.ToInt64(TxtCantLotes.Text))
+                cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
+                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
+                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtSemillaQQ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+                cmd2.Parameters.AddWithValue("@Estado", "1")
                 cmd2.ExecuteNonQuery()
                 conex.Close()
 

@@ -240,7 +240,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
