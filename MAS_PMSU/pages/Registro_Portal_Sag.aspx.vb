@@ -546,4 +546,28 @@ Public Class Registro_Portal_Sag
         Response.Redirect(String.Format("~/pages/Registro_Portal_Sag.aspx"))
 
     End Sub
+
+    Protected Sub TxtProduccionQQMZ_TextChanged(sender As Object, e As EventArgs)
+        If TxtProduccionQQMZ.Text <> "" Then
+            TxtProduccionQQHA.Text = Convert.ToString(Convert.ToDouble(TxtProduccionQQMZ.Text) / 0.7)
+        Else
+            TxtProduccionQQHA.Text = ""
+        End If
+    End Sub
+
+    Protected Sub TxtSemillaQQ_TextChanged(sender As Object, e As EventArgs)
+        If TxtSemillaQQ.Text <> "" Then
+            TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) * 0.7)
+        Else
+            TxtEstimadoProducir.Text = ""
+        End If
+    End Sub
+
+    Protected Sub TxT_AreaMZ_TextChanged(sender As Object, e As EventArgs)
+        If TxtSemillaQQ.Text <> "" Then
+            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.6988)
+        Else
+            Txt_AreaHa.Text = ""
+        End If
+    End Sub
 End Class

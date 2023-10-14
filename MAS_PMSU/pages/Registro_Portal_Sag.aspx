@@ -217,8 +217,8 @@
                                     </asp:DropDownList>
                                     <br />
                                     <label for="TxtQuintales">
-                                        Area a Semabrar En MZ.</label>
-                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control"   AutoPostBack="False" onchange="calculateAreaHa();" />
+                                        Area a Sembrar En MZ.</label>
+                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" TextMode="Number"/>
                                   
                                     
                                     <label for="Txt_AreaHa">
@@ -263,41 +263,41 @@
                                    
                                       <label for="TxtProduccionQQMZ">
                                         Estimado de producción en campo QQ/MZ</label>                           
-                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHaPRO();"></asp:TextBox>
+                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" TextMode="Number" onchange="calculateAreaHaPRO();" ></asp:TextBox>
                                      <br />
                             
                                     <label for="TxtProduccionQQHA">
                                         Estimado de producción en campo QQ/HA</label>                           
-                                    <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
                                     <script type="text/javascript">
                                         function calculateAreaHaPRO() {
                                             var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
                                             var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                            var total = areaMZ / areaHA;
+                                            var total = areaMZ * 0.6899;
                                                   document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
                                         }
                                     </script>
                                      <br />
                                   
-                                      <label for="TxtSemillaQQ">
+                                    <label for="TxtSemillaQQ">
                                         Estimado semilla a producir QQ.</label>                           
-                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHaEs();"></asp:TextBox>
-                                     <br />
+                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" TextMode="Number" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                    <br />
                                 
-                                     <label for="TxtEstimadoProducir">
+                                    <label for="TxtEstimadoProducir">
                                        Estimado semilla a producir QQ/HA</label>                           
-                                    <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
-                                 <script type="text/javascript">
-                                     var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
+                                    <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
+                                    <script type="text/javascript">
+                                         var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
 
-                                     function calculateAreaHaEs() {
-                                         var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
-                                         var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                            calculatedTotal = areaMZ / areaHA; // Guardar el total en la variable
-                                         document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
-                                     }
-                                 </script>
-                                     <br />
+                                         function calculateAreaHaEs() {
+                                             var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
+                                             var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
+                                                calculatedTotal = areaMZ * 0.6899; // Guardar el total en la variable
+                                             document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
+                                         }
+                                    </script>
+                                    <br />
                                  
                                     <script type="text/javascript">
                                         function numericOnly(elementRef) {

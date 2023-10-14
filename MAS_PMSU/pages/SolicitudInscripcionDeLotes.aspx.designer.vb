@@ -41,6 +41,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents txt_nombre_prod_new As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control DropDownList7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DropDownList7 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control btnbuscarProductor.
     '''</summary>
     '''<remarks>

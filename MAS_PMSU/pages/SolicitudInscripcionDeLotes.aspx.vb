@@ -15,6 +15,7 @@ Public Class SolicitudInscripcionDeLotes
                 llenarcomboDepto()
                 btnNuevoProductor.Visible = False
                 VerificarTextBox()
+                FillComboBoxWithProductorNames()
             End If
         End If
     End Sub
@@ -496,25 +497,25 @@ Public Class SolicitudInscripcionDeLotes
             LblNombreFinca.Text = ""
         End If
 
-        If String.IsNullOrEmpty(gb_departamento_new.Text) Then
+        If (gb_departamento_new.SelectedItem.Text = " ") Then
             lb_dept_new.Text = "*"
         Else
             lb_dept_new.Text = ""
         End If
 
-        If String.IsNullOrEmpty(gb_municipio_new.Text) Then
+        If (gb_municipio_new.SelectedItem.Text = " ") Then
             lb_mun_new.Text = "*"
         Else
             lb_mun_new.Text = ""
         End If
 
-        If String.IsNullOrEmpty(gb_aldea_new.Text) Then
+        If (gb_aldea_new.SelectedItem.Text = " ") Then
             lb_aldea_new.Text = "*"
         Else
             lb_aldea_new.Text = ""
         End If
 
-        If String.IsNullOrEmpty(gb_caserio_new.Text) Then
+        If (gb_caserio_new.SelectedItem.Text = " ") Then
             lb_caserio_new.Text = "*"
         Else
             lb_caserio_new.Text = ""
@@ -647,6 +648,21 @@ Public Class SolicitudInscripcionDeLotes
         End If
 
     End Sub
+    Private Sub FillComboBoxWithProductorNames()
+        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
 
+        DropDownList7.DataSource = DtCombo
+        DropDownList7.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList7.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList7.DataBind()
+    End Sub
+    Protected Sub DropDownList7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Dim selectedValue As String = DropDownList7.SelectedValue
+        txt_nombre_prod_new.Text = selectedValue
+        VerificarTextBox()
+    End Sub
 End Class
 
