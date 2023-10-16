@@ -247,12 +247,12 @@
                                        <br />
                                     <label for="TxtRegistradaQQ">
                                         Requerimiento de semilla registrada QQ</label>
-                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" />
+                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
                                     <br />
                                 
                                      <label for="TxtCantLotes">
                                         Cantidad de lotes a sembrar</label>
-                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" />
+                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
                                         <br />
                              
                                      <label for="txtNombreFinca">

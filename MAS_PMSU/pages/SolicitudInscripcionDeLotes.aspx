@@ -167,7 +167,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
 
-                            <label>Nombre de la persona Para Etenderse En la Finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
+                            <label>Nombre de la persona Para Entenderse En la Finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
 
                             <asp:TextBox CssClass="form-control" ID="TxtPersonaFinca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                         </div>
