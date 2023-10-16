@@ -135,6 +135,7 @@ Public Class Registro_Portal_Sag
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
             txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+            obtener_numero_lote(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
 
             If txt_habilitado.Text = "NO" Then
 
@@ -155,7 +156,9 @@ Public Class Registro_Portal_Sag
 
                 TxtRegistradaQQ.Text = dt.Rows(0)("REQUERIEMIENTO_REGISTRADA_QQ").ToString()
                 TxtCantLotes.Text = dt.Rows(0)("CANTIDAD_LOTES_SEMBRAR").ToString()
-                obtener_numero_lote(TxtNom.Text)
+                Dim v As String = dt.Rows(0)("NOMBRE_LOTE_FINCA").ToString()
+                Dim v2 As New ListItem(v, v)
+                DDL_Nlote.Items.Insert(0, v2)
                 TxtProduccionQQMZ.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_MZ").ToString()
                 TxtProduccionQQHA.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_HA").ToString()
                 TxtSemillaQQ.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQ").ToString()
@@ -311,18 +314,6 @@ Public Class Registro_Portal_Sag
 
     End Sub
 
-    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
-        For Each item As ListItem In Prodname.Items
-            If item.Text = DtCombo Then
-                Prodname.SelectedValue = item.Value
-                Return True ' Se encontró una coincidencia, devolver verdadero
-            End If
-        Next
-
-        ' No se encontró ninguna coincidencia
-        Return 0
-    End Function
-
     Protected Sub obtener_numero_lote(cadena As String)
 
         Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
@@ -336,7 +327,6 @@ Public Class Registro_Portal_Sag
         DDL_Nlote.DataBind()
         Dim newitem As New ListItem(" ", " ")
         DDL_Nlote.Items.Insert(0, newitem)
-        SeleccionarItemEnDropDownList(DDL_Nlote, DtCombo)
     End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
@@ -352,6 +342,7 @@ Public Class Registro_Portal_Sag
             TxtVariedad.SelectedIndex = 0
             TxtCategoria.SelectedIndex = 0
             obtener_numero_lote(TxtProductor.SelectedItem.Text)
+
 
 
 
