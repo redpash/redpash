@@ -387,7 +387,7 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
             cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
-            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(TxT_AreaMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(Txt_AreaHa.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
             cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
 
 
@@ -395,9 +395,9 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Convert.ToInt64(TxtCantLotes.Text))
             cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
-            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQHA.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
             cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
-            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtSemillaQQ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtEstimadoProducir.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
             cmd2.Parameters.AddWithValue("@Estado", "1")
             'cmd2.Parameters.AddWithValue("@FECHA_SEMBRARA", Convert.ToDateTime(fecha))
 
@@ -434,7 +434,7 @@ Public Class Registro_Portal_Sag
                 cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
                 cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
-                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(TxT_AreaMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(Txt_AreaHa.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
                 cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
 
 
@@ -442,9 +442,9 @@ Public Class Registro_Portal_Sag
                 cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Convert.ToInt64(TxtCantLotes.Text))
                 cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
                 cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQMZ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQHA.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
                 cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtSemillaQQ.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtEstimadoProducir.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
                 cmd2.Parameters.AddWithValue("@Estado", "1")
                 cmd2.ExecuteNonQuery()
                 conex.Close()
@@ -568,8 +568,8 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub TxT_AreaMZ_TextChanged(sender As Object, e As EventArgs)
-        If TxtSemillaQQ.Text <> "" Then
-            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.6988)
+        If TxT_AreaMZ.Text <> "" Then
+            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.7)
         Else
             Txt_AreaHa.Text = ""
         End If
