@@ -311,6 +311,18 @@ Public Class Registro_Portal_Sag
 
     End Sub
 
+    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
+        For Each item As ListItem In Prodname.Items
+            If item.Text = DtCombo Then
+                Prodname.SelectedValue = item.Value
+                Return True ' Se encontró una coincidencia, devolver verdadero
+            End If
+        Next
+
+        ' No se encontró ninguna coincidencia
+        Return 0
+    End Function
+
     Protected Sub obtener_numero_lote(cadena As String)
 
         Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
@@ -324,6 +336,7 @@ Public Class Registro_Portal_Sag
         DDL_Nlote.DataBind()
         Dim newitem As New ListItem(" ", " ")
         DDL_Nlote.Items.Insert(0, newitem)
+        SeleccionarItemEnDropDownList(DDL_Nlote, DtCombo)
     End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click

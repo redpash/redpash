@@ -294,6 +294,19 @@ Public Class SolicitudInscripcionDeLotes
     'Protected Sub txt_nombre_prod_new_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txt_nombre_prod_new.TextChanged
     ' llenarProdutor()
     'End Sub
+    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
+
+        For Each item As ListItem In Prodname.Items
+            If item.Text = DtCombo Then
+                Prodname.SelectedValue = item.Value
+                Return True ' Se encontró una coincidencia, devolver verdadero
+            End If
+        Next
+
+        ' No se encontró ninguna coincidencia
+        Return 0
+    End Function
+
 
     Protected Sub llenarProdutor()
         Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
@@ -306,6 +319,13 @@ Public Class SolicitudInscripcionDeLotes
             txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
             TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
             TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
+            Dim valorDepart As String = DtCombo.Rows(0)("Depto_Descripcion").ToString()
+            gb_municipio_new.SelectedItem.Text = DtCombo.Rows(0)("Muni_Descripcion").ToString()
+            gb_aldea_new.SelectedItem.Text = DtCombo.Rows(0)("Aldea_Descripcion").ToString()
+            gb_caserio_new.SelectedItem.Text = DtCombo.Rows(0)("Caserio_Descripcion").ToString()
+
+            SeleccionarItemEnDropDownList(gb_departamento_new, valorDepart)
+
             btnNuevoProductor.Visible = False
             PanelA1.Visible = True
             PanelA2.Visible = True
