@@ -6,6 +6,7 @@ Public Class SolicitudInscripcionDeLotes
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
     Dim sentencia As String
+    Dim validarflag As Integer
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
@@ -21,105 +22,119 @@ Public Class SolicitudInscripcionDeLotes
     End Sub
 
     Protected Sub guardarSoli_lote(sender As Object, e As EventArgs)
-        Dim connectionString As String = conn
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
+        VerificarTextBox()
+        If validarflag = 0 Then
+            LabelGuardar.Visible = True
+            LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
+        Else
+            LabelGuardar.Visible = False
+            LabelGuardar.Text = ""
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
 
-            Dim query As String = "INSERT INTO solicitud_inscripcion_delotes 
-            (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-            cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo,
-            lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
-            fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
-            @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
-            @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @tipo_cultivo,@lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, 
-            @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino)"
+                Dim query As String = "INSERT INTO solicitud_inscripcion_delotes 
+        (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
+        cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad,
+        lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
+        fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
+        @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
+        @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @tipo_cultivo, @variedad, @lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, 
+        @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino)"
 
-            Dim fechaConvertida As DateTime
-            Dim fechaConvertida2 As DateTime
-            Dim fechaConvertida3 As DateTime
-            Dim fechaConvertida4 As DateTime
-            Dim año As Date
+                Dim fechaConvertida As DateTime
+                Dim fechaConvertida2 As DateTime
+                Dim fechaConvertida3 As DateTime
+                Dim fechaConvertida4 As DateTime
+                Dim año As Date
 
 
-            If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                fechaConvertida.ToString("dd-MM-yyyy")
-            End If
-
-            If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
-                fechaConvertida2.ToString("dd-MM-yyyy")
-            End If
-
-            If Date.TryParse(TextBox6.Text, año) Then
-                año.ToString("yyyy")
-            End If
-
-            If Date.TryParse(TxtFechaSiembra.Text, año) Then
-                fechaConvertida3.ToString("dd-MM-yyyy")
-            End If
-
-            If Date.TryParse(TxtCosecha.Text, año) Then
-                fechaConvertida4.ToString("dd-MM-yyyy")
-            End If
-
-            Using cmd As New MySqlCommand(query, connection)
-
-                cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
                 If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                    cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    fechaConvertida.ToString("dd-MM-yyyy")
                 End If
-                cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                cmd.Parameters.AddWithValue("@telefono_productor", Convert.ToInt64(TxtTelefono.Text))
-                cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                cmd.Parameters.AddWithValue("@telefono_multiplicador", Convert.ToInt64(TxtTelefonoRe.Text))
-                cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
-                cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                If fileUpload.HasFile Then
-                    ' Obtener el contenido del archivo
-                    Dim fileBytes As Byte() = fileUpload.FileBytes
 
-
-                    cmd.Parameters.AddWithValue("@croquis", fileBytes)
-                End If
-                cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
-
-                cmd.Parameters.AddWithValue("@lote_no", TextBox3.Text)
                 If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
-                    cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    fechaConvertida2.ToString("dd-MM-yyyy")
                 End If
-                cmd.Parameters.AddWithValue("@year_produccion", TextBox6.Text)
-                cmd.Parameters.AddWithValue("@categoria_semilla", DdlCategoria.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@variedad_maiz", DropDownList2.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@superficie_hectarea", Convert.ToDouble(TxtHectareas.Text))
-                cmd.Parameters.AddWithValue("@superficie_mz", Convert.ToDouble(TxtSuperficieMZ.Text))
-                If DateTime.TryParse(TxtFechaSiembra.Text, fechaConvertida3) Then
-                    cmd.Parameters.AddWithValue("@fecha_aprox_siembra", fechaConvertida3.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                End If
-                If DateTime.TryParse(TxtCosecha.Text, fechaConvertida4) Then
-                    cmd.Parameters.AddWithValue("@fecha_aprox_cosecha", fechaConvertida4.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                End If
-                cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
-                cmd.Parameters.AddWithValue("@produccion_est_manzanas", Convert.ToDouble(TextBox7.Text))
-                cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
 
-                cmd.ExecuteNonQuery()
-                connection.Close()
+                If Date.TryParse(TextBox6.Text, año) Then
+                    año.ToString("yyyy")
+                End If
 
-                vaciar()
-                Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud de inscripción de lotes!') </script>")
+                If Date.TryParse(TxtFechaSiembra.Text, año) Then
+                    fechaConvertida3.ToString("dd-MM-yyyy")
+                End If
+
+                If Date.TryParse(TxtCosecha.Text, año) Then
+                    fechaConvertida4.ToString("dd-MM-yyyy")
+                End If
+
+                Using cmd As New MySqlCommand(query, connection)
+
+                    cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
+                    cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
+                    cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
+                    If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
+                        cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    End If
+                    cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
+                    cmd.Parameters.AddWithValue("@telefono_productor", Convert.ToInt64(TxtTelefono.Text))
+                    cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
+                    cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
+                    cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
+                    cmd.Parameters.AddWithValue("@telefono_multiplicador", Convert.ToInt64(TxtTelefonoRe.Text))
+                    cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
+                    cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
+                    cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
+                    If fileUpload.HasFile Then
+                        ' Obtener el contenido del archivo
+                        Dim fileBytes As Byte() = fileUpload.FileBytes
+
+
+                        cmd.Parameters.AddWithValue("@croquis", fileBytes)
+                    End If
+                    cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
+                    Dim selectedValue As String = CmbTipoSemilla.SelectedValue
+                    If selectedValue = "Frijol" Then
+                        cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
+                    ElseIf selectedValue = "Maiz" Then
+                        cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
+                    End If
+                    cmd.Parameters.AddWithValue("@lote_no", TextBox3.Text)
+                    If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
+                        cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    End If
+                    cmd.Parameters.AddWithValue("@year_produccion", TextBox6.Text)
+                    cmd.Parameters.AddWithValue("@categoria_semilla", DdlCategoria.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@variedad_maiz", DropDownList2.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@superficie_hectarea", Convert.ToDouble(TxtHectareas.Text))
+                    cmd.Parameters.AddWithValue("@superficie_mz", Convert.ToDouble(TxtSuperficieMZ.Text))
+                    If DateTime.TryParse(TxtFechaSiembra.Text, fechaConvertida3) Then
+                        cmd.Parameters.AddWithValue("@fecha_aprox_siembra", fechaConvertida3.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    End If
+                    If DateTime.TryParse(TxtCosecha.Text, fechaConvertida4) Then
+                        cmd.Parameters.AddWithValue("@fecha_aprox_cosecha", fechaConvertida4.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    End If
+                    cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
+                    cmd.Parameters.AddWithValue("@produccion_est_manzanas", Convert.ToDouble(TextBox7.Text))
+                    cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
+
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+
+                    vaciar()
+                    Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud de inscripción de lotes!') </script>")
+                End Using
             End Using
-        End Using
+        End If
+
     End Sub
 
     Protected Sub vaciar()
@@ -453,218 +468,288 @@ Public Class SolicitudInscripcionDeLotes
 
         If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
             lb_nombre_new.Text = "*"
+            validarflag = 0
         Else
             lb_nombre_new.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
             LB_RepresentanteLegal.Text = "*"
+            validarflag = 0
         Else
             LB_RepresentanteLegal.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtIdentidad.Text) Then
             Lb_CedulaIdentidad.Text = "*"
+            validarflag = 0
         Else
             Lb_CedulaIdentidad.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TextBox1.Text) Then
             Label1.Text = "*"
+            validarflag = 0
         Else
             Label1.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtResidencia.Text) Then
             LbResidencia.Text = "*"
+            validarflag = 0
         Else
             LbResidencia.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtTelefono.Text) Then
             LblTelefono.Text = "*"
+            validarflag = 0
         Else
             LblTelefono.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(txtNoRegistro.Text) Then
             LbNoRegistro.Text = "*"
+            validarflag = 0
         Else
             LbNoRegistro.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(txtNombreRe.Text) Then
             lbNombreRe.Text = "*"
+            validarflag = 0
         Else
             lbNombreRe.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
             lbIdentidadRe.Text = "*"
+            validarflag = 0
         Else
             lbIdentidadRe.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
             LbTelefonoRe.Text = "*"
+            validarflag = 0
         Else
             LbTelefonoRe.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtNombreFinca.Text) Then
             LblNombreFinca.Text = "*"
+            validarflag = 0
         Else
             LblNombreFinca.Text = ""
+            validarflag = 1
         End If
 
         If (gb_departamento_new.SelectedItem.Text = " ") Then
             lb_dept_new.Text = "*"
+            validarflag = 0
         Else
             lb_dept_new.Text = ""
+            validarflag = 1
         End If
 
         If (gb_municipio_new.SelectedItem.Text = " ") Then
             lb_mun_new.Text = "*"
+            validarflag = 0
         Else
             lb_mun_new.Text = ""
+            validarflag = 1
         End If
 
         If (gb_aldea_new.SelectedItem.Text = " ") Then
             lb_aldea_new.Text = "*"
+            validarflag = 0
         Else
             lb_aldea_new.Text = ""
+            validarflag = 1
         End If
 
         If (gb_caserio_new.SelectedItem.Text = " ") Then
             lb_caserio_new.Text = "*"
+            validarflag = 0
         Else
             lb_caserio_new.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
             LblPersonaFinca.Text = "*"
+            validarflag = 0
         Else
             LblPersonaFinca.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtLote.Text) Then
             LbLote.Text = "*"
+            validarflag = 0
         Else
             LbLote.Text = ""
+            validarflag = 1
         End If
 
-        'If String.IsNullOrEmpty(***Label5) Then
-        '    Label1.Text = "*"
-        'Else
-        '    Label1.Text = ""
-        'End If
+        If fileUpload.HasFile Then
+            validarflag = 1
+        Else
+            validarflag = 0
+        End If
 
         If String.IsNullOrEmpty(CmbTipoSemilla.Text) Then
             Label2.Text = "*"
+            validarflag = 0
         Else
             Label2.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DropDownList5.Text) Then
             Label3.Text = "*"
+            validarflag = 0
         Else
             Label3.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DropDownList6.Text) Then
             Label4.Text = "*"
+            validarflag = 0
         Else
             Label4.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TextBox3.Text) Then
             Label8.Text = "*"
+            validarflag = 0
         Else
             Label8.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TextBox4.Text) Then
             Label9.Text = "*"
+            validarflag = 0
         Else
             Label9.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TextBox6.Text) Then
             Label10.Text = "*"
+            validarflag = 0
         Else
             Label10.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DdlCategoria.Text) Then
             Label6.Text = "*"
+            validarflag = 0
         Else
             Label6.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DdlTipo.Text) Then
             Label7.Text = "*"
+            validarflag = 0
         Else
             Label7.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DropDownList3.Text) Then
             Label11.Text = "*"
+            validarflag = 0
         Else
             Label11.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DropDownList1.Text) Then
             Label15.Text = "*"
+            validarflag = 0
         Else
             Label15.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DropDownList2.Text) Then
             Label16.Text = "*"
+            validarflag = 0
         Else
             Label16.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtHectareas.Text) Then
             Label12.Text = "*"
+            validarflag = 0
         Else
             Label12.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtSuperficieMZ.Text) Then
             Label13.Text = "*"
+            validarflag = 0
         Else
             Label13.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtFechaSiembra.Text) Then
             Label14.Text = "*"
+            validarflag = 0
         Else
             Label14.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtCosecha.Text) Then
             Label17.Text = "*"
+            validarflag = 0
         Else
             Label17.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TxtProHectareas.Text) Then
             Label19.Text = "*"
+            validarflag = 0
         Else
             Label19.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(TextBox7.Text) Then
             Label20.Text = "*"
+            validarflag = 0
         Else
             Label20.Text = ""
+            validarflag = 1
         End If
 
         If String.IsNullOrEmpty(DropDownList4.Text) Then
             Label21.Text = "*"
+            validarflag = 0
         Else
             Label21.Text = ""
+            validarflag = 1
         End If
 
     End Sub

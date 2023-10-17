@@ -1175,6 +1175,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents ambas As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
+    '''Control LabelGuardar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LabelGuardar As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control btnGuardarLote.
     '''</summary>
     '''<remarks>

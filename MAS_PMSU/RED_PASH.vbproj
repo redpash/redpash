@@ -278,7 +278,6 @@
     <None Include="BDCrystal.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BDCrystal.Designer.vb</LastGenOutput>
     </None>
     <Content Include="BDCrystal.xss">
       <DependentUpon>BDCrystal.xsd</DependentUpon>
@@ -304,11 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="autenticacion.vb" />
-    <Compile Include="BDCrystal.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BDCrystal.xsd</DependentUpon>
-    </Compile>
     <Compile Include="forms.aspx.designer.vb">
       <DependentUpon>forms.aspx</DependentUpon>
     </Compile>

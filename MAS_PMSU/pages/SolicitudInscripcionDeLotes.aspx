@@ -439,6 +439,8 @@
     </asp:UpdatePanel>
 
     <div>
+        <label></label><asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
+        <br />
         <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" visible="false"/>
     </div>
 </asp:Content>
