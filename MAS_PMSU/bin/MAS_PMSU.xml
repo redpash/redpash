@@ -53,6 +53,151 @@ MAS_PMSU
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="T:MAS_PMSU.BDCrystal">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20opsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20resumen2TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20prodnoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20prodTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20resumenfirmTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateUpdatedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateInsertedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateDeletedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateAll(MAS_PMSU.BDCrystal)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 <member name="F:MAS_PMSU.LPlanesSA._GridDatos">
 <summary>
 Control GridDatos.
