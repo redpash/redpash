@@ -252,3 +252,34 @@ C:\Users\josek\source\repos\redpash\redpash\MAS_PMSU\bin\K4os.Compression.LZ4.St
 C:\Users\josek\source\repos\redpash\redpash\MAS_PMSU\bin\K4os.Hash.xxHash.xml
 C:\Users\josek\source\repos\redpash\redpash\MAS_PMSU\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\josek\source\repos\redpash\redpash\MAS_PMSU\bin\System.IO.Pipelines.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\BouncyCastle.Crypto.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Google.Protobuf.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\K4os.Compression.LZ4.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\K4os.Compression.LZ4.Streams.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\K4os.Hash.xxHash.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Buffers.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Configuration.ConfigurationManager.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.IO.Pipelines.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Memory.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Numerics.Vectors.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\ZstdSharp.dll
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\BouncyCastle.Crypto.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Google.Protobuf.pdb
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Google.Protobuf.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\K4os.Compression.LZ4.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\K4os.Compression.LZ4.Streams.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\K4os.Hash.xxHash.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Buffers.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.IO.Pipelines.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Memory.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Numerics.Vectors.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\se7en\OneDrive\Desktop\REDPASH GIT\MAS_PMSU\bin\System.Threading.Tasks.Extensions.xml

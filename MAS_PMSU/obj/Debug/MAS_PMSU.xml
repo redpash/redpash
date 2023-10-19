@@ -213,22 +213,12 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:MAS_PMSU.DataSet1.entrenadores_nuevosDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:MAS_PMSU.DataSet1.bcs_inscripcion_senasaRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSet1.solicitud_inscripcion_delotesRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MAS_PMSU.DataSet1.entrenadores_nuevosRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -243,22 +233,12 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:MAS_PMSU.DataSet1.entrenadores_nuevosRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:MAS_PMSU.DataSet1TableAdapters.bcs_inscripcion_senasaTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSet1TableAdapters.solicitud_inscripcion_delotesTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MAS_PMSU.DataSet1TableAdapters.entrenadores_nuevosTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
