@@ -348,6 +348,17 @@
     <Content Include="data\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="data\DataSetLotes.xsc">
+      <DependentUpon>DataSetLotes.xsd</DependentUpon>
+    </Content>
+    <None Include="data\DataSetLotes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetLotes.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\DataSetLotes.xss">
+      <DependentUpon>DataSetLotes.xsd</DependentUpon>
+    </Content>
     <None Include="My Project\PublishProfiles\Perfil.pubxml" />
     <Content Include="Paginas.Master" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -378,6 +389,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data\DataSetLotes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetLotes.xsd</DependentUpon>
     </Compile>
     <Compile Include="forms.aspx.designer.vb">
       <DependentUpon>forms.aspx</DependentUpon>
@@ -482,6 +498,12 @@
       <DependentUpon>Registro_productores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="pages\Solicitud Inscripcion de Lote.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Solicitud Inscripcion de Lote.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="pages\SolicitudInscripcionDeLotes.aspx.designer.vb">
       <DependentUpon>SolicitudInscripcionDeLotes.aspx</DependentUpon>
     </Compile>
@@ -528,6 +550,10 @@
     <EmbeddedResource Include="pages\CrystalReport3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport3.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\Solicitud Inscripcion de Lote.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Solicitud Inscripcion de Lote.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
