@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\MAS_PMSU",
-    "\\MAS_PMSU\\pages"
+    "\\MAS_PMSU\\data"
   ],
-  "SelectedNode": "\\PORTAL_REDPASH.sln",
+  "SelectedNode": "\\MAS_PMSU\\data\\DataSet1.xsd",
   "PreviewInSolutionExplorer": false
 }

@@ -34,6 +34,11 @@
                         <asp:Button CssClass="btn btn-primary" ID="btnbuscarProductor" runat="server" Text="Buscar" OnClick="buscar_productor"/>
                         <asp:Button CssClass="btn btn-primary" ID="btnNuevoProductor" runat="server" Text="Nuevo Productor" />
                     </div>
+                    <div>
+                    <label></label><asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
+                        <br />
+                        <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Guardar" OnClick="descargaPDF" visible="true"/>
+                    </div>
                 </div>
 
                 <div class="row" id="PanelA1" runat="server" visible="false">

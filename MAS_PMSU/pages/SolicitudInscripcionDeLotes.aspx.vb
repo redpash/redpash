@@ -1,4 +1,5 @@
-﻿Imports CrystalDecisions.[Shared].Json
+﻿Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Office.Word
 Imports MySql.Data.MySqlClient
 
@@ -769,5 +770,41 @@ Public Class SolicitudInscripcionDeLotes
         txt_nombre_prod_new.Text = selectedValue
         VerificarTextBox()
     End Sub
+
+    Protected Sub descargaPDF(ByVal sender As Object, ByVal e As EventArgs)
+        Dim rptdocument As New ReportDocument
+        'nombre de dataset
+        Dim ds As New DataSetLotes
+        Dim Str As String = "SELECT * FROM solicitud_inscripcion_delotes WHERE id= 15"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "solicitud_inscripcion_delotes")
+
+
+
+
+        Dim nombre As String
+
+        nombre = "Factura _" + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/Solicitud Inscripcion de Lote.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+
+        Response.End()
+    End Sub
+
 End Class
 
