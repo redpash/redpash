@@ -25,14 +25,12 @@ Option Explicit On
 Partial Public Class DataSet1
     Inherits Global.System.Data.DataSet
     
-    Private tablebcs_inscripcion_senasa As bcs_inscripcion_senasaDataTable
-    
-    Private tablesolicitud_inscripcion_delotes As solicitud_inscripcion_delotesDataTable
+    Private tablevista_inscripcion_senasa_lote As vista_inscripcion_senasa_loteDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Sub New()
         MyBase.New
         Me.BeginInit
@@ -44,7 +42,7 @@ Partial Public Class DataSet1
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
         MyBase.New(info, context, false)
         If (Me.IsBinarySerialized(info, context) = true) Then
@@ -58,11 +56,8 @@ Partial Public Class DataSet1
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("bcs_inscripcion_senasa")) Is Nothing) Then
-                MyBase.Tables.Add(New bcs_inscripcion_senasaDataTable(ds.Tables("bcs_inscripcion_senasa")))
-            End If
-            If (Not (ds.Tables("solicitud_inscripcion_delotes")) Is Nothing) Then
-                MyBase.Tables.Add(New solicitud_inscripcion_delotesDataTable(ds.Tables("solicitud_inscripcion_delotes")))
+            If (Not (ds.Tables("vista_inscripcion_senasa_lote")) Is Nothing) Then
+                MyBase.Tables.Add(New vista_inscripcion_senasa_loteDataTable(ds.Tables("vista_inscripcion_senasa_lote")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -82,27 +77,17 @@ Partial Public Class DataSet1
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property bcs_inscripcion_senasa() As bcs_inscripcion_senasaDataTable
+    Public ReadOnly Property vista_inscripcion_senasa_lote() As vista_inscripcion_senasa_loteDataTable
         Get
-            Return Me.tablebcs_inscripcion_senasa
+            Return Me.tablevista_inscripcion_senasa_lote
         End Get
     End Property
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property solicitud_inscripcion_delotes() As solicitud_inscripcion_delotesDataTable
-        Get
-            Return Me.tablesolicitud_inscripcion_delotes
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -115,7 +100,7 @@ Partial Public Class DataSet1
     End Property
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public Shadows ReadOnly Property Tables() As Global.System.Data.DataTableCollection
         Get
@@ -124,7 +109,7 @@ Partial Public Class DataSet1
     End Property
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public Shadows ReadOnly Property Relations() As Global.System.Data.DataRelationCollection
         Get
@@ -133,7 +118,7 @@ Partial Public Class DataSet1
     End Property
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Protected Overrides Sub InitializeDerivedDataSet()
         Me.BeginInit
         Me.InitClass
@@ -141,7 +126,7 @@ Partial Public Class DataSet1
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
         Dim cln As DataSet1 = CType(MyBase.Clone,DataSet1)
         cln.InitVars
@@ -150,29 +135,26 @@ Partial Public Class DataSet1
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Protected Overrides Function ShouldSerializeTables() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Protected Overrides Function ShouldSerializeRelations() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Protected Overrides Sub ReadXmlSerializable(ByVal reader As Global.System.Xml.XmlReader)
         If (Me.DetermineSchemaSerializationMode(reader) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("bcs_inscripcion_senasa")) Is Nothing) Then
-                MyBase.Tables.Add(New bcs_inscripcion_senasaDataTable(ds.Tables("bcs_inscripcion_senasa")))
-            End If
-            If (Not (ds.Tables("solicitud_inscripcion_delotes")) Is Nothing) Then
-                MyBase.Tables.Add(New solicitud_inscripcion_delotesDataTable(ds.Tables("solicitud_inscripcion_delotes")))
+            If (Not (ds.Tables("vista_inscripcion_senasa_lote")) Is Nothing) Then
+                MyBase.Tables.Add(New vista_inscripcion_senasa_loteDataTable(ds.Tables("vista_inscripcion_senasa_lote")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -189,7 +171,7 @@ Partial Public Class DataSet1
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Protected Overrides Function GetSchemaSerializable() As Global.System.Xml.Schema.XmlSchema
         Dim stream As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
         Me.WriteXmlSchema(New Global.System.Xml.XmlTextWriter(stream, Nothing))
@@ -198,56 +180,42 @@ Partial Public Class DataSet1
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Friend Overloads Sub InitVars()
         Me.InitVars(true)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tablebcs_inscripcion_senasa = CType(MyBase.Tables("bcs_inscripcion_senasa"),bcs_inscripcion_senasaDataTable)
+        Me.tablevista_inscripcion_senasa_lote = CType(MyBase.Tables("vista_inscripcion_senasa_lote"),vista_inscripcion_senasa_loteDataTable)
         If (initTable = true) Then
-            If (Not (Me.tablebcs_inscripcion_senasa) Is Nothing) Then
-                Me.tablebcs_inscripcion_senasa.InitVars
-            End If
-        End If
-        Me.tablesolicitud_inscripcion_delotes = CType(MyBase.Tables("solicitud_inscripcion_delotes"),solicitud_inscripcion_delotesDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tablesolicitud_inscripcion_delotes) Is Nothing) Then
-                Me.tablesolicitud_inscripcion_delotes.InitVars
+            If (Not (Me.tablevista_inscripcion_senasa_lote) Is Nothing) Then
+                Me.tablevista_inscripcion_senasa_lote.InitVars
             End If
         End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Sub InitClass()
         Me.DataSetName = "DataSet1"
         Me.Prefix = ""
         Me.Namespace = "http://tempuri.org/DataSet1.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tablebcs_inscripcion_senasa = New bcs_inscripcion_senasaDataTable()
-        MyBase.Tables.Add(Me.tablebcs_inscripcion_senasa)
-        Me.tablesolicitud_inscripcion_delotes = New solicitud_inscripcion_delotesDataTable()
-        MyBase.Tables.Add(Me.tablesolicitud_inscripcion_delotes)
+        Me.tablevista_inscripcion_senasa_lote = New vista_inscripcion_senasa_loteDataTable()
+        MyBase.Tables.Add(Me.tablevista_inscripcion_senasa_lote)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializebcs_inscripcion_senasa() As Boolean
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializevista_inscripcion_senasa_lote() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializesolicitud_inscripcion_delotes() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Sub SchemaChanged(ByVal sender As Object, ByVal e As Global.System.ComponentModel.CollectionChangeEventArgs)
         If (e.Action = Global.System.ComponentModel.CollectionChangeAction.Remove) Then
             Me.InitVars
@@ -255,7 +223,7 @@ Partial Public Class DataSet1
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
         Dim ds As DataSet1 = New DataSet1()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
@@ -304,128 +272,45 @@ Partial Public Class DataSet1
         Return type
     End Function
     
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub bcs_inscripcion_senasaRowChangeEventHandler(ByVal sender As Object, ByVal e As bcs_inscripcion_senasaRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub solicitud_inscripcion_delotesRowChangeEventHandler(ByVal sender As Object, ByVal e As solicitud_inscripcion_delotesRowChangeEvent)
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub vista_inscripcion_senasa_loteRowChangeEventHandler(ByVal sender As Object, ByVal e As vista_inscripcion_senasa_loteRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class bcs_inscripcion_senasaDataTable
-        Inherits Global.System.Data.TypedTableBase(Of bcs_inscripcion_senasaRow)
-        
-        Private columnID As Global.System.Data.DataColumn
-        
-        Private columnCOD_BCS As Global.System.Data.DataColumn
-        
-        Private columnCOD_PRODUCTOR As Global.System.Data.DataColumn
+    Partial Public Class vista_inscripcion_senasa_loteDataTable
+        Inherits Global.System.Data.TypedTableBase(Of vista_inscripcion_senasa_loteRow)
         
         Private columnProductor As Global.System.Data.DataColumn
         
-        Private columnDepartamento As Global.System.Data.DataColumn
+        Private columndepartamento As Global.System.Data.DataColumn
+        
+        Private columnmunicipio As Global.System.Data.DataColumn
         
         Private columnCICLO As Global.System.Data.DataColumn
         
-        Private columnVARIEDAD As Global.System.Data.DataColumn
-        
-        Private columnCATEGORIA As Global.System.Data.DataColumn
-        
-        Private columnINVENTARIO_EN_DICTA As Global.System.Data.DataColumn
-        
-        Private columnPROYECTO As Global.System.Data.DataColumn
-        
-        Private columnFECHA_SIEMBRA As Global.System.Data.DataColumn
-        
-        Private columnSEMILLA_A_PRODUCIR As Global.System.Data.DataColumn
-        
-        Private columnAREA_SEMBRADA2 As Global.System.Data.DataColumn
-        
-        Private columnAREA_SEMBRADA_MZ As Global.System.Data.DataColumn
-        
         Private columnAREA_SEMBRADA_HA As Global.System.Data.DataColumn
         
-        Private columnFECHA_SEMBRARA As Global.System.Data.DataColumn
-        
-        Private columnREQUERIEMIENTO_REGISTRADA_QQ As Global.System.Data.DataColumn
-        
-        Private columnCANTIDAD_LOTES_SEMBRAR As Global.System.Data.DataColumn
-        
-        Private columnNOMBRE_LOTE_FINCA As Global.System.Data.DataColumn
-        
-        Private columnESTIMADO_PRO_QQ_MZ As Global.System.Data.DataColumn
-        
-        Private columnESTIMADO_PRO_QQ_HA As Global.System.Data.DataColumn
-        
-        Private columnESTIMADO_PRODUCIR_QQ As Global.System.Data.DataColumn
-        
-        Private columnESTIMADO_PRODUCIR_QQHA As Global.System.Data.DataColumn
+        Private columnVARIEDAD As Global.System.Data.DataColumn
         
         Private columnTIPO_SEMILLA As Global.System.Data.DataColumn
         
-        Private columnIMAGEN_FICHA As Global.System.Data.DataColumn
-        
-        Private columnIMAGEN_PAGO_TGR As Global.System.Data.DataColumn
-        
-        Private columnIMAGEN_ETIQUETA_SEMILLA As Global.System.Data.DataColumn
-        
-        Private columnFECHA_SIEMBRA2 As Global.System.Data.DataColumn
-        
-        Private columnAREA_PERDIDA As Global.System.Data.DataColumn
-        
-        Private columnCAUSAS_PERDIDAS As Global.System.Data.DataColumn
-        
-        Private columnQQ_PRODUCCION As Global.System.Data.DataColumn
-        
-        Private columnQQ_ORO As Global.System.Data.DataColumn
-        
-        Private columnQQ_CONSUMO As Global.System.Data.DataColumn
-        
-        Private columnQQ_BASURA As Global.System.Data.DataColumn
-        
-        Private columnCOSTOS_INSUMOS As Global.System.Data.DataColumn
-        
-        Private columnCOSTOS_MANO As Global.System.Data.DataColumn
-        
-        Private columnCOSTOS_EQUIPO As Global.System.Data.DataColumn
-        
-        Private columnCOSTOS_OTROS As Global.System.Data.DataColumn
-        
-        Private columnCOSTOS_INSCRIPCION As Global.System.Data.DataColumn
-        
-        Private columnCOSTOS_ACONDICIONAMIENTO_SEMILLA As Global.System.Data.DataColumn
-        
-        Private columnCOSTO_TOTAL As Global.System.Data.DataColumn
-        
-        Private columnFechaMod As Global.System.Data.DataColumn
-        
-        Private columnREGISTROVENTAS As Global.System.Data.DataColumn
-        
-        Private columnEliminado As Global.System.Data.DataColumn
-        
-        Private columnHabilitado As Global.System.Data.DataColumn
-        
-        Private columnTipo_costo As Global.System.Data.DataColumn
-        
-        Private columnusuario As Global.System.Data.DataColumn
-        
-        Private columnEstado As Global.System.Data.DataColumn
+        Private columnNOMBRE_LOTE_FINCA As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "bcs_inscripcion_senasa"
+            Me.TableName = "vista_inscripcion_senasa_lote"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub New(ByVal table As Global.System.Data.DataTable)
             MyBase.New
             Me.TableName = table.TableName
@@ -443,38 +328,14 @@ Partial Public Class DataSet1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
             Me.InitVars
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COD_BCSColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOD_BCS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COD_PRODUCTORColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOD_PRODUCTOR
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property ProductorColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnProductor
@@ -482,987 +343,7 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property DepartamentoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDepartamento
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CICLOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCICLO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property VARIEDADColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnVARIEDAD
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CATEGORIAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCATEGORIA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property INVENTARIO_EN_DICTAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnINVENTARIO_EN_DICTA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property PROYECTOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPROYECTO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property FECHA_SIEMBRAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFECHA_SIEMBRA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property SEMILLA_A_PRODUCIRColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSEMILLA_A_PRODUCIR
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property AREA_SEMBRADA2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnAREA_SEMBRADA2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property AREA_SEMBRADA_MZColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnAREA_SEMBRADA_MZ
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property AREA_SEMBRADA_HAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnAREA_SEMBRADA_HA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property FECHA_SEMBRARAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFECHA_SEMBRARA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property REQUERIEMIENTO_REGISTRADA_QQColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnREQUERIEMIENTO_REGISTRADA_QQ
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CANTIDAD_LOTES_SEMBRARColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCANTIDAD_LOTES_SEMBRAR
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property NOMBRE_LOTE_FINCAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNOMBRE_LOTE_FINCA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property ESTIMADO_PRO_QQ_MZColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnESTIMADO_PRO_QQ_MZ
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property ESTIMADO_PRO_QQ_HAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnESTIMADO_PRO_QQ_HA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property ESTIMADO_PRODUCIR_QQColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnESTIMADO_PRODUCIR_QQ
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property ESTIMADO_PRODUCIR_QQHAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnESTIMADO_PRODUCIR_QQHA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property TIPO_SEMILLAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTIPO_SEMILLA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IMAGEN_FICHAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIMAGEN_FICHA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IMAGEN_PAGO_TGRColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIMAGEN_PAGO_TGR
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IMAGEN_ETIQUETA_SEMILLAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIMAGEN_ETIQUETA_SEMILLA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property FECHA_SIEMBRA2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFECHA_SIEMBRA2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property AREA_PERDIDAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnAREA_PERDIDA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CAUSAS_PERDIDASColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCAUSAS_PERDIDAS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property QQ_PRODUCCIONColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQQ_PRODUCCION
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property QQ_OROColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQQ_ORO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property QQ_CONSUMOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQQ_CONSUMO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property QQ_BASURAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQQ_BASURA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTOS_INSUMOSColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTOS_INSUMOS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTOS_MANOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTOS_MANO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTOS_EQUIPOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTOS_EQUIPO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTOS_OTROSColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTOS_OTROS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTOS_INSCRIPCIONColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTOS_INSCRIPCION
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTOS_ACONDICIONAMIENTO_SEMILLAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTOS_ACONDICIONAMIENTO_SEMILLA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property COSTO_TOTALColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOSTO_TOTAL
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property FechaModColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFechaMod
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property REGISTROVENTASColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnREGISTROVENTAS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property EliminadoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnEliminado
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property HabilitadoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnHabilitado
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Tipo_costoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTipo_costo
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property usuarioColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnusuario
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property EstadoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnEstado
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As bcs_inscripcion_senasaRow
-            Get
-                Return CType(Me.Rows(index),bcs_inscripcion_senasaRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event bcs_inscripcion_senasaRowChanging As bcs_inscripcion_senasaRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event bcs_inscripcion_senasaRowChanged As bcs_inscripcion_senasaRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event bcs_inscripcion_senasaRowDeleting As bcs_inscripcion_senasaRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event bcs_inscripcion_senasaRowDeleted As bcs_inscripcion_senasaRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub Addbcs_inscripcion_senasaRow(ByVal row As bcs_inscripcion_senasaRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function Addbcs_inscripcion_senasaRow( _
-                    ByVal COD_BCS As String,  _
-                    ByVal COD_PRODUCTOR As String,  _
-                    ByVal Productor As String,  _
-                    ByVal Departamento As String,  _
-                    ByVal CICLO As String,  _
-                    ByVal VARIEDAD As String,  _
-                    ByVal CATEGORIA As String,  _
-                    ByVal INVENTARIO_EN_DICTA As Decimal,  _
-                    ByVal PROYECTO As String,  _
-                    ByVal FECHA_SIEMBRA As Date,  _
-                    ByVal SEMILLA_A_PRODUCIR As Double,  _
-                    ByVal AREA_SEMBRADA2 As Double,  _
-                    ByVal AREA_SEMBRADA_MZ As Double,  _
-                    ByVal AREA_SEMBRADA_HA As Double,  _
-                    ByVal FECHA_SEMBRARA As Date,  _
-                    ByVal REQUERIEMIENTO_REGISTRADA_QQ As Double,  _
-                    ByVal CANTIDAD_LOTES_SEMBRAR As Integer,  _
-                    ByVal NOMBRE_LOTE_FINCA As String,  _
-                    ByVal ESTIMADO_PRO_QQ_MZ As Double,  _
-                    ByVal ESTIMADO_PRO_QQ_HA As Double,  _
-                    ByVal ESTIMADO_PRODUCIR_QQ As Double,  _
-                    ByVal ESTIMADO_PRODUCIR_QQHA As Double,  _
-                    ByVal TIPO_SEMILLA As String,  _
-                    ByVal IMAGEN_FICHA() As Byte,  _
-                    ByVal IMAGEN_PAGO_TGR() As Byte,  _
-                    ByVal IMAGEN_ETIQUETA_SEMILLA() As Byte,  _
-                    ByVal FECHA_SIEMBRA2 As Date,  _
-                    ByVal AREA_PERDIDA As Decimal,  _
-                    ByVal CAUSAS_PERDIDAS As String,  _
-                    ByVal QQ_PRODUCCION As String,  _
-                    ByVal QQ_ORO As Decimal,  _
-                    ByVal QQ_CONSUMO As Decimal,  _
-                    ByVal QQ_BASURA As Decimal,  _
-                    ByVal COSTOS_INSUMOS As Decimal,  _
-                    ByVal COSTOS_MANO As Decimal,  _
-                    ByVal COSTOS_EQUIPO As Decimal,  _
-                    ByVal COSTOS_OTROS As Decimal,  _
-                    ByVal COSTOS_INSCRIPCION As Decimal,  _
-                    ByVal COSTOS_ACONDICIONAMIENTO_SEMILLA As Decimal,  _
-                    ByVal COSTO_TOTAL As Decimal,  _
-                    ByVal FechaMod As Date,  _
-                    ByVal REGISTROVENTAS As String,  _
-                    ByVal Eliminado As String,  _
-                    ByVal Habilitado As String,  _
-                    ByVal Tipo_costo As String,  _
-                    ByVal usuario As String,  _
-                    ByVal Estado As String) As bcs_inscripcion_senasaRow
-            Dim rowbcs_inscripcion_senasaRow As bcs_inscripcion_senasaRow = CType(Me.NewRow,bcs_inscripcion_senasaRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, COD_BCS, COD_PRODUCTOR, Productor, Departamento, CICLO, VARIEDAD, CATEGORIA, INVENTARIO_EN_DICTA, PROYECTO, FECHA_SIEMBRA, SEMILLA_A_PRODUCIR, AREA_SEMBRADA2, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SEMBRARA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, TIPO_SEMILLA, IMAGEN_FICHA, IMAGEN_PAGO_TGR, IMAGEN_ETIQUETA_SEMILLA, FECHA_SIEMBRA2, AREA_PERDIDA, CAUSAS_PERDIDAS, QQ_PRODUCCION, QQ_ORO, QQ_CONSUMO, QQ_BASURA, COSTOS_INSUMOS, COSTOS_MANO, COSTOS_EQUIPO, COSTOS_OTROS, COSTOS_INSCRIPCION, COSTOS_ACONDICIONAMIENTO_SEMILLA, COSTO_TOTAL, FechaMod, REGISTROVENTAS, Eliminado, Habilitado, Tipo_costo, usuario, Estado}
-            rowbcs_inscripcion_senasaRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowbcs_inscripcion_senasaRow)
-            Return rowbcs_inscripcion_senasaRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByID(ByVal ID As Integer) As bcs_inscripcion_senasaRow
-            Return CType(Me.Rows.Find(New Object() {ID}),bcs_inscripcion_senasaRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As bcs_inscripcion_senasaDataTable = CType(MyBase.Clone,bcs_inscripcion_senasaDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New bcs_inscripcion_senasaDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnID = MyBase.Columns("ID")
-            Me.columnCOD_BCS = MyBase.Columns("COD_BCS")
-            Me.columnCOD_PRODUCTOR = MyBase.Columns("COD_PRODUCTOR")
-            Me.columnProductor = MyBase.Columns("Productor")
-            Me.columnDepartamento = MyBase.Columns("Departamento")
-            Me.columnCICLO = MyBase.Columns("CICLO")
-            Me.columnVARIEDAD = MyBase.Columns("VARIEDAD")
-            Me.columnCATEGORIA = MyBase.Columns("CATEGORIA")
-            Me.columnINVENTARIO_EN_DICTA = MyBase.Columns("INVENTARIO_EN_DICTA")
-            Me.columnPROYECTO = MyBase.Columns("PROYECTO")
-            Me.columnFECHA_SIEMBRA = MyBase.Columns("FECHA_SIEMBRA")
-            Me.columnSEMILLA_A_PRODUCIR = MyBase.Columns("SEMILLA_A_PRODUCIR")
-            Me.columnAREA_SEMBRADA2 = MyBase.Columns("AREA_SEMBRADA2")
-            Me.columnAREA_SEMBRADA_MZ = MyBase.Columns("AREA_SEMBRADA_MZ")
-            Me.columnAREA_SEMBRADA_HA = MyBase.Columns("AREA_SEMBRADA_HA")
-            Me.columnFECHA_SEMBRARA = MyBase.Columns("FECHA_SEMBRARA")
-            Me.columnREQUERIEMIENTO_REGISTRADA_QQ = MyBase.Columns("REQUERIEMIENTO_REGISTRADA_QQ")
-            Me.columnCANTIDAD_LOTES_SEMBRAR = MyBase.Columns("CANTIDAD_LOTES_SEMBRAR")
-            Me.columnNOMBRE_LOTE_FINCA = MyBase.Columns("NOMBRE_LOTE_FINCA")
-            Me.columnESTIMADO_PRO_QQ_MZ = MyBase.Columns("ESTIMADO_PRO_QQ_MZ")
-            Me.columnESTIMADO_PRO_QQ_HA = MyBase.Columns("ESTIMADO_PRO_QQ_HA")
-            Me.columnESTIMADO_PRODUCIR_QQ = MyBase.Columns("ESTIMADO_PRODUCIR_QQ")
-            Me.columnESTIMADO_PRODUCIR_QQHA = MyBase.Columns("ESTIMADO_PRODUCIR_QQHA")
-            Me.columnTIPO_SEMILLA = MyBase.Columns("TIPO_SEMILLA")
-            Me.columnIMAGEN_FICHA = MyBase.Columns("IMAGEN_FICHA")
-            Me.columnIMAGEN_PAGO_TGR = MyBase.Columns("IMAGEN_PAGO_TGR")
-            Me.columnIMAGEN_ETIQUETA_SEMILLA = MyBase.Columns("IMAGEN_ETIQUETA_SEMILLA")
-            Me.columnFECHA_SIEMBRA2 = MyBase.Columns("FECHA_SIEMBRA2")
-            Me.columnAREA_PERDIDA = MyBase.Columns("AREA_PERDIDA")
-            Me.columnCAUSAS_PERDIDAS = MyBase.Columns("CAUSAS_PERDIDAS")
-            Me.columnQQ_PRODUCCION = MyBase.Columns("QQ_PRODUCCION")
-            Me.columnQQ_ORO = MyBase.Columns("QQ_ORO")
-            Me.columnQQ_CONSUMO = MyBase.Columns("QQ_CONSUMO")
-            Me.columnQQ_BASURA = MyBase.Columns("QQ_BASURA")
-            Me.columnCOSTOS_INSUMOS = MyBase.Columns("COSTOS_INSUMOS")
-            Me.columnCOSTOS_MANO = MyBase.Columns("COSTOS_MANO")
-            Me.columnCOSTOS_EQUIPO = MyBase.Columns("COSTOS_EQUIPO")
-            Me.columnCOSTOS_OTROS = MyBase.Columns("COSTOS_OTROS")
-            Me.columnCOSTOS_INSCRIPCION = MyBase.Columns("COSTOS_INSCRIPCION")
-            Me.columnCOSTOS_ACONDICIONAMIENTO_SEMILLA = MyBase.Columns("COSTOS_ACONDICIONAMIENTO_SEMILLA")
-            Me.columnCOSTO_TOTAL = MyBase.Columns("COSTO_TOTAL")
-            Me.columnFechaMod = MyBase.Columns("FechaMod")
-            Me.columnREGISTROVENTAS = MyBase.Columns("REGISTROVENTAS")
-            Me.columnEliminado = MyBase.Columns("Eliminado")
-            Me.columnHabilitado = MyBase.Columns("Habilitado")
-            Me.columnTipo_costo = MyBase.Columns("Tipo_costo")
-            Me.columnusuario = MyBase.Columns("usuario")
-            Me.columnEstado = MyBase.Columns("Estado")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnID)
-            Me.columnCOD_BCS = New Global.System.Data.DataColumn("COD_BCS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOD_BCS)
-            Me.columnCOD_PRODUCTOR = New Global.System.Data.DataColumn("COD_PRODUCTOR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOD_PRODUCTOR)
-            Me.columnProductor = New Global.System.Data.DataColumn("Productor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnProductor)
-            Me.columnDepartamento = New Global.System.Data.DataColumn("Departamento", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDepartamento)
-            Me.columnCICLO = New Global.System.Data.DataColumn("CICLO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCICLO)
-            Me.columnVARIEDAD = New Global.System.Data.DataColumn("VARIEDAD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnVARIEDAD)
-            Me.columnCATEGORIA = New Global.System.Data.DataColumn("CATEGORIA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCATEGORIA)
-            Me.columnINVENTARIO_EN_DICTA = New Global.System.Data.DataColumn("INVENTARIO_EN_DICTA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnINVENTARIO_EN_DICTA)
-            Me.columnPROYECTO = New Global.System.Data.DataColumn("PROYECTO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPROYECTO)
-            Me.columnFECHA_SIEMBRA = New Global.System.Data.DataColumn("FECHA_SIEMBRA", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFECHA_SIEMBRA)
-            Me.columnSEMILLA_A_PRODUCIR = New Global.System.Data.DataColumn("SEMILLA_A_PRODUCIR", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSEMILLA_A_PRODUCIR)
-            Me.columnAREA_SEMBRADA2 = New Global.System.Data.DataColumn("AREA_SEMBRADA2", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAREA_SEMBRADA2)
-            Me.columnAREA_SEMBRADA_MZ = New Global.System.Data.DataColumn("AREA_SEMBRADA_MZ", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAREA_SEMBRADA_MZ)
-            Me.columnAREA_SEMBRADA_HA = New Global.System.Data.DataColumn("AREA_SEMBRADA_HA", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAREA_SEMBRADA_HA)
-            Me.columnFECHA_SEMBRARA = New Global.System.Data.DataColumn("FECHA_SEMBRARA", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFECHA_SEMBRARA)
-            Me.columnREQUERIEMIENTO_REGISTRADA_QQ = New Global.System.Data.DataColumn("REQUERIEMIENTO_REGISTRADA_QQ", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnREQUERIEMIENTO_REGISTRADA_QQ)
-            Me.columnCANTIDAD_LOTES_SEMBRAR = New Global.System.Data.DataColumn("CANTIDAD_LOTES_SEMBRAR", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCANTIDAD_LOTES_SEMBRAR)
-            Me.columnNOMBRE_LOTE_FINCA = New Global.System.Data.DataColumn("NOMBRE_LOTE_FINCA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNOMBRE_LOTE_FINCA)
-            Me.columnESTIMADO_PRO_QQ_MZ = New Global.System.Data.DataColumn("ESTIMADO_PRO_QQ_MZ", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnESTIMADO_PRO_QQ_MZ)
-            Me.columnESTIMADO_PRO_QQ_HA = New Global.System.Data.DataColumn("ESTIMADO_PRO_QQ_HA", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnESTIMADO_PRO_QQ_HA)
-            Me.columnESTIMADO_PRODUCIR_QQ = New Global.System.Data.DataColumn("ESTIMADO_PRODUCIR_QQ", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnESTIMADO_PRODUCIR_QQ)
-            Me.columnESTIMADO_PRODUCIR_QQHA = New Global.System.Data.DataColumn("ESTIMADO_PRODUCIR_QQHA", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnESTIMADO_PRODUCIR_QQHA)
-            Me.columnTIPO_SEMILLA = New Global.System.Data.DataColumn("TIPO_SEMILLA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTIPO_SEMILLA)
-            Me.columnIMAGEN_FICHA = New Global.System.Data.DataColumn("IMAGEN_FICHA", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIMAGEN_FICHA)
-            Me.columnIMAGEN_PAGO_TGR = New Global.System.Data.DataColumn("IMAGEN_PAGO_TGR", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIMAGEN_PAGO_TGR)
-            Me.columnIMAGEN_ETIQUETA_SEMILLA = New Global.System.Data.DataColumn("IMAGEN_ETIQUETA_SEMILLA", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIMAGEN_ETIQUETA_SEMILLA)
-            Me.columnFECHA_SIEMBRA2 = New Global.System.Data.DataColumn("FECHA_SIEMBRA2", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFECHA_SIEMBRA2)
-            Me.columnAREA_PERDIDA = New Global.System.Data.DataColumn("AREA_PERDIDA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAREA_PERDIDA)
-            Me.columnCAUSAS_PERDIDAS = New Global.System.Data.DataColumn("CAUSAS_PERDIDAS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCAUSAS_PERDIDAS)
-            Me.columnQQ_PRODUCCION = New Global.System.Data.DataColumn("QQ_PRODUCCION", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQQ_PRODUCCION)
-            Me.columnQQ_ORO = New Global.System.Data.DataColumn("QQ_ORO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQQ_ORO)
-            Me.columnQQ_CONSUMO = New Global.System.Data.DataColumn("QQ_CONSUMO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQQ_CONSUMO)
-            Me.columnQQ_BASURA = New Global.System.Data.DataColumn("QQ_BASURA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQQ_BASURA)
-            Me.columnCOSTOS_INSUMOS = New Global.System.Data.DataColumn("COSTOS_INSUMOS", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTOS_INSUMOS)
-            Me.columnCOSTOS_MANO = New Global.System.Data.DataColumn("COSTOS_MANO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTOS_MANO)
-            Me.columnCOSTOS_EQUIPO = New Global.System.Data.DataColumn("COSTOS_EQUIPO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTOS_EQUIPO)
-            Me.columnCOSTOS_OTROS = New Global.System.Data.DataColumn("COSTOS_OTROS", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTOS_OTROS)
-            Me.columnCOSTOS_INSCRIPCION = New Global.System.Data.DataColumn("COSTOS_INSCRIPCION", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTOS_INSCRIPCION)
-            Me.columnCOSTOS_ACONDICIONAMIENTO_SEMILLA = New Global.System.Data.DataColumn("COSTOS_ACONDICIONAMIENTO_SEMILLA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTOS_ACONDICIONAMIENTO_SEMILLA)
-            Me.columnCOSTO_TOTAL = New Global.System.Data.DataColumn("COSTO_TOTAL", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOSTO_TOTAL)
-            Me.columnFechaMod = New Global.System.Data.DataColumn("FechaMod", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFechaMod)
-            Me.columnREGISTROVENTAS = New Global.System.Data.DataColumn("REGISTROVENTAS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnREGISTROVENTAS)
-            Me.columnEliminado = New Global.System.Data.DataColumn("Eliminado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnEliminado)
-            Me.columnHabilitado = New Global.System.Data.DataColumn("Habilitado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnHabilitado)
-            Me.columnTipo_costo = New Global.System.Data.DataColumn("Tipo_costo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTipo_costo)
-            Me.columnusuario = New Global.System.Data.DataColumn("usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnusuario)
-            Me.columnEstado = New Global.System.Data.DataColumn("Estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnEstado)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
-            Me.columnID.AutoIncrement = true
-            Me.columnID.AutoIncrementSeed = -1
-            Me.columnID.AutoIncrementStep = -1
-            Me.columnID.AllowDBNull = false
-            Me.columnID.Unique = true
-            Me.columnCOD_BCS.MaxLength = 255
-            Me.columnCOD_PRODUCTOR.MaxLength = 50
-            Me.columnProductor.MaxLength = 255
-            Me.columnDepartamento.MaxLength = 20
-            Me.columnCICLO.MaxLength = 255
-            Me.columnVARIEDAD.MaxLength = 255
-            Me.columnCATEGORIA.MaxLength = 255
-            Me.columnPROYECTO.MaxLength = 30
-            Me.columnNOMBRE_LOTE_FINCA.MaxLength = 255
-            Me.columnTIPO_SEMILLA.MaxLength = 250
-            Me.columnCAUSAS_PERDIDAS.MaxLength = 255
-            Me.columnQQ_PRODUCCION.MaxLength = 38
-            Me.columnREGISTROVENTAS.MaxLength = 3
-            Me.columnEliminado.MaxLength = 2
-            Me.columnHabilitado.MaxLength = 50
-            Me.columnTipo_costo.MaxLength = 50
-            Me.columnusuario.MaxLength = 255
-            Me.columnEstado.MaxLength = 10
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Newbcs_inscripcion_senasaRow() As bcs_inscripcion_senasaRow
-            Return CType(Me.NewRow,bcs_inscripcion_senasaRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New bcs_inscripcion_senasaRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(bcs_inscripcion_senasaRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.bcs_inscripcion_senasaRowChangedEvent) Is Nothing) Then
-                RaiseEvent bcs_inscripcion_senasaRowChanged(Me, New bcs_inscripcion_senasaRowChangeEvent(CType(e.Row,bcs_inscripcion_senasaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.bcs_inscripcion_senasaRowChangingEvent) Is Nothing) Then
-                RaiseEvent bcs_inscripcion_senasaRowChanging(Me, New bcs_inscripcion_senasaRowChangeEvent(CType(e.Row,bcs_inscripcion_senasaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.bcs_inscripcion_senasaRowDeletedEvent) Is Nothing) Then
-                RaiseEvent bcs_inscripcion_senasaRowDeleted(Me, New bcs_inscripcion_senasaRowChangeEvent(CType(e.Row,bcs_inscripcion_senasaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.bcs_inscripcion_senasaRowDeletingEvent) Is Nothing) Then
-                RaiseEvent bcs_inscripcion_senasaRowDeleting(Me, New bcs_inscripcion_senasaRowChangeEvent(CType(e.Row,bcs_inscripcion_senasaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Removebcs_inscripcion_senasaRow(ByVal row As bcs_inscripcion_senasaRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As DataSet1 = New DataSet1()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "bcs_inscripcion_senasaDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class solicitud_inscripcion_delotesDataTable
-        Inherits Global.System.Data.TypedTableBase(Of solicitud_inscripcion_delotesRow)
-        
-        Private columnid As Global.System.Data.DataColumn
-        
-        Private columnnombre_productor As Global.System.Data.DataColumn
-        
-        Private columnrepresentante_legar As Global.System.Data.DataColumn
-        
-        Private columnidentidad_productor As Global.System.Data.DataColumn
-        
-        Private columnextendida As Global.System.Data.DataColumn
-        
-        Private columnresidencia_productor As Global.System.Data.DataColumn
-        
-        Private columntelefono_productor As Global.System.Data.DataColumn
-        
-        Private columnno_registro_productor As Global.System.Data.DataColumn
-        
-        Private columnnombre_multiplicador As Global.System.Data.DataColumn
-        
-        Private columncedula_multiplicador As Global.System.Data.DataColumn
-        
-        Private columntelefono_multiplicador As Global.System.Data.DataColumn
-        
-        Private columnnombre_finca As Global.System.Data.DataColumn
-        
-        Private columndepartamento As Global.System.Data.DataColumn
-        
-        Private columnmunicipio As Global.System.Data.DataColumn
-        
-        Private columnaldea As Global.System.Data.DataColumn
-        
-        Private columncaserio As Global.System.Data.DataColumn
-        
-        Private columnnombre_persona_finca As Global.System.Data.DataColumn
-        
-        Private columnnombre_lote As Global.System.Data.DataColumn
-        
-        Private columncroquis As Global.System.Data.DataColumn
-        
-        Private columntipo_cultivo As Global.System.Data.DataColumn
-        
-        Private columnvariedad As Global.System.Data.DataColumn
-        
-        Private columnlote_no As Global.System.Data.DataColumn
-        
-        Private columnfecha_analisis As Global.System.Data.DataColumn
-        
-        Private columnyear_produccion As Global.System.Data.DataColumn
-        
-        Private columncategoria_semilla As Global.System.Data.DataColumn
-        
-        Private columntipo_semilla As Global.System.Data.DataColumn
-        
-        Private columncultivo_semilla As Global.System.Data.DataColumn
-        
-        Private columnvariedad_frijol As Global.System.Data.DataColumn
-        
-        Private columnvariedad_maiz As Global.System.Data.DataColumn
-        
-        Private columnsuperficie_hectarea As Global.System.Data.DataColumn
-        
-        Private columnsuperficie_mz As Global.System.Data.DataColumn
-        
-        Private columnfecha_aprox_siembra As Global.System.Data.DataColumn
-        
-        Private columnfecha_aprox_cosecha As Global.System.Data.DataColumn
-        
-        Private columnproduccion_est_hectareas As Global.System.Data.DataColumn
-        
-        Private columnproduccion_est_manzanas As Global.System.Data.DataColumn
-        
-        Private columndestino As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "solicitud_inscripcion_delotes"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property idColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnid
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property nombre_productorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnnombre_productor
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property representante_legarColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnrepresentante_legar
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property identidad_productorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnidentidad_productor
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property extendidaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnextendida
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property residencia_productorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnresidencia_productor
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property telefono_productorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntelefono_productor
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property no_registro_productorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnno_registro_productor
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property nombre_multiplicadorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnnombre_multiplicador
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property cedula_multiplicadorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columncedula_multiplicador
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property telefono_multiplicadorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntelefono_multiplicador
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property nombre_fincaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnnombre_finca
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property departamentoColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columndepartamento
@@ -1470,7 +351,7 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property municipioColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnmunicipio
@@ -1478,183 +359,47 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property aldeaColumn() As Global.System.Data.DataColumn
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CICLOColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnaldea
+                Return Me.columnCICLO
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property caserioColumn() As Global.System.Data.DataColumn
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AREA_SEMBRADA_HAColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columncaserio
+                Return Me.columnAREA_SEMBRADA_HA
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property nombre_persona_fincaColumn() As Global.System.Data.DataColumn
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property VARIEDADColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnnombre_persona_finca
+                Return Me.columnVARIEDAD
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property nombre_loteColumn() As Global.System.Data.DataColumn
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TIPO_SEMILLAColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnnombre_lote
+                Return Me.columnTIPO_SEMILLA
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property croquisColumn() As Global.System.Data.DataColumn
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NOMBRE_LOTE_FINCAColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columncroquis
+                Return Me.columnNOMBRE_LOTE_FINCA
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property tipo_cultivoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntipo_cultivo
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property variedadColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnvariedad
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lote_noColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlote_no
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property fecha_analisisColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfecha_analisis
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property year_produccionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnyear_produccion
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property categoria_semillaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columncategoria_semilla
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property tipo_semillaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntipo_semilla
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property cultivo_semillaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columncultivo_semilla
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property variedad_frijolColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnvariedad_frijol
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property variedad_maizColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnvariedad_maiz
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property superficie_hectareaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsuperficie_hectarea
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property superficie_mzColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsuperficie_mz
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property fecha_aprox_siembraColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfecha_aprox_siembra
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property fecha_aprox_cosechaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfecha_aprox_cosecha
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property produccion_est_hectareasColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnproduccion_est_hectareas
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property produccion_est_manzanasColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnproduccion_est_manzanas
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property destinoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columndestino
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
             Get
@@ -1663,306 +408,158 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As solicitud_inscripcion_delotesRow
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As vista_inscripcion_senasa_loteRow
             Get
-                Return CType(Me.Rows(index),solicitud_inscripcion_delotesRow)
+                Return CType(Me.Rows(index),vista_inscripcion_senasa_loteRow)
             End Get
         End Property
         
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event solicitud_inscripcion_delotesRowChanging As solicitud_inscripcion_delotesRowChangeEventHandler
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_inscripcion_senasa_loteRowChanging As vista_inscripcion_senasa_loteRowChangeEventHandler
         
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event solicitud_inscripcion_delotesRowChanged As solicitud_inscripcion_delotesRowChangeEventHandler
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_inscripcion_senasa_loteRowChanged As vista_inscripcion_senasa_loteRowChangeEventHandler
         
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event solicitud_inscripcion_delotesRowDeleting As solicitud_inscripcion_delotesRowChangeEventHandler
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_inscripcion_senasa_loteRowDeleting As vista_inscripcion_senasa_loteRowChangeEventHandler
         
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event solicitud_inscripcion_delotesRowDeleted As solicitud_inscripcion_delotesRowChangeEventHandler
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_inscripcion_senasa_loteRowDeleted As vista_inscripcion_senasa_loteRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub Addsolicitud_inscripcion_delotesRow(ByVal row As solicitud_inscripcion_delotesRow)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub Addvista_inscripcion_senasa_loteRow(ByVal row As vista_inscripcion_senasa_loteRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function Addsolicitud_inscripcion_delotesRow( _
-                    ByVal nombre_productor As String,  _
-                    ByVal representante_legar As String,  _
-                    ByVal identidad_productor As String,  _
-                    ByVal extendida As Date,  _
-                    ByVal residencia_productor As String,  _
-                    ByVal telefono_productor As Integer,  _
-                    ByVal no_registro_productor As String,  _
-                    ByVal nombre_multiplicador As String,  _
-                    ByVal cedula_multiplicador As String,  _
-                    ByVal telefono_multiplicador As Integer,  _
-                    ByVal nombre_finca As String,  _
-                    ByVal departamento As String,  _
-                    ByVal municipio As String,  _
-                    ByVal aldea As String,  _
-                    ByVal caserio As String,  _
-                    ByVal nombre_persona_finca As String,  _
-                    ByVal nombre_lote As String,  _
-                    ByVal croquis() As Byte,  _
-                    ByVal tipo_cultivo As String,  _
-                    ByVal variedad As String,  _
-                    ByVal lote_no As String,  _
-                    ByVal fecha_analisis As Date,  _
-                    ByVal year_produccion As String,  _
-                    ByVal categoria_semilla As String,  _
-                    ByVal tipo_semilla As String,  _
-                    ByVal cultivo_semilla As String,  _
-                    ByVal variedad_frijol As String,  _
-                    ByVal variedad_maiz As String,  _
-                    ByVal superficie_hectarea As Decimal,  _
-                    ByVal superficie_mz As Decimal,  _
-                    ByVal fecha_aprox_siembra As Date,  _
-                    ByVal fecha_aprox_cosecha As Date,  _
-                    ByVal produccion_est_hectareas As Decimal,  _
-                    ByVal produccion_est_manzanas As Decimal,  _
-                    ByVal destino As String) As solicitud_inscripcion_delotesRow
-            Dim rowsolicitud_inscripcion_delotesRow As solicitud_inscripcion_delotesRow = CType(Me.NewRow,solicitud_inscripcion_delotesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad, lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino}
-            rowsolicitud_inscripcion_delotesRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowsolicitud_inscripcion_delotesRow)
-            Return rowsolicitud_inscripcion_delotesRow
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function Addvista_inscripcion_senasa_loteRow(ByVal Productor As String, ByVal departamento As String, ByVal municipio As String, ByVal CICLO As String, ByVal AREA_SEMBRADA_HA As Double, ByVal VARIEDAD As String, ByVal TIPO_SEMILLA As String, ByVal NOMBRE_LOTE_FINCA As String) As vista_inscripcion_senasa_loteRow
+            Dim rowvista_inscripcion_senasa_loteRow As vista_inscripcion_senasa_loteRow = CType(Me.NewRow,vista_inscripcion_senasa_loteRow)
+            Dim columnValuesArray() As Object = New Object() {Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA}
+            rowvista_inscripcion_senasa_loteRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowvista_inscripcion_senasa_loteRow)
+            Return rowvista_inscripcion_senasa_loteRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByid(ByVal id As Integer) As solicitud_inscripcion_delotesRow
-            Return CType(Me.Rows.Find(New Object() {id}),solicitud_inscripcion_delotesRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As solicitud_inscripcion_delotesDataTable = CType(MyBase.Clone,solicitud_inscripcion_delotesDataTable)
+            Dim cln As vista_inscripcion_senasa_loteDataTable = CType(MyBase.Clone,vista_inscripcion_senasa_loteDataTable)
             cln.InitVars
             Return cln
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New solicitud_inscripcion_delotesDataTable()
+            Return New vista_inscripcion_senasa_loteDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnid = MyBase.Columns("id")
-            Me.columnnombre_productor = MyBase.Columns("nombre_productor")
-            Me.columnrepresentante_legar = MyBase.Columns("representante_legar")
-            Me.columnidentidad_productor = MyBase.Columns("identidad_productor")
-            Me.columnextendida = MyBase.Columns("extendida")
-            Me.columnresidencia_productor = MyBase.Columns("residencia_productor")
-            Me.columntelefono_productor = MyBase.Columns("telefono_productor")
-            Me.columnno_registro_productor = MyBase.Columns("no_registro_productor")
-            Me.columnnombre_multiplicador = MyBase.Columns("nombre_multiplicador")
-            Me.columncedula_multiplicador = MyBase.Columns("cedula_multiplicador")
-            Me.columntelefono_multiplicador = MyBase.Columns("telefono_multiplicador")
-            Me.columnnombre_finca = MyBase.Columns("nombre_finca")
+            Me.columnProductor = MyBase.Columns("Productor")
             Me.columndepartamento = MyBase.Columns("departamento")
             Me.columnmunicipio = MyBase.Columns("municipio")
-            Me.columnaldea = MyBase.Columns("aldea")
-            Me.columncaserio = MyBase.Columns("caserio")
-            Me.columnnombre_persona_finca = MyBase.Columns("nombre_persona_finca")
-            Me.columnnombre_lote = MyBase.Columns("nombre_lote")
-            Me.columncroquis = MyBase.Columns("croquis")
-            Me.columntipo_cultivo = MyBase.Columns("tipo_cultivo")
-            Me.columnvariedad = MyBase.Columns("variedad")
-            Me.columnlote_no = MyBase.Columns("lote_no")
-            Me.columnfecha_analisis = MyBase.Columns("fecha_analisis")
-            Me.columnyear_produccion = MyBase.Columns("year_produccion")
-            Me.columncategoria_semilla = MyBase.Columns("categoria_semilla")
-            Me.columntipo_semilla = MyBase.Columns("tipo_semilla")
-            Me.columncultivo_semilla = MyBase.Columns("cultivo_semilla")
-            Me.columnvariedad_frijol = MyBase.Columns("variedad_frijol")
-            Me.columnvariedad_maiz = MyBase.Columns("variedad_maiz")
-            Me.columnsuperficie_hectarea = MyBase.Columns("superficie_hectarea")
-            Me.columnsuperficie_mz = MyBase.Columns("superficie_mz")
-            Me.columnfecha_aprox_siembra = MyBase.Columns("fecha_aprox_siembra")
-            Me.columnfecha_aprox_cosecha = MyBase.Columns("fecha_aprox_cosecha")
-            Me.columnproduccion_est_hectareas = MyBase.Columns("produccion_est_hectareas")
-            Me.columnproduccion_est_manzanas = MyBase.Columns("produccion_est_manzanas")
-            Me.columndestino = MyBase.Columns("destino")
+            Me.columnCICLO = MyBase.Columns("CICLO")
+            Me.columnAREA_SEMBRADA_HA = MyBase.Columns("AREA_SEMBRADA_HA")
+            Me.columnVARIEDAD = MyBase.Columns("VARIEDAD")
+            Me.columnTIPO_SEMILLA = MyBase.Columns("TIPO_SEMILLA")
+            Me.columnNOMBRE_LOTE_FINCA = MyBase.Columns("NOMBRE_LOTE_FINCA")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnid = New Global.System.Data.DataColumn("id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnid)
-            Me.columnnombre_productor = New Global.System.Data.DataColumn("nombre_productor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnnombre_productor)
-            Me.columnrepresentante_legar = New Global.System.Data.DataColumn("representante_legar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnrepresentante_legar)
-            Me.columnidentidad_productor = New Global.System.Data.DataColumn("identidad_productor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidentidad_productor)
-            Me.columnextendida = New Global.System.Data.DataColumn("extendida", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnextendida)
-            Me.columnresidencia_productor = New Global.System.Data.DataColumn("residencia_productor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnresidencia_productor)
-            Me.columntelefono_productor = New Global.System.Data.DataColumn("telefono_productor", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntelefono_productor)
-            Me.columnno_registro_productor = New Global.System.Data.DataColumn("no_registro_productor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnno_registro_productor)
-            Me.columnnombre_multiplicador = New Global.System.Data.DataColumn("nombre_multiplicador", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnnombre_multiplicador)
-            Me.columncedula_multiplicador = New Global.System.Data.DataColumn("cedula_multiplicador", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncedula_multiplicador)
-            Me.columntelefono_multiplicador = New Global.System.Data.DataColumn("telefono_multiplicador", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntelefono_multiplicador)
-            Me.columnnombre_finca = New Global.System.Data.DataColumn("nombre_finca", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnnombre_finca)
+            Me.columnProductor = New Global.System.Data.DataColumn("Productor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProductor)
             Me.columndepartamento = New Global.System.Data.DataColumn("departamento", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndepartamento)
             Me.columnmunicipio = New Global.System.Data.DataColumn("municipio", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmunicipio)
-            Me.columnaldea = New Global.System.Data.DataColumn("aldea", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnaldea)
-            Me.columncaserio = New Global.System.Data.DataColumn("caserio", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncaserio)
-            Me.columnnombre_persona_finca = New Global.System.Data.DataColumn("nombre_persona_finca", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnnombre_persona_finca)
-            Me.columnnombre_lote = New Global.System.Data.DataColumn("nombre_lote", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnnombre_lote)
-            Me.columncroquis = New Global.System.Data.DataColumn("croquis", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncroquis)
-            Me.columntipo_cultivo = New Global.System.Data.DataColumn("tipo_cultivo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntipo_cultivo)
-            Me.columnvariedad = New Global.System.Data.DataColumn("variedad", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnvariedad)
-            Me.columnlote_no = New Global.System.Data.DataColumn("lote_no", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlote_no)
-            Me.columnfecha_analisis = New Global.System.Data.DataColumn("fecha_analisis", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfecha_analisis)
-            Me.columnyear_produccion = New Global.System.Data.DataColumn("year_produccion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnyear_produccion)
-            Me.columncategoria_semilla = New Global.System.Data.DataColumn("categoria_semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncategoria_semilla)
-            Me.columntipo_semilla = New Global.System.Data.DataColumn("tipo_semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntipo_semilla)
-            Me.columncultivo_semilla = New Global.System.Data.DataColumn("cultivo_semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncultivo_semilla)
-            Me.columnvariedad_frijol = New Global.System.Data.DataColumn("variedad_frijol", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnvariedad_frijol)
-            Me.columnvariedad_maiz = New Global.System.Data.DataColumn("variedad_maiz", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnvariedad_maiz)
-            Me.columnsuperficie_hectarea = New Global.System.Data.DataColumn("superficie_hectarea", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsuperficie_hectarea)
-            Me.columnsuperficie_mz = New Global.System.Data.DataColumn("superficie_mz", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsuperficie_mz)
-            Me.columnfecha_aprox_siembra = New Global.System.Data.DataColumn("fecha_aprox_siembra", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfecha_aprox_siembra)
-            Me.columnfecha_aprox_cosecha = New Global.System.Data.DataColumn("fecha_aprox_cosecha", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfecha_aprox_cosecha)
-            Me.columnproduccion_est_hectareas = New Global.System.Data.DataColumn("produccion_est_hectareas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnproduccion_est_hectareas)
-            Me.columnproduccion_est_manzanas = New Global.System.Data.DataColumn("produccion_est_manzanas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnproduccion_est_manzanas)
-            Me.columndestino = New Global.System.Data.DataColumn("destino", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columndestino)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
-            Me.columnid.AutoIncrement = true
-            Me.columnid.AutoIncrementSeed = -1
-            Me.columnid.AutoIncrementStep = -1
-            Me.columnid.AllowDBNull = false
-            Me.columnid.Unique = true
-            Me.columnnombre_productor.MaxLength = 255
-            Me.columnrepresentante_legar.MaxLength = 255
-            Me.columnidentidad_productor.MaxLength = 13
-            Me.columnresidencia_productor.MaxLength = 255
-            Me.columnno_registro_productor.MaxLength = 255
-            Me.columnnombre_multiplicador.MaxLength = 255
-            Me.columncedula_multiplicador.MaxLength = 13
-            Me.columnnombre_finca.MaxLength = 255
+            Me.columnCICLO = New Global.System.Data.DataColumn("CICLO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCICLO)
+            Me.columnAREA_SEMBRADA_HA = New Global.System.Data.DataColumn("AREA_SEMBRADA_HA", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAREA_SEMBRADA_HA)
+            Me.columnVARIEDAD = New Global.System.Data.DataColumn("VARIEDAD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVARIEDAD)
+            Me.columnTIPO_SEMILLA = New Global.System.Data.DataColumn("TIPO_SEMILLA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTIPO_SEMILLA)
+            Me.columnNOMBRE_LOTE_FINCA = New Global.System.Data.DataColumn("NOMBRE_LOTE_FINCA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNOMBRE_LOTE_FINCA)
+            Me.columnProductor.MaxLength = 255
             Me.columndepartamento.MaxLength = 255
             Me.columnmunicipio.MaxLength = 255
-            Me.columnaldea.MaxLength = 255
-            Me.columncaserio.MaxLength = 255
-            Me.columnnombre_persona_finca.MaxLength = 255
-            Me.columnnombre_lote.MaxLength = 255
-            Me.columntipo_cultivo.MaxLength = 255
-            Me.columnvariedad.MaxLength = 255
-            Me.columnlote_no.MaxLength = 255
-            Me.columnyear_produccion.MaxLength = 15
-            Me.columncategoria_semilla.MaxLength = 255
-            Me.columntipo_semilla.MaxLength = 255
-            Me.columncultivo_semilla.MaxLength = 255
-            Me.columnvariedad_frijol.MaxLength = 255
-            Me.columnvariedad_maiz.MaxLength = 255
-            Me.columndestino.MaxLength = 255
+            Me.columnCICLO.MaxLength = 255
+            Me.columnVARIEDAD.MaxLength = 255
+            Me.columnTIPO_SEMILLA.MaxLength = 250
+            Me.columnNOMBRE_LOTE_FINCA.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Newsolicitud_inscripcion_delotesRow() As solicitud_inscripcion_delotesRow
-            Return CType(Me.NewRow,solicitud_inscripcion_delotesRow)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Newvista_inscripcion_senasa_loteRow() As vista_inscripcion_senasa_loteRow
+            Return CType(Me.NewRow,vista_inscripcion_senasa_loteRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New solicitud_inscripcion_delotesRow(builder)
+            Return New vista_inscripcion_senasa_loteRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(solicitud_inscripcion_delotesRow)
+            Return GetType(vista_inscripcion_senasa_loteRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.solicitud_inscripcion_delotesRowChangedEvent) Is Nothing) Then
-                RaiseEvent solicitud_inscripcion_delotesRowChanged(Me, New solicitud_inscripcion_delotesRowChangeEvent(CType(e.Row,solicitud_inscripcion_delotesRow), e.Action))
+            If (Not (Me.vista_inscripcion_senasa_loteRowChangedEvent) Is Nothing) Then
+                RaiseEvent vista_inscripcion_senasa_loteRowChanged(Me, New vista_inscripcion_senasa_loteRowChangeEvent(CType(e.Row,vista_inscripcion_senasa_loteRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.solicitud_inscripcion_delotesRowChangingEvent) Is Nothing) Then
-                RaiseEvent solicitud_inscripcion_delotesRowChanging(Me, New solicitud_inscripcion_delotesRowChangeEvent(CType(e.Row,solicitud_inscripcion_delotesRow), e.Action))
+            If (Not (Me.vista_inscripcion_senasa_loteRowChangingEvent) Is Nothing) Then
+                RaiseEvent vista_inscripcion_senasa_loteRowChanging(Me, New vista_inscripcion_senasa_loteRowChangeEvent(CType(e.Row,vista_inscripcion_senasa_loteRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.solicitud_inscripcion_delotesRowDeletedEvent) Is Nothing) Then
-                RaiseEvent solicitud_inscripcion_delotesRowDeleted(Me, New solicitud_inscripcion_delotesRowChangeEvent(CType(e.Row,solicitud_inscripcion_delotesRow), e.Action))
+            If (Not (Me.vista_inscripcion_senasa_loteRowDeletedEvent) Is Nothing) Then
+                RaiseEvent vista_inscripcion_senasa_loteRowDeleted(Me, New vista_inscripcion_senasa_loteRowChangeEvent(CType(e.Row,vista_inscripcion_senasa_loteRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.solicitud_inscripcion_delotesRowDeletingEvent) Is Nothing) Then
-                RaiseEvent solicitud_inscripcion_delotesRowDeleting(Me, New solicitud_inscripcion_delotesRowChangeEvent(CType(e.Row,solicitud_inscripcion_delotesRow), e.Action))
+            If (Not (Me.vista_inscripcion_senasa_loteRowDeletingEvent) Is Nothing) Then
+                RaiseEvent vista_inscripcion_senasa_loteRowDeleting(Me, New vista_inscripcion_senasa_loteRowChangeEvent(CType(e.Row,vista_inscripcion_senasa_loteRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Removesolicitud_inscripcion_delotesRow(ByVal row As solicitud_inscripcion_delotesRow)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Removevista_inscripcion_senasa_loteRow(ByVal row As vista_inscripcion_senasa_loteRow)
             Me.Rows.Remove(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
@@ -1984,7 +581,7 @@ Partial Public Class DataSet1
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "solicitud_inscripcion_delotesDataTable"
+            attribute2.FixedValue = "vista_inscripcion_senasa_loteDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -2031,2413 +628,272 @@ Partial Public Class DataSet1
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class bcs_inscripcion_senasaRow
+    Partial Public Class vista_inscripcion_senasa_loteRow
         Inherits Global.System.Data.DataRow
         
-        Private tablebcs_inscripcion_senasa As bcs_inscripcion_senasaDataTable
+        Private tablevista_inscripcion_senasa_lote As vista_inscripcion_senasa_loteDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tablebcs_inscripcion_senasa = CType(Me.Table,bcs_inscripcion_senasaDataTable)
+            Me.tablevista_inscripcion_senasa_lote = CType(Me.Table,vista_inscripcion_senasa_loteDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ID() As Integer
-            Get
-                Return CType(Me(Me.tablebcs_inscripcion_senasa.IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COD_BCS() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COD_BCSColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COD_BCS' de la tabla 'bcs_inscripcion_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COD_BCSColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COD_PRODUCTOR() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COD_PRODUCTORColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COD_PRODUCTOR' de la tabla 'bcs_inscripcion_senasa' es DB"& _ 
-                            "Null.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COD_PRODUCTORColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property Productor() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.ProductorColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.ProductorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Productor' de la tabla 'bcs_inscripcion_senasa' es DBNull"& _ 
-                            ".", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.ProductorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property Departamento() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.DepartamentoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Departamento' de la tabla 'bcs_inscripcion_senasa' es DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.DepartamentoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CICLO() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.CICLOColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CICLO' de la tabla 'bcs_inscripcion_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.CICLOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property VARIEDAD() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.VARIEDADColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'VARIEDAD' de la tabla 'bcs_inscripcion_senasa' es DBNull."& _ 
-                            "", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.VARIEDADColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CATEGORIA() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.CATEGORIAColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CATEGORIA' de la tabla 'bcs_inscripcion_senasa' es DBNull"& _ 
-                            ".", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.CATEGORIAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property INVENTARIO_EN_DICTA() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.INVENTARIO_EN_DICTAColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'INVENTARIO_EN_DICTA' de la tabla 'bcs_inscripcion_senasa'"& _ 
-                            " es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.INVENTARIO_EN_DICTAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property PROYECTO() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.PROYECTOColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PROYECTO' de la tabla 'bcs_inscripcion_senasa' es DBNull."& _ 
-                            "", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.PROYECTOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property FECHA_SIEMBRA() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRAColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA_SIEMBRA' de la tabla 'bcs_inscripcion_senasa' es DB"& _ 
-                            "Null.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property SEMILLA_A_PRODUCIR() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.SEMILLA_A_PRODUCIRColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SEMILLA_A_PRODUCIR' de la tabla 'bcs_inscripcion_senasa' "& _ 
-                            "es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.SEMILLA_A_PRODUCIRColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property AREA_SEMBRADA2() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA2Column),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AREA_SEMBRADA2' de la tabla 'bcs_inscripcion_senasa' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property AREA_SEMBRADA_MZ() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_MZColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AREA_SEMBRADA_MZ' de la tabla 'bcs_inscripcion_senasa' es"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Productor' de la tabla 'vista_inscripcion_senasa_lote' es"& _ 
                             " DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_MZColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.ProductorColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property AREA_SEMBRADA_HA() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_HAColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AREA_SEMBRADA_HA' de la tabla 'bcs_inscripcion_senasa' es"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_HAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property FECHA_SEMBRARA() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.FECHA_SEMBRARAColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA_SEMBRARA' de la tabla 'bcs_inscripcion_senasa' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.FECHA_SEMBRARAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property REQUERIEMIENTO_REGISTRADA_QQ() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.REQUERIEMIENTO_REGISTRADA_QQColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'REQUERIEMIENTO_REGISTRADA_QQ' de la tabla 'bcs_inscripcio"& _ 
-                            "n_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.REQUERIEMIENTO_REGISTRADA_QQColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CANTIDAD_LOTES_SEMBRAR() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.CANTIDAD_LOTES_SEMBRARColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CANTIDAD_LOTES_SEMBRAR' de la tabla 'bcs_inscripcion_sena"& _ 
-                            "sa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.CANTIDAD_LOTES_SEMBRARColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property NOMBRE_LOTE_FINCA() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.NOMBRE_LOTE_FINCAColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NOMBRE_LOTE_FINCA' de la tabla 'bcs_inscripcion_senasa' e"& _ 
-                            "s DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.NOMBRE_LOTE_FINCAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ESTIMADO_PRO_QQ_MZ() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_MZColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTIMADO_PRO_QQ_MZ' de la tabla 'bcs_inscripcion_senasa' "& _ 
-                            "es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_MZColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ESTIMADO_PRO_QQ_HA() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_HAColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTIMADO_PRO_QQ_HA' de la tabla 'bcs_inscripcion_senasa' "& _ 
-                            "es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_HAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ESTIMADO_PRODUCIR_QQ() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTIMADO_PRODUCIR_QQ' de la tabla 'bcs_inscripcion_senasa"& _ 
-                            "' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ESTIMADO_PRODUCIR_QQHA() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQHAColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTIMADO_PRODUCIR_QQHA' de la tabla 'bcs_inscripcion_sena"& _ 
-                            "sa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQHAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property TIPO_SEMILLA() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.TIPO_SEMILLAColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TIPO_SEMILLA' de la tabla 'bcs_inscripcion_senasa' es DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.TIPO_SEMILLAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IMAGEN_FICHA() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.IMAGEN_FICHAColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'IMAGEN_FICHA' de la tabla 'bcs_inscripcion_senasa' es DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.IMAGEN_FICHAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IMAGEN_PAGO_TGR() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.IMAGEN_PAGO_TGRColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'IMAGEN_PAGO_TGR' de la tabla 'bcs_inscripcion_senasa' es "& _ 
-                            "DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.IMAGEN_PAGO_TGRColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IMAGEN_ETIQUETA_SEMILLA() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.IMAGEN_ETIQUETA_SEMILLAColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'IMAGEN_ETIQUETA_SEMILLA' de la tabla 'bcs_inscripcion_sen"& _ 
-                            "asa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.IMAGEN_ETIQUETA_SEMILLAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property FECHA_SIEMBRA2() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRA2Column),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA_SIEMBRA2' de la tabla 'bcs_inscripcion_senasa' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRA2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property AREA_PERDIDA() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.AREA_PERDIDAColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AREA_PERDIDA' de la tabla 'bcs_inscripcion_senasa' es DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.AREA_PERDIDAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CAUSAS_PERDIDAS() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.CAUSAS_PERDIDASColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CAUSAS_PERDIDAS' de la tabla 'bcs_inscripcion_senasa' es "& _ 
-                            "DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.CAUSAS_PERDIDASColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property QQ_PRODUCCION() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.QQ_PRODUCCIONColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'QQ_PRODUCCION' de la tabla 'bcs_inscripcion_senasa' es DB"& _ 
-                            "Null.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.QQ_PRODUCCIONColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property QQ_ORO() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.QQ_OROColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'QQ_ORO' de la tabla 'bcs_inscripcion_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.QQ_OROColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property QQ_CONSUMO() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.QQ_CONSUMOColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'QQ_CONSUMO' de la tabla 'bcs_inscripcion_senasa' es DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.QQ_CONSUMOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property QQ_BASURA() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.QQ_BASURAColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'QQ_BASURA' de la tabla 'bcs_inscripcion_senasa' es DBNull"& _ 
-                            ".", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.QQ_BASURAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTOS_INSUMOS() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTOS_INSUMOSColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTOS_INSUMOS' de la tabla 'bcs_inscripcion_senasa' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTOS_INSUMOSColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTOS_MANO() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTOS_MANOColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTOS_MANO' de la tabla 'bcs_inscripcion_senasa' es DBNu"& _ 
-                            "ll.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTOS_MANOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTOS_EQUIPO() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTOS_EQUIPOColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTOS_EQUIPO' de la tabla 'bcs_inscripcion_senasa' es DB"& _ 
-                            "Null.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTOS_EQUIPOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTOS_OTROS() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTOS_OTROSColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTOS_OTROS' de la tabla 'bcs_inscripcion_senasa' es DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTOS_OTROSColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTOS_INSCRIPCION() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTOS_INSCRIPCIONColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTOS_INSCRIPCION' de la tabla 'bcs_inscripcion_senasa' "& _ 
-                            "es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTOS_INSCRIPCIONColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTOS_ACONDICIONAMIENTO_SEMILLA() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTOS_ACONDICIONAMIENTO_SEMILLAColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTOS_ACONDICIONAMIENTO_SEMILLA' de la tabla 'bcs_inscri"& _ 
-                            "pcion_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTOS_ACONDICIONAMIENTO_SEMILLAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property COSTO_TOTAL() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.COSTO_TOTALColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'COSTO_TOTAL' de la tabla 'bcs_inscripcion_senasa' es DBNu"& _ 
-                            "ll.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.COSTO_TOTALColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property FechaMod() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.FechaModColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaMod' de la tabla 'bcs_inscripcion_senasa' es DBNull."& _ 
-                            "", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.FechaModColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property REGISTROVENTAS() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.REGISTROVENTASColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'REGISTROVENTAS' de la tabla 'bcs_inscripcion_senasa' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.REGISTROVENTASColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property Eliminado() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.EliminadoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Eliminado' de la tabla 'bcs_inscripcion_senasa' es DBNull"& _ 
-                            ".", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.EliminadoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property Habilitado() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.HabilitadoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Habilitado' de la tabla 'bcs_inscripcion_senasa' es DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.HabilitadoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property Tipo_costo() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.Tipo_costoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipo_costo' de la tabla 'bcs_inscripcion_senasa' es DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.Tipo_costoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property usuario() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.usuarioColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'usuario' de la tabla 'bcs_inscripcion_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.usuarioColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property Estado() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablebcs_inscripcion_senasa.EstadoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Estado' de la tabla 'bcs_inscripcion_senasa' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablebcs_inscripcion_senasa.EstadoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOD_BCSNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COD_BCSColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOD_BCSNull()
-            Me(Me.tablebcs_inscripcion_senasa.COD_BCSColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOD_PRODUCTORNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COD_PRODUCTORColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOD_PRODUCTORNull()
-            Me(Me.tablebcs_inscripcion_senasa.COD_PRODUCTORColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsProductorNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.ProductorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetProductorNull()
-            Me(Me.tablebcs_inscripcion_senasa.ProductorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsDepartamentoNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.DepartamentoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetDepartamentoNull()
-            Me(Me.tablebcs_inscripcion_senasa.DepartamentoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCICLONull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.CICLOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCICLONull()
-            Me(Me.tablebcs_inscripcion_senasa.CICLOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsVARIEDADNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.VARIEDADColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetVARIEDADNull()
-            Me(Me.tablebcs_inscripcion_senasa.VARIEDADColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCATEGORIANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.CATEGORIAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCATEGORIANull()
-            Me(Me.tablebcs_inscripcion_senasa.CATEGORIAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsINVENTARIO_EN_DICTANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.INVENTARIO_EN_DICTAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetINVENTARIO_EN_DICTANull()
-            Me(Me.tablebcs_inscripcion_senasa.INVENTARIO_EN_DICTAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsPROYECTONull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.PROYECTOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetPROYECTONull()
-            Me(Me.tablebcs_inscripcion_senasa.PROYECTOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsFECHA_SIEMBRANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetFECHA_SIEMBRANull()
-            Me(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsSEMILLA_A_PRODUCIRNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.SEMILLA_A_PRODUCIRColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetSEMILLA_A_PRODUCIRNull()
-            Me(Me.tablebcs_inscripcion_senasa.SEMILLA_A_PRODUCIRColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsAREA_SEMBRADA2Null() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetAREA_SEMBRADA2Null()
-            Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsAREA_SEMBRADA_MZNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_MZColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetAREA_SEMBRADA_MZNull()
-            Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_MZColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsAREA_SEMBRADA_HANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_HAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetAREA_SEMBRADA_HANull()
-            Me(Me.tablebcs_inscripcion_senasa.AREA_SEMBRADA_HAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsFECHA_SEMBRARANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.FECHA_SEMBRARAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetFECHA_SEMBRARANull()
-            Me(Me.tablebcs_inscripcion_senasa.FECHA_SEMBRARAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsREQUERIEMIENTO_REGISTRADA_QQNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.REQUERIEMIENTO_REGISTRADA_QQColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetREQUERIEMIENTO_REGISTRADA_QQNull()
-            Me(Me.tablebcs_inscripcion_senasa.REQUERIEMIENTO_REGISTRADA_QQColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCANTIDAD_LOTES_SEMBRARNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.CANTIDAD_LOTES_SEMBRARColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCANTIDAD_LOTES_SEMBRARNull()
-            Me(Me.tablebcs_inscripcion_senasa.CANTIDAD_LOTES_SEMBRARColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsNOMBRE_LOTE_FINCANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.NOMBRE_LOTE_FINCAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetNOMBRE_LOTE_FINCANull()
-            Me(Me.tablebcs_inscripcion_senasa.NOMBRE_LOTE_FINCAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsESTIMADO_PRO_QQ_MZNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_MZColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetESTIMADO_PRO_QQ_MZNull()
-            Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_MZColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsESTIMADO_PRO_QQ_HANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_HAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetESTIMADO_PRO_QQ_HANull()
-            Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRO_QQ_HAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsESTIMADO_PRODUCIR_QQNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetESTIMADO_PRODUCIR_QQNull()
-            Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsESTIMADO_PRODUCIR_QQHANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQHAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetESTIMADO_PRODUCIR_QQHANull()
-            Me(Me.tablebcs_inscripcion_senasa.ESTIMADO_PRODUCIR_QQHAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsTIPO_SEMILLANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.TIPO_SEMILLAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetTIPO_SEMILLANull()
-            Me(Me.tablebcs_inscripcion_senasa.TIPO_SEMILLAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsIMAGEN_FICHANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.IMAGEN_FICHAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetIMAGEN_FICHANull()
-            Me(Me.tablebcs_inscripcion_senasa.IMAGEN_FICHAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsIMAGEN_PAGO_TGRNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.IMAGEN_PAGO_TGRColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetIMAGEN_PAGO_TGRNull()
-            Me(Me.tablebcs_inscripcion_senasa.IMAGEN_PAGO_TGRColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsIMAGEN_ETIQUETA_SEMILLANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.IMAGEN_ETIQUETA_SEMILLAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetIMAGEN_ETIQUETA_SEMILLANull()
-            Me(Me.tablebcs_inscripcion_senasa.IMAGEN_ETIQUETA_SEMILLAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsFECHA_SIEMBRA2Null() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRA2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetFECHA_SIEMBRA2Null()
-            Me(Me.tablebcs_inscripcion_senasa.FECHA_SIEMBRA2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsAREA_PERDIDANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.AREA_PERDIDAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetAREA_PERDIDANull()
-            Me(Me.tablebcs_inscripcion_senasa.AREA_PERDIDAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCAUSAS_PERDIDASNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.CAUSAS_PERDIDASColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCAUSAS_PERDIDASNull()
-            Me(Me.tablebcs_inscripcion_senasa.CAUSAS_PERDIDASColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsQQ_PRODUCCIONNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.QQ_PRODUCCIONColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetQQ_PRODUCCIONNull()
-            Me(Me.tablebcs_inscripcion_senasa.QQ_PRODUCCIONColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsQQ_ORONull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.QQ_OROColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetQQ_ORONull()
-            Me(Me.tablebcs_inscripcion_senasa.QQ_OROColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsQQ_CONSUMONull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.QQ_CONSUMOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetQQ_CONSUMONull()
-            Me(Me.tablebcs_inscripcion_senasa.QQ_CONSUMOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsQQ_BASURANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.QQ_BASURAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetQQ_BASURANull()
-            Me(Me.tablebcs_inscripcion_senasa.QQ_BASURAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTOS_INSUMOSNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTOS_INSUMOSColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTOS_INSUMOSNull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTOS_INSUMOSColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTOS_MANONull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTOS_MANOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTOS_MANONull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTOS_MANOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTOS_EQUIPONull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTOS_EQUIPOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTOS_EQUIPONull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTOS_EQUIPOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTOS_OTROSNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTOS_OTROSColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTOS_OTROSNull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTOS_OTROSColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTOS_INSCRIPCIONNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTOS_INSCRIPCIONColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTOS_INSCRIPCIONNull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTOS_INSCRIPCIONColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTOS_ACONDICIONAMIENTO_SEMILLANull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTOS_ACONDICIONAMIENTO_SEMILLAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTOS_ACONDICIONAMIENTO_SEMILLANull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTOS_ACONDICIONAMIENTO_SEMILLAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCOSTO_TOTALNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.COSTO_TOTALColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCOSTO_TOTALNull()
-            Me(Me.tablebcs_inscripcion_senasa.COSTO_TOTALColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsFechaModNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.FechaModColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetFechaModNull()
-            Me(Me.tablebcs_inscripcion_senasa.FechaModColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsREGISTROVENTASNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.REGISTROVENTASColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetREGISTROVENTASNull()
-            Me(Me.tablebcs_inscripcion_senasa.REGISTROVENTASColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsEliminadoNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.EliminadoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetEliminadoNull()
-            Me(Me.tablebcs_inscripcion_senasa.EliminadoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsHabilitadoNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.HabilitadoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetHabilitadoNull()
-            Me(Me.tablebcs_inscripcion_senasa.HabilitadoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsTipo_costoNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.Tipo_costoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetTipo_costoNull()
-            Me(Me.tablebcs_inscripcion_senasa.Tipo_costoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsusuarioNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.usuarioColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetusuarioNull()
-            Me(Me.tablebcs_inscripcion_senasa.usuarioColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsEstadoNull() As Boolean
-            Return Me.IsNull(Me.tablebcs_inscripcion_senasa.EstadoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetEstadoNull()
-            Me(Me.tablebcs_inscripcion_senasa.EstadoColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class solicitud_inscripcion_delotesRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tablesolicitud_inscripcion_delotes As solicitud_inscripcion_delotesDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tablesolicitud_inscripcion_delotes = CType(Me.Table,solicitud_inscripcion_delotesDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property id() As Integer
-            Get
-                Return CType(Me(Me.tablesolicitud_inscripcion_delotes.idColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.idColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property nombre_productor() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.nombre_productorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre_productor' de la tabla 'solicitud_inscripcion_delo"& _ 
-                            "tes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.nombre_productorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property representante_legar() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.representante_legarColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'representante_legar' de la tabla 'solicitud_inscripcion_d"& _ 
-                            "elotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.representante_legarColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property identidad_productor() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.identidad_productorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'identidad_productor' de la tabla 'solicitud_inscripcion_d"& _ 
-                            "elotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.identidad_productorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property extendida() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.extendidaColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'extendida' de la tabla 'solicitud_inscripcion_delotes' es"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.extendidaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property residencia_productor() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.residencia_productorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'residencia_productor' de la tabla 'solicitud_inscripcion_"& _ 
-                            "delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.residencia_productorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property telefono_productor() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.telefono_productorColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'telefono_productor' de la tabla 'solicitud_inscripcion_de"& _ 
-                            "lotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.telefono_productorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property no_registro_productor() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.no_registro_productorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_registro_productor' de la tabla 'solicitud_inscripcion"& _ 
-                            "_delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.no_registro_productorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property nombre_multiplicador() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.nombre_multiplicadorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre_multiplicador' de la tabla 'solicitud_inscripcion_"& _ 
-                            "delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.nombre_multiplicadorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property cedula_multiplicador() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.cedula_multiplicadorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cedula_multiplicador' de la tabla 'solicitud_inscripcion_"& _ 
-                            "delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.cedula_multiplicadorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property telefono_multiplicador() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicadorColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'telefono_multiplicador' de la tabla 'solicitud_inscripcio"& _ 
-                            "n_delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicadorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property nombre_finca() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.nombre_fincaColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre_finca' de la tabla 'solicitud_inscripcion_delotes'"& _ 
-                            " es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.nombre_fincaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property departamento() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.departamentoColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.departamentoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'departamento' de la tabla 'solicitud_inscripcion_delotes'"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'departamento' de la tabla 'vista_inscripcion_senasa_lote'"& _ 
                             " es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.departamentoColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.departamentoColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property municipio() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.municipioColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.municipioColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'municipio' de la tabla 'solicitud_inscripcion_delotes' es"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'municipio' de la tabla 'vista_inscripcion_senasa_lote' es"& _ 
                             " DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.municipioColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.municipioColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property aldea() As String
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CICLO() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.aldeaColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.CICLOColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'aldea' de la tabla 'solicitud_inscripcion_delotes' es DBN"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CICLO' de la tabla 'vista_inscripcion_senasa_lote' es DBN"& _ 
                             "ull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.aldeaColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.CICLOColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property caserio() As String
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AREA_SEMBRADA_HA() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.caserioColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.AREA_SEMBRADA_HAColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'caserio' de la tabla 'solicitud_inscripcion_delotes' es D"& _ 
-                            "BNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AREA_SEMBRADA_HA' de la tabla 'vista_inscripcion_senasa_l"& _ 
+                            "ote' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.caserioColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.AREA_SEMBRADA_HAColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property nombre_persona_finca() As String
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property VARIEDAD() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.nombre_persona_fincaColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.VARIEDADColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre_persona_finca' de la tabla 'solicitud_inscripcion_"& _ 
-                            "delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.nombre_persona_fincaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property nombre_lote() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.nombre_loteColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre_lote' de la tabla 'solicitud_inscripcion_delotes' "& _ 
-                            "es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.nombre_loteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property croquis() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.croquisColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'croquis' de la tabla 'solicitud_inscripcion_delotes' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.croquisColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property tipo_cultivo() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.tipo_cultivoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'tipo_cultivo' de la tabla 'solicitud_inscripcion_delotes'"& _ 
-                            " es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.tipo_cultivoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property variedad() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.variedadColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'variedad' de la tabla 'solicitud_inscripcion_delotes' es "& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'VARIEDAD' de la tabla 'vista_inscripcion_senasa_lote' es "& _ 
                             "DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.variedadColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.VARIEDADColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lote_no() As String
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TIPO_SEMILLA() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.lote_noColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.TIPO_SEMILLAColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_no' de la tabla 'solicitud_inscripcion_delotes' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.lote_noColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property fecha_analisis() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.fecha_analisisColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_analisis' de la tabla 'solicitud_inscripcion_delote"& _ 
-                            "s' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.fecha_analisisColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property year_produccion() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.year_produccionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'year_produccion' de la tabla 'solicitud_inscripcion_delot"& _ 
-                            "es' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.year_produccionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property categoria_semilla() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.categoria_semillaColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'categoria_semilla' de la tabla 'solicitud_inscripcion_del"& _ 
-                            "otes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.categoria_semillaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property tipo_semilla() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.tipo_semillaColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'tipo_semilla' de la tabla 'solicitud_inscripcion_delotes'"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TIPO_SEMILLA' de la tabla 'vista_inscripcion_senasa_lote'"& _ 
                             " es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.tipo_semillaColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.TIPO_SEMILLAColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property cultivo_semilla() As String
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property NOMBRE_LOTE_FINCA() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.cultivo_semillaColumn),String)
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTE_FINCAColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cultivo_semilla' de la tabla 'solicitud_inscripcion_delot"& _ 
-                            "es' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NOMBRE_LOTE_FINCA' de la tabla 'vista_inscripcion_senasa_"& _ 
+                            "lote' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablesolicitud_inscripcion_delotes.cultivo_semillaColumn) = value
+                Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTE_FINCAColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property variedad_frijol() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.variedad_frijolColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'variedad_frijol' de la tabla 'solicitud_inscripcion_delot"& _ 
-                            "es' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.variedad_frijolColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property variedad_maiz() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.variedad_maizColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'variedad_maiz' de la tabla 'solicitud_inscripcion_delotes"& _ 
-                            "' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.variedad_maizColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property superficie_hectarea() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.superficie_hectareaColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'superficie_hectarea' de la tabla 'solicitud_inscripcion_d"& _ 
-                            "elotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.superficie_hectareaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property superficie_mz() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.superficie_mzColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'superficie_mz' de la tabla 'solicitud_inscripcion_delotes"& _ 
-                            "' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.superficie_mzColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property fecha_aprox_siembra() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_siembraColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_aprox_siembra' de la tabla 'solicitud_inscripcion_d"& _ 
-                            "elotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_siembraColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property fecha_aprox_cosecha() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_cosechaColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_aprox_cosecha' de la tabla 'solicitud_inscripcion_d"& _ 
-                            "elotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_cosechaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property produccion_est_hectareas() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.produccion_est_hectareasColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'produccion_est_hectareas' de la tabla 'solicitud_inscripc"& _ 
-                            "ion_delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.produccion_est_hectareasColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property produccion_est_manzanas() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.produccion_est_manzanasColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'produccion_est_manzanas' de la tabla 'solicitud_inscripci"& _ 
-                            "on_delotes' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.produccion_est_manzanasColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property destino() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.destinoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'destino' de la tabla 'solicitud_inscripcion_delotes' es D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesolicitud_inscripcion_delotes.destinoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isnombre_productorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_productorColumn)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsProductorNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.ProductorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setnombre_productorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.nombre_productorColumn) = Global.System.Convert.DBNull
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetProductorNull()
+            Me(Me.tablevista_inscripcion_senasa_lote.ProductorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isrepresentante_legarNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.representante_legarColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setrepresentante_legarNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.representante_legarColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isidentidad_productorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.identidad_productorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setidentidad_productorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.identidad_productorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsextendidaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.extendidaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetextendidaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.extendidaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isresidencia_productorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.residencia_productorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setresidencia_productorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.residencia_productorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Istelefono_productorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.telefono_productorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Settelefono_productorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.telefono_productorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isno_registro_productorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.no_registro_productorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setno_registro_productorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.no_registro_productorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isnombre_multiplicadorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_multiplicadorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setnombre_multiplicadorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.nombre_multiplicadorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Iscedula_multiplicadorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.cedula_multiplicadorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setcedula_multiplicadorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.cedula_multiplicadorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Istelefono_multiplicadorNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicadorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Settelefono_multiplicadorNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicadorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isnombre_fincaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_fincaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setnombre_fincaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.nombre_fincaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsdepartamentoNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.departamentoColumn)
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.departamentoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetdepartamentoNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.departamentoColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevista_inscripcion_senasa_lote.departamentoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsmunicipioNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.municipioColumn)
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.municipioColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetmunicipioNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.municipioColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevista_inscripcion_senasa_lote.municipioColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsaldeaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.aldeaColumn)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCICLONull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.CICLOColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetaldeaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.aldeaColumn) = Global.System.Convert.DBNull
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCICLONull()
+            Me(Me.tablevista_inscripcion_senasa_lote.CICLOColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IscaserioNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.caserioColumn)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAREA_SEMBRADA_HANull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.AREA_SEMBRADA_HAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetcaserioNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.caserioColumn) = Global.System.Convert.DBNull
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAREA_SEMBRADA_HANull()
+            Me(Me.tablevista_inscripcion_senasa_lote.AREA_SEMBRADA_HAColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isnombre_persona_fincaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_persona_fincaColumn)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsVARIEDADNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.VARIEDADColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setnombre_persona_fincaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.nombre_persona_fincaColumn) = Global.System.Convert.DBNull
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetVARIEDADNull()
+            Me(Me.tablevista_inscripcion_senasa_lote.VARIEDADColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isnombre_loteNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_loteColumn)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTIPO_SEMILLANull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.TIPO_SEMILLAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setnombre_loteNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.nombre_loteColumn) = Global.System.Convert.DBNull
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTIPO_SEMILLANull()
+            Me(Me.tablevista_inscripcion_senasa_lote.TIPO_SEMILLAColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IscroquisNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.croquisColumn)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNOMBRE_LOTE_FINCANull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTE_FINCAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetcroquisNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.croquisColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Istipo_cultivoNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.tipo_cultivoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Settipo_cultivoNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.tipo_cultivoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsvariedadNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.variedadColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetvariedadNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.variedadColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Islote_noNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.lote_noColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setlote_noNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.lote_noColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isfecha_analisisNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.fecha_analisisColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setfecha_analisisNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.fecha_analisisColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isyear_produccionNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.year_produccionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setyear_produccionNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.year_produccionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Iscategoria_semillaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.categoria_semillaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setcategoria_semillaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.categoria_semillaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Istipo_semillaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.tipo_semillaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Settipo_semillaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.tipo_semillaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Iscultivo_semillaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.cultivo_semillaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setcultivo_semillaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.cultivo_semillaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isvariedad_frijolNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.variedad_frijolColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setvariedad_frijolNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.variedad_frijolColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isvariedad_maizNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.variedad_maizColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setvariedad_maizNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.variedad_maizColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Issuperficie_hectareaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.superficie_hectareaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setsuperficie_hectareaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.superficie_hectareaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Issuperficie_mzNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.superficie_mzColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setsuperficie_mzNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.superficie_mzColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isfecha_aprox_siembraNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_siembraColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setfecha_aprox_siembraNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_siembraColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isfecha_aprox_cosechaNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_cosechaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setfecha_aprox_cosechaNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.fecha_aprox_cosechaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isproduccion_est_hectareasNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.produccion_est_hectareasColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setproduccion_est_hectareasNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.produccion_est_hectareasColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function Isproduccion_est_manzanasNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.produccion_est_manzanasColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub Setproduccion_est_manzanasNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.produccion_est_manzanasColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsdestinoNull() As Boolean
-            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.destinoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetdestinoNull()
-            Me(Me.tablesolicitud_inscripcion_delotes.destinoColumn) = Global.System.Convert.DBNull
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNOMBRE_LOTE_FINCANull()
+            Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTE_FINCAColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
     '''<summary>
     '''Row event argument class
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class bcs_inscripcion_senasaRowChangeEvent
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class vista_inscripcion_senasa_loteRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As bcs_inscripcion_senasaRow
+        Private eventRow As vista_inscripcion_senasa_loteRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As bcs_inscripcion_senasaRow, ByVal action As Global.System.Data.DataRowAction)
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As vista_inscripcion_senasa_loteRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As bcs_inscripcion_senasaRow
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As vista_inscripcion_senasa_loteRow
             Get
                 Return Me.eventRow
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class solicitud_inscripcion_delotesRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As solicitud_inscripcion_delotesRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As solicitud_inscripcion_delotesRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As solicitud_inscripcion_delotesRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Action() As Global.System.Data.DataRowAction
             Get
                 Return Me.eventAction
@@ -4457,7 +913,7 @@ Namespace DataSet1TableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class bcs_inscripcion_senasaTableAdapter
+    Partial Public Class vista_inscripcion_senasa_loteTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
@@ -4471,14 +927,14 @@ Namespace DataSet1TableAdapters
         Private _clearBeforeFill As Boolean
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
             MyBase.New
             Me.ClearBeforeFill = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
@@ -4489,7 +945,7 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
@@ -4519,7 +975,7 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Property Transaction() As Global.MySql.Data.MySqlClient.MySqlTransaction
             Get
                 Return Me._transaction
@@ -4547,7 +1003,7 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
@@ -4558,7 +1014,7 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property ClearBeforeFill() As Boolean
             Get
                 Return Me._clearBeforeFill
@@ -4569,2221 +1025,47 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitAdapter()
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "bcs_inscripcion_senasa"
-            tableMapping.ColumnMappings.Add("ID", "ID")
-            tableMapping.ColumnMappings.Add("COD_BCS", "COD_BCS")
-            tableMapping.ColumnMappings.Add("COD_PRODUCTOR", "COD_PRODUCTOR")
+            tableMapping.DataSetTable = "vista_inscripcion_senasa_lote"
             tableMapping.ColumnMappings.Add("Productor", "Productor")
-            tableMapping.ColumnMappings.Add("Departamento", "Departamento")
-            tableMapping.ColumnMappings.Add("CICLO", "CICLO")
-            tableMapping.ColumnMappings.Add("VARIEDAD", "VARIEDAD")
-            tableMapping.ColumnMappings.Add("CATEGORIA", "CATEGORIA")
-            tableMapping.ColumnMappings.Add("INVENTARIO_EN_DICTA", "INVENTARIO_EN_DICTA")
-            tableMapping.ColumnMappings.Add("PROYECTO", "PROYECTO")
-            tableMapping.ColumnMappings.Add("FECHA_SIEMBRA", "FECHA_SIEMBRA")
-            tableMapping.ColumnMappings.Add("SEMILLA_A_PRODUCIR", "SEMILLA_A_PRODUCIR")
-            tableMapping.ColumnMappings.Add("AREA_SEMBRADA2", "AREA_SEMBRADA2")
-            tableMapping.ColumnMappings.Add("AREA_SEMBRADA_MZ", "AREA_SEMBRADA_MZ")
-            tableMapping.ColumnMappings.Add("AREA_SEMBRADA_HA", "AREA_SEMBRADA_HA")
-            tableMapping.ColumnMappings.Add("FECHA_SEMBRARA", "FECHA_SEMBRARA")
-            tableMapping.ColumnMappings.Add("REQUERIEMIENTO_REGISTRADA_QQ", "REQUERIEMIENTO_REGISTRADA_QQ")
-            tableMapping.ColumnMappings.Add("CANTIDAD_LOTES_SEMBRAR", "CANTIDAD_LOTES_SEMBRAR")
-            tableMapping.ColumnMappings.Add("NOMBRE_LOTE_FINCA", "NOMBRE_LOTE_FINCA")
-            tableMapping.ColumnMappings.Add("ESTIMADO_PRO_QQ_MZ", "ESTIMADO_PRO_QQ_MZ")
-            tableMapping.ColumnMappings.Add("ESTIMADO_PRO_QQ_HA", "ESTIMADO_PRO_QQ_HA")
-            tableMapping.ColumnMappings.Add("ESTIMADO_PRODUCIR_QQ", "ESTIMADO_PRODUCIR_QQ")
-            tableMapping.ColumnMappings.Add("ESTIMADO_PRODUCIR_QQHA", "ESTIMADO_PRODUCIR_QQHA")
-            tableMapping.ColumnMappings.Add("TIPO_SEMILLA", "TIPO_SEMILLA")
-            tableMapping.ColumnMappings.Add("IMAGEN_FICHA", "IMAGEN_FICHA")
-            tableMapping.ColumnMappings.Add("IMAGEN_PAGO_TGR", "IMAGEN_PAGO_TGR")
-            tableMapping.ColumnMappings.Add("IMAGEN_ETIQUETA_SEMILLA", "IMAGEN_ETIQUETA_SEMILLA")
-            tableMapping.ColumnMappings.Add("FECHA_SIEMBRA2", "FECHA_SIEMBRA2")
-            tableMapping.ColumnMappings.Add("AREA_PERDIDA", "AREA_PERDIDA")
-            tableMapping.ColumnMappings.Add("CAUSAS_PERDIDAS", "CAUSAS_PERDIDAS")
-            tableMapping.ColumnMappings.Add("QQ_PRODUCCION", "QQ_PRODUCCION")
-            tableMapping.ColumnMappings.Add("QQ_ORO", "QQ_ORO")
-            tableMapping.ColumnMappings.Add("QQ_CONSUMO", "QQ_CONSUMO")
-            tableMapping.ColumnMappings.Add("QQ_BASURA", "QQ_BASURA")
-            tableMapping.ColumnMappings.Add("COSTOS_INSUMOS", "COSTOS_INSUMOS")
-            tableMapping.ColumnMappings.Add("COSTOS_MANO", "COSTOS_MANO")
-            tableMapping.ColumnMappings.Add("COSTOS_EQUIPO", "COSTOS_EQUIPO")
-            tableMapping.ColumnMappings.Add("COSTOS_OTROS", "COSTOS_OTROS")
-            tableMapping.ColumnMappings.Add("COSTOS_INSCRIPCION", "COSTOS_INSCRIPCION")
-            tableMapping.ColumnMappings.Add("COSTOS_ACONDICIONAMIENTO_SEMILLA", "COSTOS_ACONDICIONAMIENTO_SEMILLA")
-            tableMapping.ColumnMappings.Add("COSTO_TOTAL", "COSTO_TOTAL")
-            tableMapping.ColumnMappings.Add("FechaMod", "FechaMod")
-            tableMapping.ColumnMappings.Add("REGISTROVENTAS", "REGISTROVENTAS")
-            tableMapping.ColumnMappings.Add("Eliminado", "Eliminado")
-            tableMapping.ColumnMappings.Add("Habilitado", "Habilitado")
-            tableMapping.ColumnMappings.Add("Tipo_costo", "Tipo_costo")
-            tableMapping.ColumnMappings.Add("usuario", "usuario")
-            tableMapping.ColumnMappings.Add("Estado", "Estado")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `bcs_inscripcion_senasa` WHERE ((`ID` = @p1))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p1"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "ID"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `bcs_inscripcion_senasa` (`COD_BCS`, `COD_PRODUCTOR`, `Productor`, `D"& _ 
-                "epartamento`, `CICLO`, `VARIEDAD`, `CATEGORIA`, `INVENTARIO_EN_DICTA`, `PROYECTO"& _ 
-                "`, `FECHA_SIEMBRA`, `SEMILLA_A_PRODUCIR`, `AREA_SEMBRADA2`, `AREA_SEMBRADA_MZ`, "& _ 
-                "`AREA_SEMBRADA_HA`, `FECHA_SEMBRARA`, `REQUERIEMIENTO_REGISTRADA_QQ`, `CANTIDAD_"& _ 
-                "LOTES_SEMBRAR`, `NOMBRE_LOTE_FINCA`, `ESTIMADO_PRO_QQ_MZ`, `ESTIMADO_PRO_QQ_HA`,"& _ 
-                " `ESTIMADO_PRODUCIR_QQ`, `ESTIMADO_PRODUCIR_QQHA`, `TIPO_SEMILLA`, `IMAGEN_FICHA"& _ 
-                "`, `IMAGEN_PAGO_TGR`, `IMAGEN_ETIQUETA_SEMILLA`, `FECHA_SIEMBRA2`, `AREA_PERDIDA"& _ 
-                "`, `CAUSAS_PERDIDAS`, `QQ_PRODUCCION`, `QQ_ORO`, `QQ_CONSUMO`, `QQ_BASURA`, `COS"& _ 
-                "TOS_INSUMOS`, `COSTOS_MANO`, `COSTOS_EQUIPO`, `COSTOS_OTROS`, `COSTOS_INSCRIPCIO"& _ 
-                "N`, `COSTOS_ACONDICIONAMIENTO_SEMILLA`, `COSTO_TOTAL`, `FechaMod`, `REGISTROVENT"& _ 
-                "AS`, `Eliminado`, `Habilitado`, `Tipo_costo`, `usuario`, `Estado`) VALUES (@p1, "& _ 
-                "@p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16"& _ 
-                ", @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, "& _ 
-                "@p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p"& _ 
-                "43, @p44, @p45, @p46, @p47)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p1"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "COD_BCS"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p2"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "COD_PRODUCTOR"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p3"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Productor"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Departamento"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "CICLO"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "VARIEDAD"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "CATEGORIA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "INVENTARIO_EN_DICTA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "PROYECTO"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "FECHA_SIEMBRA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "SEMILLA_A_PRODUCIR"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p12"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "AREA_SEMBRADA2"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "AREA_SEMBRADA_MZ"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p14"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "AREA_SEMBRADA_HA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p15"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "FECHA_SEMBRARA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p16"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "REQUERIEMIENTO_REGISTRADA_QQ"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p17"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "CANTIDAD_LOTES_SEMBRAR"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p18"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "NOMBRE_LOTE_FINCA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p19"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRO_QQ_MZ"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p20"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRO_QQ_HA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p21"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRODUCIR_QQ"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p22"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRODUCIR_QQHA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p23"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "TIPO_SEMILLA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p24"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "IMAGEN_FICHA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p25"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "IMAGEN_PAGO_TGR"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "IMAGEN_ETIQUETA_SEMILLA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "FECHA_SIEMBRA2"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "AREA_PERDIDA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p29"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "CAUSAS_PERDIDAS"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p30"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "QQ_PRODUCCION"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p31"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "QQ_ORO"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p32"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "QQ_CONSUMO"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p33"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "QQ_BASURA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p34"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_INSUMOS"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p35"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_MANO"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p36"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_EQUIPO"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p37"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_OTROS"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p38"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_INSCRIPCION"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p39"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_ACONDICIONAMIENTO_SEMILLA"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p40"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTO_TOTAL"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p41"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "FechaMod"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p42"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "REGISTROVENTAS"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p43"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Eliminado"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p44"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Habilitado"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p45"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Tipo_costo"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p46"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "usuario"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p47"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Estado"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `bcs_inscripcion_senasa` SET `COD_BCS` = @p1, `COD_PRODUCTOR` = @p2, `Prod"& _ 
-                "uctor` = @p3, `Departamento` = @p4, `CICLO` = @p5, `VARIEDAD` = @p6, `CATEGORIA`"& _ 
-                " = @p7, `INVENTARIO_EN_DICTA` = @p8, `PROYECTO` = @p9, `FECHA_SIEMBRA` = @p10, `"& _ 
-                "SEMILLA_A_PRODUCIR` = @p11, `AREA_SEMBRADA2` = @p12, `AREA_SEMBRADA_MZ` = @p13, "& _ 
-                "`AREA_SEMBRADA_HA` = @p14, `FECHA_SEMBRARA` = @p15, `REQUERIEMIENTO_REGISTRADA_Q"& _ 
-                "Q` = @p16, `CANTIDAD_LOTES_SEMBRAR` = @p17, `NOMBRE_LOTE_FINCA` = @p18, `ESTIMAD"& _ 
-                "O_PRO_QQ_MZ` = @p19, `ESTIMADO_PRO_QQ_HA` = @p20, `ESTIMADO_PRODUCIR_QQ` = @p21,"& _ 
-                " `ESTIMADO_PRODUCIR_QQHA` = @p22, `TIPO_SEMILLA` = @p23, `IMAGEN_FICHA` = @p24, "& _ 
-                "`IMAGEN_PAGO_TGR` = @p25, `IMAGEN_ETIQUETA_SEMILLA` = @p26, `FECHA_SIEMBRA2` = @"& _ 
-                "p27, `AREA_PERDIDA` = @p28, `CAUSAS_PERDIDAS` = @p29, `QQ_PRODUCCION` = @p30, `Q"& _ 
-                "Q_ORO` = @p31, `QQ_CONSUMO` = @p32, `QQ_BASURA` = @p33, `COSTOS_INSUMOS` = @p34,"& _ 
-                " `COSTOS_MANO` = @p35, `COSTOS_EQUIPO` = @p36, `COSTOS_OTROS` = @p37, `COSTOS_IN"& _ 
-                "SCRIPCION` = @p38, `COSTOS_ACONDICIONAMIENTO_SEMILLA` = @p39, `COSTO_TOTAL` = @p"& _ 
-                "40, `FechaMod` = @p41, `REGISTROVENTAS` = @p42, `Eliminado` = @p43, `Habilitado`"& _ 
-                " = @p44, `Tipo_costo` = @p45, `usuario` = @p46, `Estado` = @p47 WHERE ((`ID` = @"& _ 
-                "p48))"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p1"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "COD_BCS"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p2"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "COD_PRODUCTOR"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p3"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Productor"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Departamento"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "CICLO"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "VARIEDAD"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "CATEGORIA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "INVENTARIO_EN_DICTA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "PROYECTO"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "FECHA_SIEMBRA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "SEMILLA_A_PRODUCIR"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p12"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "AREA_SEMBRADA2"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "AREA_SEMBRADA_MZ"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p14"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "AREA_SEMBRADA_HA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p15"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "FECHA_SEMBRARA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p16"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "REQUERIEMIENTO_REGISTRADA_QQ"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p17"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "CANTIDAD_LOTES_SEMBRAR"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p18"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "NOMBRE_LOTE_FINCA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p19"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRO_QQ_MZ"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p20"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRO_QQ_HA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p21"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRODUCIR_QQ"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p22"
-            param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Double]
-            param.IsNullable = true
-            param.SourceColumn = "ESTIMADO_PRODUCIR_QQHA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p23"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "TIPO_SEMILLA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p24"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "IMAGEN_FICHA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p25"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "IMAGEN_PAGO_TGR"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "IMAGEN_ETIQUETA_SEMILLA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "FECHA_SIEMBRA2"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "AREA_PERDIDA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p29"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "CAUSAS_PERDIDAS"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p30"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "QQ_PRODUCCION"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p31"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "QQ_ORO"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p32"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "QQ_CONSUMO"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p33"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "QQ_BASURA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p34"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_INSUMOS"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p35"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_MANO"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p36"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_EQUIPO"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p37"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_OTROS"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p38"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_INSCRIPCION"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p39"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTOS_ACONDICIONAMIENTO_SEMILLA"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p40"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "COSTO_TOTAL"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p41"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "FechaMod"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p42"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "REGISTROVENTAS"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p43"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Eliminado"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p44"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Habilitado"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p45"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Tipo_costo"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p46"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "usuario"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p47"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Estado"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p48"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "ID"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("portal_redpashConnectionString1").ConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `ID`, `COD_BCS`, `COD_PRODUCTOR`, `Productor`, `Departamento`, `CICLO`, `V"& _ 
-                "ARIEDAD`, `CATEGORIA`, `INVENTARIO_EN_DICTA`, `PROYECTO`, `FECHA_SIEMBRA`, `SEMI"& _ 
-                "LLA_A_PRODUCIR`, `AREA_SEMBRADA2`, `AREA_SEMBRADA_MZ`, `AREA_SEMBRADA_HA`, `FECH"& _ 
-                "A_SEMBRARA`, `REQUERIEMIENTO_REGISTRADA_QQ`, `CANTIDAD_LOTES_SEMBRAR`, `NOMBRE_L"& _ 
-                "OTE_FINCA`, `ESTIMADO_PRO_QQ_MZ`, `ESTIMADO_PRO_QQ_HA`, `ESTIMADO_PRODUCIR_QQ`, "& _ 
-                "`ESTIMADO_PRODUCIR_QQHA`, `TIPO_SEMILLA`, `IMAGEN_FICHA`, `IMAGEN_PAGO_TGR`, `IM"& _ 
-                "AGEN_ETIQUETA_SEMILLA`, `FECHA_SIEMBRA2`, `AREA_PERDIDA`, `CAUSAS_PERDIDAS`, `QQ"& _ 
-                "_PRODUCCION`, `QQ_ORO`, `QQ_CONSUMO`, `QQ_BASURA`, `COSTOS_INSUMOS`, `COSTOS_MAN"& _ 
-                "O`, `COSTOS_EQUIPO`, `COSTOS_OTROS`, `COSTOS_INSCRIPCION`, `COSTOS_ACONDICIONAMI"& _ 
-                "ENTO_SEMILLA`, `COSTO_TOTAL`, `FechaMod`, `REGISTROVENTAS`, `Eliminado`, `Habili"& _ 
-                "tado`, `Tipo_costo`, `usuario`, `Estado` FROM `bcs_inscripcion_senasa`"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DataSet1.bcs_inscripcion_senasaDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As DataSet1.bcs_inscripcion_senasaDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As DataSet1.bcs_inscripcion_senasaDataTable = New DataSet1.bcs_inscripcion_senasaDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As DataSet1.bcs_inscripcion_senasaDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As DataSet1) As Integer
-            Return Me.Adapter.Update(dataSet, "bcs_inscripcion_senasa")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal p1 As Integer) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(p1,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal p1 As String,  _
-                    ByVal p2 As String,  _
-                    ByVal p3 As String,  _
-                    ByVal p4 As String,  _
-                    ByVal p5 As String,  _
-                    ByVal p6 As String,  _
-                    ByVal p7 As String,  _
-                    ByVal p8 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p9 As String,  _
-                    ByVal p10 As Global.System.Nullable(Of Date),  _
-                    ByVal p11 As Global.System.Nullable(Of Double),  _
-                    ByVal p12 As Global.System.Nullable(Of Double),  _
-                    ByVal p13 As Global.System.Nullable(Of Double),  _
-                    ByVal p14 As Global.System.Nullable(Of Double),  _
-                    ByVal p15 As Global.System.Nullable(Of Date),  _
-                    ByVal p16 As Global.System.Nullable(Of Double),  _
-                    ByVal p17 As Global.System.Nullable(Of Integer),  _
-                    ByVal p18 As String,  _
-                    ByVal p19 As Global.System.Nullable(Of Double),  _
-                    ByVal p20 As Global.System.Nullable(Of Double),  _
-                    ByVal p21 As Global.System.Nullable(Of Double),  _
-                    ByVal p22 As Global.System.Nullable(Of Double),  _
-                    ByVal p23 As String,  _
-                    ByVal p24 As Object,  _
-                    ByVal p25 As Object,  _
-                    ByVal p26 As Object,  _
-                    ByVal p27 As Global.System.Nullable(Of Date),  _
-                    ByVal p28 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p29 As String,  _
-                    ByVal p30 As String,  _
-                    ByVal p31 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p32 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p33 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p34 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p35 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p36 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p37 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p38 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p39 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p40 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p41 As Global.System.Nullable(Of Date),  _
-                    ByVal p42 As String,  _
-                    ByVal p43 As String,  _
-                    ByVal p44 As String,  _
-                    ByVal p45 As String,  _
-                    ByVal p46 As String,  _
-                    ByVal p47 As String) As Integer
-            If (p1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(p1,String)
-            End If
-            If (p2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(p2,String)
-            End If
-            If (p3 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(p3,String)
-            End If
-            If (p4 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4,String)
-            End If
-            If (p5 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5,String)
-            End If
-            If (p6 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6,String)
-            End If
-            If (p7 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p7,String)
-            End If
-            If (p8.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p8.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (p9 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p9,String)
-            End If
-            If (p10.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p10.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (p11.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p11.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (p12.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(p12.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (p13.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(p13.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (p14.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(p14.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (p15.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(p15.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (p16.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(p16.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (p17.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(p17.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (p18 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(p18,String)
-            End If
-            If (p19.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(p19.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (p20.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(p20.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
-            End If
-            If (p21.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(p21.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (p22.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(21).Value = CType(p22.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (p23 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p23,String)
-            End If
-            If (p24 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(p24,Object)
-            End If
-            If (p25 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(24).Value = CType(p25,Object)
-            End If
-            If (p26 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(25).Value = CType(p26,Object)
-            End If
-            If (p27.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(26).Value = CType(p27.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (p28.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(27).Value = CType(p28.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
-            End If
-            If (p29 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(28).Value = CType(p29,String)
-            End If
-            If (p30 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(p30,String)
-            End If
-            If (p31.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(p31.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (p32.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(31).Value = CType(p32.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
-            End If
-            If (p33.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(32).Value = CType(p33.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (p34.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(33).Value = CType(p34.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
-            End If
-            If (p35.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(34).Value = CType(p35.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (p36.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(35).Value = CType(p36.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(35).Value = Global.System.DBNull.Value
-            End If
-            If (p37.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(36).Value = CType(p37.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(36).Value = Global.System.DBNull.Value
-            End If
-            If (p38.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(37).Value = CType(p38.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(37).Value = Global.System.DBNull.Value
-            End If
-            If (p39.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(38).Value = CType(p39.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (p40.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(39).Value = CType(p40.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(39).Value = Global.System.DBNull.Value
-            End If
-            If (p41.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(40).Value = CType(p41.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(40).Value = Global.System.DBNull.Value
-            End If
-            If (p42 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(41).Value = CType(p42,String)
-            End If
-            If (p43 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(42).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(42).Value = CType(p43,String)
-            End If
-            If (p44 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(43).Value = CType(p44,String)
-            End If
-            If (p45 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(44).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(44).Value = CType(p45,String)
-            End If
-            If (p46 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(45).Value = CType(p46,String)
-            End If
-            If (p47 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(46).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(46).Value = CType(p47,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal p1 As String,  _
-                    ByVal p2 As String,  _
-                    ByVal p3 As String,  _
-                    ByVal p4 As String,  _
-                    ByVal p5 As String,  _
-                    ByVal p6 As String,  _
-                    ByVal p7 As String,  _
-                    ByVal p8 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p9 As String,  _
-                    ByVal p10 As Global.System.Nullable(Of Date),  _
-                    ByVal p11 As Global.System.Nullable(Of Double),  _
-                    ByVal p12 As Global.System.Nullable(Of Double),  _
-                    ByVal p13 As Global.System.Nullable(Of Double),  _
-                    ByVal p14 As Global.System.Nullable(Of Double),  _
-                    ByVal p15 As Global.System.Nullable(Of Date),  _
-                    ByVal p16 As Global.System.Nullable(Of Double),  _
-                    ByVal p17 As Global.System.Nullable(Of Integer),  _
-                    ByVal p18 As String,  _
-                    ByVal p19 As Global.System.Nullable(Of Double),  _
-                    ByVal p20 As Global.System.Nullable(Of Double),  _
-                    ByVal p21 As Global.System.Nullable(Of Double),  _
-                    ByVal p22 As Global.System.Nullable(Of Double),  _
-                    ByVal p23 As String,  _
-                    ByVal p24 As Object,  _
-                    ByVal p25 As Object,  _
-                    ByVal p26 As Object,  _
-                    ByVal p27 As Global.System.Nullable(Of Date),  _
-                    ByVal p28 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p29 As String,  _
-                    ByVal p30 As String,  _
-                    ByVal p31 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p32 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p33 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p34 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p35 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p36 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p37 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p38 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p39 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p40 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p41 As Global.System.Nullable(Of Date),  _
-                    ByVal p42 As String,  _
-                    ByVal p43 As String,  _
-                    ByVal p44 As String,  _
-                    ByVal p45 As String,  _
-                    ByVal p46 As String,  _
-                    ByVal p47 As String,  _
-                    ByVal p48 As Integer) As Integer
-            If (p1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(p1,String)
-            End If
-            If (p2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(p2,String)
-            End If
-            If (p3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p3,String)
-            End If
-            If (p4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4,String)
-            End If
-            If (p5 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,String)
-            End If
-            If (p6 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6,String)
-            End If
-            If (p7 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,String)
-            End If
-            If (p8.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (p9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p9,String)
-            End If
-            If (p10.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (p11.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p11.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (p12.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(p12.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (p13.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(p13.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (p14.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(p14.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (p15.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(p15.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (p16.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(p16.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (p17.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(p17.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (p18 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(p18,String)
-            End If
-            If (p19.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(p19.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (p20.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p20.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            End If
-            If (p21.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(p21.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (p22.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p22.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (p23 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p23,String)
-            End If
-            If (p24 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24,Object)
-            End If
-            If (p25 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(p25,Object)
-            End If
-            If (p26 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p26,Object)
-            End If
-            If (p27.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(p27.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (p28.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p28.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            End If
-            If (p29 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(p29,String)
-            End If
-            If (p30 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p30,String)
-            End If
-            If (p31.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(p31.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (p32.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(p32.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            End If
-            If (p33.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(p33.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (p34.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(p34.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            End If
-            If (p35.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(p35.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (p36.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(p36.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
-            End If
-            If (p37.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(p37.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
-            End If
-            If (p38.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(p38.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            End If
-            If (p39.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(p39.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (p40.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(p40.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
-            End If
-            If (p41.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(p41.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
-            End If
-            If (p42 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(p42,String)
-            End If
-            If (p43 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(p43,String)
-            End If
-            If (p44 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(p44,String)
-            End If
-            If (p45 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(p45,String)
-            End If
-            If (p46 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(p46,String)
-            End If
-            If (p47 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(p47,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(47).Value = CType(p48,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class solicitud_inscripcion_delotesTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
-        
-        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
-        
-        Private _transaction As Global.MySql.Data.MySqlClient.MySqlTransaction
-        
-        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Property Transaction() As Global.MySql.Data.MySqlClient.MySqlTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "solicitud_inscripcion_delotes"
-            tableMapping.ColumnMappings.Add("id", "id")
-            tableMapping.ColumnMappings.Add("nombre_productor", "nombre_productor")
-            tableMapping.ColumnMappings.Add("representante_legar", "representante_legar")
-            tableMapping.ColumnMappings.Add("identidad_productor", "identidad_productor")
-            tableMapping.ColumnMappings.Add("extendida", "extendida")
-            tableMapping.ColumnMappings.Add("residencia_productor", "residencia_productor")
-            tableMapping.ColumnMappings.Add("telefono_productor", "telefono_productor")
-            tableMapping.ColumnMappings.Add("no_registro_productor", "no_registro_productor")
-            tableMapping.ColumnMappings.Add("nombre_multiplicador", "nombre_multiplicador")
-            tableMapping.ColumnMappings.Add("cedula_multiplicador", "cedula_multiplicador")
-            tableMapping.ColumnMappings.Add("telefono_multiplicador", "telefono_multiplicador")
-            tableMapping.ColumnMappings.Add("nombre_finca", "nombre_finca")
             tableMapping.ColumnMappings.Add("departamento", "departamento")
             tableMapping.ColumnMappings.Add("municipio", "municipio")
-            tableMapping.ColumnMappings.Add("aldea", "aldea")
-            tableMapping.ColumnMappings.Add("caserio", "caserio")
-            tableMapping.ColumnMappings.Add("nombre_persona_finca", "nombre_persona_finca")
-            tableMapping.ColumnMappings.Add("nombre_lote", "nombre_lote")
-            tableMapping.ColumnMappings.Add("croquis", "croquis")
-            tableMapping.ColumnMappings.Add("tipo_cultivo", "tipo_cultivo")
-            tableMapping.ColumnMappings.Add("variedad", "variedad")
-            tableMapping.ColumnMappings.Add("lote_no", "lote_no")
-            tableMapping.ColumnMappings.Add("fecha_analisis", "fecha_analisis")
-            tableMapping.ColumnMappings.Add("year_produccion", "year_produccion")
-            tableMapping.ColumnMappings.Add("categoria_semilla", "categoria_semilla")
-            tableMapping.ColumnMappings.Add("tipo_semilla", "tipo_semilla")
-            tableMapping.ColumnMappings.Add("cultivo_semilla", "cultivo_semilla")
-            tableMapping.ColumnMappings.Add("variedad_frijol", "variedad_frijol")
-            tableMapping.ColumnMappings.Add("variedad_maiz", "variedad_maiz")
-            tableMapping.ColumnMappings.Add("superficie_hectarea", "superficie_hectarea")
-            tableMapping.ColumnMappings.Add("superficie_mz", "superficie_mz")
-            tableMapping.ColumnMappings.Add("fecha_aprox_siembra", "fecha_aprox_siembra")
-            tableMapping.ColumnMappings.Add("fecha_aprox_cosecha", "fecha_aprox_cosecha")
-            tableMapping.ColumnMappings.Add("produccion_est_hectareas", "produccion_est_hectareas")
-            tableMapping.ColumnMappings.Add("produccion_est_manzanas", "produccion_est_manzanas")
-            tableMapping.ColumnMappings.Add("destino", "destino")
+            tableMapping.ColumnMappings.Add("CICLO", "CICLO")
+            tableMapping.ColumnMappings.Add("AREA_SEMBRADA_HA", "AREA_SEMBRADA_HA")
+            tableMapping.ColumnMappings.Add("VARIEDAD", "VARIEDAD")
+            tableMapping.ColumnMappings.Add("TIPO_SEMILLA", "TIPO_SEMILLA")
+            tableMapping.ColumnMappings.Add("NOMBRE_LOTE_FINCA", "NOMBRE_LOTE_FINCA")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `solicitud_inscripcion_delotes` WHERE ((`id` = @p1))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p1"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "id"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `solicitud_inscripcion_delotes` (`nombre_productor`, `representante_l"& _ 
-                "egar`, `identidad_productor`, `extendida`, `residencia_productor`, `telefono_pro"& _ 
-                "ductor`, `no_registro_productor`, `nombre_multiplicador`, `cedula_multiplicador`"& _ 
-                ", `telefono_multiplicador`, `nombre_finca`, `departamento`, `municipio`, `aldea`"& _ 
-                ", `caserio`, `nombre_persona_finca`, `nombre_lote`, `croquis`, `tipo_cultivo`, `"& _ 
-                "variedad`, `lote_no`, `fecha_analisis`, `year_produccion`, `categoria_semilla`, "& _ 
-                "`tipo_semilla`, `cultivo_semilla`, `variedad_frijol`, `variedad_maiz`, `superfic"& _ 
-                "ie_hectarea`, `superficie_mz`, `fecha_aprox_siembra`, `fecha_aprox_cosecha`, `pr"& _ 
-                "oduccion_est_hectareas`, `produccion_est_manzanas`, `destino`) VALUES (@p1, @p2,"& _ 
-                " @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p"& _ 
-                "17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30"& _ 
-                ", @p31, @p32, @p33, @p34, @p35)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p1"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_productor"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p2"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "representante_legar"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p3"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "identidad_productor"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "extendida"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "residencia_productor"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "telefono_productor"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "no_registro_productor"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_multiplicador"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "cedula_multiplicador"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "telefono_multiplicador"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_finca"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p12"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "departamento"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "municipio"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p14"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "aldea"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p15"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "caserio"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p16"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_persona_finca"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p17"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_lote"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p18"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "croquis"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p19"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "tipo_cultivo"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p20"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "variedad"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p21"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "lote_no"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p22"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "fecha_analisis"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p23"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "year_produccion"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p24"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "categoria_semilla"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p25"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "tipo_semilla"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "cultivo_semilla"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "variedad_frijol"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "variedad_maiz"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p29"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "superficie_hectarea"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p30"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "superficie_mz"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p31"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "fecha_aprox_siembra"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p32"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "fecha_aprox_cosecha"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p33"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "produccion_est_hectareas"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p34"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "produccion_est_manzanas"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p35"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "destino"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `solicitud_inscripcion_delotes` SET `nombre_productor` = @p1, `representan"& _ 
-                "te_legar` = @p2, `identidad_productor` = @p3, `extendida` = @p4, `residencia_pro"& _ 
-                "ductor` = @p5, `telefono_productor` = @p6, `no_registro_productor` = @p7, `nombr"& _ 
-                "e_multiplicador` = @p8, `cedula_multiplicador` = @p9, `telefono_multiplicador` ="& _ 
-                " @p10, `nombre_finca` = @p11, `departamento` = @p12, `municipio` = @p13, `aldea`"& _ 
-                " = @p14, `caserio` = @p15, `nombre_persona_finca` = @p16, `nombre_lote` = @p17, "& _ 
-                "`croquis` = @p18, `tipo_cultivo` = @p19, `variedad` = @p20, `lote_no` = @p21, `f"& _ 
-                "echa_analisis` = @p22, `year_produccion` = @p23, `categoria_semilla` = @p24, `ti"& _ 
-                "po_semilla` = @p25, `cultivo_semilla` = @p26, `variedad_frijol` = @p27, `varieda"& _ 
-                "d_maiz` = @p28, `superficie_hectarea` = @p29, `superficie_mz` = @p30, `fecha_apr"& _ 
-                "ox_siembra` = @p31, `fecha_aprox_cosecha` = @p32, `produccion_est_hectareas` = @"& _ 
-                "p33, `produccion_est_manzanas` = @p34, `destino` = @p35 WHERE ((`id` = @p36))"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p1"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_productor"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p2"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "representante_legar"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p3"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "identidad_productor"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
-            param.IsNullable = true
-            param.SourceColumn = "extendida"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "residencia_productor"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "telefono_productor"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "no_registro_productor"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_multiplicador"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "cedula_multiplicador"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "telefono_multiplicador"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_finca"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p12"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "departamento"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "municipio"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p14"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "aldea"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p15"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "caserio"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p16"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_persona_finca"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p17"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nombre_lote"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p18"
-            param.DbType = Global.System.Data.DbType.[Object]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
-            param.IsNullable = true
-            param.SourceColumn = "croquis"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p19"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "tipo_cultivo"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p20"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "variedad"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p21"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "lote_no"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p22"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "fecha_analisis"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p23"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "year_produccion"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p24"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "categoria_semilla"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p25"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "tipo_semilla"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "cultivo_semilla"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "variedad_frijol"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "variedad_maiz"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p29"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "superficie_hectarea"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p30"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "superficie_mz"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p31"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "fecha_aprox_siembra"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p32"
-            param.DbType = Global.System.Data.DbType.DateTime
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
-            param.IsNullable = true
-            param.SourceColumn = "fecha_aprox_cosecha"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p33"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "produccion_est_hectareas"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p34"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
-            param.IsNullable = true
-            param.SourceColumn = "produccion_est_manzanas"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p35"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "destino"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p36"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "id"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("portal_redpashConnectionString1").ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `id`, `nombre_productor`, `representante_legar`, `identidad_productor`, `e"& _ 
-                "xtendida`, `residencia_productor`, `telefono_productor`, `no_registro_productor`"& _ 
-                ", `nombre_multiplicador`, `cedula_multiplicador`, `telefono_multiplicador`, `nom"& _ 
-                "bre_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `nombre_persona_fin"& _ 
-                "ca`, `nombre_lote`, `croquis`, `tipo_cultivo`, `variedad`, `lote_no`, `fecha_ana"& _ 
-                "lisis`, `year_produccion`, `categoria_semilla`, `tipo_semilla`, `cultivo_semilla"& _ 
-                "`, `variedad_frijol`, `variedad_maiz`, `superficie_hectarea`, `superficie_mz`, `"& _ 
-                "fecha_aprox_siembra`, `fecha_aprox_cosecha`, `produccion_est_hectareas`, `produc"& _ 
-                "cion_est_manzanas`, `destino` FROM `solicitud_inscripcion_delotes`"
+            Me._commandCollection(0).CommandText = "SELECT `Productor`, `departamento`, `municipio`, `CICLO`, `AREA_SEMBRADA_HA`, `VA"& _ 
+                "RIEDAD`, `TIPO_SEMILLA`, `NOMBRE_LOTE_FINCA` FROM `portal_redpash`.`vista_inscri"& _ 
+                "pcion_senasa_lote`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DataSet1.solicitud_inscripcion_delotesDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As DataSet1.vista_inscripcion_senasa_loteDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6793,525 +1075,14 @@ Namespace DataSet1TableAdapters
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As DataSet1.solicitud_inscripcion_delotesDataTable
+        Public Overloads Overridable Function GetData() As DataSet1.vista_inscripcion_senasa_loteDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As DataSet1.solicitud_inscripcion_delotesDataTable = New DataSet1.solicitud_inscripcion_delotesDataTable()
+            Dim dataTable As DataSet1.vista_inscripcion_senasa_loteDataTable = New DataSet1.vista_inscripcion_senasa_loteDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As DataSet1.solicitud_inscripcion_delotesDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As DataSet1) As Integer
-            Return Me.Adapter.Update(dataSet, "solicitud_inscripcion_delotes")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal p1 As Integer) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(p1,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal p1 As String,  _
-                    ByVal p2 As String,  _
-                    ByVal p3 As String,  _
-                    ByVal p4 As Global.System.Nullable(Of Date),  _
-                    ByVal p5 As String,  _
-                    ByVal p6 As Global.System.Nullable(Of Integer),  _
-                    ByVal p7 As String,  _
-                    ByVal p8 As String,  _
-                    ByVal p9 As String,  _
-                    ByVal p10 As Global.System.Nullable(Of Integer),  _
-                    ByVal p11 As String,  _
-                    ByVal p12 As String,  _
-                    ByVal p13 As String,  _
-                    ByVal p14 As String,  _
-                    ByVal p15 As String,  _
-                    ByVal p16 As String,  _
-                    ByVal p17 As String,  _
-                    ByVal p18 As Object,  _
-                    ByVal p19 As String,  _
-                    ByVal p20 As String,  _
-                    ByVal p21 As String,  _
-                    ByVal p22 As Global.System.Nullable(Of Date),  _
-                    ByVal p23 As String,  _
-                    ByVal p24 As String,  _
-                    ByVal p25 As String,  _
-                    ByVal p26 As String,  _
-                    ByVal p27 As String,  _
-                    ByVal p28 As String,  _
-                    ByVal p29 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p30 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p31 As Global.System.Nullable(Of Date),  _
-                    ByVal p32 As Global.System.Nullable(Of Date),  _
-                    ByVal p33 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p34 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p35 As String) As Integer
-            If (p1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(p1,String)
-            End If
-            If (p2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(p2,String)
-            End If
-            If (p3 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(p3,String)
-            End If
-            If (p4.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (p5 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5,String)
-            End If
-            If (p6.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (p7 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p7,String)
-            End If
-            If (p8 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p8,String)
-            End If
-            If (p9 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p9,String)
-            End If
-            If (p10.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p10.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (p11 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p11,String)
-            End If
-            If (p12 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(p12,String)
-            End If
-            If (p13 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(p13,String)
-            End If
-            If (p14 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(p14,String)
-            End If
-            If (p15 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(p15,String)
-            End If
-            If (p16 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(p16,String)
-            End If
-            If (p17 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(p17,String)
-            End If
-            If (p18 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(p18,Object)
-            End If
-            If (p19 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(p19,String)
-            End If
-            If (p20 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(p20,String)
-            End If
-            If (p21 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(p21,String)
-            End If
-            If (p22.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(21).Value = CType(p22.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (p23 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p23,String)
-            End If
-            If (p24 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(p24,String)
-            End If
-            If (p25 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(24).Value = CType(p25,String)
-            End If
-            If (p26 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(25).Value = CType(p26,String)
-            End If
-            If (p27 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(26).Value = CType(p27,String)
-            End If
-            If (p28 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(27).Value = CType(p28,String)
-            End If
-            If (p29.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(28).Value = CType(p29.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (p30.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(p30.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
-            End If
-            If (p31.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(p31.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (p32.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(31).Value = CType(p32.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
-            End If
-            If (p33.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(32).Value = CType(p33.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (p34.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(33).Value = CType(p34.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
-            End If
-            If (p35 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(34).Value = CType(p35,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal p1 As String,  _
-                    ByVal p2 As String,  _
-                    ByVal p3 As String,  _
-                    ByVal p4 As Global.System.Nullable(Of Date),  _
-                    ByVal p5 As String,  _
-                    ByVal p6 As Global.System.Nullable(Of Integer),  _
-                    ByVal p7 As String,  _
-                    ByVal p8 As String,  _
-                    ByVal p9 As String,  _
-                    ByVal p10 As Global.System.Nullable(Of Integer),  _
-                    ByVal p11 As String,  _
-                    ByVal p12 As String,  _
-                    ByVal p13 As String,  _
-                    ByVal p14 As String,  _
-                    ByVal p15 As String,  _
-                    ByVal p16 As String,  _
-                    ByVal p17 As String,  _
-                    ByVal p18 As Object,  _
-                    ByVal p19 As String,  _
-                    ByVal p20 As String,  _
-                    ByVal p21 As String,  _
-                    ByVal p22 As Global.System.Nullable(Of Date),  _
-                    ByVal p23 As String,  _
-                    ByVal p24 As String,  _
-                    ByVal p25 As String,  _
-                    ByVal p26 As String,  _
-                    ByVal p27 As String,  _
-                    ByVal p28 As String,  _
-                    ByVal p29 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p30 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p31 As Global.System.Nullable(Of Date),  _
-                    ByVal p32 As Global.System.Nullable(Of Date),  _
-                    ByVal p33 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p34 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p35 As String,  _
-                    ByVal p36 As Integer) As Integer
-            If (p1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(p1,String)
-            End If
-            If (p2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(p2,String)
-            End If
-            If (p3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p3,String)
-            End If
-            If (p4.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (p5 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,String)
-            End If
-            If (p6.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (p7 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,String)
-            End If
-            If (p8 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8,String)
-            End If
-            If (p9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p9,String)
-            End If
-            If (p10.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (p11 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p11,String)
-            End If
-            If (p12 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(p12,String)
-            End If
-            If (p13 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(p13,String)
-            End If
-            If (p14 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(p14,String)
-            End If
-            If (p15 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(p15,String)
-            End If
-            If (p16 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(p16,String)
-            End If
-            If (p17 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(p17,String)
-            End If
-            If (p18 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(p18,Object)
-            End If
-            If (p19 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(p19,String)
-            End If
-            If (p20 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p20,String)
-            End If
-            If (p21 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(p21,String)
-            End If
-            If (p22.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p22.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (p23 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p23,String)
-            End If
-            If (p24 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24,String)
-            End If
-            If (p25 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(p25,String)
-            End If
-            If (p26 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p26,String)
-            End If
-            If (p27 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(p27,String)
-            End If
-            If (p28 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p28,String)
-            End If
-            If (p29.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(p29.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (p30.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p30.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            End If
-            If (p31.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(p31.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (p32.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(p32.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            End If
-            If (p33.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(p33.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (p34.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(p34.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            End If
-            If (p35 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(p35,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(35).Value = CType(p36,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
         End Function
     End Class
     
@@ -7328,16 +1099,12 @@ Namespace DataSet1TableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _bcs_inscripcion_senasaTableAdapter As bcs_inscripcion_senasaTableAdapter
-        
-        Private _solicitud_inscripcion_delotesTableAdapter As solicitud_inscripcion_delotesTableAdapter
-        
         Private _backupDataSetBeforeUpdate As Boolean
         
         Private _connection As Global.System.Data.IDbConnection
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property UpdateOrder() As UpdateOrderOption
             Get
                 Return Me._updateOrder
@@ -7348,35 +1115,7 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property bcs_inscripcion_senasaTableAdapter() As bcs_inscripcion_senasaTableAdapter
-            Get
-                Return Me._bcs_inscripcion_senasaTableAdapter
-            End Get
-            Set
-                Me._bcs_inscripcion_senasaTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property solicitud_inscripcion_delotesTableAdapter() As solicitud_inscripcion_delotesTableAdapter
-            Get
-                Return Me._solicitud_inscripcion_delotesTableAdapter
-            End Get
-            Set
-                Me._solicitud_inscripcion_delotesTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property BackupDataSetBeforeUpdate() As Boolean
             Get
                 Return Me._backupDataSetBeforeUpdate
@@ -7387,20 +1126,12 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public Property Connection() As Global.System.Data.IDbConnection
             Get
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
-                End If
-                If ((Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._bcs_inscripcion_senasaTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._bcs_inscripcion_senasaTableAdapter.Connection
-                End If
-                If ((Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._solicitud_inscripcion_delotesTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._solicitud_inscripcion_delotesTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -7410,17 +1141,11 @@ Namespace DataSet1TableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
-                If (Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
                 Return count
             End Get
         End Property
@@ -7429,27 +1154,9 @@ Namespace DataSet1TableAdapters
         '''Update rows in top-down order.
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As DataSet1, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.bcs_inscripcion_senasa.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._bcs_inscripcion_senasaTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.solicitud_inscripcion_delotes.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._solicitud_inscripcion_delotesTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -7457,25 +1164,9 @@ Namespace DataSet1TableAdapters
         '''Insert rows in top-down order.
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As DataSet1, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.bcs_inscripcion_senasa.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._bcs_inscripcion_senasaTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.solicitud_inscripcion_delotes.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._solicitud_inscripcion_delotesTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -7483,25 +1174,9 @@ Namespace DataSet1TableAdapters
         '''Delete rows in bottom-up order.
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As DataSet1, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.solicitud_inscripcion_delotes.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._solicitud_inscripcion_delotesTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.bcs_inscripcion_senasa.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._bcs_inscripcion_senasaTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -7509,7 +1184,7 @@ Namespace DataSet1TableAdapters
         '''Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function GetRealUpdatedRows(ByVal updatedRows() As Global.System.Data.DataRow, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Global.System.Data.DataRow()
             If ((updatedRows Is Nothing)  _
                         OrElse (updatedRows.Length < 1)) Then
@@ -7535,23 +1210,13 @@ Namespace DataSet1TableAdapters
         '''Update all changes to the dataset.
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overridable Function UpdateAll(ByVal dataSet As DataSet1) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
             If (dataSet.HasChanges = false) Then
                 Return 0
-            End If
-            If ((Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._bcs_inscripcion_senasaTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
-                        "sma cadena de conexión.")
-            End If
-            If ((Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._solicitud_inscripcion_delotesTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
-                        "sma cadena de conexión.")
             End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
             If (workConnection Is Nothing) Then
@@ -7585,24 +1250,6 @@ Namespace DataSet1TableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._bcs_inscripcion_senasaTableAdapter, Me._bcs_inscripcion_senasaTableAdapter.Connection)
-                    Me._bcs_inscripcion_senasaTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
-                    Me._bcs_inscripcion_senasaTableAdapter.Transaction = CType(workTransaction,Global.MySql.Data.MySqlClient.MySqlTransaction)
-                    If Me._bcs_inscripcion_senasaTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._bcs_inscripcion_senasaTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._bcs_inscripcion_senasaTableAdapter.Adapter)
-                    End If
-                End If
-                If (Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._solicitud_inscripcion_delotesTableAdapter, Me._solicitud_inscripcion_delotesTableAdapter.Connection)
-                    Me._solicitud_inscripcion_delotesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
-                    Me._solicitud_inscripcion_delotesTableAdapter.Transaction = CType(workTransaction,Global.MySql.Data.MySqlClient.MySqlTransaction)
-                    If Me._solicitud_inscripcion_delotesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._solicitud_inscripcion_delotesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._solicitud_inscripcion_delotesTableAdapter.Adapter)
-                    End If
-                End If
                 '
                 '---- Perform updates -----------
                 '
@@ -7663,14 +1310,6 @@ Namespace DataSet1TableAdapters
                 If workConnOpened Then
                     workConnection.Close
                 End If
-                If (Not (Me._bcs_inscripcion_senasaTableAdapter) Is Nothing) Then
-                    Me._bcs_inscripcion_senasaTableAdapter.Connection = CType(revertConnections(Me._bcs_inscripcion_senasaTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
-                    Me._bcs_inscripcion_senasaTableAdapter.Transaction = Nothing
-                End If
-                If (Not (Me._solicitud_inscripcion_delotesTableAdapter) Is Nothing) Then
-                    Me._solicitud_inscripcion_delotesTableAdapter.Connection = CType(revertConnections(Me._solicitud_inscripcion_delotesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
-                    Me._solicitud_inscripcion_delotesTableAdapter.Transaction = Nothing
-                End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter
                     adaptersWithAcceptChangesDuringUpdate.CopyTo(adapters)
@@ -7686,13 +1325,13 @@ Namespace DataSet1TableAdapters
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overridable Sub SortSelfReferenceRows(ByVal rows() As Global.System.Data.DataRow, ByVal relation As Global.System.Data.DataRelation, ByVal childFirst As Boolean)
             Global.System.Array.Sort(Of Global.System.Data.DataRow)(rows, New SelfReferenceComparer(relation, childFirst))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overridable Function MatchTableAdapterConnection(ByVal inputConnection As Global.System.Data.IDbConnection) As Boolean
             If (Not (Me._connection) Is Nothing) Then
                 Return true
@@ -7710,7 +1349,7 @@ Namespace DataSet1TableAdapters
         '''<summary>
         '''Update Order Option
         '''</summary>
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Enum UpdateOrderOption
             
             InsertUpdateDelete = 0
@@ -7721,7 +1360,7 @@ Namespace DataSet1TableAdapters
         '''<summary>
         '''Used to sort self-referenced table's rows
         '''</summary>
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Class SelfReferenceComparer
             Inherits Object
             Implements Global.System.Collections.Generic.IComparer(Of Global.System.Data.DataRow)
@@ -7731,7 +1370,7 @@ Namespace DataSet1TableAdapters
             Private _childFirst As Integer
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
             Friend Sub New(ByVal relation As Global.System.Data.DataRelation, ByVal childFirst As Boolean)
                 MyBase.New
                 Me._relation = relation
@@ -7743,7 +1382,7 @@ Namespace DataSet1TableAdapters
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
             Private Function GetRoot(ByVal row As Global.System.Data.DataRow, ByRef distance As Integer) As Global.System.Data.DataRow
                 Global.System.Diagnostics.Debug.Assert((Not (row) Is Nothing))
                 Dim root As Global.System.Data.DataRow = row
@@ -7782,7 +1421,7 @@ Namespace DataSet1TableAdapters
             End Function
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
             Public Function Compare(ByVal row1 As Global.System.Data.DataRow, ByVal row2 As Global.System.Data.DataRow) As Integer Implements Global.System.Collections.Generic.IComparer(Of Global.System.Data.DataRow).Compare
                 If Object.ReferenceEquals(row1, row2) Then
                     Return 0
