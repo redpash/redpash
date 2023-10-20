@@ -357,6 +357,10 @@ Partial Public Class DataSetLotes
         
         Private columnproductor_semilla As Global.System.Data.DataColumn
         
+        Private columntelefono_productor1 As Global.System.Data.DataColumn
+        
+        Private columntelefono_multiplicador1 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -689,6 +693,22 @@ Partial Public Class DataSetLotes
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property telefono_productor1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntelefono_productor1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property telefono_multiplicador1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntelefono_multiplicador1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -761,9 +781,11 @@ Partial Public Class DataSetLotes
                     ByVal produccion_est_hectareas As Decimal,  _
                     ByVal produccion_est_manzanas As Decimal,  _
                     ByVal destino As String,  _
-                    ByVal productor_semilla As String) As solicitud_inscripcion_delotesRow
+                    ByVal productor_semilla As String,  _
+                    ByVal telefono_productor1 As String,  _
+                    ByVal telefono_multiplicador1 As String) As solicitud_inscripcion_delotesRow
             Dim rowsolicitud_inscripcion_delotesRow As solicitud_inscripcion_delotesRow = CType(Me.NewRow,solicitud_inscripcion_delotesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad, lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino, productor_semilla}
+            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad, lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino, productor_semilla, telefono_productor1, telefono_multiplicador1}
             rowsolicitud_inscripcion_delotesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowsolicitud_inscripcion_delotesRow)
             Return rowsolicitud_inscripcion_delotesRow
@@ -829,6 +851,8 @@ Partial Public Class DataSetLotes
             Me.columnproduccion_est_manzanas = MyBase.Columns("produccion_est_manzanas")
             Me.columndestino = MyBase.Columns("destino")
             Me.columnproductor_semilla = MyBase.Columns("productor_semilla")
+            Me.columntelefono_productor1 = MyBase.Columns("telefono_productor1")
+            Me.columntelefono_multiplicador1 = MyBase.Columns("telefono_multiplicador1")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -908,6 +932,10 @@ Partial Public Class DataSetLotes
             MyBase.Columns.Add(Me.columndestino)
             Me.columnproductor_semilla = New Global.System.Data.DataColumn("productor_semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnproductor_semilla)
+            Me.columntelefono_productor1 = New Global.System.Data.DataColumn("telefono_productor1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntelefono_productor1)
+            Me.columntelefono_multiplicador1 = New Global.System.Data.DataColumn("telefono_multiplicador1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntelefono_multiplicador1)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
             Me.columnid.AutoIncrement = true
             Me.columnid.AutoIncrementSeed = -1
@@ -939,6 +967,10 @@ Partial Public Class DataSetLotes
             Me.columnvariedad_maiz.MaxLength = 255
             Me.columndestino.MaxLength = 255
             Me.columnproductor_semilla.MaxLength = 255
+            Me.columntelefono_productor1.Caption = "telefono_productor"
+            Me.columntelefono_productor1.MaxLength = 10
+            Me.columntelefono_multiplicador1.Caption = "telefono_multiplicador"
+            Me.columntelefono_multiplicador1.MaxLength = 10
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1672,6 +1704,38 @@ Partial Public Class DataSetLotes
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property telefono_productor1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.telefono_productor1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'telefono_productor1' de la tabla 'solicitud_inscripcion_d"& _ 
+                            "elotes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesolicitud_inscripcion_delotes.telefono_productor1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property telefono_multiplicador1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicador1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'telefono_multiplicador1' de la tabla 'solicitud_inscripci"& _ 
+                            "on_delotes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicador1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isnombre_productorNull() As Boolean
             Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_productorColumn)
         End Function
@@ -2101,6 +2165,30 @@ Partial Public Class DataSetLotes
         Public Sub Setproductor_semillaNull()
             Me(Me.tablesolicitud_inscripcion_delotes.productor_semillaColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Istelefono_productor1Null() As Boolean
+            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.telefono_productor1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Settelefono_productor1Null()
+            Me(Me.tablesolicitud_inscripcion_delotes.telefono_productor1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Istelefono_multiplicador1Null() As Boolean
+            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicador1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Settelefono_multiplicador1Null()
+            Me(Me.tablesolicitud_inscripcion_delotes.telefono_multiplicador1Column) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -2275,11 +2363,9 @@ Namespace DataSetLotesTableAdapters
             tableMapping.ColumnMappings.Add("identidad_productor", "identidad_productor")
             tableMapping.ColumnMappings.Add("extendida", "extendida")
             tableMapping.ColumnMappings.Add("residencia_productor", "residencia_productor")
-            tableMapping.ColumnMappings.Add("telefono_productor", "telefono_productor")
             tableMapping.ColumnMappings.Add("no_registro_productor", "no_registro_productor")
             tableMapping.ColumnMappings.Add("nombre_multiplicador", "nombre_multiplicador")
             tableMapping.ColumnMappings.Add("cedula_multiplicador", "cedula_multiplicador")
-            tableMapping.ColumnMappings.Add("telefono_multiplicador", "telefono_multiplicador")
             tableMapping.ColumnMappings.Add("nombre_finca", "nombre_finca")
             tableMapping.ColumnMappings.Add("departamento", "departamento")
             tableMapping.ColumnMappings.Add("municipio", "municipio")
@@ -2306,6 +2392,8 @@ Namespace DataSetLotesTableAdapters
             tableMapping.ColumnMappings.Add("produccion_est_manzanas", "produccion_est_manzanas")
             tableMapping.ColumnMappings.Add("destino", "destino")
             tableMapping.ColumnMappings.Add("productor_semilla", "productor_semilla")
+            tableMapping.ColumnMappings.Add("telefono_productor", "telefono_productor1")
+            tableMapping.ColumnMappings.Add("telefono_multiplicador", "telefono_multiplicador1")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -2371,8 +2459,8 @@ Namespace DataSetLotesTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p6"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "telefono_productor"
             Me._adapter.InsertCommand.Parameters.Add(param)
@@ -2399,8 +2487,8 @@ Namespace DataSetLotesTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "telefono_multiplicador"
             Me._adapter.InsertCommand.Parameters.Add(param)
@@ -2639,8 +2727,8 @@ Namespace DataSetLotesTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p6"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "telefono_productor"
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -2667,8 +2755,8 @@ Namespace DataSetLotesTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "telefono_multiplicador"
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -2877,16 +2965,16 @@ Namespace DataSetLotesTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `id`, `nombre_productor`, `representante_legar`, `identidad_productor`, `e"& _ 
-                "xtendida`, `residencia_productor`, `telefono_productor`, `no_registro_productor`"& _ 
-                ", `nombre_multiplicador`, `cedula_multiplicador`, `telefono_multiplicador`, `nom"& _ 
-                "bre_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `nombre_persona_fin"& _ 
-                "ca`, `nombre_lote`, `croquis`, `tipo_cultivo`, `variedad`, `lote_no`, `fecha_ana"& _ 
-                "lisis`, `year_produccion`, `categoria_semilla`, `tipo_semilla`, `cultivo_semilla"& _ 
-                "`, `variedad_frijol`, `variedad_maiz`, `superficie_hectarea`, `superficie_mz`, `"& _ 
-                "fecha_aprox_siembra`, `fecha_aprox_cosecha`, `produccion_est_hectareas`, `produc"& _ 
-                "cion_est_manzanas`, `destino` , `productor_semilla` "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM `solicitud_inscripcio"& _ 
-                "n_delotes`"
+            Me._commandCollection(0).CommandText = "SELECT        id, nombre_productor, representante_legar, identidad_productor, ext"& _ 
+                "endida, residencia_productor, telefono_productor, no_registro_productor, nombre_"& _ 
+                "multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      departamento, municipio, aldea, caserio, nombre_persona_fi"& _ 
+                "nca, nombre_lote, croquis, tipo_cultivo, variedad, lote_no, fecha_analisis, year"& _ 
+                "_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         variedad_maiz, superficie_hectarea, superficie_mz, fe"& _ 
+                "cha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est"& _ 
+                "_manzanas, destino, productor_semilla"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            solicitud_inscripcion_del"& _ 
+                "otes"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -2973,11 +3061,11 @@ Namespace DataSetLotesTableAdapters
                     ByVal p3 As String,  _
                     ByVal p4 As Global.System.Nullable(Of Date),  _
                     ByVal p5 As String,  _
-                    ByVal p6 As Global.System.Nullable(Of Integer),  _
+                    ByVal p6 As String,  _
                     ByVal p7 As String,  _
                     ByVal p8 As String,  _
                     ByVal p9 As String,  _
-                    ByVal p10 As Global.System.Nullable(Of Integer),  _
+                    ByVal p10 As String,  _
                     ByVal p11 As String,  _
                     ByVal p12 As String,  _
                     ByVal p13 As String,  _
@@ -3029,10 +3117,10 @@ Namespace DataSetLotesTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5,String)
             End If
-            If (p6.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6.Value,Integer)
-            Else
+            If (p6 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6,String)
             End If
             If (p7 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
@@ -3049,10 +3137,10 @@ Namespace DataSetLotesTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(p9,String)
             End If
-            If (p10.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p10.Value,Integer)
-            Else
+            If (p10 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p10,String)
             End If
             If (p11 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
@@ -3209,11 +3297,11 @@ Namespace DataSetLotesTableAdapters
                     ByVal p3 As String,  _
                     ByVal p4 As Global.System.Nullable(Of Date),  _
                     ByVal p5 As String,  _
-                    ByVal p6 As Global.System.Nullable(Of Integer),  _
+                    ByVal p6 As String,  _
                     ByVal p7 As String,  _
                     ByVal p8 As String,  _
                     ByVal p9 As String,  _
-                    ByVal p10 As Global.System.Nullable(Of Integer),  _
+                    ByVal p10 As String,  _
                     ByVal p11 As String,  _
                     ByVal p12 As String,  _
                     ByVal p13 As String,  _
@@ -3266,10 +3354,10 @@ Namespace DataSetLotesTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,String)
             End If
-            If (p6.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6.Value,Integer)
-            Else
+            If (p6 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6,String)
             End If
             If (p7 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
@@ -3286,10 +3374,10 @@ Namespace DataSetLotesTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p9,String)
             End If
-            If (p10.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10.Value,Integer)
-            Else
+            If (p10 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10,String)
             End If
             If (p11 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value

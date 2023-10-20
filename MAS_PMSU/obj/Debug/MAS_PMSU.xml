@@ -9663,18 +9663,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label18">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label24">
 <summary>
-Control Label18.
+Control Label24.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Button1">
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Button3">
 <summary>
-Control Button1.
+Control Button3.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -10248,6 +10248,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label22">
+<summary>
+Control Label22.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._txtprodsem">
+<summary>
+Control txtprodsem.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label8">
 <summary>
 Control Label8.
@@ -10800,6 +10818,42 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._btnGuardarLote">
 <summary>
 Control btnGuardarLote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label18">
+<summary>
+Control Label18.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Button1">
+<summary>
+Control Button1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label23">
+<summary>
+Control Label23.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Button2">
+<summary>
+Control Button2.
 </summary>
 <remarks>
 Campo generado automáticamente.

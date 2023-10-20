@@ -34,11 +34,7 @@
                         <asp:Button CssClass="btn btn-primary" ID="btnbuscarProductor" runat="server" Text="Buscar" OnClick="buscar_productor"/>
                         <asp:Button CssClass="btn btn-primary" ID="btnNuevoProductor" runat="server" Text="Nuevo Productor" />
                     </div>
-                    <div>
-                    <label></label><asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
-                        <br />
-                        <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Guardar" OnClick="descargaPDF" visible="true"/>
-                    </div>
+              
                 </div>
 
                 <div class="row" id="PanelA1" runat="server" visible="false">
@@ -257,7 +253,14 @@
                                 </div>
                             </section>
           
-                            
+                            <div class="col-lg-3">
+                                <div class="form-group">
+
+                                    <label>Productor</label><asp:Label ID="Label22" class="label label-warning" runat="server" Text=""></asp:Label>
+
+                                    <asp:TextBox CssClass="form-control" ID="txtprodsem" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                </div>
+                            </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
 
@@ -447,5 +450,17 @@
         <label></label><asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
         <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" visible="false"/>
+    </div>
+
+    <div>
+        <label></label><asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir" onclick="descargaPDF" visible="false"/>
+    </div>
+    
+    <div>
+        <label></label><asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Button CssClass="btn btn-primary" ID="Button2" runat="server" Text="Nuevo" OnClick="vaciar" visible="false"/>
     </div>
 </asp:Content>

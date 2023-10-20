@@ -68,24 +68,6 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents btnNuevoProductor As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control Label18.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label18 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control Button1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control PanelA1.
     '''</summary>
     '''<remarks>
@@ -653,6 +635,24 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents OtroMaizv1 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
+    '''Control Label22.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label22 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtprodsem.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtprodsem As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Label8.
     '''</summary>
     '''<remarks>
@@ -1209,4 +1209,40 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnGuardarLote As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Label18.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label18 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control Button1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Label23.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label23 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control Button2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 End Class

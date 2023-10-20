@@ -38,10 +38,10 @@ Public Class SolicitudInscripcionDeLotes
         (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
         cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad,
         lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
-        fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
+        fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino, productor_semilla) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
         @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
         @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @tipo_cultivo, @variedad, @lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, 
-        @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino)"
+        @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino, @productor_semilla)"
 
                 Dim fechaConvertida As DateTime
                 Dim fechaConvertida2 As DateTime
@@ -79,11 +79,11 @@ Public Class SolicitudInscripcionDeLotes
                         cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
                     End If
                     cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                    cmd.Parameters.AddWithValue("@telefono_productor", Convert.ToInt64(TxtTelefono.Text))
+                    cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
                     cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
                     cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
                     cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                    cmd.Parameters.AddWithValue("@telefono_multiplicador", Convert.ToInt64(TxtTelefonoRe.Text))
+                    cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
                     cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
                     cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
                     cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
@@ -126,19 +126,24 @@ Public Class SolicitudInscripcionDeLotes
                     cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
                     cmd.Parameters.AddWithValue("@produccion_est_manzanas", Convert.ToDouble(TextBox7.Text))
                     cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@productor_semilla", txtprodsem.text)
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
 
-                    vaciar()
                     Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud de inscripción de lotes!') </script>")
+
+                    Button1.Visible = True
+                    Button2.Visible = True
+                    btnGuardarLote.Visible = False
+
                 End Using
             End Using
         End If
 
     End Sub
 
-    Protected Sub vaciar()
+    Protected Sub vaciar(sender As Object, e As EventArgs)
         txt_nombre_prod_new.Text = " "
         Txt_Representante_Legal.Text = " "
         TxtIdentidad.Text = " "
@@ -174,6 +179,7 @@ Public Class SolicitudInscripcionDeLotes
         TextBox7.Text = " "
         DropDownList4.SelectedItem.Text = " "
         VerificarTextBox()
+        Response.Redirect("SolicitudInscripcionDeLotes.aspx")
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -764,6 +770,8 @@ Public Class SolicitudInscripcionDeLotes
         DropDownList7.DataValueField = DtCombo.Columns(0).ToString()
         DropDownList7.DataTextField = DtCombo.Columns(0).ToString
         DropDownList7.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList7.Items.Insert(0, newitem)
     End Sub
     Protected Sub DropDownList7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         Dim selectedValue As String = DropDownList7.SelectedValue
@@ -771,12 +779,13 @@ Public Class SolicitudInscripcionDeLotes
         VerificarTextBox()
     End Sub
 
-    Protected Sub descargaPDF(ByVal sender As Object, ByVal e As EventArgs)
+    Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
         'nombre de dataset
         Dim ds As New DataSetLotes
-        Dim Str As String = "SELECT * FROM solicitud_inscripcion_delotes WHERE id= 15"
+        Dim Str As String = "SELECT * FROM solicitud_inscripcion_delotes WHERE nombre_lote = @valor"
         Dim adap As New MySqlDataAdapter(Str, conn)
+        adap.SelectCommand.Parameters.AddWithValue("@valor", TxtLote.Text)
         Dim dt As New DataTable
 
 
@@ -789,7 +798,7 @@ Public Class SolicitudInscripcionDeLotes
 
         Dim nombre As String
 
-        nombre = "Factura _" + Today
+        nombre = "Solicitud Inscripcion de Lote o Campo _" + Today
 
         rptdocument.Load(Server.MapPath("~/pages/Solicitud Inscripcion de Lote.rpt"))
 
