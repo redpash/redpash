@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports ClosedXML.Excel
+Imports CrystalDecisions.CrystalReports.Engine
 Imports MySql.Data.MySqlClient
 
 Public Class Registro_Portal_Sag
@@ -573,5 +574,41 @@ Public Class Registro_Portal_Sag
         Else
             Txt_AreaHa.Text = ""
         End If
+    End Sub
+
+    Protected Sub descargaPDF(sender As Object, e As EventArgs)
+        Dim rptdocument As New ReportDocument
+        'nombre de dataset
+        Dim ds As New DataSet1
+        Dim Str As String = "SELECT * FROM vista_inscripcion_senasa_lote WHERE Productor = 'Jairon Matute Reyes' AND CICLO = '2023-Ciclo A'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        'adap.SelectCommand.Parameters.AddWithValue("@valor", TxtLote.Text)
+        Dim dt As New DataTable
+
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inscripcion_senasa_lote")
+
+
+
+
+        Dim nombre As String
+
+        nombre = "Solicitud Inscripcion de Lote o Campo _" + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/CrystalReport3.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+
+        Response.End()
     End Sub
 End Class

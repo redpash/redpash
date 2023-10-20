@@ -299,6 +299,8 @@ Partial Public Class DataSet1
         
         Private columnNOMBRE_LOTE_FINCA As Global.System.Data.DataColumn
         
+        Private columnNOMBRE_LOTE As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -399,6 +401,14 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NOMBRE_LOTEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNOMBRE_LOTE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -435,9 +445,9 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addvista_inscripcion_senasa_loteRow(ByVal Productor As String, ByVal departamento As String, ByVal municipio As String, ByVal CICLO As String, ByVal AREA_SEMBRADA_HA As Double, ByVal VARIEDAD As String, ByVal TIPO_SEMILLA As String, ByVal NOMBRE_LOTE_FINCA As String) As vista_inscripcion_senasa_loteRow
+        Public Overloads Function Addvista_inscripcion_senasa_loteRow(ByVal Productor As String, ByVal departamento As String, ByVal municipio As String, ByVal CICLO As String, ByVal AREA_SEMBRADA_HA As Double, ByVal VARIEDAD As String, ByVal TIPO_SEMILLA As String, ByVal NOMBRE_LOTE_FINCA As String, ByVal NOMBRE_LOTE As String) As vista_inscripcion_senasa_loteRow
             Dim rowvista_inscripcion_senasa_loteRow As vista_inscripcion_senasa_loteRow = CType(Me.NewRow,vista_inscripcion_senasa_loteRow)
-            Dim columnValuesArray() As Object = New Object() {Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA}
+            Dim columnValuesArray() As Object = New Object() {Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE}
             rowvista_inscripcion_senasa_loteRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvista_inscripcion_senasa_loteRow)
             Return rowvista_inscripcion_senasa_loteRow
@@ -468,6 +478,7 @@ Partial Public Class DataSet1
             Me.columnVARIEDAD = MyBase.Columns("VARIEDAD")
             Me.columnTIPO_SEMILLA = MyBase.Columns("TIPO_SEMILLA")
             Me.columnNOMBRE_LOTE_FINCA = MyBase.Columns("NOMBRE_LOTE_FINCA")
+            Me.columnNOMBRE_LOTE = MyBase.Columns("NOMBRE_LOTE")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -489,6 +500,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnTIPO_SEMILLA)
             Me.columnNOMBRE_LOTE_FINCA = New Global.System.Data.DataColumn("NOMBRE_LOTE_FINCA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNOMBRE_LOTE_FINCA)
+            Me.columnNOMBRE_LOTE = New Global.System.Data.DataColumn("NOMBRE_LOTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNOMBRE_LOTE)
             Me.columnProductor.MaxLength = 255
             Me.columndepartamento.MaxLength = 255
             Me.columnmunicipio.MaxLength = 255
@@ -496,6 +509,7 @@ Partial Public Class DataSet1
             Me.columnVARIEDAD.MaxLength = 255
             Me.columnTIPO_SEMILLA.MaxLength = 250
             Me.columnNOMBRE_LOTE_FINCA.MaxLength = 255
+            Me.columnNOMBRE_LOTE.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -770,6 +784,22 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property NOMBRE_LOTE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NOMBRE_LOTE' de la tabla 'vista_inscripcion_senasa_lote' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsProductorNull() As Boolean
             Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.ProductorColumn)
         End Function
@@ -862,6 +892,18 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetNOMBRE_LOTE_FINCANull()
             Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTE_FINCAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNOMBRE_LOTENull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNOMBRE_LOTENull()
+            Me(Me.tablevista_inscripcion_senasa_lote.NOMBRE_LOTEColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1039,6 +1081,7 @@ Namespace DataSet1TableAdapters
             tableMapping.ColumnMappings.Add("VARIEDAD", "VARIEDAD")
             tableMapping.ColumnMappings.Add("TIPO_SEMILLA", "TIPO_SEMILLA")
             tableMapping.ColumnMappings.Add("NOMBRE_LOTE_FINCA", "NOMBRE_LOTE_FINCA")
+            tableMapping.ColumnMappings.Add("NOMBRE_LOTE", "NOMBRE_LOTE")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -1055,9 +1098,9 @@ Namespace DataSet1TableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `Productor`, `departamento`, `municipio`, `CICLO`, `AREA_SEMBRADA_HA`, `VA"& _ 
-                "RIEDAD`, `TIPO_SEMILLA`, `NOMBRE_LOTE_FINCA` FROM `portal_redpash`.`vista_inscri"& _ 
-                "pcion_senasa_lote`"
+            Me._commandCollection(0).CommandText = "SELECT        Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIED"& _ 
+                "AD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vista_inscripc"& _ 
+                "ion_senasa_lote"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

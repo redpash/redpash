@@ -18,6 +18,11 @@
                     Registro Plan Producciòn Semilla Frijol
                 </div>
                 <div class="panel-body">
+                    <div>
+                        <label></label><asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
+                        <br />
+                        <asp:Button CssClass="btn btn-primary" ID="Button2" runat="server" Text="Nuevo" OnClick="descargaPDF" visible="true"/>
+                    </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
