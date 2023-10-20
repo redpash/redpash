@@ -355,6 +355,8 @@ Partial Public Class DataSetLotes
         
         Private columndestino As Global.System.Data.DataColumn
         
+        Private columnproductor_semilla As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -679,6 +681,14 @@ Partial Public Class DataSetLotes
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property productor_semillaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnproductor_semilla
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -750,9 +760,10 @@ Partial Public Class DataSetLotes
                     ByVal fecha_aprox_cosecha As Date,  _
                     ByVal produccion_est_hectareas As Decimal,  _
                     ByVal produccion_est_manzanas As Decimal,  _
-                    ByVal destino As String) As solicitud_inscripcion_delotesRow
+                    ByVal destino As String,  _
+                    ByVal productor_semilla As String) As solicitud_inscripcion_delotesRow
             Dim rowsolicitud_inscripcion_delotesRow As solicitud_inscripcion_delotesRow = CType(Me.NewRow,solicitud_inscripcion_delotesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad, lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino}
+            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad, lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino, productor_semilla}
             rowsolicitud_inscripcion_delotesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowsolicitud_inscripcion_delotesRow)
             Return rowsolicitud_inscripcion_delotesRow
@@ -817,6 +828,7 @@ Partial Public Class DataSetLotes
             Me.columnproduccion_est_hectareas = MyBase.Columns("produccion_est_hectareas")
             Me.columnproduccion_est_manzanas = MyBase.Columns("produccion_est_manzanas")
             Me.columndestino = MyBase.Columns("destino")
+            Me.columnproductor_semilla = MyBase.Columns("productor_semilla")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -894,6 +906,8 @@ Partial Public Class DataSetLotes
             MyBase.Columns.Add(Me.columnproduccion_est_manzanas)
             Me.columndestino = New Global.System.Data.DataColumn("destino", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndestino)
+            Me.columnproductor_semilla = New Global.System.Data.DataColumn("productor_semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnproductor_semilla)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
             Me.columnid.AutoIncrement = true
             Me.columnid.AutoIncrementSeed = -1
@@ -924,6 +938,7 @@ Partial Public Class DataSetLotes
             Me.columnvariedad_frijol.MaxLength = 255
             Me.columnvariedad_maiz.MaxLength = 255
             Me.columndestino.MaxLength = 255
+            Me.columnproductor_semilla.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1641,6 +1656,22 @@ Partial Public Class DataSetLotes
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property productor_semilla() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesolicitud_inscripcion_delotes.productor_semillaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'productor_semilla' de la tabla 'solicitud_inscripcion_del"& _ 
+                            "otes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesolicitud_inscripcion_delotes.productor_semillaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isnombre_productorNull() As Boolean
             Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.nombre_productorColumn)
         End Function
@@ -2058,6 +2089,18 @@ Partial Public Class DataSetLotes
         Public Sub SetdestinoNull()
             Me(Me.tablesolicitud_inscripcion_delotes.destinoColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isproductor_semillaNull() As Boolean
+            Return Me.IsNull(Me.tablesolicitud_inscripcion_delotes.productor_semillaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setproductor_semillaNull()
+            Me(Me.tablesolicitud_inscripcion_delotes.productor_semillaColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -2262,6 +2305,7 @@ Namespace DataSetLotesTableAdapters
             tableMapping.ColumnMappings.Add("produccion_est_hectareas", "produccion_est_hectareas")
             tableMapping.ColumnMappings.Add("produccion_est_manzanas", "produccion_est_manzanas")
             tableMapping.ColumnMappings.Add("destino", "destino")
+            tableMapping.ColumnMappings.Add("productor_semilla", "productor_semilla")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -2285,10 +2329,10 @@ Namespace DataSetLotesTableAdapters
                 "variedad`, `lote_no`, `fecha_analisis`, `year_produccion`, `categoria_semilla`, "& _ 
                 "`tipo_semilla`, `cultivo_semilla`, `variedad_frijol`, `variedad_maiz`, `superfic"& _ 
                 "ie_hectarea`, `superficie_mz`, `fecha_aprox_siembra`, `fecha_aprox_cosecha`, `pr"& _ 
-                "oduccion_est_hectareas`, `produccion_est_manzanas`, `destino`) VALUES (@p1, @p2,"& _ 
-                " @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p"& _ 
-                "17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30"& _ 
-                ", @p31, @p32, @p33, @p34, @p35)"
+                "oduccion_est_hectareas`, `produccion_est_manzanas`, `destino`, `productor_semill"& _ 
+                "a`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13,"& _ 
+                " @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @"& _ 
+                "p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -2535,6 +2579,13 @@ Namespace DataSetLotesTableAdapters
             param.IsNullable = true
             param.SourceColumn = "destino"
             Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p36"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "productor_semilla"
+            Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `solicitud_inscripcion_delotes` SET `nombre_productor` = @p1, `representan"& _ 
@@ -2548,7 +2599,8 @@ Namespace DataSetLotesTableAdapters
                 "po_semilla` = @p25, `cultivo_semilla` = @p26, `variedad_frijol` = @p27, `varieda"& _ 
                 "d_maiz` = @p28, `superficie_hectarea` = @p29, `superficie_mz` = @p30, `fecha_apr"& _ 
                 "ox_siembra` = @p31, `fecha_aprox_cosecha` = @p32, `produccion_est_hectareas` = @"& _ 
-                "p33, `produccion_est_manzanas` = @p34, `destino` = @p35 WHERE ((`id` = @p36))"
+                "p33, `produccion_est_manzanas` = @p34, `destino` = @p35, `productor_semilla` = @"& _ 
+                "p36 WHERE ((`id` = @p37))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -2797,6 +2849,13 @@ Namespace DataSetLotesTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p36"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "productor_semilla"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p37"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
@@ -2809,7 +2868,7 @@ Namespace DataSetLotesTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("portal_redpashConnectionString1").ConnectionString
+            Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("portal_redpashConnectionString").ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2826,7 +2885,8 @@ Namespace DataSetLotesTableAdapters
                 "lisis`, `year_produccion`, `categoria_semilla`, `tipo_semilla`, `cultivo_semilla"& _ 
                 "`, `variedad_frijol`, `variedad_maiz`, `superficie_hectarea`, `superficie_mz`, `"& _ 
                 "fecha_aprox_siembra`, `fecha_aprox_cosecha`, `produccion_est_hectareas`, `produc"& _ 
-                "cion_est_manzanas`, `destino` FROM `solicitud_inscripcion_delotes`"
+                "cion_est_manzanas`, `destino` , `productor_semilla` "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM `solicitud_inscripcio"& _ 
+                "n_delotes`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -2942,7 +3002,8 @@ Namespace DataSetLotesTableAdapters
                     ByVal p32 As Global.System.Nullable(Of Date),  _
                     ByVal p33 As Global.System.Nullable(Of Decimal),  _
                     ByVal p34 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p35 As String) As Integer
+                    ByVal p35 As String,  _
+                    ByVal p36 As String) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -3118,6 +3179,11 @@ Namespace DataSetLotesTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(34).Value = CType(p35,String)
             End If
+            If (p36 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(35).Value = CType(p36,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -3173,7 +3239,8 @@ Namespace DataSetLotesTableAdapters
                     ByVal p33 As Global.System.Nullable(Of Decimal),  _
                     ByVal p34 As Global.System.Nullable(Of Decimal),  _
                     ByVal p35 As String,  _
-                    ByVal p36 As Integer) As Integer
+                    ByVal p36 As String,  _
+                    ByVal p37 As Integer) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -3349,7 +3416,12 @@ Namespace DataSetLotesTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(p35,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(35).Value = CType(p36,Integer)
+            If (p36 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(p36,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(36).Value = CType(p37,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
