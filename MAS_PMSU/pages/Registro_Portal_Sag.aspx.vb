@@ -407,7 +407,7 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)    'REVISAR
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
             cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
