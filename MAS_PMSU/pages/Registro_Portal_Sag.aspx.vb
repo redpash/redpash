@@ -50,7 +50,6 @@ Public Class Registro_Portal_Sag
         TxtDepto.Items.Insert(0, newitem)
     End Sub
 
-
     Private Sub llenarcomboProductor()
         If TxtDepto.SelectedItem.Text <> " " Then
             Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM solicitud_inscripcion_delotes WHERE departamento = @nombre ORDER BY nombre_productor ASC"
@@ -134,6 +133,8 @@ Public Class Registro_Portal_Sag
 
             nuevo = False
 
+            DDL_Tipo.SelectedIndex = 0
+
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
             txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
             obtener_numero_lote(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
@@ -146,14 +147,35 @@ Public Class Registro_Portal_Sag
 
                 TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
                 TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
+                Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
+
+                TxtVariedad.Items.Clear()
+                If vv = "Frijol" Then
+                    DDL_Tipo.SelectedIndex = 1
+                    TxtVariedad.Items.Insert(0, "Amadeus-77")
+                    TxtVariedad.Items.Insert(1, "Carrizalito")
+                    TxtVariedad.Items.Insert(2, "Deorho")
+                    TxtVariedad.Items.Insert(3, "Azabache")
+                    TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
+                    TxtVariedad.Items.Insert(5, "Honduras nutritivo")
+                    TxtVariedad.Items.Insert(6, "Inta Cárdenas")
+                    TxtVariedad.Items.Insert(7, "Lenca precoz")
+                    TxtVariedad.Items.Insert(8, "Rojo chortí")
+                    TxtVariedad.Items.Insert(9, "Tolupan rojo")
+                    TxtVariedad.Items.Insert(10, "Otra especificar")
+                Else
+                    DDL_Tipo.SelectedIndex = 2
+                    TxtVariedad.Items.Insert(0, "Dicta Maya")
+                    TxtVariedad.Items.Insert(1, "Dicta Victoria")
+                    TxtVariedad.Items.Insert(2, "Otra especificar")
+                End If
+
                 TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
                 TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
 
                 TxT_AreaMZ.Text = dt.Rows(0)("AREA_SEMBRADA_MZ").ToString()
                 Txt_AreaHa.Text = dt.Rows(0)("AREA_SEMBRADA_HA").ToString()
                 TxtFechaSiembra.Text = DirectCast(dt.Rows(0)("FECHA_SIEMBRA"), DateTime).ToString("yyyy-MM-dd")
-
-
 
                 TxtRegistradaQQ.Text = dt.Rows(0)("REQUERIEMIENTO_REGISTRADA_QQ").ToString()
                 TxtCantLotes.Text = dt.Rows(0)("CANTIDAD_LOTES_SEMBRAR").ToString()
@@ -375,8 +397,8 @@ Public Class Registro_Portal_Sag
         Dim cmd2 As New MySqlCommand()
 
         If (TxtID.Text = "") Then
-            Sql = "INSERT INTO bcs_inscripcion_senasa (Productor, CICLO, Departamento, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado)
-            VALUES(@Productor, @CICLO, @Departamento, @VARIEDAD, @CATEGORIA, @AREA_SEMBRADA_MZ, @AREA_SEMBRADA_HA, @FECHA_SIEMBRA, @REQUERIEMIENTO_REGISTRADA_QQ, @CANTIDAD_LOTES_SEMBRAR, @NOMBRE_LOTE_FINCA, @ESTIMADO_PRO_QQ_MZ, @ESTIMADO_PRO_QQ_HA, @ESTIMADO_PRODUCIR_QQ, @ESTIMADO_PRODUCIR_QQHA, @Estado)"
+            Sql = "INSERT INTO bcs_inscripcion_senasa (Productor, CICLO, Departamento, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado, Tipo_cultivo)
+            VALUES(@Productor, @CICLO, @Departamento, @VARIEDAD, @CATEGORIA, @AREA_SEMBRADA_MZ, @AREA_SEMBRADA_HA, @FECHA_SIEMBRA, @REQUERIEMIENTO_REGISTRADA_QQ, @CANTIDAD_LOTES_SEMBRAR, @NOMBRE_LOTE_FINCA, @ESTIMADO_PRO_QQ_MZ, @ESTIMADO_PRO_QQ_HA, @ESTIMADO_PRODUCIR_QQ, @ESTIMADO_PRODUCIR_QQHA, @Estado, @Tipo_cultivo)"
 
             cmd2.Connection = conex
             cmd2.CommandText = Sql
@@ -384,6 +406,7 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
@@ -424,13 +447,15 @@ Public Class Registro_Portal_Sag
                     ESTIMADO_PRO_QQ_HA = @ESTIMADO_PRO_QQ_HA,
                     ESTIMADO_PRODUCIR_QQ = @ESTIMADO_PRODUCIR_QQ,
                     ESTIMADO_PRODUCIR_QQHA = @ESTIMADO_PRODUCIR_QQHA,
-                    Estado = @Estado
+                    Estado = @Estado,
+                    Tipo_cultivo = @Tipo_cultivo
                 WHERE ID=" & TxtID.Text & " "
                 cmd2.Connection = conex
                 cmd2.CommandText = Sql
 
                 cmd2.Parameters.AddWithValue("@Productor", TxtNom.Text)
                 cmd2.Parameters.AddWithValue("@CICLO", TxtCicloD.Text)
+                cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
                 cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
                 cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 

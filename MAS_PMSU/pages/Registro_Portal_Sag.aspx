@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="Registro_Portal_Sag.aspx.vb" Inherits="MAS_PMSU.Registro_Portal_Sag" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="Registro_Portal_Sag.aspx.vb" Inherits="MAS_PMSU.Registro_Portal_Sag" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -196,22 +196,40 @@
                                         Ciclo</label>
                                     <asp:TextBox ID="TxtCicloD" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                     <br />
-                                    <label for="TxtVariedad">
-                                        Variedad</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
-                                            <asp:ListItem Text=""></asp:ListItem>
-                                            <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
-                                            <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
-                                            <asp:ListItem id="Deorho" Text="Deorho"></asp:ListItem>
-                                            <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
-                                            <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
-                                            <asp:ListItem id="Honduras_nutritivo" Text="Honduras nutritivo"></asp:ListItem>
-                                            <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
-                                            <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
-                                            <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
-                                            <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
-                                            <asp:ListItem id="OtraVariedad" Text="Otra variedad"></asp:ListItem>
+                                    <label for="DDL_Tipo">Tipo</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();">
+                                        <asp:ListItem Text=""></asp:ListItem>
+                                        <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
+                                        <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
                                     </asp:DropDownList>
+                                    <br />
+                                    <label for="TxtVariedad">Variedad</label>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server"></asp:DropDownList>
+
+                                    <script type="text/javascript">
+                                        var variedades = {
+                                            "Frijol": ["Amadeus77v1", "Carrizalitov1", "Deorho", "Azabachev1", "Paraisitomejoradov", "Honduras_nutritivo", "IntaCardenasv1", "Lencaprecozv1", "Rojochortív1", "Tolupanrojov1", "OtraVariedad"],
+                                            "Maiz": ["Dicta Maya", "Dicta Victoria", "Otra especificar"]
+                                        };
+
+                                        // Función para actualizar las opciones de TxtVariedad
+                                        function updateTxtVariedad() {
+                                            var ddlTipo = document.getElementById('<%= DDL_Tipo.ClientID %>');
+                                            var txtVariedad = document.getElementById('<%= TxtVariedad.ClientID %>');
+                                            var selectedValue = ddlTipo.options[ddlTipo.selectedIndex].value;
+
+                                            // Limpiar las opciones actuales en TxtVariedad
+                                            txtVariedad.options.length = 0;
+
+                                            // Agregar las nuevas opciones según el tipo seleccionado
+                                            for (var i = 0; i < variedades[selectedValue].length; i++) {
+                                                var option = document.createElement("option");
+                                                option.text = variedades[selectedValue][i];
+                                                txtVariedad.add(option);
+                                            }
+                                        }
+                                    </script>
+
                                     <br />
                                     <label for="TxtCategoria">
                                         Categoria</label>

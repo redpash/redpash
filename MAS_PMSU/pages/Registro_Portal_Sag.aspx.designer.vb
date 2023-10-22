@@ -221,6 +221,33 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents TxtCicloD As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control DDL_Tipo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Tipo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control frijol.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents frijol As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control maiz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents maiz As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
     '''Control TxtVariedad.
     '''</summary>
     '''<remarks>
@@ -228,105 +255,6 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtVariedad As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control Amadeus77v1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Amadeus77v1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Carrizalitov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Carrizalitov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Deorho.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Deorho As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Azabachev1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Azabachev1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Paraisitomejoradov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Paraisitomejoradov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Honduras_nutritivo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Honduras_nutritivo As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control IntaCardenasv1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents IntaCardenasv1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Lencaprecozv1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Lencaprecozv1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Rojochortív1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Rojochortív1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Tolupanrojov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Tolupanrojov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control OtraVariedad.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents OtraVariedad As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control TxtCategoria.
