@@ -6,7 +6,6 @@ Imports MySql.Data.MySqlClient
 Public Class Registro_Portal_Sag
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
@@ -212,7 +211,7 @@ Public Class Registro_Portal_Sag
 
 
             div_nuevo_prod.Visible = True
-            panelmasiso.visible = False
+            panelmasiso.Visible = False
 
             If txt_habilitado.Text = "NO" Then
 
@@ -366,9 +365,6 @@ Public Class Registro_Portal_Sag
             TxtCategoria.SelectedIndex = 0
             obtener_numero_lote(TxtProductor.SelectedItem.Text)
 
-
-
-
             'fecha2 = Now
             'TxtDia.SelectedValue = fecha2.Day
             'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
@@ -407,7 +403,7 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)    'REVISAR
+            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)    'REVISADO
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
             cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
@@ -635,5 +631,34 @@ Public Class Registro_Portal_Sag
 
 
         Response.End()
+    End Sub
+
+    Protected Sub DDL_Tipo_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim vv As String = DDL_Tipo.SelectedItem.Text
+
+        TxtVariedad.Items.Clear()
+        If vv = "Frijol" Then
+            DDL_Tipo.SelectedIndex = 1
+            TxtVariedad.Items.Insert(0, "Amadeus-77")
+            TxtVariedad.Items.Insert(1, "Carrizalito")
+            TxtVariedad.Items.Insert(2, "Deorho")
+            TxtVariedad.Items.Insert(3, "Azabache")
+            TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
+            TxtVariedad.Items.Insert(5, "Honduras nutritivo")
+            TxtVariedad.Items.Insert(6, "Inta Cárdenas")
+            TxtVariedad.Items.Insert(7, "Lenca precoz")
+            TxtVariedad.Items.Insert(8, "Rojo chortí")
+            TxtVariedad.Items.Insert(9, "Tolupan rojo")
+            TxtVariedad.Items.Insert(10, "Otra especificar")
+            provi = TxtVariedad.SelectedItem.Text
+        ElseIf vv = "Maiz" Then
+            DDL_Tipo.SelectedIndex = 2
+            TxtVariedad.Items.Insert(0, "Dicta Maya")
+            TxtVariedad.Items.Insert(1, "Dicta Victoria")
+            TxtVariedad.Items.Insert(2, "Otra especificar")
+            provi = TxtVariedad.SelectedItem.Text
+        Else
+            DDL_Tipo.SelectedIndex = 0
+        End If
     End Sub
 End Class

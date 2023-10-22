@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
@@ -170,7 +169,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="modal fade" id="AdInscrip" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -197,18 +196,19 @@
                                     <asp:TextBox ID="TxtCicloD" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                     <br />
                                     <label for="DDL_Tipo">Tipo</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();">
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
                                         <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
                                         <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
                                     </asp:DropDownList>
                                     <br />
                                     <label for="TxtVariedad">Variedad</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
+                                    </asp:DropDownList>
 
                                     <script type="text/javascript">
                                         var variedades = {
-                                            "Frijol": ["Amadeus77v1", "Carrizalitov1", "Deorho", "Azabachev1", "Paraisitomejoradov", "Honduras_nutritivo", "IntaCardenasv1", "Lencaprecozv1", "Rojochortív1", "Tolupanrojov1", "OtraVariedad"],
+                                            "Frijol": ["Amadeus77", "Carrizalito", "Deorho", "Azabache", "Paraisitomejorado", "Honduras_nutritivo", "IntaCardenas", "Lencaprecoz", "Rojochortí", "Tolupanrojo", "OtraVariedad"],
                                             "Maiz": ["Dicta Maya", "Dicta Victoria", "Otra especificar"]
                                         };
 
@@ -380,7 +380,6 @@
                             </div>
                         </div>
                     </div>
-                     
                 </div>
             </div>
         </div>
