@@ -139,10 +139,17 @@
                             <li>
                                 <a href="Registro_Portal_Sag.aspx"><i class="fa fa-university"></i>Inscripción SENASA</a>
                             </li>
-
-                            <li>
-                                <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-university"></i>Inscripción de Lote</a>
-                            </li>
+                             <li>
+                                 <a href="#"><i class="fa fa-university"></i>Inscripción de Lote<span class="fa arrow"></span></a>
+                                 <ul class="nav nav-second-level">
+                                      <li>
+                                        <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-user fa-fw"></i>Inscripción de Lote</a>
+                                      </li>
+                                     <li>
+                                         <a href="EnviarCorreo.aspx"><i class="far fa-envelope"></i>Enviar Correo</a>
+                                     </li>    
+                                 </ul>
+                             </li>
 
                             <li>
                                 <a href="Portal_Sag.aspx"><i class="fa fa-university"></i>Plan de producción de semilla</a>

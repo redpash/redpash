@@ -236,6 +236,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\EnviarCorreo.aspx" />
     <Content Include="pages\Inicio.aspx" />
     <Content Include="pages\Login.aspx" />
     <Content Include="pages\msubcs_visitaat.aspx" />
@@ -444,6 +445,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport3.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\EnviarCorreo.aspx.designer.vb">
+      <DependentUpon>EnviarCorreo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EnviarCorreo.aspx.vb">
+      <DependentUpon>EnviarCorreo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Inicio.aspx.designer.vb">
       <DependentUpon>Inicio.aspx</DependentUpon>

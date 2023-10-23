@@ -13,9 +13,9 @@
               <DbSource ConnectionRef="portal_redpashConnectionString1 (Web.config)" DbObjectName="portal_redpash.vista_inscripcion_senasa_lote" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Total, 
-                  Suma_Area_Sembrada_Tipo_cultivo_Maiz, Suma_Area_Sembrada_Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad
-FROM     vista_inscripcion_senasa_lote</CommandText>
+                    <CommandText>SELECT        Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Total, Suma_Area_Sembrada_Tipo_cultivo_Maiz, 
+                         Suma_Area_Sembrada_Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad, variedad_frijol, `variedad_maíz`, Municipios
+FROM            vista_inscripcion_senasa_lote</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -36,6 +36,9 @@ FROM     vista_inscripcion_senasa_lote</CommandText>
               <Mapping SourceColumn="Suma_Area_Sembrada_Total" DataSetColumn="Suma_Area_Sembrada_Total" />
               <Mapping SourceColumn="Suma_Area_Sembrada_Tipo_cultivo_Maiz" DataSetColumn="Suma_Area_Sembrada_Tipo_cultivo_Maiz" />
               <Mapping SourceColumn="Suma_Area_Sembrada_Tipo_cultivo_Frijol" DataSetColumn="Suma_Area_Sembrada_Tipo_cultivo_Frijol" />
+              <Mapping SourceColumn="variedad_frijol" DataSetColumn="variedad_frijol" />
+              <Mapping SourceColumn="variedad_maÃ­z" DataSetColumn="variedad_maÃ­z" />
+              <Mapping SourceColumn="Municipios" DataSetColumn="Municipios" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -47,7 +50,7 @@ FROM     vista_inscripcion_senasa_lote</CommandText>
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vista_inscripcion_senasa_lote" msprop:Generator_TableClassName="vista_inscripcion_senasa_loteDataTable" msprop:Generator_TableVarName="tablevista_inscripcion_senasa_lote" msprop:Generator_TablePropName="vista_inscripcion_senasa_lote" msprop:Generator_RowDeletingName="vista_inscripcion_senasa_loteRowDeleting" msprop:Generator_RowChangingName="vista_inscripcion_senasa_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_inscripcion_senasa_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_inscripcion_senasa_loteRowDeleted" msprop:Generator_UserTableName="vista_inscripcion_senasa_lote" msprop:Generator_RowChangedName="vista_inscripcion_senasa_loteRowChanged" msprop:Generator_RowEvArgName="vista_inscripcion_senasa_loteRowChangeEvent" msprop:Generator_RowClassName="vista_inscripcion_senasa_loteRow">
+        <xs:element name="vista_inscripcion_senasa_lote" msprop:Generator_TableClassName="vista_inscripcion_senasa_loteDataTable" msprop:Generator_TableVarName="tablevista_inscripcion_senasa_lote" msprop:Generator_RowChangedName="vista_inscripcion_senasa_loteRowChanged" msprop:Generator_TablePropName="vista_inscripcion_senasa_lote" msprop:Generator_RowDeletingName="vista_inscripcion_senasa_loteRowDeleting" msprop:Generator_RowChangingName="vista_inscripcion_senasa_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_inscripcion_senasa_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_inscripcion_senasa_loteRowDeleted" msprop:Generator_RowClassName="vista_inscripcion_senasa_loteRow" msprop:Generator_UserTableName="vista_inscripcion_senasa_lote" msprop:Generator_RowEvArgName="vista_inscripcion_senasa_loteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Productor" msprop:Generator_ColumnVarNameInTable="columnProductor" msprop:Generator_ColumnPropNameInRow="Productor" msprop:Generator_ColumnPropNameInTable="ProductorColumn" msprop:Generator_UserColumnName="Productor" minOccurs="0">
@@ -118,6 +121,27 @@ FROM     vista_inscripcion_senasa_lote</CommandText>
               <xs:element name="Suma_Area_Sembrada_Total" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Total" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Total" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_TotalColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Total" type="xs:double" minOccurs="0" />
               <xs:element name="Suma_Area_Sembrada_Tipo_cultivo_Maiz" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Tipo_cultivo_Maiz" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Tipo_cultivo_Maiz" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_Tipo_cultivo_MaizColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Tipo_cultivo_Maiz" type="xs:double" minOccurs="0" />
               <xs:element name="Suma_Area_Sembrada_Tipo_cultivo_Frijol" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Tipo_cultivo_Frijol" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Tipo_cultivo_Frijol" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_Tipo_cultivo_FrijolColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Tipo_cultivo_Frijol" type="xs:double" minOccurs="0" />
+              <xs:element name="variedad_frijol" msprop:Generator_ColumnVarNameInTable="columnvariedad_frijol" msprop:Generator_ColumnPropNameInRow="variedad_frijol" msprop:Generator_ColumnPropNameInTable="variedad_frijolColumn" msprop:Generator_UserColumnName="variedad_frijol" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="variedad_maÃ_x00AD_z" msprop:Generator_ColumnVarNameInTable="_columnvariedad_maÃ_z" msprop:Generator_ColumnPropNameInRow="_variedad_maÃ_z" msprop:Generator_ColumnPropNameInTable="_variedad_maÃ_zColumn" msprop:Generator_UserColumnName="variedad_maÃ­z" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Municipios" msprop:Generator_ColumnVarNameInTable="columnMunicipios" msprop:Generator_ColumnPropNameInRow="Municipios" msprop:Generator_ColumnPropNameInTable="MunicipiosColumn" msprop:Generator_UserColumnName="Municipios" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1024" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
