@@ -13,8 +13,9 @@
               <DbSource ConnectionRef="portal_redpashConnectionString1 (Web.config)" DbObjectName="portal_redpash.vista_inscripcion_senasa_lote" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE
-FROM            vista_inscripcion_senasa_lote</CommandText>
+                    <CommandText>SELECT Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Total, 
+                  Suma_Area_Sembrada_Tipo_cultivo_Maiz, Suma_Area_Sembrada_Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad
+FROM     vista_inscripcion_senasa_lote</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -30,6 +31,11 @@ FROM            vista_inscripcion_senasa_lote</CommandText>
               <Mapping SourceColumn="TIPO_SEMILLA" DataSetColumn="TIPO_SEMILLA" />
               <Mapping SourceColumn="NOMBRE_LOTE_FINCA" DataSetColumn="NOMBRE_LOTE_FINCA" />
               <Mapping SourceColumn="NOMBRE_LOTE" DataSetColumn="NOMBRE_LOTE" />
+              <Mapping SourceColumn="Tipo_cultivo" DataSetColumn="Tipo_cultivo" />
+              <Mapping SourceColumn="Suma_Area_Sembrada_Variedad" DataSetColumn="Suma_Area_Sembrada_Variedad" />
+              <Mapping SourceColumn="Suma_Area_Sembrada_Total" DataSetColumn="Suma_Area_Sembrada_Total" />
+              <Mapping SourceColumn="Suma_Area_Sembrada_Tipo_cultivo_Maiz" DataSetColumn="Suma_Area_Sembrada_Tipo_cultivo_Maiz" />
+              <Mapping SourceColumn="Suma_Area_Sembrada_Tipo_cultivo_Frijol" DataSetColumn="Suma_Area_Sembrada_Tipo_cultivo_Frijol" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -41,7 +47,7 @@ FROM            vista_inscripcion_senasa_lote</CommandText>
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vista_inscripcion_senasa_lote" msprop:Generator_TableClassName="vista_inscripcion_senasa_loteDataTable" msprop:Generator_TableVarName="tablevista_inscripcion_senasa_lote" msprop:Generator_RowChangedName="vista_inscripcion_senasa_loteRowChanged" msprop:Generator_TablePropName="vista_inscripcion_senasa_lote" msprop:Generator_RowDeletingName="vista_inscripcion_senasa_loteRowDeleting" msprop:Generator_RowChangingName="vista_inscripcion_senasa_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_inscripcion_senasa_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_inscripcion_senasa_loteRowDeleted" msprop:Generator_RowClassName="vista_inscripcion_senasa_loteRow" msprop:Generator_UserTableName="vista_inscripcion_senasa_lote" msprop:Generator_RowEvArgName="vista_inscripcion_senasa_loteRowChangeEvent">
+        <xs:element name="vista_inscripcion_senasa_lote" msprop:Generator_TableClassName="vista_inscripcion_senasa_loteDataTable" msprop:Generator_TableVarName="tablevista_inscripcion_senasa_lote" msprop:Generator_TablePropName="vista_inscripcion_senasa_lote" msprop:Generator_RowDeletingName="vista_inscripcion_senasa_loteRowDeleting" msprop:Generator_RowChangingName="vista_inscripcion_senasa_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_inscripcion_senasa_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_inscripcion_senasa_loteRowDeleted" msprop:Generator_UserTableName="vista_inscripcion_senasa_lote" msprop:Generator_RowChangedName="vista_inscripcion_senasa_loteRowChanged" msprop:Generator_RowEvArgName="vista_inscripcion_senasa_loteRowChangeEvent" msprop:Generator_RowClassName="vista_inscripcion_senasa_loteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Productor" msprop:Generator_ColumnVarNameInTable="columnProductor" msprop:Generator_ColumnPropNameInRow="Productor" msprop:Generator_ColumnPropNameInTable="ProductorColumn" msprop:Generator_UserColumnName="Productor" minOccurs="0">
@@ -101,6 +107,17 @@ FROM            vista_inscripcion_senasa_lote</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Tipo_cultivo" msprop:Generator_ColumnVarNameInTable="columnTipo_cultivo" msprop:Generator_ColumnPropNameInRow="Tipo_cultivo" msprop:Generator_ColumnPropNameInTable="Tipo_cultivoColumn" msprop:Generator_UserColumnName="Tipo_cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Suma_Area_Sembrada_Variedad" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Variedad" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Variedad" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_VariedadColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Variedad" type="xs:double" minOccurs="0" />
+              <xs:element name="Suma_Area_Sembrada_Total" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Total" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Total" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_TotalColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Suma_Area_Sembrada_Tipo_cultivo_Maiz" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Tipo_cultivo_Maiz" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Tipo_cultivo_Maiz" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_Tipo_cultivo_MaizColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Tipo_cultivo_Maiz" type="xs:double" minOccurs="0" />
+              <xs:element name="Suma_Area_Sembrada_Tipo_cultivo_Frijol" msprop:Generator_ColumnVarNameInTable="columnSuma_Area_Sembrada_Tipo_cultivo_Frijol" msprop:Generator_ColumnPropNameInRow="Suma_Area_Sembrada_Tipo_cultivo_Frijol" msprop:Generator_ColumnPropNameInTable="Suma_Area_Sembrada_Tipo_cultivo_FrijolColumn" msprop:Generator_UserColumnName="Suma_Area_Sembrada_Tipo_cultivo_Frijol" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

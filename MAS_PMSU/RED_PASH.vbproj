@@ -390,6 +390,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="data\DataSet1.vb">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="data\DataSetLotes.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
