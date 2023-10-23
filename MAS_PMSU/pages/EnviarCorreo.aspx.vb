@@ -9,7 +9,7 @@ Partial Class EnviarCorreo
     Protected Sub EnviarCorreo(sender As Object, e As EventArgs)
         Dim destinatario As String = txtDestinatario.Text
         Dim remitente As String = txtRemitente.Text
-        Dim contra As String = txtContrasena.Text
+        Dim contra As String = ""
 
         Dim correo As New MailMessage()
         correo.From = New MailAddress(remitente)

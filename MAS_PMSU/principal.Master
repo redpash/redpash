@@ -146,7 +146,7 @@
                                         <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-user fa-fw"></i>Inscripción de Lote</a>
                                       </li>
                                      <li>
-                                         <a href="EnviarCorreo.aspx"><i class="far fa-envelope"></i>Enviar Correo</a>
+                                         <a href="EnviarCorreo.aspx"><i class="fa-envelope"></i>Enviar Correo</a>
                                      </li>    
                                  </ul>
                              </li>
