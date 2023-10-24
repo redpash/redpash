@@ -352,7 +352,7 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
-
+        limpiar()
         If TxtCiclo.SelectedItem.Text <> " " Then
 
             TxtID.Text = ""
@@ -520,12 +520,46 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Public Sub limpiar()
+        TxtNom.Text = ""
+        TxtCicloD.Text = ""
+        DDL_Tipo.SelectedIndex = 0
+        Dim vv As String = DDL_Tipo.SelectedItem.Text
+
+        TxtVariedad.Items.Clear()
+        If vv = "Frijol" Then
+            DDL_Tipo.SelectedIndex = 1
+            TxtVariedad.Items.Insert(0, "Amadeus-77")
+            TxtVariedad.Items.Insert(1, "Carrizalito")
+            TxtVariedad.Items.Insert(2, "Deorho")
+            TxtVariedad.Items.Insert(3, "Azabache")
+            TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
+            TxtVariedad.Items.Insert(5, "Honduras nutritivo")
+            TxtVariedad.Items.Insert(6, "Inta Cárdenas")
+            TxtVariedad.Items.Insert(7, "Lenca precoz")
+            TxtVariedad.Items.Insert(8, "Rojo chortí")
+            TxtVariedad.Items.Insert(9, "Tolupan rojo")
+            TxtVariedad.Items.Insert(10, "Otra especificar")
+        ElseIf vv = "Maiz" Then
+            DDL_Tipo.SelectedIndex = 2
+            TxtVariedad.Items.Insert(0, "Dicta Maya")
+            TxtVariedad.Items.Insert(1, "Dicta Victoria")
+            TxtVariedad.Items.Insert(2, "Otra especificar")
+        Else
+            TxtVariedad.Items.Insert(0, "")
+        End If
+        TxtCategoria.SelectedIndex = 0
+
         TxT_AreaMZ.Text = ""
+        Txt_AreaHa.Text = ""
+        TxtFechaSiembra.Text = ""
+
         TxtRegistradaQQ.Text = ""
-        TxtCantLotes.Text = ""
-        'txtNombreFinca.Text = ""
+        TxtCantLotes.Text = "1"
+        DDL_Nlote.Items.Clear()
         TxtProduccionQQMZ.Text = ""
+        TxtProduccionQQHA.Text = ""
         TxtSemillaQQ.Text = ""
+        TxtEstimadoProducir.Text = ""
 
     End Sub
     Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
