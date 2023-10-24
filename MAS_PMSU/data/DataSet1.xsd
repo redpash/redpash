@@ -13,9 +13,9 @@
               <DbSource ConnectionRef="portal_redpashConnectionString1 (Web.config)" DbObjectName="portal_redpash.vista_inscripcion_senasa_lote" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Total, Suma_Area_Sembrada_Tipo_cultivo_Maiz, 
-                         Suma_Area_Sembrada_Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad, variedad_frijol, `variedad_maíz`, Municipios
-FROM            vista_inscripcion_senasa_lote</CommandText>
+                    <CommandText>SELECT Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Total, Suma_Area_Sembrada_Tipo_cultivo_Maiz, 
+                  Suma_Area_Sembrada_Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad, variedad_frijol, `variedad_maíz`, Municipios, Productor_Semilla
+FROM     vista_inscripcion_senasa_lote</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -39,6 +39,7 @@ FROM            vista_inscripcion_senasa_lote</CommandText>
               <Mapping SourceColumn="variedad_frijol" DataSetColumn="variedad_frijol" />
               <Mapping SourceColumn="variedad_maÃ­z" DataSetColumn="variedad_maÃ­z" />
               <Mapping SourceColumn="Municipios" DataSetColumn="Municipios" />
+              <Mapping SourceColumn="Productor_Semilla" DataSetColumn="Productor_Semilla" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -139,6 +140,13 @@ FROM            vista_inscripcion_senasa_lote</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1024" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Productor_Semilla" msprop:Generator_ColumnVarNameInTable="columnProductor_Semilla" msprop:Generator_ColumnPropNameInRow="Productor_Semilla" msprop:Generator_ColumnPropNameInTable="Productor_SemillaColumn" msprop:Generator_UserColumnName="Productor_Semilla" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

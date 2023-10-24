@@ -391,9 +391,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.EnviarCorreo._btnEnviar">
+<member name="F:MAS_PMSU.EnviarCorreo._Label23">
 <summary>
-Control btnEnviar.
+Control Label23.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.EnviarCorreo._BtnEnviar">
+<summary>
+Control BtnEnviar.
 </summary>
 <remarks>
 Campo generado automáticamente.

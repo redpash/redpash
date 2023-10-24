@@ -317,6 +317,8 @@ Partial Public Class DataSet1
         
         Private columnMunicipios As Global.System.Data.DataColumn
         
+        Private columnProductor_Semilla As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -489,6 +491,14 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Productor_SemillaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProductor_Semilla
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -542,9 +552,10 @@ Partial Public Class DataSet1
                     ByVal Suma_Area_Sembrada_Tipo_cultivo_Frijol As Double,  _
                     ByVal variedad_frijol As String,  _
                     ByVal _variedad_maÃ_z As String,  _
-                    ByVal Municipios As String) As vista_inscripcion_senasa_loteRow
+                    ByVal Municipios As String,  _
+                    ByVal Productor_Semilla As String) As vista_inscripcion_senasa_loteRow
             Dim rowvista_inscripcion_senasa_loteRow As vista_inscripcion_senasa_loteRow = CType(Me.NewRow,vista_inscripcion_senasa_loteRow)
-            Dim columnValuesArray() As Object = New Object() {Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Variedad, Suma_Area_Sembrada_Total, Suma_Area_Sembrada_Tipo_cultivo_Maiz, Suma_Area_Sembrada_Tipo_cultivo_Frijol, variedad_frijol, _variedad_maÃ_z, Municipios}
+            Dim columnValuesArray() As Object = New Object() {Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Variedad, Suma_Area_Sembrada_Total, Suma_Area_Sembrada_Tipo_cultivo_Maiz, Suma_Area_Sembrada_Tipo_cultivo_Frijol, variedad_frijol, _variedad_maÃ_z, Municipios, Productor_Semilla}
             rowvista_inscripcion_senasa_loteRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvista_inscripcion_senasa_loteRow)
             Return rowvista_inscripcion_senasa_loteRow
@@ -584,6 +595,7 @@ Partial Public Class DataSet1
             Me.columnvariedad_frijol = MyBase.Columns("variedad_frijol")
             Me._columnvariedad_maÃ_z = MyBase.Columns("variedad_maÃ­z")
             Me.columnMunicipios = MyBase.Columns("Municipios")
+            Me.columnProductor_Semilla = MyBase.Columns("Productor_Semilla")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -625,6 +637,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me._columnvariedad_maÃ_z)
             Me.columnMunicipios = New Global.System.Data.DataColumn("Municipios", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMunicipios)
+            Me.columnProductor_Semilla = New Global.System.Data.DataColumn("Productor_Semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProductor_Semilla)
             Me.columnProductor.MaxLength = 255
             Me.columndepartamento.MaxLength = 255
             Me.columnmunicipio.MaxLength = 255
@@ -637,6 +651,7 @@ Partial Public Class DataSet1
             Me.columnvariedad_frijol.MaxLength = 255
             Me._columnvariedad_maÃ_z.MaxLength = 255
             Me.columnMunicipios.MaxLength = 1024
+            Me.columnProductor_Semilla.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1055,6 +1070,22 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Productor_Semilla() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inscripcion_senasa_lote.Productor_SemillaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Productor_Semilla' de la tabla 'vista_inscripcion_senasa_"& _ 
+                            "lote' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inscripcion_senasa_lote.Productor_SemillaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsProductorNull() As Boolean
             Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.ProductorColumn)
         End Function
@@ -1256,6 +1287,18 @@ Partial Public Class DataSet1
         Public Sub SetMunicipiosNull()
             Me(Me.tablevista_inscripcion_senasa_lote.MunicipiosColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsProductor_SemillaNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inscripcion_senasa_lote.Productor_SemillaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetProductor_SemillaNull()
+            Me(Me.tablevista_inscripcion_senasa_lote.Productor_SemillaColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -1441,6 +1484,7 @@ Namespace DataSet1TableAdapters
             tableMapping.ColumnMappings.Add("variedad_frijol", "variedad_frijol")
             tableMapping.ColumnMappings.Add("variedad_maÃ­z", "variedad_maÃ­z")
             tableMapping.ColumnMappings.Add("Municipios", "Municipios")
+            tableMapping.ColumnMappings.Add("Productor_Semilla", "Productor_Semilla")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -1457,11 +1501,11 @@ Namespace DataSet1TableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIED"& _ 
-                "AD, TIPO_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembra"& _ 
-                "da_Total, Suma_Area_Sembrada_Tipo_cultivo_Maiz, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Suma_"& _ 
-                "Area_Sembrada_Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad, variedad_frijol,"& _ 
-                " `variedad_maíz`, Municipios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vista_inscripcion_senasa_lote"
+            Me._commandCollection(0).CommandText = "SELECT Productor, departamento, municipio, CICLO, AREA_SEMBRADA_HA, VARIEDAD, TIP"& _ 
+                "O_SEMILLA, NOMBRE_LOTE_FINCA, NOMBRE_LOTE, Tipo_cultivo, Suma_Area_Sembrada_Tota"& _ 
+                "l, Suma_Area_Sembrada_Tipo_cultivo_Maiz, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  Suma_Area_Sembrada_"& _ 
+                "Tipo_cultivo_Frijol, Suma_Area_Sembrada_Variedad, variedad_frijol, `variedad_maí"& _ 
+                "z`, Municipios, Productor_Semilla"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     vista_inscripcion_senasa_lote"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
