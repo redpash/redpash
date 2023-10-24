@@ -17,11 +17,6 @@
                     Registro Plan Producciòn Semilla Frijol
                 </div>
                 <div class="panel-body">
-                    <div>
-                        <label></label><asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
-                        <br />
-                        <asp:Button CssClass="btn btn-primary" ID="Button2" runat="server" Text="Nuevo" OnClick="descargaPDF" visible="true"/>
-                    </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -113,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" runat="server" visible="false">
                         <div class="col-lg-12">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
@@ -125,12 +120,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-                            <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" />
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+                                <asp:Button CssClass="btn btn-danger" ID="Button2" runat="server" Text="Exportar orden de compra a PDF" OnClick="descargaPDF" visible="false"/>
+                            </div>
                         </div>
                     </div>
-
+                   
                     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -273,9 +276,9 @@
                                     <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
                                     <br />
                                 
-                                     <label for="TxtCantLotes">
+                                     <label for="TxtCantLotes" runat="server" visible="false">
                                         Cantidad de lotes a sembrar</label>
-                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
+                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number" Visible="false" Text="1"/>
                                         <br />
                              
                                      <label for="txtNombreFinca">

@@ -85,7 +85,7 @@ Public Class Registro_Portal_Sag
                 Else
 
                     BAgregar.Visible = True
-
+                    Button2.Visible = True
                     Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
 
                 End If
@@ -599,39 +599,46 @@ Public Class Registro_Portal_Sag
 
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
+        Dim productor As String = TxtProductor.SelectedItem.Text
+        Dim ciclo As String = TxtCiclo.SelectedItem.Text
         'nombre de dataset
         Dim ds As New DataSet1
-        Dim Str As String = "SELECT * FROM vista_inscripcion_senasa_lote WHERE Productor = 'Jairon Matute Reyes' AND CICLO = '2023-Ciclo A'"
+        Dim Str As String = "SELECT * FROM vista_inscripcion_senasa_lote WHERE Productor = '" & productor & "' AND CICLO = '" & ciclo & "'"
         Dim adap As New MySqlDataAdapter(Str, conn)
-        'adap.SelectCommand.Parameters.AddWithValue("@valor", TxtLote.Text)
         Dim dt As New DataTable
 
-
-        'nombre de la vista del data set
-
+        ' Nombre de la vista del dataset
         adap.Fill(ds, "vista_inscripcion_senasa_lote")
 
-
-
-
         Dim nombre As String
-
         nombre = "Solicitud Inscripcion de Lote o Campo _" + Today
-
         rptdocument.Load(Server.MapPath("~/pages/CrystalReport3.rpt"))
-
         rptdocument.SetDataSource(ds)
+
+        ' Usar un HashSet para almacenar municipios únicos
+        Dim municipiosUnicos As New HashSet(Of String)()
+
+        For Each row As DataRow In ds.Tables("vista_inscripcion_senasa_lote").Rows
+            If Not IsDBNull(row("Municipio")) Then
+                municipiosUnicos.Add(row("Municipio").ToString())
+            End If
+        Next
+
+        ' Convertir el HashSet en una cadena separada por comas
+        Dim MunicipiosConcatenados As String = String.Join(", ", municipiosUnicos)
+
+        rptdocument.SetParameterValue("CadenaMunicipios", MunicipiosConcatenados)
+
         Response.Buffer = False
-
-
         Response.ClearContent()
         Response.ClearHeaders()
 
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
-
         Response.End()
     End Sub
+
+
 
     Protected Sub DDL_Tipo_SelectedIndexChanged(sender As Object, e As EventArgs)
         Dim vv As String = DDL_Tipo.SelectedItem.Text

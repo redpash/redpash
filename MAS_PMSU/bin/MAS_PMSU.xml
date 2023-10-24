@@ -391,18 +391,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.EnviarCorreo._Label23">
+<member name="F:MAS_PMSU.EnviarCorreo._Label1">
 <summary>
-Control Label23.
+Control Label1.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.EnviarCorreo._BtnEnviar">
+<member name="F:MAS_PMSU.EnviarCorreo._Button1">
 <summary>
-Control BtnEnviar.
+Control Button1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -8266,24 +8266,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Registro_Portal_Sag._Label23">
-<summary>
-Control Label23.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.Registro_Portal_Sag._Button2">
-<summary>
-Control Button2.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtCiclo">
 <summary>
 Control TxtCiclo.
@@ -8350,6 +8332,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Registro_Portal_Sag._BAgregar">
 <summary>
 Control BAgregar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._Button2">
+<summary>
+Control Button2.
 </summary>
 <remarks>
 Campo generado automáticamente.

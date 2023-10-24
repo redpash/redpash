@@ -23,24 +23,6 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents panelmasiso As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control Label23.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label23 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control Button2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control TxtCiclo.
     '''</summary>
     '''<remarks>
@@ -111,6 +93,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents BAgregar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Button2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control Label1.
