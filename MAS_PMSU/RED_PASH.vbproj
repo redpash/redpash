@@ -244,6 +244,7 @@
     <Content Include="pages\Portal_Sag.aspx" />
     <Content Include="pages\Registro_Banco_Semilla.aspx" />
     <Content Include="pages\Registro_ops_new.aspx" />
+    <Content Include="pages\ProduccionCostes.aspx" />
     <Content Include="pages\Registro_Portal_Sag.aspx" />
     <Content Include="pages\Registro_productores.aspx" />
     <Content Include="pages\SolicitudInscripcionDeLotes.aspx" />
@@ -494,6 +495,13 @@
     <Compile Include="pages\Registro_ops_new.aspx.vb">
       <DependentUpon>Registro_ops_new.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ProduccionCostes.aspx.designer.vb">
+      <DependentUpon>ProduccionCostes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ProduccionCostes.aspx.vb">
+      <DependentUpon>ProduccionCostes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Registro_Portal_Sag.aspx.designer.vb">
       <DependentUpon>Registro_Portal_Sag.aspx</DependentUpon>

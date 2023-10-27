@@ -154,6 +154,9 @@
                             <li>
                                 <a href="Portal_Sag.aspx"><i class="fa fa-university"></i>Plan de producción de semilla</a>
                             </li>
+                            <li>
+                                <a href="ProduccionCostes.aspx"><i class="fa fa-university"></i>Produccion y Costes</a>
+                            </li>
                           <%--  <li>
                                 <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-university"></i>Solicitud Inscripción De Lotes</a>
                             </li>

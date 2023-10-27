@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="Registro_Portal_Sag.aspx.vb" Inherits="MAS_PMSU.Registro_Portal_Sag" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="Registro_Portal_Sag.aspx.vb" Inherits="MAS_PMSU.Registro_Portal_Sag" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
@@ -23,17 +22,6 @@
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtCiclo" runat="server" AutoPostBack="True">
-                                    <asp:ListItem>Todos</asp:ListItem>
-
-                                    <asp:ListItem>2023-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2023-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2023-Ciclo C</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo C</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2026-Ciclo C</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -120,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" runat="server" visible="false">
                         <div class="col-lg-12">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
@@ -132,12 +120,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-                            <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" />
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+                                <asp:Button CssClass="btn btn-danger" ID="Button2" runat="server" Text="Exportar orden de compra a PDF" OnClick="descargaPDF" visible="false"/>
+                            </div>
                         </div>
                     </div>
-
+                   
                     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -176,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="modal fade" id="AdInscrip" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -202,173 +198,132 @@
                                         Ciclo</label>
                                     <asp:TextBox ID="TxtCicloD" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                     <br />
-                                    <label for="TxtVariedad">
-                                        Variedad</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
-                                        <asp:ListItem>PM-2</asp:ListItem>
-                                        <asp:ListItem>Amadeus-77</asp:ListItem>
-                                        <asp:ListItem>HONDURAS NUTRITIVO</asp:ListItem>
-                                        <asp:ListItem>CARRIZALITO</asp:ListItem>
-                                        <asp:ListItem>DEOHRO</asp:ListItem>
-                                        <asp:ListItem>AZABACHE 40</asp:ListItem>
-                                        <asp:ListItem>Inta Cárdenas</asp:ListItem>
-                                        <asp:ListItem>Lenca precoz</asp:ListItem>
-                                        <asp:ListItem>Rojo Chorti</asp:ListItem>
-                                        <asp:ListItem>Tolupan Rojo</asp:ListItem>
+                                    <label for="DDL_Tipo">Tipo</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
+                                        <asp:ListItem Text=""></asp:ListItem>
+                                        <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
+                                        <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
                                     </asp:DropDownList>
+                                    <br />
+                                    <label for="TxtVariedad">Variedad</label>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
+                                    </asp:DropDownList>
+
+                                    <script type="text/javascript">
+                                        var variedades = {
+                                            "Frijol": ["Amadeus77", "Carrizalito", "Deorho", "Azabache", "Paraisitomejorado", "Honduras_nutritivo", "IntaCardenas", "Lencaprecoz", "Rojochortí", "Tolupanrojo", "OtraVariedad"],
+                                            "Maiz": ["Dicta Maya", "Dicta Victoria", "Otra especificar"]
+                                        };
+
+                                        // Función para actualizar las opciones de TxtVariedad
+                                        function updateTxtVariedad() {
+                                            var ddlTipo = document.getElementById('<%= DDL_Tipo.ClientID %>');
+                                            var txtVariedad = document.getElementById('<%= TxtVariedad.ClientID %>');
+                                            var selectedValue = ddlTipo.options[ddlTipo.selectedIndex].value;
+
+                                            // Limpiar las opciones actuales en TxtVariedad
+                                            txtVariedad.options.length = 0;
+
+                                            // Agregar las nuevas opciones según el tipo seleccionado
+                                            for (var i = 0; i < variedades[selectedValue].length; i++) {
+                                                var option = document.createElement("option");
+                                                option.text = variedades[selectedValue][i];
+                                                txtVariedad.add(option);
+                                            }
+                                        }
+                                    </script>
+
                                     <br />
                                     <label for="TxtCategoria">
                                         Categoria</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtCategoria" runat="server">
+                                        <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem>Certificada</asp:ListItem>
                                         <asp:ListItem>Comercial</asp:ListItem>
                                     </asp:DropDownList>
                                     <br />
                                     <label for="TxtQuintales">
-                                        Area a Semabrar En MZ.</label>
-                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control"   AutoPostBack="False" onchange="calculateAreaHa();" />
+                                        Area a Sembrar En MZ.</label>
+                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" TextMode="Number" OnTextChanged="TxT_AreaMZ_TextChanged"/>
                                   
                                     
                                     <label for="Txt_AreaHa">
                                         Area a Sembrar En HA</label>
-                                    <asp:TextBox ID="Txt_AreaHa" runat="server" CssClass="form-control" AutoPostBack="True" ReadOnly="True" />
+                                    <asp:TextBox ID="Txt_AreaHa" runat="server" CssClass="form-control" AutoPostBack="True" ReadOnly="true"/>
                                     <br />
 
                            <%--     esta funcion es de tipo javascript , con documentid agarra los valores de los textbox--%>
                                  <script type="text/javascript">
                                      function calculateAreaHa() {
                                          var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
-                                                var total = areaMZ * 0.6988;
+                                                var total = areaMZ * 0.7;
                                              document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
                                      }
                                  </script>
                                     <label for="TxtFecha">Fecha que siembrarà:</label>
                                     <div class="row">
-                                        <div class="col-lg-2">
-                                            <div class="form-group">
-                                                <label>Dia</label>
-                                                <asp:DropDownList CssClass="form-control" ID="TxtDia" runat="server">
-                                                    <asp:ListItem>1</asp:ListItem>
-                                                    <asp:ListItem>2</asp:ListItem>
-                                                    <asp:ListItem>3</asp:ListItem>
-                                                    <asp:ListItem>4</asp:ListItem>
-                                                    <asp:ListItem>5</asp:ListItem>
-                                                    <asp:ListItem>6</asp:ListItem>
-                                                    <asp:ListItem>7</asp:ListItem>
-                                                    <asp:ListItem>8</asp:ListItem>
-                                                    <asp:ListItem>9</asp:ListItem>
-                                                    <asp:ListItem>10</asp:ListItem>
-                                                    <asp:ListItem>11</asp:ListItem>
-                                                    <asp:ListItem>12</asp:ListItem>
-                                                    <asp:ListItem>13</asp:ListItem>
-                                                    <asp:ListItem>14</asp:ListItem>
-                                                    <asp:ListItem>15</asp:ListItem>
-                                                    <asp:ListItem>16</asp:ListItem>
-                                                    <asp:ListItem>17</asp:ListItem>
-                                                    <asp:ListItem>18</asp:ListItem>
-                                                    <asp:ListItem>19</asp:ListItem>
-                                                    <asp:ListItem>20</asp:ListItem>
-                                                    <asp:ListItem>21</asp:ListItem>
-                                                    <asp:ListItem>22</asp:ListItem>
-                                                    <asp:ListItem>23</asp:ListItem>
-                                                    <asp:ListItem>24</asp:ListItem>
-                                                    <asp:ListItem>25</asp:ListItem>
-                                                    <asp:ListItem>26</asp:ListItem>
-                                                    <asp:ListItem>27</asp:ListItem>
-                                                    <asp:ListItem>28</asp:ListItem>
-                                                    <asp:ListItem>29</asp:ListItem>
-                                                    <asp:ListItem>30</asp:ListItem>
-                                                    <asp:ListItem>31</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Mes</label>
-                                                <asp:DropDownList CssClass="form-control" ID="TxtMes" runat="server">
-                                                    <asp:ListItem>Enero</asp:ListItem>
-                                                    <asp:ListItem>Febrero</asp:ListItem>
-                                                    <asp:ListItem>Marzo</asp:ListItem>
-                                                    <asp:ListItem>Abril</asp:ListItem>
-                                                    <asp:ListItem>Mayo</asp:ListItem>
-                                                    <asp:ListItem>Junio</asp:ListItem>
-                                                    <asp:ListItem>Julio</asp:ListItem>
-                                                    <asp:ListItem>Agosto</asp:ListItem>
-                                                    <asp:ListItem>Septiembre</asp:ListItem>
-                                                    <asp:ListItem>Octubre</asp:ListItem>
-                                                    <asp:ListItem>Noviembre</asp:ListItem>
-                                                    <asp:ListItem>Diciembre</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                                                <label>Año</label>
-                                                <asp:DropDownList CssClass="form-control" ID="TxtAno" runat="server">
-                                                    <asp:ListItem>2018</asp:ListItem>
-                                                    <asp:ListItem>2019</asp:ListItem>
-                                                    <asp:ListItem>2020</asp:ListItem>
-                                                    <asp:ListItem>2021</asp:ListItem>
-                                                    <asp:ListItem>2022</asp:ListItem>
-                                                    <asp:ListItem>2023</asp:ListItem>
-                                                    <asp:ListItem>2024</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
                                        <br />
                                     <label for="TxtRegistradaQQ">
                                         Requerimiento de semilla registrada QQ</label>
-                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" />
+                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
                                     <br />
                                 
-                                     <label for="TxtCantLotes">
+                                     <label for="TxtCantLotes" runat="server" visible="false">
                                         Cantidad de lotes a sembrar</label>
-                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" />
+                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number" Visible="false" Text="1"/>
                                         <br />
                              
                                      <label for="txtNombreFinca">
                                         Nombre o No. del lote dentro de la finca</label>                           
-                                    <asp:TextBox ID="txtNombreFinca" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="false"></asp:DropDownList>
+
                                      <br />
                                    
                                       <label for="TxtProduccionQQMZ">
                                         Estimado de producción en campo QQ/MZ</label>                           
-                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHaPRO();"></asp:TextBox>
+                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" TextMode="Number" onchange="calculateAreaHaPRO();" ></asp:TextBox>
                                      <br />
                             
                                     <label for="TxtProduccionQQHA">
                                         Estimado de producción en campo QQ/HA</label>                           
-                                    <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
                                     <script type="text/javascript">
                                         function calculateAreaHaPRO() {
                                             var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
                                             var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                            var total = areaMZ / areaHA;
+                                            var total = areaMZ * 0.7;
                                                   document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
                                         }
                                     </script>
                                      <br />
                                   
-                                      <label for="TxtSemillaQQ">
+                                    <label for="TxtSemillaQQ">
                                         Estimado semilla a producir QQ.</label>                           
-                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHaEs();"></asp:TextBox>
-                                     <br />
+                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" TextMode="Number" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                    <br />
                                 
-                                     <label for="TxtEstimadoProducir">
+                                    <label for="TxtEstimadoProducir">
                                        Estimado semilla a producir QQ/HA</label>                           
-                                    <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
-                                 <script type="text/javascript">
-                                     var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
+                                    <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
+                                    <script type="text/javascript">
+                                         var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
 
-                                     function calculateAreaHaEs() {
-                                         var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
-                                         var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                            calculatedTotal = areaMZ / areaHA; // Guardar el total en la variable
-                                         document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
-                                     }
-                                 </script>
-                                     <br />
+                                         function calculateAreaHaEs() {
+                                             var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
+                                             var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
+                                                calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
+                                             document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
+                                         }
+                                    </script>
+                                    <br />
                                  
                                     <script type="text/javascript">
                                         function numericOnly(elementRef) {
@@ -428,7 +383,6 @@
                             </div>
                         </div>
                     </div>
-                     
                 </div>
             </div>
         </div>
