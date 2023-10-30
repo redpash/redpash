@@ -104,17 +104,22 @@
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
+                                        <asp:BoundField DataField="Tipo_cultivo" HeaderText="CULTIVO" />
+                                        <asp:BoundField DataField="CATEGORIA" HeaderText="CATEGORIA" />
                                         <asp:BoundField DataField="CICLO" HeaderText="CICLO" />
                                         <asp:BoundField DataField="VARIEDAD" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="CATEGORIA" HeaderText="CATEGORIA" />
-                                       
+                                        <asp:BoundField DataField="NOMBRE_LOTE_FINCA" HeaderText="NUMERO DE LOTE" />
+                                        <asp:BoundField DataField="AREA_SEMBRADA_MZ" HeaderText="AREA INSCRITA EN MZ" />
+                                        <asp:BoundField DataField="AREA_SEMBRADA_HA" HeaderText="AREA INSCRITA EN HA" />
+                                        <asp:BoundField DataField="FECHA_SIEMBRA" HeaderText="FECHA DE SIEMBRA INSCRITA" />
+                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="PRONÓSTICO DE COSECHA INSCRITA EN MZ" />
+                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="PRONÓSTICO DE COSECHA INSCRITA EN HA" />
+                                        <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
 
-                                        <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
-
-                                        <asp:ButtonField ButtonType="Button" Text="EDITAR PLAN" ControlStyle-CssClass="btn btn-success" HeaderText="EDITAR PLAN" CommandName="Editar">
+                                        <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="INSCRIPCION SENASA" ControlStyle-CssClass="btn btn-danger" HeaderText="INSCRIBIR LOTE" CommandName="Eliminar">
+                                        <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-danger" HeaderText="COSTOS" CommandName="Eliminar">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>
@@ -186,13 +191,14 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                <asp:TextBox CssClass="form-control" ID="TextBox7" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
+                                                <asp:TextBox CssClass="form-control" ID="txt_fecha_sembro" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
 
                                     <label>¿Tuvo pérdida en el área que sembró?</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDL_perdidas" runat="server" AutoPostBack="false">
+                                        <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem Text="No"></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                     </asp:DropDownList>
@@ -202,7 +208,7 @@
                                         <br />
                                         <div class="col-lg-4">
                                             <label for="TxtAreaPerdMz">Area del terreno sembradas perdidas (Mz)</label>
-                                            <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                            <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" onchange="calculateAreaHaPer();"/>
                                         </div>
                                         <div class="col-lg-4">
                                             <label for="TxtAreaPerdHa">Area de lterreno sembradas perdidas (Ha)</label>
@@ -212,42 +218,48 @@
                                         <label>¿Cuáles fueron los factores que le causaron pérdida en campo?</label>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Plagas y enfermedades</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList1" style="width:20%;" runat="server" AutoPostBack="false">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList_plaga_enfer" style="width:20%;" runat="server" AutoPostBack="false">
+                                                <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Sequía/falta de lluvia</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList2" style="width:20%;" runat="server" AutoPostBack="false">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList_sequia_lluvia" style="width:20%;" runat="server" AutoPostBack="false">
+                                                <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Exceso de lluvia</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList3" style="width:20%;" runat="server" AutoPostBack="false">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList_exce_lluvia" style="width:20%;" runat="server" AutoPostBack="false">
+                                                <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Baja germinación</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList4" style="width:20%;" runat="server" AutoPostBack="false">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList_baja_germi" style="width:20%;" runat="server" AutoPostBack="false">
+                                                <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Mal manejo cultivo</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" style="width:20%;" runat="server" AutoPostBack="false">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList_mal_culti" style="width:20%;" runat="server" AutoPostBack="false">
+                                                <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Otros factores (robo, daño de animales, etc.,)</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList6" style="width:20%;" runat="server" AutoPostBack="false">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList_otros" style="width:20%;" runat="server" AutoPostBack="false">
+                                                <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -260,6 +272,7 @@
                                     <br />
                                     <label>¿Dispone de los resultados del Centro de Procesamiento?</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDL_Procesamiento" runat="server" AutoPostBack="false">
+                                        <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem Text="No"></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                     </asp:DropDownList>
@@ -285,6 +298,12 @@
                     </div>
 
                     <script type="text/javascript">
+                        function calculateAreaHaPer() {
+                            var areaMZ = parseFloat(document.getElementById('<%= TxtAreaPerdMz.ClientID %>').value);
+                            var total = areaMZ * 0.7;
+                            document.getElementById('<%= TxtAreaPerdHa.ClientID %>').value = total.toFixed(2);
+                        }
+
                         function calculateAreaHaInsc() {
                             var areaMZ = parseFloat(document.getElementById('<%= TxtAreaSembMz.ClientID %>').value);
                             var total = areaMZ * 0.7;
@@ -332,25 +351,25 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="TxtCost1">Insumos: </label>
-                                    <asp:TextBox ID="TxtCost" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                     <label for="TxtCost2">Mano de obra: </label>
-                                    <asp:TextBox ID="TxtCost2" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                     <label for="TxtCost3">Equipos y maquinaria: </label>
-                                    <asp:TextBox ID="TxtCost3" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                     <label for="TxtCost4">Inscripción: </label>
-                                    <asp:TextBox ID="TxtCost4" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                     <label for="TxtCost5">Acondicionamiento de semilla: </label>
-                                    <asp:TextBox ID="TxtCost5" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                     <label for="TxtCost6">Otros costos: </label>
-                                    <asp:TextBox ID="TxtCost6" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" onchange="calculateTotalCosto();"/>
                                     <br />
                                     <label for="TxtCost7">TOTAL: </label>
-                                    <asp:TextBox ID="TxtCost7" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                 </div>
                                 <div class="modal-footer" style="text-align: center">
@@ -360,6 +379,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <script type="text/javascript">
+                        function calculateTotalCosto() {
+                            var insumo = parseFloat(document.getElementById('<%= TxtInsumo.ClientID %>').value);
+                            var mano_obra = parseFloat(document.getElementById('<%= TxtManoObra.ClientID %>').value);
+                            var equi_maqui = parseFloat(document.getElementById('<%= TxtEquiMaqui.ClientID %>').value);
+                            var inscrip = parseFloat(document.getElementById('<%= TxtInscri.ClientID %>').value);
+                            var acondicio = parseFloat(document.getElementById('<%= TxtAcondiSemilla.ClientID %>').value);
+                            var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value);
+                            var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
+                            document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
+                        }
+                    </script>
                     
                     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2"
                         aria-hidden="true">
@@ -662,7 +694,7 @@
                                                  Etiqueta De Semilla Registrada</label>                           
                                                    <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" />
                                                    <br />
-                                            <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="True" class="btn btn-primary" />
+                                            <asp:Button ID="BtnUpload" runat="server" Text="Guardar" AutoPostBack="True" class="btn btn-primary" />
                                                      <asp:Button ID="Button1" runat="server" Text="Regresar"  AutoPostBack="True" class="btn btn-warning" />
                                                      <hr />
                                                

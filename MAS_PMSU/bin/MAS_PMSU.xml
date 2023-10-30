@@ -8392,9 +8392,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TextBox7">
+<member name="F:MAS_PMSU.ProduccionCostes._txt_fecha_sembro">
 <summary>
-Control TextBox7.
+Control txt_fecha_sembro.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -8437,54 +8437,54 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DropDownList1">
+<member name="F:MAS_PMSU.ProduccionCostes._DropDownList_plaga_enfer">
 <summary>
-Control DropDownList1.
+Control DropDownList_plaga_enfer.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DropDownList2">
+<member name="F:MAS_PMSU.ProduccionCostes._DropDownList_sequia_lluvia">
 <summary>
-Control DropDownList2.
+Control DropDownList_sequia_lluvia.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DropDownList3">
+<member name="F:MAS_PMSU.ProduccionCostes._DropDownList_exce_lluvia">
 <summary>
-Control DropDownList3.
+Control DropDownList_exce_lluvia.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DropDownList4">
+<member name="F:MAS_PMSU.ProduccionCostes._DropDownList_baja_germi">
 <summary>
-Control DropDownList4.
+Control DropDownList_baja_germi.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DropDownList5">
+<member name="F:MAS_PMSU.ProduccionCostes._DropDownList_mal_culti">
 <summary>
-Control DropDownList5.
+Control DropDownList_mal_culti.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DropDownList6">
+<member name="F:MAS_PMSU.ProduccionCostes._DropDownList_otros">
 <summary>
-Control DropDownList6.
+Control DropDownList_otros.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -8563,63 +8563,63 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtInsumo">
 <summary>
-Control TxtCost.
+Control TxtInsumo.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost2">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtManoObra">
 <summary>
-Control TxtCost2.
+Control TxtManoObra.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost3">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtEquiMaqui">
 <summary>
-Control TxtCost3.
+Control TxtEquiMaqui.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost4">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtInscri">
 <summary>
-Control TxtCost4.
+Control TxtInscri.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost5">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtAcondiSemilla">
 <summary>
-Control TxtCost5.
+Control TxtAcondiSemilla.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost6">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtOtros">
 <summary>
-Control TxtCost6.
+Control TxtOtros.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._TxtCost7">
+<member name="F:MAS_PMSU.ProduccionCostes._TxtTotal">
 <summary>
-Control TxtCost7.
+Control TxtTotal.
 </summary>
 <remarks>
 Campo generado automáticamente.

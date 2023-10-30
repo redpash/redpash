@@ -149,13 +149,13 @@ Partial Public Class ProduccionCostes
     Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control TextBox7.
+    '''Control txt_fecha_sembro.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox7 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txt_fecha_sembro As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control DDL_perdidas.
@@ -194,58 +194,58 @@ Partial Public Class ProduccionCostes
     Protected WithEvents TxtAreaPerdHa As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control DropDownList1.
+    '''Control DropDownList_plaga_enfer.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList_plaga_enfer As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DropDownList2.
+    '''Control DropDownList_sequia_lluvia.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList_sequia_lluvia As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DropDownList3.
+    '''Control DropDownList_exce_lluvia.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList3 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList_exce_lluvia As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DropDownList4.
+    '''Control DropDownList_baja_germi.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList4 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList_baja_germi As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DropDownList5.
+    '''Control DropDownList_mal_culti.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList5 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList_mal_culti As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DropDownList6.
+    '''Control DropDownList_otros.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList6 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList_otros As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control TxtQQProd.
@@ -320,67 +320,67 @@ Partial Public Class ProduccionCostes
     Protected WithEvents BtnSaliProd As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control TxtCost.
+    '''Control TxtInsumo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtInsumo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtCost2.
+    '''Control TxtManoObra.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtManoObra As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtCost3.
+    '''Control TxtEquiMaqui.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost3 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtEquiMaqui As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtCost4.
+    '''Control TxtInscri.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost4 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtInscri As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtCost5.
+    '''Control TxtAcondiSemilla.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost5 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtAcondiSemilla As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtCost6.
+    '''Control TxtOtros.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost6 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtOtros As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtCost7.
+    '''Control TxtTotal.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtCost7 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtTotal As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control BtnGuardCost.
