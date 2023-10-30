@@ -702,4 +702,12 @@ Public Class ProduccionCostes
             DDL_Tipo.SelectedIndex = 0
         End If
     End Sub
+
+    Protected Sub TxtAreaSembMz_TextChanged(sender As Object, e As EventArgs) Handles TxtAreaSembMz.TextChanged
+        If TxtAreaSembMz.Text <> "" Then
+            TxtAreaSembHa.Text = Convert.ToString(Convert.ToDouble(TxtAreaSembMz.Text) * 0.7)
+        Else
+            TxtAreaSembHa.Text = ""
+        End If
+    End Sub
 End Class

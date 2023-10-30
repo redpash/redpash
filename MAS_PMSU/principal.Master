@@ -157,6 +157,9 @@
                             <li>
                                 <a href="ProduccionCostes.aspx"><i class="fa fa-university"></i>Produccion y Costes</a>
                             </li>
+                            <li>
+                                <a href="VisitaTecnicos.aspx"><i class="fa fa-university"></i>Visita Tecnicos</a>
+                            </li>
                           <%--  <li>
                                 <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-university"></i>Solicitud Inscripción De Lotes</a>
                             </li>

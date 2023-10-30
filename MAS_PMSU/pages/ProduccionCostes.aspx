@@ -170,7 +170,7 @@
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="TxtAreaSembMz">Area del terreno sembradas (Mz)</label>
-                                                <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                                <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" onchange="calculateAreaHaInsc();" AutoPostBack="false" OnTextChanged="TxtAreaSembMz_TextChanged"/>
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -180,6 +180,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <label for="TxtFecha">Fecha que sembró:</label>
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -191,7 +192,7 @@
                                     </div>
 
                                     <label>¿Tuvo pérdida en el área que sembró?</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDL_perdidas" runat="server" AutoPostBack="True">
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_perdidas" runat="server" AutoPostBack="false">
                                         <asp:ListItem Text="No"></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                     </asp:DropDownList>
@@ -211,42 +212,42 @@
                                         <label>¿Cuáles fueron los factores que le causaron pérdida en campo?</label>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Plagas y enfermedades</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList1" style="width:20%;" runat="server" AutoPostBack="True">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList1" style="width:20%;" runat="server" AutoPostBack="false">
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Sequía/falta de lluvia</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList2" style="width:20%;" runat="server" AutoPostBack="True">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList2" style="width:20%;" runat="server" AutoPostBack="false">
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Exceso de lluvia</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList3" style="width:20%;" runat="server" AutoPostBack="True">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList3" style="width:20%;" runat="server" AutoPostBack="false">
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Baja germinación</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList4" style="width:20%;" runat="server" AutoPostBack="True">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList4" style="width:20%;" runat="server" AutoPostBack="false">
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Mal manejo cultivo</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" style="width:20%;" runat="server" AutoPostBack="True">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" style="width:20%;" runat="server" AutoPostBack="false">
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Otros factores (robo, daño de animales, etc.,)</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList6" style="width:20%;" runat="server" AutoPostBack="True">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList6" style="width:20%;" runat="server" AutoPostBack="false">
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -258,7 +259,7 @@
                                     <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
                                     <br />
                                     <label>¿Dispone de los resultados del Centro de Procesamiento?</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDL_Procesamiento" runat="server" AutoPostBack="True">
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_Procesamiento" runat="server" AutoPostBack="false">
                                         <asp:ListItem Text="No"></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                     </asp:DropDownList>
@@ -282,6 +283,44 @@
                             </div>
                         </div>
                     </div>
+
+                    <script type="text/javascript">
+                        function calculateAreaHaInsc() {
+                            var areaMZ = parseFloat(document.getElementById('<%= TxtAreaSembMz.ClientID %>').value);
+                            var total = areaMZ * 0.7;
+                            document.getElementById('<%= TxtAreaSembHa.ClientID %>').value = total.toFixed(2);
+                        }
+                        // Función para mostrar u ocultar DIVsiembraperdida
+                        function mostrarOcultarSiembraperdida() {
+                            var ddlPerdidas = document.getElementById('<%= DDL_perdidas.ClientID %>');
+                            var divSiembraperdida = document.getElementById('<%= DIVsiembraperdida.ClientID %>');
+                            if (ddlPerdidas.value === 'Si') {
+                                divSiembraperdida.style.display = 'block';
+                            } else {
+                                divSiembraperdida.style.display = 'none';
+                            }
+                        }
+
+                        // Función para mostrar u ocultar DIVproduccion
+                        function mostrarOcultarProduccion() {
+                            var ddlProcesamiento = document.getElementById('<%= DDL_Procesamiento.ClientID %>');
+                            var divProduccion = document.getElementById('<%= DIVproduccion.ClientID %>');
+                            if (ddlProcesamiento.value === 'Si') {
+                                divProduccion.style.display = 'block';
+                            } else {
+                                divProduccion.style.display = 'none';
+                            }
+                        }
+
+                        // Asignar los eventos onchange a los DropDownList
+                        document.getElementById('<%= DDL_perdidas.ClientID %>').addEventListener('change', mostrarOcultarSiembraperdida);
+                        document.getElementById('<%= DDL_Procesamiento.ClientID %>').addEventListener('change', mostrarOcultarProduccion);
+
+                        // Llamar a las funciones una vez para establecer el estado inicial
+                        mostrarOcultarSiembraperdida();
+                        mostrarOcultarProduccion();
+                    </script>
+
 
                     <div class="modal fade" id="ModalCostos" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2"
                         aria-hidden="true">

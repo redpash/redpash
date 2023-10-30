@@ -249,6 +249,7 @@
     <Content Include="pages\Registro_productores.aspx" />
     <Content Include="pages\SolicitudInscripcionDeLotes.aspx" />
     <Content Include="pages\TC_REGISTRO_BCS.aspx" />
+    <Content Include="pages\VisitaTecnicos.aspx" />
     <Content Include="panels-wells.html" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -535,6 +536,13 @@
     </Compile>
     <Compile Include="pages\TC_REGISTRO_BCS.aspx.vb">
       <DependentUpon>TC_REGISTRO_BCS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\VisitaTecnicos.aspx.designer.vb">
+      <DependentUpon>VisitaTecnicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\VisitaTecnicos.aspx.vb">
+      <DependentUpon>VisitaTecnicos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Paginas.Master.designer.vb">
