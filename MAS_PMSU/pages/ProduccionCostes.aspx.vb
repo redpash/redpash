@@ -166,7 +166,7 @@ Public Class ProduccionCostes
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
             Else
 
-
+                limpiarCosto()
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
             End If
         End If
@@ -466,7 +466,13 @@ Public Class ProduccionCostes
     End Sub
 
     Public Sub limpiarCosto()
-
+        TxtInsumo.Text = ""
+        TxtInscri.Text = ""
+        TxtManoObra.Text = ""
+        TxtOtros.Text = ""
+        TxtAcondiSemilla.Text = ""
+        TxtEquiMaqui.Text = ""
+        TxtTotal.Text = ""
     End Sub
     Protected Sub BtnCosto_Click(sender As Object, e As EventArgs) Handles BtnGuardCost.Click
         Try
