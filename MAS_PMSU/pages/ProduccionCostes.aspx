@@ -22,6 +22,7 @@
                             <div class="form-group">
                                 <label>Seleccione Cultivo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_cultivo" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text=" "></asp:ListItem>
                                     <asp:ListItem Text="Frijol"></asp:ListItem>
                                     <asp:ListItem Text="Maiz"></asp:ListItem>
                                 </asp:DropDownList>
@@ -31,6 +32,7 @@
                             <div class="form-group">
                                 <label>Seleccione Categoria:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_Categ" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text=" "></asp:ListItem>
                                     <asp:ListItem Text="Basica"></asp:ListItem>
                                     <asp:ListItem Text="Certificada"></asp:ListItem>
                                     <asp:ListItem Text="Registrada"></asp:ListItem>
@@ -112,13 +114,18 @@
                                         <asp:BoundField DataField="AREA_SEMBRADA_MZ" HeaderText="AREA INSCRITA EN MZ" />
                                         <asp:BoundField DataField="AREA_SEMBRADA_HA" HeaderText="AREA INSCRITA EN HA" />
                                         <asp:BoundField DataField="FECHA_SIEMBRA" HeaderText="FECHA DE SIEMBRA INSCRITA" />
-                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="PRONÓSTICO DE COSECHA INSCRITA EN MZ" />
-                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="PRONÓSTICO DE COSECHA INSCRITA EN HA" />
+                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="COSECHA INSCRITA EN MZ" />
+                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="COSECHA INSCRITA EN HA" />
                                         <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
 
                                         <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
+                                        <asp:TemplateField HeaderText="Check costo">
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="CheckBox1" runat="server" />
+                                        </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-danger" HeaderText="COSTOS" CommandName="Eliminar">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
@@ -138,11 +145,6 @@
                         <div class="col-lg-12">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            -----------------------------
                         </div>
                     </div>
                     <div class="row">

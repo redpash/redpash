@@ -51,14 +51,14 @@ Public Class ProduccionCostes
 
     Private Sub llenarcomboProductor()
         If TxtDepto.SelectedItem.Text <> " " Then
-            Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM solicitud_inscripcion_delotes WHERE departamento = @nombre ORDER BY nombre_productor ASC"
+            Dim StrCombo As String = "SELECT DISTINCT Productor FROM bcs_inscripcion_senasa WHERE Departamento = @nombre ORDER BY Productor ASC"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
             TxtProductor.DataSource = DtCombo
-            TxtProductor.DataValueField = "nombre_productor"
-            TxtProductor.DataTextField = "nombre_productor"
+            TxtProductor.DataValueField = "Productor"
+            TxtProductor.DataTextField = "Productor"
             TxtProductor.DataBind()
             Dim newitem As New ListItem(" ", " ")
             TxtProductor.Items.Insert(0, newitem)
@@ -72,46 +72,49 @@ Public Class ProduccionCostes
         BAgregar.Visible = False
         'import.Visible = False
 
-        If TxtCiclo.SelectedItem.Text = " " Then
-            Me.SqlDataSource1.SelectCommand = "SELECT ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
+
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
         Else
-
-            If (TxtDepto.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            If (DDL_Categ.SelectedItem.Text = " ") Then
+                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
             Else
-
-                If (TxtProductor.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = "SELECT ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                If (TxtCiclo.SelectedItem.Text = " ") Then
+                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                 Else
-
-                    BAgregar.Visible = True
-                    Button2.Visible = True
-                    Me.SqlDataSource1.SelectCommand = "SELECT ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-
+                    If (TxtDepto.SelectedItem.Text = " ") Then
+                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                    Else
+                        If (TxtProductor.SelectedItem.Text = " ") Then
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                        Else
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                        End If
+                    End If
                 End If
             End If
-
         End If
 
-        GridDatos.DataBind()
-
+    End Sub
+    Protected Sub DDL_cultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_cultivo.SelectedIndexChanged
+        llenagrid()
     End Sub
 
+    Protected Sub DDL_Categ_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_Categ.SelectedIndexChanged
+        llenagrid()
+    End Sub
     Protected Sub TxtCiclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCiclo.SelectedIndexChanged
-        '    'llenarcomboDepto()
-        '    'llenarcomboProductor()
         llenagrid()
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenarcomboProductor()
         llenagrid()
-
     End Sub
 
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
         llenagrid()
-
     End Sub
 
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
@@ -221,81 +224,8 @@ Public Class ProduccionCostes
 
     End Sub
 
-    Private Sub exportar()
-
-        Dim query As String = ""
-
-        If TxtCiclo.SelectedValue = "Todos" Then
-            query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Departamento,Productor,CICLO "
-        Else
-            If (TxtDepto.SelectedValue = " Todos") Then
-                query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE CICLO='" & TxtCiclo.SelectedValue & "'  AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            Else
-                query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            End If
-        End If
-
-        Using con As New MySqlConnection(conn)
-            Using cmd As New MySqlCommand(query)
-                Using sda As New MySqlDataAdapter()
-                    cmd.Connection = con
-                    sda.SelectCommand = cmd
-                    Using ds As New DataSet()
-                        sda.Fill(ds)
-
-                        'Set Name of DataTables.
-                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
-
-                        Using wb As New XLWorkbook()
-                            For Each dt As DataTable In ds.Tables
-                                ' Add DataTable as Worksheet.
-                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
-
-                                ' Set auto width for all columns based on content.
-                                ws.Columns().AdjustToContents()
-                            Next
-
-                            ' Export the Excel file.
-                            Response.Clear()
-                            Response.Buffer = True
-                            Response.Charset = ""
-                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=PLAN PRODUCCIÓN DE SEMILLA DE FRIJOL  " & Today & ".xlsx")
-                            Using MyMemoryStream As New MemoryStream()
-                                wb.SaveAs(MyMemoryStream)
-                                MyMemoryStream.WriteTo(Response.OutputStream)
-                                Response.Flush()
-                                Response.End()
-                            End Using
-                        End Using
-                    End Using
-                End Using
-            End Using
-        End Using
-    End Sub
-
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
-        exportar()
-
-    End Sub
-
     Private Sub llenarVAIDAD_CICLO()
 
-    End Sub
-
-    Protected Sub obtener_numero_lote(cadena As String)
-
-        Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        DDL_Nlote.DataSource = DtCombo
-        DDL_Nlote.DataValueField = "nombre_lote"
-        DDL_Nlote.DataTextField = "nombre_lote"
-        DDL_Nlote.DataBind()
-        Dim newitem As New ListItem(" ", " ")
-        DDL_Nlote.Items.Insert(0, newitem)
     End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
@@ -305,12 +235,6 @@ Public Class ProduccionCostes
             TxtID.Text = ""
 
             ' Dim fecha2 As Date
-
-            TxtNom.Text = TxtProductor.SelectedItem.Text
-            TxtCicloD.Text = TxtCiclo.SelectedItem.Text
-            TxtVariedad.SelectedIndex = 0
-            TxtCategoria.SelectedIndex = 0
-            obtener_numero_lote(TxtProductor.SelectedItem.Text)
 
             'fecha2 = Now
             'TxtDia.SelectedValue = fecha2.Day
@@ -481,7 +405,7 @@ Public Class ProduccionCostes
                 conn.Open()
 
                 Dim query As String = "UPDATE bcs_inscripcion_senasa SET 
-                COSTO_INSUMOS = @COSTO_INSUMOS,
+                COSTOS_INSUMOS = @COSTOS_INSUMOS,
                 COSTOS_MANO = @COSTOS_MANO,
                 COSTOS_EQUIPO = @COSTOS_EQUIPO,
                 COSTOS_OTROS = @COSTOS_OTROS,
@@ -490,7 +414,7 @@ Public Class ProduccionCostes
                 COSTO_TOTAL = @COSTO_TOTAL  WHERE ID=" & TxtID.Text & " "
 
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@COSTO_INSUMOS", Convert.ToDouble(TxtInsumo.Text))
+                    cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble(TxtInsumo.Text))
                     cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble(TxtManoObra.Text))
                     cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble(TxtEquiMaqui.Text))
                     cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble(TxtOtros.Text))
@@ -498,13 +422,19 @@ Public Class ProduccionCostes
                     cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble(TxtAcondiSemilla.Text))
                     cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
                     cmd.ExecuteNonQuery()
+                    Label1.Text = "Los costo se ha almacenado exitosamente"
                 End Using
             End Using
 
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        Response.Redirect(String.Format("~/pages/Registro_Portal_Sag.aspx"))
+
+        BConfirm.Visible = True
+        BBorrarsi.Visible = False
+        BBorrarno.Visible = False
+
+        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
     End Sub
 
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
