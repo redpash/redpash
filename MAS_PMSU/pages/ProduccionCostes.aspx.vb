@@ -165,7 +165,7 @@ Public Class ProduccionCostes
             If chkBox IsNot Nothing AndAlso chkBox.Checked Then
                 ' Casilla marcada, abrir ModalCostos2
                 lblmodalcostos.Visible = True
-                divmodalcostos.Visible = False
+                divmodalcostos.Visible = True
                 TxtInsumo.Text = "0"
                 TxtManoObra.Text = "0"
                 TxtEquiMaqui.Text = "0"
@@ -177,6 +177,7 @@ Public Class ProduccionCostes
                 ' Casilla no marcada, abrir ModalCostos
                 lblmodalcostos.Visible = False
                 divmodalcostos.Visible = True
+
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
             End If
             If txt_habilitado.Text = "NO" Then
@@ -415,8 +416,8 @@ Public Class ProduccionCostes
         TxtTotal.Text = ""
     End Sub
     Protected Sub BtnCosto_Click(sender As Object, e As EventArgs) Handles BtnGuardCost.Click
-        Try
-            Dim connectionString As String = conn
+        'Try
+        Dim connectionString As String = conn
             Using conn As New MySqlConnection(connectionString)
                 conn.Open()
 
@@ -429,24 +430,54 @@ Public Class ProduccionCostes
                 COSTOS_ACONDICIONAMIENTO_SEMILLA = @COSTOS_ACONDICIONAMIENTO_SEMILLA,
                 COSTO_TOTAL = @COSTO_TOTAL  WHERE ID=" & TxtID.Text & " "
 
-                Using cmd As New MySqlCommand(query, conn)
+            Using cmd As New MySqlCommand(query, conn)
+                If TxtInsumo.Text = "" Then
+                    cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble("0"))
+                Else
                     cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble(TxtInsumo.Text))
+                End If
+
+                If TxtManoObra.Text = "" Then
+                    cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble("0"))
+                Else
                     cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble(TxtManoObra.Text))
+                End If
+
+                If TxtEquiMaqui.Text = "" Then
+                    cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble("0"))
+                Else
                     cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble(TxtEquiMaqui.Text))
+                End If
+
+                If TxtOtros.Text = "" Then
+                    cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble("0"))
+                Else
                     cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble(TxtOtros.Text))
+                End If
+
+                If TxtInscri.Text = "" Then
+                    cmd.Parameters.AddWithValue("@COSTOS_INSCRIPCION", Convert.ToDouble("0"))
+                Else
                     cmd.Parameters.AddWithValue("@COSTOS_INSCRIPCION", Convert.ToDouble(TxtInscri.Text))
+                End If
+
+                If TxtAcondiSemilla.Text = "" Then
+                    cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble("0"))
+                Else
                     cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble(TxtAcondiSemilla.Text))
-                    cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
-                    cmd.ExecuteNonQuery()
-                    Label1.Text = "Los costo se ha almacenado exitosamente"
-                End Using
+                End If
+
+                cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
+                cmd.ExecuteNonQuery()
+                Label1.Text = "Los costo se ha almacenado exitosamente"
             End Using
+        End Using
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+            'Catch ex As Exception
+            '    MsgBox(ex.Message)
+            'End Try
 
-        BConfirm.Visible = True
+            BConfirm.Visible = True
         BBorrarsi.Visible = False
         BBorrarno.Visible = False
 

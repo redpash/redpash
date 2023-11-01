@@ -419,33 +419,6 @@ Partial Public Class ProduccionCostes
     Protected WithEvents BtnSaliCost As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control TextBox11.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TextBox11 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control Button3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control Button4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Button4 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control Label1.
     '''</summary>
     '''<remarks>

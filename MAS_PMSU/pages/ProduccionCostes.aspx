@@ -355,52 +355,31 @@
                                     <label for="TxtCost1" id="lblmodalcostos" runat="server" visible="false">Favor estimar el costo global en lempiras para el total de área sembrada (independientemente si perdió el total del área sembrada reportada) </label>
                                     <div id="divmodalcostos" runat="server">
                                         <label for="TxtCost1">Insumos: </label>
-                                        <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
                                         <br />
                                         <label for="TxtCost2">Mano de obra: </label>
-                                        <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
                                         <br />
                                         <label for="TxtCost3">Equipos y maquinaria: </label>
-                                        <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
                                         <br />
                                         <label for="TxtCost4">Inscripción: </label>
-                                        <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
                                         <br />
                                         <label for="TxtCost5">Acondicionamiento de semilla: </label>
-                                        <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
                                         <br />
                                         <label for="TxtCost6">Otros costos: </label>
-                                        <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" onchange="calculateTotalCosto();"/>
+                                        <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
                                         <br />
                                     </div>
                                     <label for="TxtCost7">TOTAL: </label>
-                                    <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" autocomplete="off"/>
                                     <br />
                                 </div>
                                 <div class="modal-footer" style="text-align: center">
                                     <asp:Button ID="BtnGuardCost" Text="Guardar" Width="80px" runat="server" Class="btn btn-primary" />
                                     <asp:Button ID="BtnSaliCost" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="ModalCostos2" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="ModalCostosTitle2">Costos</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="TxtCost1">Favor estimar el costo global en lempiras para el total de área sembrada (independientemente si perdió el total del área sembrada reportada) </label>
-                                    <label for="TxtCost7">TOTAL: </label>
-                                    <asp:TextBox ID="TextBox11" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
-                                    <br />
-                                </div>
-                                <div class="modal-footer" style="text-align: center">
-                                    <asp:Button ID="Button3" Text="Guardar" Width="80px" runat="server" Class="btn btn-primary" />
-                                    <asp:Button ID="Button4" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>
@@ -426,10 +405,10 @@
                                 <div class="modal-header">
                                     <%--  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                                     &times;</button>--%>
-                                    <h4 class="modal-title" id="ModalTitle2">MAS 2.0 - DICTA - MSU</h4>
+                                    <h4 class="modal-title" id="ModalTitle2">REDPASH</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" Text="Los costo no se han almacenado"></asp:Label>
                                 </div>
                                 <div class="modal-footer" style="text-align: center">
                                     <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
