@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Información General</h1>
+            <h1 class="page-header">Visita Tecnicos </h1>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label>1. Su nombre completo:</label>
                             <asp:TextBox ID="txtNombreCompleto" CssClass="form-control" runat="server"></asp:TextBox>
@@ -61,6 +61,7 @@
                         <div class="form-group">
                             <label>2. Seleccione el ciclo de siembra en que reporta la visita de asistencia técnica:</label>
                             <asp:DropDownList ID="ddlCicloSiembra" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="2023 Ciclo A" Value="A"></asp:ListItem>
                                 <asp:ListItem Text="2023 Ciclo B" Value="B"></asp:ListItem>
                                 <asp:ListItem Text="2023 Ciclo C" Value="C"></asp:ListItem>
@@ -83,18 +84,18 @@
                             <div class="form-group">
                                 <label>3. ¿En qué etapa/fase está el cultivo del frijol al realizar la visita?</label>
                                 <asp:DropDownList ID="ddlEtapaFase" CssClass="form-control" runat="server">
+                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                     <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>3.1 Seleccione la fase del cultivo del frijol al realizar la visita:</label>
                                 <asp:DropDownList ID="ddlFaseVisita" CssClass="form-control" runat="server">
+                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem Text="Germinación (La semilla está en un ambiente favorable para germinar)" Value="Germinación"></asp:ListItem>
                                     <asp:ListItem Text="Emergencia (0-10 días)" Value="Emergencia"></asp:ListItem>
                                     <asp:ListItem Text="Crecimiento (11-34 días)" Value="Crecimiento"></asp:ListItem>
@@ -121,6 +122,7 @@
                         <div class="form-group">
                             <label>Si esta informacion ya fue reportada en una visita anterior, confirme en SI para saltar a la siguiente pregunta:</label>
                             <asp:DropDownList ID="ddlConfirmaInspeccion" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -166,6 +168,357 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Carrizalito</label>
+                                <asp:Label ID="Label2" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Carrizalito" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Carrizalito_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label7" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_Carrizalito_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label8" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaCarrizalito" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Deorho</label>
+                                <asp:Label ID="Label9" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Deorho" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label10" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Deorho_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label11" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_Deorho_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label12" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaDeorho" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>ParaisitoMejoradoPM-2</label>
+                                <asp:Label ID="Label13" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label15" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="DropDownList3" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label16" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Hondurasnutritivo</label>
+                                <asp:Label ID="Label17" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Hondurasnutritivo" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Hondurasnutritivo_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label19" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_Hondurasnutritivo_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label20" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaHondurasnutritivo" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>IntaCárdenas</label>
+                                <asp:Label ID="Label21" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_IntaCárdenas" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label22" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_IntaCárdenas_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_IntaCárdenas_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label24" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaIntaCárdenas" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Azabache40</label>
+                                <asp:Label ID="Label25" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Azabache40" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label26" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_Azabache40_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label27" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_Azabache40_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label28" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaAzabache40" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>LencaPrecoz</label>
+                                <asp:Label ID="Label29" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_LencaPrecoz" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label30" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_LencaPrecoz_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label31" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_LencaPrecoz_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label32" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaLencaPrecoz" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>RojoChorti</label>
+                                <asp:Label ID="Label33" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_RojoChorti" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label34" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_RojoChorti_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label35" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_RojoChorti_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label36" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaRojoChorti" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>TolupanRojo</label>
+                                <asp:Label ID="Label37" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_TolupanRojo" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"> 
+                            <div class="form-group">
+                                <label>Certificado</label>
+                                <asp:Label ID="Label38" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="lb_TolupanRojo_Certificado" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+    
+                                <label>Comercial</label>
+                                <asp:Label ID="Label39" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_TolupanRojo_Comercial" runat="server" AutoPostBack="True">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Si</asp:ListItem>
+                                    <asp:ListItem>No</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Fecha de siembra:</label>
+                                <asp:Label ID="Label40" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtFechaTolupanRojo" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,6 +535,7 @@
                         <div class="form-group">
                             <label>5. DENSIDAD, GERMINACIÓN E INOCULANTE. BRINDÓ RECOMENDACIÓN:</label>
                             <asp:DropDownList ID="ddlRecomendacion" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -232,38 +586,57 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label>6. Control de malezas, ¿brindó recomendación?</label>
                             <asp:DropDownList ID="ddlControlMalezas" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label>6.1 Realiza control químico con herbicida selectivo:</label>
                             <asp:DropDownList ID="ddlControlQuimicoSelectivo" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
+
+                    </div>
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label>6.2 Realiza control químico con herbicida de contacto NO selectivo:</label>
                             <asp:DropDownList ID="ddlControlQuimicoNoSelectivo" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
+
+                    </div>
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label>6.3 Problemas encontrados:</label>
                             <asp:DropDownList ID="ddlProblemasControlMalezas" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
+
+                    </div>
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label>6.4 Recomendación técnica:</label>
                             <asp:DropDownList ID="ddlRecomendacionControlMalezas" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -285,6 +658,7 @@
                         <div class="form-group">
                             <label>7. Plan nutricional, ¿brindó recomendación?</label>
                             <asp:DropDownList ID="ddlPlanNutricional" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -292,6 +666,7 @@
                         <div class="form-group">
                             <label>7.1 Realizó este año análisis de suelo para cultivar frijol:</label>
                             <asp:DropDownList ID="ddlAnalisisSuelo" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -303,6 +678,7 @@
                         <div class="form-group">
                             <label>7.1.1 Las fertilizaciones las ha realizado con base a los resultados del análisis de suelo?</label>
                             <asp:DropDownList ID="ddlFertilizacionesBasadasEnAnalisis" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -310,6 +686,7 @@
                         <div class="form-group">
                             <label>7.1.2 Cuenta con los resultados del análisis de suelo?</label>
                             <asp:DropDownList ID="ddlResultadosAnalisisSuelo" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="No sabe/no recuerda" Value="NoSabeNoRecuerda"></asp:ListItem>
@@ -322,6 +699,7 @@
                         <div class="form-group">
                             <label>7.2. APLICÓ FERTILIZANTES QUÍMICOS, ORGÁNICOS O FOLIARES:</label>
                             <asp:DropDownList ID="ddlAplicoFertilizantes" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -355,6 +733,7 @@
                         <div class="form-group">
                             <label>8. Prevención y control de plagas y enfermedades, ¿brindó recomendación?</label>
                             <asp:DropDownList ID="ddlPrevencionControlPlagas" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -362,6 +741,7 @@
                         <div class="form-group">
                             <label>8.1 ¿Realizó algún tipo de prevención y/o control de plagas y enfermedades?</label>
                             <asp:DropDownList ID="ddlTipoPrevencionPlagas" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -410,6 +790,7 @@
                         <div class="form-group">
                             <label>9. Riego, ¿brindó recomendación?</label>
                             <asp:DropDownList ID="ddlRiegoRecomendacion" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -417,6 +798,7 @@
                         <div class="form-group">
                             <label>9.1 Observe el cultivo si presenta estrés hídrico las plantas:</label>
                             <asp:DropDownList ID="ddlEstresHidrico" CssClass="form-control" runat="server">
+                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Text="Sí" Value="Si"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                             </asp:DropDownList>
@@ -437,24 +819,28 @@
                             <div class="form-group">
                                 <label for="ddlFugas">Fugas:</label>
                                 <asp:DropDownList ID="ddlFugas" CssClass="form-control" runat="server">
+                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="Si" />
                                     <asp:ListItem Text="No" Value="No" />
                                 </asp:DropDownList>
 
                                 <label for="ddlReduccionCaudal">Reducción caudal:</label>
                                 <asp:DropDownList ID="ddlReduccionCaudal" CssClass="form-control" runat="server">
+                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="Si" />
                                     <asp:ListItem Text="No" Value="No" />
                                 </asp:DropDownList>
 
                                 <label for="ddlDisenoRiego">Diseño:</label>
                                 <asp:DropDownList ID="ddlDisenoRiego" CssClass="form-control" runat="server">
+                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="Si" />
                                     <asp:ListItem Text="No" Value="No" />
                                 </asp:DropDownList>
 
                                 <label for="ddlAguaSedimentos">Agua con sedimentos, sucio, pesada:</label>
                                 <asp:DropDownList ID="ddlAguaSedimentos" CssClass="form-control" runat="server">
+                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="Si" />
                                     <asp:ListItem Text="No" Value="No" />
                                 </asp:DropDownList>

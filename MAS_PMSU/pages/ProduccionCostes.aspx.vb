@@ -159,10 +159,26 @@ Public Class ProduccionCostes
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
             txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
-
+            Dim chkBox As CheckBox = TryCast(gvrow.FindControl("CheckBox1"), CheckBox)
             'div_nuevo_prod.Visible = True
             'panelmasiso.Visible = False
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
+            If chkBox IsNot Nothing AndAlso chkBox.Checked Then
+                ' Casilla marcada, abrir ModalCostos2
+                lblmodalcostos.Visible = True
+                divmodalcostos.Visible = False
+                TxtInsumo.Text = "0"
+                TxtManoObra.Text = "0"
+                TxtEquiMaqui.Text = "0"
+                TxtInscri.Text = "0"
+                TxtAcondiSemilla.Text = "0"
+                TxtOtros.Text = "0"
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
+            Else
+                ' Casilla no marcada, abrir ModalCostos
+                lblmodalcostos.Visible = False
+                divmodalcostos.Visible = True
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
+            End If
             If txt_habilitado.Text = "NO" Then
 
                 Label3.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
