@@ -354,6 +354,7 @@
                                 <div class="modal-body">
                                     <label>Usar solo costo total</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLCostos" runat="server" AutoPostBack="false">
+                                        <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                         <asp:ListItem Text="No"></asp:ListItem>
                                     </asp:DropDownList>
@@ -414,7 +415,7 @@
                             var ddlPerdidas = document.getElementById('<%= DDLCostos.ClientID %>');
                             var divmodalcostos = document.getElementById('<%= divmodalcostos.ClientID %>');
                             var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
-                            if (ddlPerdidas.value === 'No') {
+                            if (ddlPerdidas.value === 'No' || ddlPerdidas.value === "") {
                                 divmodalcostos.style.display = 'block';
                                 lblmodalcostos.style.display = 'block';
                             } else {

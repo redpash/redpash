@@ -151,41 +151,26 @@ Public Class ProduccionCostes
         If (e.CommandName = "Eliminar") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT COSTOS_INSUMOS, COSTOS_INSCRIPCION, COSTOS_MANO, COSTOS_OTROS, COSTOS_ACONDICIONAMIENTO_SEMILLA, COSTOS_EQUIPO,COSTO_TOTAL, Habilitado, check_costo FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+            'txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
-            Dim chkBox As CheckBox = TryCast(gvrow.FindControl("CheckBox1"), CheckBox)
-            'div_nuevo_prod.Visible = True
-            'panelmasiso.Visible = False
-            If chkBox IsNot Nothing AndAlso chkBox.Checked Then
-                ' Casilla marcada, abrir ModalCostos2
-                lblmodalcostos.Visible = True
-                divmodalcostos.Visible = True
-                TxtInsumo.Text = "0"
-                TxtManoObra.Text = "0"
-                TxtEquiMaqui.Text = "0"
-                TxtInscri.Text = "0"
-                TxtAcondiSemilla.Text = "0"
-                TxtOtros.Text = "0"
+            If dt.Rows.Count > 0 Then
+                limpiarCosto()
+                DDLCostos.Text = dt.Rows(0)("check_costo").ToString
+                TxtInsumo.Text = dt.Rows(0)("COSTOS_INSUMOS").ToString()
+                TxtInscri.Text = dt.Rows(0)("COSTOS_INSCRIPCION").ToString()
+                TxtManoObra.Text = dt.Rows(0)("COSTOS_MANO").ToString()
+                TxtOtros.Text = dt.Rows(0)("COSTOS_OTROS").ToString()
+                TxtAcondiSemilla.Text = dt.Rows(0)("COSTOS_ACONDICIONAMIENTO_SEMILLA").ToString()
+                TxtEquiMaqui.Text = dt.Rows(0)("COSTOS_EQUIPO").ToString()
+                TxtTotal.Text = dt.Rows(0)("COSTO_TOTAL").ToString()
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
             Else
-                ' Casilla no marcada, abrir ModalCostos
-                lblmodalcostos.Visible = False
-                divmodalcostos.Visible = True
-
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
-            End If
-            If txt_habilitado.Text = "NO" Then
-
-                Label3.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-            Else
-
                 limpiarCosto()
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
             End If
@@ -428,7 +413,8 @@ Public Class ProduccionCostes
                 COSTOS_OTROS = @COSTOS_OTROS,
                 COSTOS_INSCRIPCION = @COSTOS_INSCRIPCION,
                 COSTOS_ACONDICIONAMIENTO_SEMILLA = @COSTOS_ACONDICIONAMIENTO_SEMILLA,
-                COSTO_TOTAL = @COSTO_TOTAL  WHERE ID=" & TxtID.Text & " "
+                COSTO_TOTAL = @COSTO_TOTAL,
+                check_costo = @check_costo WHERE ID=" & TxtID.Text & " "
 
             Using cmd As New MySqlCommand(query, conn)
                 If TxtInsumo.Text = "" Then
@@ -465,6 +451,9 @@ Public Class ProduccionCostes
                     cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble("0"))
                 Else
                     cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble(TxtAcondiSemilla.Text))
+                End If
+                If DDLCostos.SelectedItem.Text <> "" Then
+                    cmd.Parameters.AddWithValue("@check_costo", DDLCostos.SelectedItem.Text)
                 End If
 
                 cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
