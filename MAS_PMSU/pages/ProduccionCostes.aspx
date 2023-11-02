@@ -116,16 +116,16 @@
                                         <asp:BoundField DataField="FECHA_SIEMBRA" HeaderText="FECHA DE SIEMBRA INSCRITA" />
                                         <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="COSECHA INSCRITA EN MZ" />
                                         <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="COSECHA INSCRITA EN HA" />
-                                        <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
+                                        <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 
                                         <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:TemplateField HeaderText="Check costo">
+<%--                                        <asp:TemplateField HeaderText="Check costo">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="CheckBox1" runat="server" />
                                         </ItemTemplate>
-                                        </asp:TemplateField>
+                                        </asp:TemplateField>--%>
                                         <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-danger" HeaderText="COSTOS" CommandName="Eliminar">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
@@ -352,25 +352,38 @@
                                     <h4 class="modal-title" id="ModalCostosTitle">Costos</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="TxtCost1" id="lblmodalcostos" runat="server" visible="false">Favor estimar el costo global en lempiras para el total de área sembrada (independientemente si perdió el total del área sembrada reportada) </label>
+                                    <label>Usar solo costo total</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLCostos" runat="server" AutoPostBack="false">
+                                        <asp:ListItem Text="Si"></asp:ListItem>
+                                        <asp:ListItem Text="No"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <br />
+                                    <label id="lblmodalcostos" runat="server">Favor estimar el costo global en lempiras para el total de área sembrada (independientemente si perdió el total del área sembrada reportada) </label>
+                                    <br />
                                     <div id="divmodalcostos" runat="server">
                                         <label for="TxtCost1">Insumos: </label>
-                                        <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();"/>
+                                        <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxtInsumo" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtCost2">Mano de obra: </label>
-                                        <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" CausesValidation="True" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtManoObra" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtCost3">Equipos y maquinaria: </label>
-                                        <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" CausesValidation="True" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtEquiMaqui" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtCost4">Inscripción: </label>
-                                        <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" CausesValidation="True" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtInscri" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtCost5">Acondicionamiento de semilla: </label>
-                                        <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" CausesValidation="True" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TxtAcondiSemilla" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtCost6">Otros costos: </label>
-                                        <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateTotalCosto();" CausesValidation="True" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtOtros" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                     </div>
                                     <label for="TxtCost7">TOTAL: </label>
@@ -384,18 +397,33 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <script type="text/javascript">
                         function calculateTotalCosto() {
-                            var insumo = parseFloat(document.getElementById('<%= TxtInsumo.ClientID %>').value);
-                            var mano_obra = parseFloat(document.getElementById('<%= TxtManoObra.ClientID %>').value);
-                            var equi_maqui = parseFloat(document.getElementById('<%= TxtEquiMaqui.ClientID %>').value);
-                            var inscrip = parseFloat(document.getElementById('<%= TxtInscri.ClientID %>').value);
-                            var acondicio = parseFloat(document.getElementById('<%= TxtAcondiSemilla.ClientID %>').value);
-                            var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value);
+                            var insumo = parseFloat(document.getElementById('<%= TxtInsumo.ClientID %>').value) || 0;
+                            var mano_obra = parseFloat(document.getElementById('<%= TxtManoObra.ClientID %>').value) || 0;
+                            var equi_maqui = parseFloat(document.getElementById('<%= TxtEquiMaqui.ClientID %>').value) || 0;
+                            var inscrip = parseFloat(document.getElementById('<%= TxtInscri.ClientID %>').value) || 0;
+                            var acondicio = parseFloat(document.getElementById('<%= TxtAcondiSemilla.ClientID %>').value) || 0;
+                            var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value) || 0;
                             var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
                             document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
                         }
+
+                        function mostrarOcultardivmodalcostos() {
+                            var ddlPerdidas = document.getElementById('<%= DDLCostos.ClientID %>');
+                            var divmodalcostos = document.getElementById('<%= divmodalcostos.ClientID %>');
+                            var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
+                            if (ddlPerdidas.value === 'No') {
+                                divmodalcostos.style.display = 'block';
+                                lblmodalcostos.style.display = 'block';
+                            } else {
+                                divmodalcostos.style.display = 'none';
+                                lblmodalcostos.style.display = 'none';
+                            }
+                        }
+                        document.getElementById('<%= DDLCostos.ClientID %>').addEventListener('change', mostrarOcultardivmodalcostos);
+                        mostrarOcultardivmodalcostos();
                     </script>
                     
                     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2"

@@ -8563,6 +8563,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ProduccionCostes._DDLCostos">
+<summary>
+Control DDLCostos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ProduccionCostes._lblmodalcostos">
 <summary>
 Control lblmodalcostos.
@@ -8590,9 +8599,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ProduccionCostes._RegexValidator">
+<summary>
+Control RegexValidator.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ProduccionCostes._TxtManoObra">
 <summary>
 Control TxtManoObra.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ProduccionCostes._RegularExpressionValidator1">
+<summary>
+Control RegularExpressionValidator1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -8608,9 +8635,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ProduccionCostes._RegularExpressionValidator2">
+<summary>
+Control RegularExpressionValidator2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ProduccionCostes._TxtInscri">
 <summary>
 Control TxtInscri.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ProduccionCostes._RegularExpressionValidator3">
+<summary>
+Control RegularExpressionValidator3.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -8626,9 +8671,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ProduccionCostes._RegularExpressionValidator4">
+<summary>
+Control RegularExpressionValidator4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ProduccionCostes._TxtOtros">
 <summary>
 Control TxtOtros.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ProduccionCostes._RegularExpressionValidator5">
+<summary>
+Control RegularExpressionValidator5.
 </summary>
 <remarks>
 Campo generado automáticamente.
