@@ -400,6 +400,10 @@ Public Class ProduccionCostes
         TxtEquiMaqui.Text = ""
         TxtTotal.Text = ""
     End Sub
+
+    Protected Sub limpiarFiltros(sender As Object, e As EventArgs)
+        Response.Redirect("ProduccionCostes.aspx")
+    End Sub
     Protected Sub BtnCosto_Click(sender As Object, e As EventArgs) Handles BtnGuardCost.Click
         'Try
         Dim connectionString As String = conn

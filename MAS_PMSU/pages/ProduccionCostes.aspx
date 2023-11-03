@@ -39,6 +39,13 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label></label><asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <br />
+                                <asp:Button CssClass="btn btn-primary" ID="Button3" runat="server" Text="Reiniciar" OnClick="limpiarFiltros" visible="true"/>
+                            </div>
+                        </div>   
                     </div>
                     <div class="row">
                         <div class="col-lg-4">

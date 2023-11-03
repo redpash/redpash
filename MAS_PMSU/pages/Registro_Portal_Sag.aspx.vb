@@ -563,6 +563,11 @@ Public Class Registro_Portal_Sag
         TxtEstimadoProducir.Text = ""
 
     End Sub
+
+    Protected Sub limpiarFiltros(sender As Object, e As EventArgs)
+        Response.Redirect("Registro_Portal_Sag.aspx")
+    End Sub
+
     Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
         Try
             Dim connectionString As String = conn
