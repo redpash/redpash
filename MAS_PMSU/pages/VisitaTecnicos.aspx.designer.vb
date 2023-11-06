@@ -68,15 +68,6 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents ddlCicloSiembra As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control ddlEtapaFase.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlEtapaFase As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control ddlFaseVisita.
     '''</summary>
     '''<remarks>
@@ -896,22 +887,22 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents ddlControlQuimicoNoSelectivo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control ddlProblemasControlMalezas.
+    '''Control txtProblemasEncontrados2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ddlProblemasControlMalezas As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtProblemasEncontrados2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control ddlRecomendacionControlMalezas.
+    '''Control txtRecomendacionTecnica2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ddlRecomendacionControlMalezas As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtRecomendacionTecnica2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control ddlPlanNutricional.

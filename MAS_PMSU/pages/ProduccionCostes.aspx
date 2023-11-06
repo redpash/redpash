@@ -424,10 +424,10 @@
                             var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
                             if (ddlPerdidas.value === 'No' || ddlPerdidas.value === "") {
                                 divmodalcostos.style.display = 'block';
-                                lblmodalcostos.style.display = 'block';
+                                lblmodalcostos.style.display = 'none';
                             } else {
                                 divmodalcostos.style.display = 'none';
-                                lblmodalcostos.style.display = 'none';
+                                lblmodalcostos.style.display = 'block';
                             }
                         }
                         document.getElementById('<%= DDLCostos.ClientID %>').addEventListener('change', mostrarOcultardivmodalcostos);

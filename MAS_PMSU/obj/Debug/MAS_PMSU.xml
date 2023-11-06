@@ -11803,15 +11803,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._ddlEtapaFase">
-<summary>
-Control ddlEtapaFase.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.VisitaTecnicos._ddlFaseVisita">
 <summary>
 Control ddlFaseVisita.
@@ -12631,18 +12622,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._ddlProblemasControlMalezas">
+<member name="F:MAS_PMSU.VisitaTecnicos._txtProblemasEncontrados2">
 <summary>
-Control ddlProblemasControlMalezas.
+Control txtProblemasEncontrados2.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._ddlRecomendacionControlMalezas">
+<member name="F:MAS_PMSU.VisitaTecnicos._txtRecomendacionTecnica2">
 <summary>
-Control ddlRecomendacionControlMalezas.
+Control txtRecomendacionTecnica2.
 </summary>
 <remarks>
 Campo generado automáticamente.

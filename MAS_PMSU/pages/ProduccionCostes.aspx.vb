@@ -124,8 +124,6 @@ Public Class ProduccionCostes
 
         If (e.CommandName = "Editar") Then
 
-
-
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
@@ -136,16 +134,44 @@ Public Class ProduccionCostes
             nuevo = False
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+            'txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
-            If txt_habilitado.Text = "NO" Then
-
-                Label3.Text = "Para este ciclo ya ha finalizado el tiempo de edición, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+            If dt.Rows.Count > 0 Then
+                'limpiarCosto()
+                TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
+                TxtAreaSembHa.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_HA").ToString
+                Dim fecha As Date
+                If Date.TryParse(dt.Rows(0)("FECHA_SEMBRO").ToString, fecha) Then
+                    txt_fecha_sembro.Text = fecha.ToString("yyyy-MM-dd")
+                End If
+                DDL_perdidas.Text = dt.Rows(0)("TUVO_PERDIDA").ToString
+                TxtAreaPerdMz.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_MZ").ToString
+                TxtAreaPerdHa.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_HA").ToString
+                DropDownList_plaga_enfer.Text = dt.Rows(0)("FACT_PERD_PLA_ENFER").ToString
+                DropDownList_sequia_lluvia.Text = dt.Rows(0)("FACT_PERD_SEQ_LLUV").ToString
+                DropDownList_exce_lluvia.Text = dt.Rows(0)("FACT_PERD_EXC_LLUV").ToString
+                DropDownList_baja_germi.Text = dt.Rows(0)("FACT_PERD_BAJA_GERMI").ToString
+                DropDownList_mal_culti.Text = dt.Rows(0)("FACT_PERD_MAL_MANE_CULTI").ToString
+                DropDownList_otros.Text = dt.Rows(0)("FACT_PERD_OTROS_FACT").ToString
+                TxtQQProd.Text = dt.Rows(0)("QQ_PRODU_CAMPO").ToString
+                DDL_Procesamiento.Text = dt.Rows(0)("RESULT_CENTRO_PROCES").ToString
+                TxtSemilla.Text = dt.Rows(0)("CANTIDAD_QQ_SEMI").ToString
+                TxtGrano.Text = dt.Rows(0)("CANTIDAD_QQ_GRANO").ToString
+                TxtBasura.Text = dt.Rows(0)("CANTIDAD_QQ_BASURA").ToString
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
             Else
-                limpiarProduccion()
+                'limpiarCosto()
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
             End If
+
+            'If txt_habilitado.Text = "NO" Then
+
+            'l3.Text = "Para este ciclo ya ha finalizado el tiempo de edición, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
+            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+            'Else
+            'limpiarProduccion()
+            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+            'End If
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -326,7 +352,7 @@ Public Class ProduccionCostes
                 cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
             End If
             cmd2.ExecuteNonQuery()
-                conex.Close()
+            conex.Close()
 
             Label1.Text = "La producción se ha agreado exitosamente"
 
@@ -334,7 +360,7 @@ Public Class ProduccionCostes
 
         End If
 
-            llenagrid()
+        llenagrid()
 
         BConfirm.Visible = True
         BBorrarsi.Visible = False
@@ -407,10 +433,10 @@ Public Class ProduccionCostes
     Protected Sub BtnCosto_Click(sender As Object, e As EventArgs) Handles BtnGuardCost.Click
         'Try
         Dim connectionString As String = conn
-            Using conn As New MySqlConnection(connectionString)
-                conn.Open()
+        Using conn As New MySqlConnection(connectionString)
+            conn.Open()
 
-                Dim query As String = "UPDATE bcs_inscripcion_senasa SET 
+            Dim query As String = "UPDATE bcs_inscripcion_senasa SET 
                 COSTOS_INSUMOS = @COSTOS_INSUMOS,
                 COSTOS_MANO = @COSTOS_MANO,
                 COSTOS_EQUIPO = @COSTOS_EQUIPO,
