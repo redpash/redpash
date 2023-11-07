@@ -230,7 +230,7 @@
                             <div class="form-group">
                                 <label>ParaisitoMejoradoPM-2</label>
                                 <asp:Label ID="Label13" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="True">
+                                <asp:DropDownList CssClass="form-control" ID="lb_ParaisitoMejoradoPM_2" runat="server" AutoPostBack="True">
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
@@ -240,14 +240,14 @@
                             <div class="form-group">
                                 <label>Certificado</label>
                                 <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" AutoPostBack="True">
+                                <asp:DropDownList CssClass="form-control" ID="lb_ParaisitoMejoradoPM_2_Certificado" runat="server" AutoPostBack="True">
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
     
                                 <label>Comercial</label>
                                 <asp:Label ID="Label15" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control form-control-lg" ID="DropDownList3" runat="server" AutoPostBack="True">
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_ParaisitoMejoradoPM_2_Comercial" runat="server" AutoPostBack="True">
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
@@ -257,7 +257,7 @@
                             <div class="form-group">
                                 <label>Fecha de siembra:</label>
                                 <asp:Label ID="Label16" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                                <asp:TextBox ID="txtFechalb_ParaisitoMejoradoPM_2" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -302,7 +302,7 @@
                             <div class="form-group">
                                 <label>IntaCárdenas</label>
                                 <asp:Label ID="Label21" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="lb_IntaCárdenas" runat="server" AutoPostBack="True">
+                                <asp:DropDownList CssClass="form-control" ID="lb_IntaCardenas" runat="server" AutoPostBack="True">
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
@@ -312,14 +312,14 @@
                             <div class="form-group">
                                 <label>Certificado</label>
                                 <asp:Label ID="Label22" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="lb_IntaCárdenas_Certificado" runat="server" AutoPostBack="True">
+                                <asp:DropDownList CssClass="form-control" ID="lb_IntaCardenas_Certificado" runat="server" AutoPostBack="True">
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
     
                                 <label>Comercial</label>
                                 <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_IntaCárdenas_Comercial" runat="server" AutoPostBack="True">
+                                <asp:DropDownList CssClass="form-control form-control-lg" ID="lb_IntaCardenas_Comercial" runat="server" AutoPostBack="True">
                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
@@ -329,7 +329,7 @@
                             <div class="form-group">
                                 <label>Fecha de siembra:</label>
                                 <asp:Label ID="Label24" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtFechaIntaCárdenas" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaIntaCardenas" CssClass="form-control" runat="server" TextMode="date"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -791,7 +791,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <asp:Button ID="btnGuardar" Text="Guardar" CssClass="btn btn-primary" runat="server"/>
+            <asp:Button ID="btnGuardar" Text="Guardar" CssClass="btn btn-primary" runat="server" OnClick="btnGuardar_Click"/>
         </div>
     </div>
 </asp:Content>

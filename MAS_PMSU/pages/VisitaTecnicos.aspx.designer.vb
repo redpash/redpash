@@ -311,13 +311,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label13 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control DropDownList1.
+    '''Control lb_ParaisitoMejoradoPM_2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lb_ParaisitoMejoradoPM_2 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label14.
@@ -329,13 +329,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label14 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control DropDownList2.
+    '''Control lb_ParaisitoMejoradoPM_2_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lb_ParaisitoMejoradoPM_2_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label15.
@@ -347,13 +347,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label15 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control DropDownList3.
+    '''Control lb_ParaisitoMejoradoPM_2_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList3 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lb_ParaisitoMejoradoPM_2_Comercial As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label16.
@@ -365,13 +365,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label16 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control TextBox1.
+    '''Control txtFechalb_ParaisitoMejoradoPM_2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFechalb_ParaisitoMejoradoPM_2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label17.
@@ -455,13 +455,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label21 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_IntaCárdenas.
+    '''Control lb_IntaCardenas.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_IntaCárdenas As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lb_IntaCardenas As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label22.
@@ -473,13 +473,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label22 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_IntaCárdenas_Certificado.
+    '''Control lb_IntaCardenas_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_IntaCárdenas_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lb_IntaCardenas_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label23.
@@ -491,13 +491,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label23 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_IntaCárdenas_Comercial.
+    '''Control lb_IntaCardenas_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_IntaCárdenas_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lb_IntaCardenas_Comercial As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label24.
@@ -509,13 +509,13 @@ Partial Public Class VisitaTecnicos
     Protected WithEvents Label24 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtFechaIntaCárdenas.
+    '''Control txtFechaIntaCardenas.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtFechaIntaCárdenas As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFechaIntaCardenas As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label25.

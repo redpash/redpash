@@ -12046,9 +12046,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._DropDownList1">
+<member name="F:MAS_PMSU.VisitaTecnicos._lb_ParaisitoMejoradoPM_2">
 <summary>
-Control DropDownList1.
+Control lb_ParaisitoMejoradoPM_2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12064,9 +12064,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._DropDownList2">
+<member name="F:MAS_PMSU.VisitaTecnicos._lb_ParaisitoMejoradoPM_2_Certificado">
 <summary>
-Control DropDownList2.
+Control lb_ParaisitoMejoradoPM_2_Certificado.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12082,9 +12082,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._DropDownList3">
+<member name="F:MAS_PMSU.VisitaTecnicos._lb_ParaisitoMejoradoPM_2_Comercial">
 <summary>
-Control DropDownList3.
+Control lb_ParaisitoMejoradoPM_2_Comercial.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12100,9 +12100,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._TextBox1">
+<member name="F:MAS_PMSU.VisitaTecnicos._txtFechalb_ParaisitoMejoradoPM_2">
 <summary>
-Control TextBox1.
+Control txtFechalb_ParaisitoMejoradoPM_2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12190,9 +12190,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._lb_IntaCárdenas">
+<member name="F:MAS_PMSU.VisitaTecnicos._lb_IntaCardenas">
 <summary>
-Control lb_IntaCárdenas.
+Control lb_IntaCardenas.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12208,9 +12208,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._lb_IntaCárdenas_Certificado">
+<member name="F:MAS_PMSU.VisitaTecnicos._lb_IntaCardenas_Certificado">
 <summary>
-Control lb_IntaCárdenas_Certificado.
+Control lb_IntaCardenas_Certificado.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12226,9 +12226,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._lb_IntaCárdenas_Comercial">
+<member name="F:MAS_PMSU.VisitaTecnicos._lb_IntaCardenas_Comercial">
 <summary>
-Control lb_IntaCárdenas_Comercial.
+Control lb_IntaCardenas_Comercial.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12244,9 +12244,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.VisitaTecnicos._txtFechaIntaCárdenas">
+<member name="F:MAS_PMSU.VisitaTecnicos._txtFechaIntaCardenas">
 <summary>
-Control txtFechaIntaCárdenas.
+Control txtFechaIntaCardenas.
 </summary>
 <remarks>
 Campo generado automáticamente.
