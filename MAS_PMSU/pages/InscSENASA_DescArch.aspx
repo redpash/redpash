@@ -124,11 +124,7 @@
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            -----------------------------
-                        </div>
-                    </div>
+             
                     <div class="row">
                         <div class="col-lg-2">
                             <div class="form-group">
