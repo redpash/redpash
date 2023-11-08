@@ -91,8 +91,8 @@
                                         <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
                                         <asp:BoundField DataField="CICLO" HeaderText="CICLO" />
-                                        <asp:BoundField DataField="VARIEDAD" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="CATEGORIA" HeaderText="CATEGORIA" />
+                                        <asp:BoundField DataField="NOMBRE_LOTE_FINCA" HeaderText="NUMERO DE LOTE" />
+                                        
                                        
 
                                         <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
@@ -100,11 +100,11 @@
                                         <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Ficha de Lote" CommandName="FichaLote">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-danger" HeaderText="Pago de TGR" CommandName="PagoTGR">
-                                            <ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Pago de TGR" CommandName="PagoTGR">
+                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-danger" HeaderText="Etiqueta de Semilla Registrada" CommandName="Etiqueta">
-                                            <ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Etiqueta de Semilla Registrada" CommandName="Etiqueta">
+                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>
                                     <EditRowStyle BackColor="#7C6F57" />

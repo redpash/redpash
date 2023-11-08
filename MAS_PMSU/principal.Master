@@ -137,7 +137,15 @@
                             </li>
 
                             <li>
-                                <a href="Registro_Portal_Sag.aspx"><i class="fa fa-university"></i>Inscripción SENASA</a>
+                                <a href="#"><i class="fa fa-university"></i>Inscripción SENASA<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                     <li>
+                                       <a href="Registro_Portal_Sag.aspx"><i class="fa fa-user fa-fw"></i>Registrar Plan de Produccion</a>
+                                     </li>
+                                    <li>
+                                        <a href="InscSENASA_DescArch.aspx"><i class="fa fa-envelope fa-fw"></i>Archivos de Inscripción</a>
+                                    </li>    
+                                </ul>
                             </li>
                              <li>
                                  <a href="#"><i class="fa fa-university"></i>Inscripción de Lote<span class="fa arrow"></span></a>

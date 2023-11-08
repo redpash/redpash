@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Data.SqlClient
+Imports System.IO
 Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
 Imports MySql.Data.MySqlClient
@@ -51,14 +52,14 @@ Public Class InscSENASA_DescArch
 
     Private Sub llenarcomboProductor()
         If TxtDepto.SelectedItem.Text <> " " Then
-            Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM solicitud_inscripcion_delotes WHERE departamento = @nombre ORDER BY nombre_productor ASC"
+            Dim StrCombo As String = "SELECT DISTINCT Productor FROM bcs_inscripcion_senasa WHERE departamento = @nombre ORDER BY Productor ASC"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
             TxtProductor.DataSource = DtCombo
-            TxtProductor.DataValueField = "nombre_productor"
-            TxtProductor.DataTextField = "nombre_productor"
+            TxtProductor.DataValueField = "Productor"
+            TxtProductor.DataTextField = "Productor"
             TxtProductor.DataBind()
             Dim newitem As New ListItem(" ", " ")
             TxtProductor.Items.Insert(0, newitem)
@@ -119,109 +120,100 @@ Public Class InscSENASA_DescArch
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
-        If (e.CommandName = "Editar") Then
+        If (e.CommandName = "FichaLote") Then
 
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            Dim dt As New DataTable
-            adap.Fill(dt)
+            Dim Str As String = "SELECT IMAGEN_FICHA FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim connectionString As String = conn
 
-            nuevo = False
-
-            DDL_Tipo.SelectedIndex = 0
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+                Using command As New MySqlCommand(Str, connection)
+                    Using reader As mySqlDataReader = command.ExecuteReader()
+                        If reader.Read() Then
+                            Dim imageData As Byte() = DirectCast(reader("IMAGEN_FICHA"), Byte())
+                            Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                            Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                            ' Configura la respuesta HTTP para descargar la imagen
+                            HttpContext.Current.Response.Clear()
+                            HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FICHA_INSCRIPCION_LOTE_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                            HttpContext.Current.Response.BinaryWrite(imageData)
+                            HttpContext.Current.Response.Flush()
+                            HttpContext.Current.Response.End()
+                        End If
+                    End Using
+                End Using
+            End Using
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
-            obtener_numero_lote(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
-
-            If txt_habilitado.Text = "NO" Then
-
-                Label3.Text = "Para este ciclo ya ha finalizado el tiempo de edición, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-            Else
-
-                TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
-                Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
-
-                TxtVariedad.Items.Clear()
-                If vv = "Frijol" Then
-                    DDL_Tipo.SelectedIndex = 1
-                    TxtVariedad.Items.Insert(0, "Amadeus-77")
-                    TxtVariedad.Items.Insert(1, "Carrizalito")
-                    TxtVariedad.Items.Insert(2, "Deorho")
-                    TxtVariedad.Items.Insert(3, "Azabache")
-                    TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
-                    TxtVariedad.Items.Insert(5, "Honduras nutritivo")
-                    TxtVariedad.Items.Insert(6, "Inta Cárdenas")
-                    TxtVariedad.Items.Insert(7, "Lenca precoz")
-                    TxtVariedad.Items.Insert(8, "Rojo chortí")
-                    TxtVariedad.Items.Insert(9, "Tolupan rojo")
-                    TxtVariedad.Items.Insert(10, "Otra especificar")
-                Else
-                    DDL_Tipo.SelectedIndex = 2
-                    TxtVariedad.Items.Insert(0, "Dicta Maya")
-                    TxtVariedad.Items.Insert(1, "Dicta Victoria")
-                    TxtVariedad.Items.Insert(2, "Otra especificar")
-                End If
-
-                TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
-                TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
-
-                TxT_AreaMZ.Text = dt.Rows(0)("AREA_SEMBRADA_MZ").ToString()
-                Txt_AreaHa.Text = dt.Rows(0)("AREA_SEMBRADA_HA").ToString()
-                TxtFechaSiembra.Text = DirectCast(dt.Rows(0)("FECHA_SIEMBRA"), DateTime).ToString("yyyy-MM-dd")
-
-                TxtRegistradaQQ.Text = dt.Rows(0)("REQUERIEMIENTO_REGISTRADA_QQ").ToString()
-                TxtCantLotes.Text = dt.Rows(0)("CANTIDAD_LOTES_SEMBRAR").ToString()
-                Dim v As String = dt.Rows(0)("NOMBRE_LOTE_FINCA").ToString()
-                Dim v2 As New ListItem(v, v)
-                DDL_Nlote.Items.Insert(0, v2)
-                TxtProduccionQQMZ.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_MZ").ToString()
-                TxtProduccionQQHA.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_HA").ToString()
-                TxtSemillaQQ.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQ").ToString()
-                TxtEstimadoProducir.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQHA").ToString()
-
-
-                'fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
-                'TxtDia.SelectedValue = fecha2.Day
-                'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-                'TxtAno.SelectedValue = fecha2.Year
-
-
-
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-            End If
         End If
 
-        If (e.CommandName = "Eliminar") Then
+        If (e.CommandName = "PagoTGR") Then
+
+
+
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            Dim dt As New DataTable
-            adap.Fill(dt)
+            Dim Str As String = "SELECT IMAGEN_PAGO_TGR FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim connectionString As String = conn
+
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+                Using command As New MySqlCommand(Str, connection)
+                    Using reader As MySqlDataReader = command.ExecuteReader()
+                        If reader.Read() Then
+                            Dim imageData As Byte() = DirectCast(reader("IMAGEN_PAGO_TGR"), Byte())
+                            Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                            Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                            ' Configura la respuesta HTTP para descargar la imagen
+                            HttpContext.Current.Response.Clear()
+                            HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=PAGO_TGR_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                            HttpContext.Current.Response.BinaryWrite(imageData)
+                            HttpContext.Current.Response.Flush()
+                            HttpContext.Current.Response.End()
+                        End If
+                    End Using
+                End Using
+            End Using
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+        End If
+
+        If (e.CommandName = "Etiqueta") Then
 
 
-            div_nuevo_prod.Visible = True
-            panelmasiso.Visible = False
 
-            If txt_habilitado.Text = "NO" Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-                Label3.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-            Else
+            Dim Str As String = "SELECT IMAGEN_ETIQUETA_SEMILLA FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim connectionString As String = conn
 
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+                Using command As New MySqlCommand(Str, connection)
+                    Using reader As MySqlDataReader = command.ExecuteReader()
+                        If reader.Read() Then
+                            Dim imageData As Byte() = DirectCast(reader("IMAGEN_ETIQUETA_SEMILLA"), Byte())
+                            Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                            Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                            ' Configura la respuesta HTTP para descargar la imagen
+                            HttpContext.Current.Response.Clear()
+                            HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=ETIQUETA_SEMILLA_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                            HttpContext.Current.Response.BinaryWrite(imageData)
+                            HttpContext.Current.Response.Flush()
+                            HttpContext.Current.Response.End()
+                        End If
+                    End Using
+                End Using
+            End Using
 
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip1').modal('show'); });", True)
-            End If
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
         End If
     End Sub
 
