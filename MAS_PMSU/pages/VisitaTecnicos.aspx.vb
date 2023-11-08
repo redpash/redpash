@@ -251,7 +251,11 @@ Public Class VisitaTecnicos
             If Date.TryParse(txtFechaTolupanRojo.Text, fechaTolupanRojo) Then
                 fechaTolupanRojo.ToString("dd-MM-yyyy")
             End If
+            '-------------------------------------
 
+            'LES PONGO DBNULL.VALUE  ES "SI" O "VACIO" PORQUE CREO QUE LA INFO SI LE DAS SI, YA TIENEN ESA INFO GUARDA EN ODK O EN LA BASE DE DATOS Y COMO ES UN INSERT SERA UN NUEVO DATO
+
+            '-------------------------------------
             Using cmd As New MySqlCommand(consulta, con)
                 cmd.Parameters.AddWithValue("@nombre_completo", txtNombreCompleto.Text)
                 cmd.Parameters.AddWithValue("@coordenada_gps", txtCoordenadaGPS.Text)
@@ -393,51 +397,108 @@ Public Class VisitaTecnicos
                     cmd.Parameters.AddWithValue("@TolupanRojo_comercial", DBNull.Value)
                     cmd.Parameters.AddWithValue("@TolupanRojo_fecha_siembra", DBNull.Value)
                 End If
-                cmd.Parameters.AddWithValue("@Brindo_recomendacion_5", ddlRecomendacion.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Cantidad_semilla_regist_utili_mz", Convert.ToDouble(txtCantidadSemilla.Text))
-                cmd.Parameters.AddWithValue("@Porcentaje_germinacion", Convert.ToDouble(txtPorcentajeGerminacion.Text))
-                cmd.Parameters.AddWithValue("@Gramos_inoculante_utilizados", Convert.ToDouble(txtCantidadInoculante.Text))
-                cmd.Parameters.AddWithValue("@Problemas_encontrados_5", txtProblemasEncontrados.Text)
-                cmd.Parameters.AddWithValue("@Recomendacion_tecnica_5", txtRecomendacionTecnica.Text)
 
-                cmd.Parameters.AddWithValue("@Brindo_recomendacion_6", ddlControlMalezas.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@control_quimico_herbicida", ddlControlQuimicoSelectivo.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@control_quimico_herbicida_contacto_NO", ddlControlQuimicoNoSelectivo.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Problemas_encontrados_6", txtProblemasEncontrados2.Text)
-                cmd.Parameters.AddWithValue("@Recomendacion_tecnica_6", txtRecomendacionTecnica2.Text)
+                If ddlRecomendacion.SelectedItem.Text = "No" Then
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_5", ddlRecomendacion.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Cantidad_semilla_regist_utili_mz", Convert.ToDouble(txtCantidadSemilla.Text))
+                    cmd.Parameters.AddWithValue("@Porcentaje_germinacion", Convert.ToDouble(txtPorcentajeGerminacion.Text))
+                    cmd.Parameters.AddWithValue("@Gramos_inoculante_utilizados", Convert.ToDouble(txtCantidadInoculante.Text))
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_5", txtProblemasEncontrados.Text)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_5", txtRecomendacionTecnica.Text)
+                Else
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_5", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Cantidad_semilla_regist_utili_mz", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Porcentaje_germinacion", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Gramos_inoculante_utilizados", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_5", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_5", DBNull.Value)
+                End If
 
-                cmd.Parameters.AddWithValue("@Brindo_recomendacion_7", ddlPlanNutricional.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Realizo_este_anio_analisis_suelo_cultivar_frijol", ddlAnalisisSuelo.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Porque_7_1", txtRazonSinAnalisisSuelo.Text)
-                cmd.Parameters.AddWithValue("@fertilizaciones_realizado_base_resultados_analisis_suelo", ddlFertilizacionesBasadasEnAnalisis.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Cuenta_con_resultados_analisis_suelo", ddlResultadosAnalisisSuelo.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@codigo_resultado_analisis", txtCodigoResultadoAnalisis.Text)
-                cmd.Parameters.AddWithValue("@aplico_fertilizantes_quimicos_organicos_foliares", ddlAplicoFertilizantes.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Porque_7_2", txtRazonSinFertilizantes.Text)
-                cmd.Parameters.AddWithValue("@Problemas_encontrados_7", txtProblemasFertilizantes.Text)
-                cmd.Parameters.AddWithValue("@Recomendacion_tecnica_7", txtRecomendacionFertilizantes.Text)
+                If ddlControlMalezas.SelectedItem.Text = "No" Then
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_6", ddlControlMalezas.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@control_quimico_herbicida", ddlControlQuimicoSelectivo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@control_quimico_herbicida_contacto_NO", ddlControlQuimicoNoSelectivo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_6", txtProblemasEncontrados2.Text)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_6", txtRecomendacionTecnica2.Text)
+                Else
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_6", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@control_quimico_herbicida", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@control_quimico_herbicida_contacto_NO", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_6", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_6", DBNull.Value)
+                End If
 
-                cmd.Parameters.AddWithValue("@Brindo_recomendacion_8", ddlPrevencionControlPlagas.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Realizo_tipo_prevencion_control_plagas_enfermedades", ddlTipoPrevencionPlagas.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Porque_8", txtRazonSinPrevencionPlagas.Text)
-                cmd.Parameters.AddWithValue("@etapa_fase_cultivo_afectaron_plagas", String.Join(",", opcionesSeleccionadas))
-                cmd.Parameters.AddWithValue("@Cantidad_libras_8", Convert.ToDouble(txtCantidadQuintalesPerdidos.Text))
-                cmd.Parameters.AddWithValue("@Cantidad_manzana_8", Convert.ToDouble(txtAreaAfectada.Text))
-                cmd.Parameters.AddWithValue("@Problemas_encontrados_8", txtProblemasPlagas.Text)
-                cmd.Parameters.AddWithValue("@Recomendacion_tecnica_8", txtRecomendacionPlagas.Text)
+                If ddlPlanNutricional.SelectedItem.Text = "No" Then
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_7", ddlPlanNutricional.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Realizo_este_anio_analisis_suelo_cultivar_frijol", ddlAnalisisSuelo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Porque_7_1", txtRazonSinAnalisisSuelo.Text)
+                    cmd.Parameters.AddWithValue("@fertilizaciones_realizado_base_resultados_analisis_suelo", ddlFertilizacionesBasadasEnAnalisis.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Cuenta_con_resultados_analisis_suelo", ddlResultadosAnalisisSuelo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@codigo_resultado_analisis", txtCodigoResultadoAnalisis.Text)
+                    cmd.Parameters.AddWithValue("@aplico_fertilizantes_quimicos_organicos_foliares", ddlAplicoFertilizantes.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Porque_7_2", txtRazonSinFertilizantes.Text)
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_7", txtProblemasFertilizantes.Text)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_7", txtRecomendacionFertilizantes.Text)
+                Else
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_7", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Realizo_este_anio_analisis_suelo_cultivar_frijol", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Porque_7_1", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@fertilizaciones_realizado_base_resultados_analisis_suelo", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Cuenta_con_resultados_analisis_suelo", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@codigo_resultado_analisis", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@aplico_fertilizantes_quimicos_organicos_foliares", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Porque_7_2", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_7", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_7", DBNull.Value)
+                End If
 
-                cmd.Parameters.AddWithValue("@Brindo_recomendacion_9", ddlRiegoRecomendacion.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Presenta_estres_hidrico_plantas", ddlEstresHidrico.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Lotes_regados", txtLotesRegados.Text)
-                cmd.Parameters.AddWithValue("@Area_Mz", Convert.ToDouble(txtAreaMz.Text))
-                cmd.Parameters.AddWithValue("@cuantos_dias_riega_dias", txtFrecuenciaRiego.Text)
-                cmd.Parameters.AddWithValue("@Cantidad_horas_riego_Horas_dia", txtHorasRiego.Text)
-                cmd.Parameters.AddWithValue("@Fugas", ddlFugas.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Reduccion_caudal", ddlReduccionCaudal.Text)
-                cmd.Parameters.AddWithValue("@Diseno", ddlDisenoRiego.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Agua_con_sedimentos_sucio_pesada", ddlAguaSedimentos.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@Otro_tipo_riego", txtOtroRiego.Text)
-                cmd.Parameters.AddWithValue("@Recomendacion_tecnica_9", txtRecomendacionRiego.Text)
+                If ddlPrevencionControlPlagas.SelectedItem.Text = "No" Then
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_8", ddlPrevencionControlPlagas.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Realizo_tipo_prevencion_control_plagas_enfermedades", ddlTipoPrevencionPlagas.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Porque_8", txtRazonSinPrevencionPlagas.Text)
+                    cmd.Parameters.AddWithValue("@etapa_fase_cultivo_afectaron_plagas", String.Join(",", opcionesSeleccionadas))
+                    cmd.Parameters.AddWithValue("@Cantidad_libras_8", Convert.ToDouble(txtCantidadQuintalesPerdidos.Text))
+                    cmd.Parameters.AddWithValue("@Cantidad_manzana_8", Convert.ToDouble(txtAreaAfectada.Text))
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_8", txtProblemasPlagas.Text)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_8", txtRecomendacionPlagas.Text)
+                Else
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_8", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Realizo_tipo_prevencion_control_plagas_enfermedades", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Porque_8", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@etapa_fase_cultivo_afectaron_plagas", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Cantidad_libras_8", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Cantidad_manzana_8", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Problemas_encontrados_8", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_8", DBNull.Value)
+                End If
+
+                If ddlRiegoRecomendacion.SelectedItem.Text = "No" Then
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_9", ddlRiegoRecomendacion.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Presenta_estres_hidrico_plantas", ddlEstresHidrico.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Lotes_regados", txtLotesRegados.Text)
+                    cmd.Parameters.AddWithValue("@Area_Mz", Convert.ToDouble(txtAreaMz.Text))
+                    cmd.Parameters.AddWithValue("@cuantos_dias_riega_dias", txtFrecuenciaRiego.Text)
+                    cmd.Parameters.AddWithValue("@Cantidad_horas_riego_Horas_dia", txtHorasRiego.Text)
+                    cmd.Parameters.AddWithValue("@Fugas", ddlFugas.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Reduccion_caudal", ddlReduccionCaudal.Text)
+                    cmd.Parameters.AddWithValue("@Diseno", ddlDisenoRiego.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Agua_con_sedimentos_sucio_pesada", ddlAguaSedimentos.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@Otro_tipo_riego", txtOtroRiego.Text)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_9", txtRecomendacionRiego.Text)
+                Else
+                    cmd.Parameters.AddWithValue("@Brindo_recomendacion_9", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Presenta_estres_hidrico_plantas", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Lotes_regados", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Area_Mz", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@cuantos_dias_riega_dias", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Cantidad_horas_riego_Horas_dia", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Fugas", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Reduccion_caudal", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Diseno", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Agua_con_sedimentos_sucio_pesada", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Otro_tipo_riego", DBNull.Value)
+                    cmd.Parameters.AddWithValue("@Recomendacion_tecnica_9", DBNull.Value)
+                End If
 
                 cmd.ExecuteNonQuery()
             End Using
