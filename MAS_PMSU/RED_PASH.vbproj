@@ -245,6 +245,7 @@
     <Content Include="pages\Registro_Banco_Semilla.aspx" />
     <Content Include="pages\Registro_ops_new.aspx" />
     <Content Include="pages\ProduccionCostes.aspx" />
+    <Content Include="pages\InscSENASA_DescArch.aspx" />
     <Content Include="pages\Registro_Portal_Sag.aspx" />
     <Content Include="pages\Registro_productores.aspx" />
     <Content Include="pages\SolicitudInscripcionDeLotes.aspx" />
@@ -502,6 +503,13 @@
     </Compile>
     <Compile Include="pages\ProduccionCostes.aspx.vb">
       <DependentUpon>ProduccionCostes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\InscSENASA_DescArch.aspx.designer.vb">
+      <DependentUpon>InscSENASA_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\InscSENASA_DescArch.aspx.vb">
+      <DependentUpon>InscSENASA_DescArch.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Registro_Portal_Sag.aspx.designer.vb">
