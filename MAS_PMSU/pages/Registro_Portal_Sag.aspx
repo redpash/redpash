@@ -244,88 +244,91 @@
                                         <asp:ListItem>Comercial</asp:ListItem>
                                     </asp:DropDownList>
                                     <br />
-                                    <label for="TxtQuintales">
-                                        Area a Sembrar En MZ.</label>
-                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" TextMode="Number" OnTextChanged="TxT_AreaMZ_TextChanged"/>
-                                  
+                                    <asp:UpdatePanel runat="server" ID="updatePanel" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                            <label for="TxtQuintales">
+                                                Area a Sembrar En MZ.</label>
+                                            <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" TextMode="Number" OnTextChanged="TxT_AreaMZ_TextChanged"/>
                                     
-                                    <label for="Txt_AreaHa">
-                                        Area a Sembrar En HA</label>
-                                    <asp:TextBox ID="Txt_AreaHa" runat="server" CssClass="form-control" AutoPostBack="True" ReadOnly="true"/>
-                                    <br />
-
-                           <%--     esta funcion es de tipo javascript , con documentid agarra los valores de los textbox--%>
-                                 <script type="text/javascript">
-                                     function calculateAreaHa() {
-                                         var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
-                                                var total = areaMZ * 0.7;
-                                             document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
-                                     }
-                                 </script>
-                                    <label for="TxtFecha">Fecha que siembrarà:</label>
-                                    <div class="row">
+                                            <label for="Txt_AreaHa">
+                                                Area a Sembrar En HA</label>
+                                            <asp:TextBox ID="Txt_AreaHa" runat="server" CssClass="form-control" AutoPostBack="True" ReadOnly="true"/>
+                                            <br />
+                                   <%--     esta funcion es de tipo javascript , con documentid agarra los valores de los textbox--%>
+                                            <script type="text/javascript">
+                                                function calculateAreaHa() {
+                                                    var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
+                                                        var total = areaMZ * 0.7;
+                                                        document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
+                                                }
+                                            </script>
+                                            <label for="TxtFecha">Fecha que siembrarà:</label>
+                                            <div class="row">
                                         
-                                        <div class="col-lg-3">
-                                            <div class="form-group">
-                                                <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
+                                                <div class="col-lg-3">
+                                                    <div class="form-group">
+                                                        <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                        <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                       <br />
-                                    <label for="TxtRegistradaQQ">
-                                        Requerimiento de semilla registrada QQ</label>
-                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
-                                    <br />
+                                               <br />
+                                            <label for="TxtRegistradaQQ">
+                                                Requerimiento de semilla registrada QQ</label>
+                                            <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
+                                            <br />
                                 
-                                     <label for="TxtCantLotes" runat="server" visible="false">
-                                        Cantidad de lotes a sembrar</label>
-                                    <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number" Visible="false" Text="1"/>
-                                        <br />
-                             
-                                     <label for="txtNombreFinca">
-                                        Nombre o No. del lote dentro de la finca</label>                           
-                                        <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="false"></asp:DropDownList>
-
-                                     <br />
+                                             <label for="TxtCantLotes" runat="server" visible="false">
+                                                Cantidad de lotes a sembrar</label>
+                                            <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number" Visible="false" Text="1"/>
+                                                <br />
+                                    
+                                            <label for="txtNombreFinca">
+                                                Nombre o No. del lote dentro de la finca</label>                           
+                                                <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDL_Nlote_SelectedIndexChanged"></asp:DropDownList>
+                                            <br />
                                    
-                                      <label for="TxtProduccionQQMZ">
-                                        Estimado de producción en campo QQ/MZ</label>                           
-                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" TextMode="Number" onchange="calculateAreaHaPRO();" ></asp:TextBox>
-                                     <br />
+                                              <label for="TxtProduccionQQMZ">
+                                                Estimado de producción en campo QQ/MZ</label>                           
+                                            <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" TextMode="Number" onchange="calculateAreaHaPRO();" ></asp:TextBox>
+                                             <br />
                             
-                                    <label for="TxtProduccionQQHA">
-                                        Estimado de producción en campo QQ/HA</label>                           
-                                    <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
-                                    <script type="text/javascript">
-                                        function calculateAreaHaPRO() {
-                                            var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
-                                            var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                            var total = areaMZ * 0.7;
-                                                  document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
-                                        }
-                                    </script>
-                                     <br />
+                                            <label for="TxtProduccionQQHA">
+                                                Estimado de producción en campo QQ/HA</label>                           
+                                            <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
+                                            <script type="text/javascript">
+                                                function calculateAreaHaPRO() {
+                                                    var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
+                                                    var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
+                                                    var total = areaMZ * 0.7;
+                                                          document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
+                                                }
+                                            </script>
+                                             <br />
                                   
-                                    <label for="TxtSemillaQQ">
-                                        Estimado semilla a producir QQ.</label>                           
-                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" TextMode="Number" onchange="calculateAreaHaEs();"></asp:TextBox>
-                                    <br />
+                                            <label for="TxtSemillaQQ">
+                                                Estimado semilla a producir QQ.</label>                           
+                                            <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" TextMode="Number" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                            <br />
                                 
-                                    <label for="TxtEstimadoProducir">
-                                       Estimado semilla a producir QQ/HA</label>                           
-                                    <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
-                                    <script type="text/javascript">
-                                         var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
+                                            <label for="TxtEstimadoProducir">
+                                               Estimado semilla a producir QQ/HA</label>                           
+                                            <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
+                                            <script type="text/javascript">
+                                                 var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
 
-                                         function calculateAreaHaEs() {
-                                             var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
-                                             var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                                calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
-                                             document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
-                                         }
-                                    </script>
-                                    <br />
+                                                 function calculateAreaHaEs() {
+                                                     var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
+                                                     var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
+                                                        calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
+                                                     document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
+                                                 }
+                                            </script>
+                                            <br />
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    
                                  
                                     <script type="text/javascript">
                                         function numericOnly(elementRef) {

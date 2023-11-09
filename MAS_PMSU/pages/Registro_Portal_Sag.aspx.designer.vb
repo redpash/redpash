@@ -275,6 +275,24 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents TxtCategoria As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control updatePanel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents updatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Control ScriptManager1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''Control TxT_AreaMZ.
     '''</summary>
     '''<remarks>

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Data.SqlClient
+Imports System.IO
 Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
 Imports MySql.Data.MySqlClient
@@ -707,5 +708,10 @@ Public Class Registro_Portal_Sag
         Else
             DDL_Tipo.SelectedIndex = 0
         End If
+    End Sub
+
+    Protected Sub DDL_Nlote_SelectedIndexChanged(sender As Object, e As EventArgs)
+        TxtSemillaQQ.Text = "1"
+        TxtEstimadoProducir.Text = "2"
     End Sub
 End Class
