@@ -334,13 +334,13 @@ Public Class Portal_Sag
         Dim cmd2 As New MySqlCommand()
 
         If (TxtID.Text = "") Then
-            Sql = "INSERT INTO bcs_inscripcion_senasa (COD_BCS,CICLO, Productor,VARIEDAD,CATEGORIA,INVENTARIO_EN_DICTA,FECHA_SIEMBRA,SEMILLA_A_PRODUCIR, Departamento, Estado, QQ_PRODUCCION, PROYECTO) VALUES (@COD_BCS,@CICLO, @Productor,@VARIEDAD,@CATEGORIA,@INVENTARIO_EN_DICTA,@FECHA_SIEMBRA,@SEMILLA_A_PRODUCIR, @Departamento, @Estado, @QQ_PRODUCCION, @PROYECTO ) "
+            Sql = "INSERT INTO bcs_inscripcion_senasa (COD_BCS,CICLO, Productor,VARIEDAD,CATEGORIA,INVENTARIO_EN_DICTA,FECHA_SIEMBRA,SEMILLA_A_PRODUCIR, Departamento, Estado, QQ_PRODU_CAMPO, PROYECTO, Tipo_cultivo) VALUES (@COD_BCS,@CICLO, @Productor,@VARIEDAD,@CATEGORIA,@INVENTARIO_EN_DICTA,@FECHA_SIEMBRA,@SEMILLA_A_PRODUCIR, @Departamento, @Estado, @QQ_PRODU_CAMPO, @PROYECTO, @Tipo_cultivo) "
             cmd2.Connection = conex
             cmd2.CommandText = Sql
 
             cmd2.Parameters.AddWithValue("@COD_BCS", TxtProductor.SelectedValue)
             cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedValue)
-            cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedValue)
+            cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedValue)
             cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedValue)
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedValue)
@@ -350,8 +350,8 @@ Public Class Portal_Sag
             cmd2.Parameters.AddWithValue("@SEMILLA_A_PRODUCIR", TxtPronostico.Text)
             cmd2.Parameters.AddWithValue("@Estado", "1")
 
-            cmd2.Parameters.AddWithValue("@QQ_PRODUCCION", 0)
-
+            cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", 0)
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", "Frijol")
             cmd2.ExecuteNonQuery()
             conex.Close()
 

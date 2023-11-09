@@ -84,8 +84,8 @@ Public Class Registro_Portal_Sag
                     Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                 Else
 
-                    BAgregar.Visible = True
-                    Button2.Visible = True
+                    BAgregar.Visible = False
+                    Button2.Visible = False
                     Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
 
                 End If

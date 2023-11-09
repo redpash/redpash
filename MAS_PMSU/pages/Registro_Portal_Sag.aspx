@@ -122,11 +122,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            -----------------------------
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>

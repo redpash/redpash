@@ -203,17 +203,18 @@
                                     <br />
                                     <label for="TxtVariedad">
                                         Variedad</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
-                                        <asp:ListItem>PM-2</asp:ListItem>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">                                        
                                         <asp:ListItem>Amadeus-77</asp:ListItem>
-                                        <asp:ListItem>HONDURAS NUTRITIVO</asp:ListItem>
-                                        <asp:ListItem>CARRIZALITO</asp:ListItem>
-                                        <asp:ListItem>DEOHRO</asp:ListItem>
-                                        <asp:ListItem>AZABACHE 40</asp:ListItem>
+                                        <asp:ListItem>Honduras nutritivo</asp:ListItem>
+                                        <asp:ListItem>Carrizalito</asp:ListItem>
+                                        <asp:ListItem>Deorho</asp:ListItem>
+                                        <asp:ListItem>Azabache</asp:ListItem>
+                                        <asp:ListItem>Paraisito mejorado PM-2</asp:ListItem>
                                         <asp:ListItem>Inta Cárdenas</asp:ListItem>
                                         <asp:ListItem>Lenca precoz</asp:ListItem>
-                                        <asp:ListItem>Rojo Chorti</asp:ListItem>
-                                        <asp:ListItem>Tolupan Rojo</asp:ListItem>
+                                        <asp:ListItem>Rojo chortí</asp:ListItem>
+                                        <asp:ListItem>Tolupan rojo</asp:ListItem>
+                                        <asp:ListItem>Otra especificar</asp:ListItem>                                       
                                     </asp:DropDownList>
                                     <br />
                                     <label for="TxtCategoria">
