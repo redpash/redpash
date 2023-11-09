@@ -710,8 +710,19 @@ Public Class Registro_Portal_Sag
         End If
     End Sub
 
+
     Protected Sub DDL_Nlote_SelectedIndexChanged(sender As Object, e As EventArgs)
-        TxtSemillaQQ.Text = "1"
-        TxtEstimadoProducir.Text = "2"
+        If DDL_Nlote.SelectedItem.Text <> "" Then
+            Dim StrCombo As String = "SELECT produccion_est_hectareas, superficie_mz FROM solicitud_inscripcion_delotes WHERE nombre_lote = '" & DDL_Nlote.SelectedItem.Text & "'"
+            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+            Dim DtCombo As New DataTable
+            adaptcombo.Fill(DtCombo)
+
+            TxtSemillaQQ.Text = DtCombo.Rows(0)("produccion_est_hectareas").ToString
+            TxT_AreaMZ.Text = DtCombo.Rows(0)("superficie_mz").ToString
+
+            Txt_AreaHa.Text = DtCombo.Rows(0)("superficie_mz").ToString
+            TxtEstimadoProducir.Text = DtCombo.Rows(0)("produccion_est_hectareas").ToString
+        End If
     End Sub
 End Class
