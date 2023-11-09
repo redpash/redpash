@@ -293,6 +293,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''Control DDL_Nlote.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Nlote As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control TxT_AreaMZ.
     '''</summary>
     '''<remarks>
@@ -345,15 +354,6 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtCantLotes As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control DDL_Nlote.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DDL_Nlote As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control TxtProduccionQQMZ.

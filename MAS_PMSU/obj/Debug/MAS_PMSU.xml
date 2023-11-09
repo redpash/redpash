@@ -9958,6 +9958,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._DDL_Nlote">
+<summary>
+Control DDL_Nlote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxT_AreaMZ">
 <summary>
 Control TxT_AreaMZ.
@@ -10006,15 +10015,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtCantLotes">
 <summary>
 Control TxtCantLotes.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.Registro_Portal_Sag._DDL_Nlote">
-<summary>
-Control DDL_Nlote.
 </summary>
 <remarks>
 Campo generado automáticamente.

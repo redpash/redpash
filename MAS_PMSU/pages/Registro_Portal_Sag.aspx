@@ -247,6 +247,12 @@
                                     <asp:UpdatePanel runat="server" ID="updatePanel" UpdateMode="Conditional">
                                     <ContentTemplate>
                                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                            
+                                            <label for="txtNombreFinca">
+                                                Nombre o No. del lote dentro de la finca</label>                           
+                                                <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDL_Nlote_SelectedIndexChanged"></asp:DropDownList>
+                                            <br />
+
                                             <label for="TxtQuintales">
                                                 Area a Sembrar En MZ.</label>
                                             <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" TextMode="Number" OnTextChanged="TxT_AreaMZ_TextChanged"/>
@@ -284,12 +290,7 @@
                                             <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number" Visible="false" Text="1"/>
                                                 <br />
                                     
-                                            <label for="txtNombreFinca">
-                                                Nombre o No. del lote dentro de la finca</label>                           
-                                                <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDL_Nlote_SelectedIndexChanged"></asp:DropDownList>
-                                            <br />
-                                   
-                                              <label for="TxtProduccionQQMZ">
+                                            <label for="TxtProduccionQQMZ">
                                                 Estimado de producción en campo QQ/MZ</label>                           
                                             <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" TextMode="Number" onchange="calculateAreaHaPRO();" ></asp:TextBox>
                                              <br />
