@@ -109,80 +109,55 @@
                         <ul class="nav" id="side-menu">
 
                             <li>
-                                <a href="#"><i class="fa fa-dashboard fa-fw"></i>Indicadores<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> Indicadores<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="TC_REGISTRO_BCS.aspx"><i class="fa fa-area-chart"></i>Tablero control: Registro de bancos</a>
+                                        <a href="TC_REGISTRO_BCS.aspx"><i class="fa fa-area-chart"></i> Tablero control: Registro de bancos</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-folder fa-fw"></i>Registro Nuevos<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-folder fa-fw"></i> Registros BCS<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#"><i class="fa fa-user fa-fw"></i>Nuevos<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="Registro_Banco_Semilla.aspx"><i class="fa fa-university"></i>Nuevos Bancos</a>
-                                            </li>
-
-                                            <li>
-
-                                                <a href="Registro_ops_new.aspx"><i class="fa fa-user"></i>Nuevos Organizaciones</a>
-                                            </li>
-                                        </ul>
+                                        <a href="Registro_Banco_Semilla.aspx"><i class="fa fa-university"></i> Bancos Comunitarios de Semillas</a>
+                                    </li>
+                                    <li>
+                                        <a href="Registro_ops_new.aspx"><i class="fa fa-user"></i> Organizaciones</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-folder fa-fw"></i>Inscripción SENASA<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-folder fa-fw"></i> Registros SENASA<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                      <li>
-                                       <a href="Registro_Portal_Sag.aspx"><i class="fa fa-user fa-fw"></i>Registrar Plan de Produccion</a>
+                                         <a href="Portal_Sag.aspx"><i class="fa fa-plus-square"></i> Crear Plan de producción de Semilla</a>
+                                     </li>
+                                     <li>
+                                       <a href="Registro_Portal_Sag.aspx"><i class="fa fa-user fa-fw"></i> Registrar Plan de Produccion de Semilla</a>
                                      </li>
                                     <li>
-                                        <a href="InscSENASA_DescArch.aspx"><i class="fa fa-file-o fa-fw"></i>Archivos de Inscripción</a>
+                                      <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-plus-square fa-fw"></i> Inscripción de Nuevos Lotes</a>
+                                    </li>
+                                    <li>
+                                        <a href="InscSENASA_DescArch.aspx"><i class="fa fa-file fa-fw"></i> Archivos de Inscripción SENASA</a>
                                     </li>    
                                 </ul>
                             </li>
-                             <li>
-                                 <a href="#"><i class="fa fa-university"></i>Inscripción de Lote<span class="fa arrow"></span></a>
-                                 <ul class="nav nav-second-level">
-                                      <li>
-                                        <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-user fa-fw"></i>Inscripción de Lote</a>
-                                      </li>
-                                 </ul>
-                             </li>
-
                             <li>
-                                <a href="Portal_Sag.aspx"><i class="fa fa-university"></i>Plan de producción de semilla</a>
+                                <a href="ProduccionCostes.aspx"><i class="fa fa-university"></i> Produccion y Costes</a>
                             </li>
                             <li>
-                                <a href="ProduccionCostes.aspx"><i class="fa fa-university"></i>Produccion y Costes</a>
+                                <a href="VisitaTecnicos.aspx"><i class="fa fa-clipboard"></i> Visita Tecnicos</a>
                             </li>
                             <li>
-                                <a href="VisitaTecnicos.aspx"><i class="fa fa-university"></i>Visita Tecnicos</a>
-                            </li>
-                          <%--  <li>
-                                <a href="SolicitudInscripcionDeLotes.aspx"><i class="fa fa-university"></i>Solicitud Inscripción De Lotes</a>
-                            </li>
-                             <li>
-                                <a href="Registro_Portal_Sag.aspx"><i class="fa fa-envelope"></i>Inscripción SENASA</a>
-                            </li>--%>
-
-                          
-
-                              <li>
                                 <a href="#"><i class="fa fa-database fa-fw"></i>Biblioteca de Documentos<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="https://drive.google.com/drive/folders/1nAXxDDvLCSOyfsuxob042WJPfvW29gaI?usp=sharing"><i class="fa fa-folder fa-fw"></i>BCS Respaldos</a>
                                     </li>
-                                 
-                               
-                                
                                 </ul>
                             </li>
 

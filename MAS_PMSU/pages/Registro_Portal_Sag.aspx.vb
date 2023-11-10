@@ -147,6 +147,7 @@ Public Class Registro_Portal_Sag
 
                 TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
                 TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
+
                 Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
 
                 TxtVariedad.Items.Clear()
