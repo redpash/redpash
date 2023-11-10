@@ -351,13 +351,13 @@ Public Class Portal_Sag
             cmd2.Parameters.AddWithValue("@Estado", "1")
 
             cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", 0)
-            cmd2.Parameters.AddWithValue("@Tipo_cultivo", "Frijol")
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", TxtVariedad.SelectedValue)
             cmd2.ExecuteNonQuery()
             conex.Close()
 
             Label1.Text = "La inscripcion del lote ha sido agregada"
         Else
-            Sql = "UPDATE bcs_inscripcion_senasa SET VARIEDAD=@VARIEDAD,CATEGORIA=@CATEGORIA,INVENTARIO_EN_DICTA=@INVENTARIO_EN_DICTA,FECHA_SIEMBRA=@FECHA_SIEMBRA,SEMILLA_A_PRODUCIR=@SEMILLA_A_PRODUCIR WHERE ID=" & TxtID.Text & " "
+            Sql = "UPDATE bcs_inscripcion_senasa SET VARIEDAD=@VARIEDAD,CATEGORIA=@CATEGORIA,INVENTARIO_EN_DICTA=@INVENTARIO_EN_DICTA,FECHA_SIEMBRA=@FECHA_SIEMBRA,SEMILLA_A_PRODUCIR=@SEMILLA_A_PRODUCIR,Tipo_cultivo=@Tipo_cultivo WHERE ID=" & TxtID.Text & " "
             cmd2.Connection = conex
             cmd2.CommandText = Sql
 
@@ -367,6 +367,7 @@ Public Class Portal_Sag
             cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", Convert.ToDateTime(fecha))
             cmd2.Parameters.AddWithValue("@SEMILLA_A_PRODUCIR", TxtPronostico.Text)
             cmd2.Parameters.AddWithValue("@Estado", "0")
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", TxtVariedad.SelectedValue)
 
             cmd2.ExecuteNonQuery()
             conex.Close()
@@ -410,6 +411,35 @@ Public Class Portal_Sag
 
         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
+    End Sub
+
+    Protected Sub DDL_Tipo_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim vv As String = DDL_Tipo.SelectedItem.Text
+
+        TxtVariedad.Items.Clear()
+        If vv = "Frijol" Then
+            DDL_Tipo.SelectedIndex = 1
+            TxtVariedad.Items.Insert(0, "Amadeus-77")
+            TxtVariedad.Items.Insert(1, "Carrizalito")
+            TxtVariedad.Items.Insert(2, "Deorho")
+            TxtVariedad.Items.Insert(3, "Azabache")
+            TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
+            TxtVariedad.Items.Insert(5, "Honduras nutritivo")
+            TxtVariedad.Items.Insert(6, "Inta Cárdenas")
+            TxtVariedad.Items.Insert(7, "Lenca precoz")
+            TxtVariedad.Items.Insert(8, "Rojo chortí")
+            TxtVariedad.Items.Insert(9, "Tolupan rojo")
+            TxtVariedad.Items.Insert(10, "Otra especificar")
+            provi = TxtVariedad.SelectedItem.Text
+        ElseIf vv = "Maiz" Then
+            DDL_Tipo.SelectedIndex = 2
+            TxtVariedad.Items.Insert(0, "Dicta Maya")
+            TxtVariedad.Items.Insert(1, "Dicta Victoria")
+            TxtVariedad.Items.Insert(2, "Otra especificar")
+            provi = TxtVariedad.SelectedItem.Text
+        Else
+            DDL_Tipo.SelectedIndex = 0
+        End If
     End Sub
 
 End Class

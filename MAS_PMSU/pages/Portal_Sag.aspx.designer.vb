@@ -194,6 +194,33 @@ Partial Public Class Portal_Sag
     Protected WithEvents TxtCicloD As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control DDL_Tipo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Tipo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control frijol.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents frijol As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control maiz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents maiz As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
     '''Control TxtVariedad.
     '''</summary>
     '''<remarks>

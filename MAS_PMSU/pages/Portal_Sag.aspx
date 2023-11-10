@@ -201,21 +201,41 @@
                                         Ciclo</label>
                                     <asp:TextBox ID="TxtCicloD" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                     <br />
-                                    <label for="TxtVariedad">
-                                        Variedad</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">                                        
-                                        <asp:ListItem>Amadeus-77</asp:ListItem>
-                                        <asp:ListItem>Honduras nutritivo</asp:ListItem>
-                                        <asp:ListItem>Carrizalito</asp:ListItem>
-                                        <asp:ListItem>Deorho</asp:ListItem>
-                                        <asp:ListItem>Azabache</asp:ListItem>
-                                        <asp:ListItem>Paraisito mejorado PM-2</asp:ListItem>
-                                        <asp:ListItem>Inta Cárdenas</asp:ListItem>
-                                        <asp:ListItem>Lenca precoz</asp:ListItem>
-                                        <asp:ListItem>Rojo chortí</asp:ListItem>
-                                        <asp:ListItem>Tolupan rojo</asp:ListItem>
-                                        <asp:ListItem>Otra especificar</asp:ListItem>                                       
+                                    <label for="DDL_Tipo">Tipo</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
+                                        <asp:ListItem Text=""></asp:ListItem>
+                                        <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
+                                        <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
                                     </asp:DropDownList>
+                                    <br />
+                                    <label for="TxtVariedad">Variedad</label>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
+                                    </asp:DropDownList>
+
+                                    <script type="text/javascript">
+                                        var variedades = {
+                                            "Frijol": ["Amadeus77", "Carrizalito", "Deorho", "Azabache", "Paraisitomejorado", "Honduras_nutritivo", "IntaCardenas", "Lencaprecoz", "Rojochortí", "Tolupanrojo", "OtraVariedad"],
+                                            "Maiz": ["Dicta Maya", "Dicta Victoria", "Otra especificar"]
+                                        };
+
+                                        // Función para actualizar las opciones de TxtVariedad
+                                        function updateTxtVariedad() {
+                                            var ddlTipo = document.getElementById('<%= DDL_Tipo.ClientID %>');
+                                            var txtVariedad = document.getElementById('<%= TxtVariedad.ClientID %>');
+                                            var selectedValue = ddlTipo.options[ddlTipo.selectedIndex].value;
+
+                                            // Limpiar las opciones actuales en TxtVariedad
+                                            txtVariedad.options.length = 0;
+
+                                            // Agregar las nuevas opciones según el tipo seleccionado
+                                            for (var i = 0; i < variedades[selectedValue].length; i++) {
+                                                var option = document.createElement("option");
+                                                option.text = variedades[selectedValue][i];
+                                                txtVariedad.add(option);
+                                            }
+                                        }
+                                    </script>
+
                                     <br />
                                     <label for="TxtCategoria">
                                         Categoria</label>
