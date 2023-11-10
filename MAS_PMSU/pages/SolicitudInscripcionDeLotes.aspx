@@ -385,13 +385,15 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Superficie a Sembrar Hectareas:</label><asp:Label ID="Label12" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Number"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtHectareas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Superficie en MZ</label><asp:Label ID="Label13" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtSuperficieMZ" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Number" Enabled="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtSuperficieMZ" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtSuperficieMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -415,14 +417,16 @@
                             <div class="form-group">
                                 <label>Produccion Estimada por Hectareas</label>
                                 <asp:Label ID="Label19" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtProHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Number"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtProHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" ></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtProHectareas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Produccion Estimada por Manzanas</label>
                                 <asp:Label ID="Label20" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TextBox7" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Number" Enabled="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TextBox7" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TextBox7" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>
                         <div class="col-lg-3">

@@ -255,17 +255,18 @@
 
                                             <label for="TxtQuintales">
                                                 Area a Sembrar En MZ.</label>
-                                            <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" TextMode="Number" OnTextChanged="TxT_AreaMZ_TextChanged"/>
-                                    
+                                            <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();"  OnTextChanged="TxT_AreaMZ_TextChanged"/>
+                                            <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxT_AreaMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <label for="Txt_AreaHa">
                                                 Area a Sembrar En HA</label>
                                             <asp:TextBox ID="Txt_AreaHa" runat="server" CssClass="form-control" AutoPostBack="True" ReadOnly="true"/>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Txt_AreaHa" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <br />
                                    <%--     esta funcion es de tipo javascript , con documentid agarra los valores de los textbox--%>
                                             <script type="text/javascript">
                                                 function calculateAreaHa() {
                                                     var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
-                                                        var total = areaMZ / 0.7;
+                                                        var total = areaMZ * 0.7;
                                                         document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
                                                 }
                                             </script>
@@ -282,27 +283,30 @@
                                                <br />
                                             <label for="TxtRegistradaQQ">
                                                 Requerimiento de semilla registrada QQ</label>
-                                            <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number"/>
+                                            <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" />
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtRegistradaQQ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <br />
                                 
                                              <label for="TxtCantLotes" runat="server" visible="false">
                                                 Cantidad de lotes a sembrar</label>
-                                            <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Textmode="Number" Visible="false" Text="1"/>
+                                            <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off"  Visible="false" Text="1"/>
                                                 <br />
                                     
                                             <label for="TxtProduccionQQMZ">
                                                 Estimado de producción en campo QQ/MZ</label>                           
-                                            <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" TextMode="Number" onchange="calculateAreaHaPRO();" ></asp:TextBox>
+                                            <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" onchange="calculateAreaHaPRO();" ></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtProduccionQQMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                              <br />
                             
                                             <label for="TxtProduccionQQHA">
                                                 Estimado de producción en campo QQ/HA</label>                           
                                             <asp:TextBox ID="TxtProduccionQQHA" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TxtProduccionQQHA" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <script type="text/javascript">
                                                 function calculateAreaHaPRO() {
                                                     var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
                                                     var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                                    var total = areaMZ / 0.7;
+                                                    var total = areaMZ * 0.7;
                                                           document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
                                                 }
                                             </script>
@@ -310,19 +314,21 @@
                                   
                                             <label for="TxtSemillaQQ">
                                                 Estimado semilla a producir QQ.</label>                           
-                                            <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" TextMode="Number" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                            <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtSemillaQQ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <br />
                                 
                                             <label for="TxtEstimadoProducir">
                                                Estimado semilla a producir QQ/HA</label>                           
                                             <asp:TextBox ID="TxtEstimadoProducir" runat="server" CssClass="form-control" Enable="false" ReadOnly="true"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TxtEstimadoProducir" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <script type="text/javascript">
                                                  var calculatedTotal = 0; // Declarar la variable para almacenar el total calculado
 
                                                  function calculateAreaHaEs() {
                                                      var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
                                                      var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                                        calculatedTotal = areaMZ / 0.7; // Guardar el total en la variable
+                                                        calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
                                                      document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
                                                  }
                                             </script>

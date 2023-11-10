@@ -9967,9 +9967,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegexValidator">
+<summary>
+Control RegexValidator.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._Txt_AreaHa">
 <summary>
 Control Txt_AreaHa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator1">
+<summary>
+Control RegularExpressionValidator1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -10003,6 +10021,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator2">
+<summary>
+Control RegularExpressionValidator2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtCantLotes">
 <summary>
 Control TxtCantLotes.
@@ -10021,9 +10048,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator3">
+<summary>
+Control RegularExpressionValidator3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtProduccionQQHA">
 <summary>
 Control TxtProduccionQQHA.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator4">
+<summary>
+Control RegularExpressionValidator4.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -10039,9 +10084,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator5">
+<summary>
+Control RegularExpressionValidator5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtEstimadoProducir">
 <summary>
 Control TxtEstimadoProducir.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator6">
+<summary>
+Control RegularExpressionValidator6.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12091,6 +12154,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._RegularExpressionValidator2">
+<summary>
+Control RegularExpressionValidator2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label13">
 <summary>
 Control Label13.
@@ -12103,6 +12175,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TxtSuperficieMZ">
 <summary>
 Control TxtSuperficieMZ.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._RegularExpressionValidator3">
+<summary>
+Control RegularExpressionValidator3.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -12163,6 +12244,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._RegularExpressionValidator1">
+<summary>
+Control RegularExpressionValidator1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._Label20">
 <summary>
 Control Label20.
@@ -12175,6 +12265,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TextBox7">
 <summary>
 Control TextBox7.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._RegexValidator">
+<summary>
+Control RegexValidator.
 </summary>
 <remarks>
 Campo generado automáticamente.

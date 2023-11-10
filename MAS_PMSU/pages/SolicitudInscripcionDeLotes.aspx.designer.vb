@@ -1058,6 +1058,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents TxtHectareas As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control Label13.
     '''</summary>
     '''<remarks>
@@ -1074,6 +1083,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtSuperficieMZ As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator3 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label14.
@@ -1130,6 +1148,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents TxtProHectareas As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control Label20.
     '''</summary>
     '''<remarks>
@@ -1146,6 +1173,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TextBox7 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegexValidator.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegexValidator As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label21.

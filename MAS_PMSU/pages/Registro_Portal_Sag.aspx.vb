@@ -617,7 +617,7 @@ Public Class Registro_Portal_Sag
 
     Protected Sub TxtProduccionQQMZ_TextChanged(sender As Object, e As EventArgs)
         If TxtProduccionQQMZ.Text <> "" Then
-            TxtProduccionQQHA.Text = Convert.ToString(Convert.ToDouble(TxtProduccionQQMZ.Text) / 0.7)
+            TxtProduccionQQHA.Text = Convert.ToString(Convert.ToDouble(TxtProduccionQQMZ.Text) * 0.7)
         Else
             TxtProduccionQQHA.Text = ""
         End If
@@ -625,7 +625,7 @@ Public Class Registro_Portal_Sag
 
     Protected Sub TxtSemillaQQ_TextChanged(sender As Object, e As EventArgs)
         If TxtSemillaQQ.Text <> "" Then
-            TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) / 0.7)
+            TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) * 0.7)
         Else
             TxtEstimadoProducir.Text = ""
         End If
@@ -633,7 +633,7 @@ Public Class Registro_Portal_Sag
 
     Protected Sub TxT_AreaMZ_TextChanged(sender As Object, e As EventArgs)
         If TxT_AreaMZ.Text <> "" Then
-            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) / 0.7)
+            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.7)
         Else
             Txt_AreaHa.Text = ""
         End If
@@ -726,14 +726,14 @@ Public Class Registro_Portal_Sag
             Dim semillaQQ As Double
 
             If Double.TryParse(TxT_AreaMZ.Text, areaMZ) AndAlso Double.TryParse(TxtSemillaQQ.Text, semillaQQ) Then
-                Txt_AreaHa.Text = (areaMZ / 0.7).ToString("N2")
-                TxtEstimadoProducir.Text = (semillaQQ / 0.7).ToString("N2")
+                Txt_AreaHa.Text = (areaMZ * 0.7).ToString("N2")
+                TxtEstimadoProducir.Text = (semillaQQ * 0.7).ToString("N2")
             Else
                 areaMZ = Convert.ToDouble(TxT_AreaMZ.Text)
                 semillaQQ = Convert.ToDouble(TxtSemillaQQ.Text)
 
-                Txt_AreaHa.Text = (areaMZ / 0.7).ToString()
-                TxtEstimadoProducir.Text = (semillaQQ / 0.7).ToString()
+                Txt_AreaHa.Text = (areaMZ * 0.7).ToString()
+                TxtEstimadoProducir.Text = (semillaQQ * 0.7).ToString()
             End If
         End If
     End Sub
