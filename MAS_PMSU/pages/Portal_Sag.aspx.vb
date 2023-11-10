@@ -351,7 +351,7 @@ Public Class Portal_Sag
             cmd2.Parameters.AddWithValue("@Estado", "1")
 
             cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", 0)
-            cmd2.Parameters.AddWithValue("@Tipo_cultivo", TxtVariedad.SelectedValue)
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipos.SelectedValue)
             cmd2.ExecuteNonQuery()
             conex.Close()
 
@@ -367,7 +367,7 @@ Public Class Portal_Sag
             cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", Convert.ToDateTime(fecha))
             cmd2.Parameters.AddWithValue("@SEMILLA_A_PRODUCIR", TxtPronostico.Text)
             cmd2.Parameters.AddWithValue("@Estado", "0")
-            cmd2.Parameters.AddWithValue("@Tipo_cultivo", TxtVariedad.SelectedValue)
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipos.SelectedValue)
 
             cmd2.ExecuteNonQuery()
             conex.Close()
@@ -414,11 +414,11 @@ Public Class Portal_Sag
     End Sub
 
     Protected Sub DDL_Tipo_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim vv As String = DDL_Tipo.SelectedItem.Text
+        Dim vv As String = DDL_Tipos.SelectedItem.Text
 
         TxtVariedad.Items.Clear()
         If vv = "Frijol" Then
-            DDL_Tipo.SelectedIndex = 1
+            DDL_Tipos.SelectedIndex = 1
             TxtVariedad.Items.Insert(0, "Amadeus-77")
             TxtVariedad.Items.Insert(1, "Carrizalito")
             TxtVariedad.Items.Insert(2, "Deorho")
@@ -432,13 +432,13 @@ Public Class Portal_Sag
             TxtVariedad.Items.Insert(10, "Otra especificar")
             provi = TxtVariedad.SelectedItem.Text
         ElseIf vv = "Maiz" Then
-            DDL_Tipo.SelectedIndex = 2
+            DDL_Tipos.SelectedIndex = 2
             TxtVariedad.Items.Insert(0, "Dicta Maya")
             TxtVariedad.Items.Insert(1, "Dicta Victoria")
             TxtVariedad.Items.Insert(2, "Otra especificar")
             provi = TxtVariedad.SelectedItem.Text
         Else
-            DDL_Tipo.SelectedIndex = 0
+            DDL_Tipos.SelectedIndex = 0
         End If
     End Sub
 

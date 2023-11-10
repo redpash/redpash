@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="Portal_Sag.aspx.vb" Inherits="MAS_PMSU.Portal_Sag" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="Portal_Sag.aspx.vb" Inherits="MAS_PMSU.Portal_Sag" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -202,7 +202,7 @@
                                     <asp:TextBox ID="TxtCicloD" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                     <br />
                                     <label for="DDL_Tipo">Tipo</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_Tipos" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
                                         <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
                                         <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
@@ -220,7 +220,7 @@
 
                                         // Función para actualizar las opciones de TxtVariedad
                                         function updateTxtVariedad() {
-                                            var ddlTipo = document.getElementById('<%= DDL_Tipo.ClientID %>');
+                                            var ddlTipo = document.getElementById('<%= DDL_Tipos.ClientID %>');
                                             var txtVariedad = document.getElementById('<%= TxtVariedad.ClientID %>');
                                             var selectedValue = ddlTipo.options[ddlTipo.selectedIndex].value;
 
