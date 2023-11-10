@@ -624,7 +624,7 @@ Public Class Registro_Portal_Sag
 
     Protected Sub TxtSemillaQQ_TextChanged(sender As Object, e As EventArgs)
         If TxtSemillaQQ.Text <> "" Then
-            TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) * 0.7)
+            TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) / 0.7)
         Else
             TxtEstimadoProducir.Text = ""
         End If
@@ -632,7 +632,7 @@ Public Class Registro_Portal_Sag
 
     Protected Sub TxT_AreaMZ_TextChanged(sender As Object, e As EventArgs)
         If TxT_AreaMZ.Text <> "" Then
-            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.7)
+            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) / 0.7)
         Else
             Txt_AreaHa.Text = ""
         End If
@@ -710,7 +710,6 @@ Public Class Registro_Portal_Sag
         End If
     End Sub
 
-
     Protected Sub DDL_Nlote_SelectedIndexChanged(sender As Object, e As EventArgs)
         If DDL_Nlote.SelectedItem.Text <> "" Then
             Dim StrCombo As String = "SELECT produccion_est_hectareas, superficie_mz FROM solicitud_inscripcion_delotes WHERE nombre_lote = '" & DDL_Nlote.SelectedItem.Text & "'"
@@ -721,8 +720,21 @@ Public Class Registro_Portal_Sag
             TxtSemillaQQ.Text = DtCombo.Rows(0)("produccion_est_hectareas").ToString
             TxT_AreaMZ.Text = DtCombo.Rows(0)("superficie_mz").ToString
 
-            Txt_AreaHa.Text = DtCombo.Rows(0)("superficie_mz").ToString
-            TxtEstimadoProducir.Text = DtCombo.Rows(0)("produccion_est_hectareas").ToString
+            ' Calcular Txt_AreaHa.Text y TxtEstimadoProducir.Text
+            Dim areaMZ As Double
+            Dim semillaQQ As Double
+
+            If Double.TryParse(TxT_AreaMZ.Text, areaMZ) AndAlso Double.TryParse(TxtSemillaQQ.Text, semillaQQ) Then
+                Txt_AreaHa.Text = (areaMZ / 0.7).ToString("N2")
+                TxtEstimadoProducir.Text = (semillaQQ / 0.7).ToString("N2")
+            Else
+                areaMZ = Convert.ToDouble(TxT_AreaMZ.Text)
+                semillaQQ = Convert.ToDouble(TxtSemillaQQ.Text)
+
+                Txt_AreaHa.Text = (areaMZ / 0.7).ToString()
+                TxtEstimadoProducir.Text = (semillaQQ / 0.7).ToString()
+            End If
         End If
     End Sub
+
 End Class

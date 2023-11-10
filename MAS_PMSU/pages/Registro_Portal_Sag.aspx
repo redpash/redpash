@@ -265,7 +265,7 @@
                                             <script type="text/javascript">
                                                 function calculateAreaHa() {
                                                     var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
-                                                        var total = areaMZ * 0.7;
+                                                        var total = areaMZ / 0.7;
                                                         document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
                                                 }
                                             </script>
@@ -302,7 +302,7 @@
                                                 function calculateAreaHaPRO() {
                                                     var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
                                                     var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                                    var total = areaMZ * 0.7;
+                                                    var total = areaMZ / 0.7;
                                                           document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
                                                 }
                                             </script>
@@ -322,7 +322,7 @@
                                                  function calculateAreaHaEs() {
                                                      var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
                                                      var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                                        calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
+                                                        calculatedTotal = areaMZ / 0.7; // Guardar el total en la variable
                                                      document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
                                                  }
                                             </script>
