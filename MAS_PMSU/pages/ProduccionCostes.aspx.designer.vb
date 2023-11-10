@@ -149,6 +149,15 @@ Partial Public Class ProduccionCostes
     Protected WithEvents TxtAreaSembMz As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator6 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control TxtAreaSembHa.
     '''</summary>
     '''<remarks>
@@ -156,6 +165,15 @@ Partial Public Class ProduccionCostes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtAreaSembHa As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator7 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label4.
@@ -203,6 +221,15 @@ Partial Public Class ProduccionCostes
     Protected WithEvents TxtAreaPerdMz As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator8 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control TxtAreaPerdHa.
     '''</summary>
     '''<remarks>
@@ -210,6 +237,15 @@ Partial Public Class ProduccionCostes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtAreaPerdHa As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator9.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator9 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control DropDownList_plaga_enfer.
@@ -275,6 +311,15 @@ Partial Public Class ProduccionCostes
     Protected WithEvents TxtQQProd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator10.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator10 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control DDL_Procesamiento.
     '''</summary>
     '''<remarks>
@@ -302,6 +347,15 @@ Partial Public Class ProduccionCostes
     Protected WithEvents TxtSemilla As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator11.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator11 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control TxtGrano.
     '''</summary>
     '''<remarks>
@@ -311,6 +365,15 @@ Partial Public Class ProduccionCostes
     Protected WithEvents TxtGrano As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control RegularExpressionValidator12.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator12 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Control TxtBasura.
     '''</summary>
     '''<remarks>
@@ -318,6 +381,15 @@ Partial Public Class ProduccionCostes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtBasura As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator13.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator13 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control BtnGuardProd.

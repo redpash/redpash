@@ -184,13 +184,15 @@
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="TxtAreaSembMz">Area del terreno sembradas (Mz)</label>
-                                                <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" onchange="calculateAreaHaInsc();" AutoPostBack="false" OnTextChanged="TxtAreaSembMz_TextChanged"/>
+                                                <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaInsc();" AutoPostBack="false" OnTextChanged="TxtAreaSembMz_TextChanged"/>
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TxtAreaSembMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="TxtAreaSembHa">Area del terreno sembradas (Ha)</label>
-                                                <asp:TextBox ID="TxtAreaSembHa" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                                <asp:TextBox ID="TxtAreaSembHa" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off"/>
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="TxtAreaSembHa" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             </div>
                                         </div>
                                     </div>
@@ -217,11 +219,13 @@
                                         <br />
                                         <div class="col-lg-4">
                                             <label for="TxtAreaPerdMz">Area del terreno sembradas perdidas (Mz)</label>
-                                            <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" onchange="calculateAreaHaPer();"/>
+                                            <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaPer();"/>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="TxtAreaPerdMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         </div>
                                         <div class="col-lg-4">
                                             <label for="TxtAreaPerdHa">Area de lterreno sembradas perdidas (Ha)</label>
-                                            <asp:TextBox ID="TxtAreaPerdHa" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                            <asp:TextBox ID="TxtAreaPerdHa" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off"/>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="TxtAreaPerdHa" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         </div>
                                         <br />
                                         <label>¿Cuáles fueron los factores que le causaron pérdida en campo?</label>
@@ -277,7 +281,8 @@
                                     <br />
                                     <label> </label>
                                     <label for="TxtQQProd">Quintales producidos en campo: </label>
-                                    <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                    <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off"/>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="TxtQQProd" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                     <br />
                                     <label>¿Dispone de los resultados del Centro de Procesamiento?</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDL_Procesamiento" runat="server" AutoPostBack="false">
@@ -288,13 +293,16 @@
                                     <br />
                                     <div id="DIVproduccion" runat="server">
                                         <label for="TxtSemilla">Cantidad de quintales clasificados como semilla</label>
-                                        <asp:TextBox ID="TxtSemilla" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtSemilla" runat="server" CssClass="form-control" autocomplete="off"/>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator11" runat="server" ControlToValidate="Txtsemilla" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtGrano">Cantidad de quintales clasificados como grano</label>
-                                        <asp:TextBox ID="TxtGrano" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtGrano" runat="server" CssClass="form-control" autocomplete="off"/>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator12" runat="server" ControlToValidate="TxtGrano" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                         <br />
                                         <label for="TxtBasura">Cantidad de quintales clasificados como basura</label>
-                                        <asp:TextBox ID="TxtBasura" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number"/>
+                                        <asp:TextBox ID="TxtBasura" runat="server" CssClass="form-control" autocomplete="off"/>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator13" runat="server" ControlToValidate="TxtBasura" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                     </div>
                                 </div>
                                 
