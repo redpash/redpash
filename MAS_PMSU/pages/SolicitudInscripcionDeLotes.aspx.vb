@@ -1,4 +1,8 @@
-﻿Imports CrystalDecisions.CrystalReports.Engine
+﻿Imports System.IO
+Imports System.Net
+Imports System.Net.Mail
+Imports System.Net.Mime
+Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Office.Word
 Imports MySql.Data.MySqlClient
@@ -35,13 +39,13 @@ Public Class SolicitudInscripcionDeLotes
                 connection.Open()
 
                 Dim query As String = "INSERT INTO solicitud_inscripcion_delotes 
-        (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-        cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad,
-        lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
-        fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino, productor_semilla) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
-        @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
-        @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @tipo_cultivo, @variedad, @lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, 
-        @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino, @productor_semilla)"
+                (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
+                cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, tipo_cultivo, variedad,
+                lote_no, fecha_analisis, year_produccion, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_frijol, variedad_maiz, superficie_hectarea, superficie_mz,
+                fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, produccion_est_manzanas, destino, productor_semilla) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
+                @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
+                @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @tipo_cultivo, @variedad, @lote_no, @fecha_analisis, @year_produccion, @categoria_semilla, @tipo_semilla, @cultivo_semilla, 
+                @variedad_frijol, @variedad_maiz, @superficie_hectarea, @superficie_mz, @fecha_aprox_siembra, @fecha_aprox_cosecha, @produccion_est_hectareas, @produccion_est_manzanas, @destino, @productor_semilla)"
 
                 Dim fechaConvertida As DateTime
                 Dim fechaConvertida2 As DateTime
@@ -126,7 +130,7 @@ Public Class SolicitudInscripcionDeLotes
                     cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
                     cmd.Parameters.AddWithValue("@produccion_est_manzanas", Convert.ToDouble(TextBox7.Text))
                     cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@productor_semilla", txtprodsem.text)
+                    cmd.Parameters.AddWithValue("@productor_semilla", txtprodsem.Text)
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
@@ -136,10 +140,54 @@ Public Class SolicitudInscripcionDeLotes
                     Button1.Visible = True
                     Button2.Visible = True
                     btnGuardarLote.Visible = False
+                    lblAdjunto.Visible = True
+                    fuArchivo.Visible = True
+                    Label24.Visible = True
+                    Button3.Visible = True
 
                 End Using
             End Using
         End If
+
+
+    End Sub
+
+    Protected Sub EnviarCorreo(sender As Object, e As EventArgs)
+        Dim destinatario As String = ""
+        Dim remitente As String = ""
+        Dim contra As String = ""
+
+        Dim correo As New MailMessage()
+        correo.From = New MailAddress(remitente)
+        correo.To.Add(destinatario)
+        correo.Subject = "Archivo de suscripción de lote"
+        correo.Body = "Buenas días/tardes. Le adjunto archivo PDF de suscripción de lote para la inscripción de SENASA. Saludos."
+
+        If fuArchivo.HasFile Then
+            Dim nombreArchivo As String = Path.GetFileName(fuArchivo.PostedFile.FileName)
+            Dim rutaDestino As String = "poner direccion de ruta donde estara el archivo" & nombreArchivo
+            fuArchivo.SaveAs(rutaDestino)
+            correo.Attachments.Add(New Attachment(rutaDestino, MediaTypeNames.Application.Pdf))
+        End If
+
+
+        Dim clienteSmtp As New SmtpClient()
+        clienteSmtp.Host = "smtp.gmail.com"
+        clienteSmtp.Port = 587
+        clienteSmtp.Credentials = New NetworkCredential(remitente, contra)
+        clienteSmtp.EnableSsl = True
+
+        Try
+            clienteSmtp.Send(correo)
+            Response.Write("<script>window.alert('¡Se ha enviado excitosamente el correo!') </script>")
+            lblAdjunto.Visible = False
+            fuArchivo.Visible = False
+            Label24.Visible = False
+            Button3.Visible = False
+        Catch ex As Exception
+            Response.Write("Error al enviar el correo: " & ex.Message)
+        End Try
+
 
     End Sub
 

@@ -464,4 +464,18 @@
         <br />
         <asp:Button CssClass="btn btn-primary" ID="Button2" runat="server" Text="Nuevo" OnClick="vaciar" visible="false"/>
     </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <asp:Label ID="lblAdjunto" runat="server" class="label label-warning" Text="Adjuntar Archivo PDF:" visible="false" ></asp:Label>
+                <asp:FileUpload ID="fuArchivo" runat="server" visible="false" style="margin-top: 10px;" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <asp:Label ID="Label24" class="label label-warning" runat="server" Text="" visible="false" ></asp:Label>
+        <br />
+        <asp:Button CssClass="btn btn-primary" ID="Button3" runat="server" Text="Enviar Correo" OnClick="EnviarCorreo" visible="false"/>
+    </div>
 </asp:Content>

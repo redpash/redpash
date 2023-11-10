@@ -9,9 +9,9 @@ Partial Class EnviarCorreo
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
     Protected Sub EnviarCorreo(sender As Object, e As EventArgs)
-        Dim destinatario As String = txtDestinatario.Text
-        Dim remitente As String = txtRemitente.Text
-        Dim contra As String = ""
+        Dim destinatario As String = "josekilo.07@gmail.com"
+        Dim remitente As String = "josekilo.07@gmail.com"
+        Dim contra As String = "qvcl goqz fmrr drvv"
 
         Dim correo As New MailMessage()
         correo.From = New MailAddress(remitente)
@@ -23,7 +23,7 @@ Partial Class EnviarCorreo
             Dim nombreArchivo As String = Path.GetFileName(fuArchivo.PostedFile.FileName)
             Dim rutaDestino As String = "C:/Users/josek/Downloads/" & nombreArchivo
             fuArchivo.SaveAs(rutaDestino)
-            correo.Attachments.Add(New Attachment(rutaDestino, MediaTypeNames.Application.Octet))
+            correo.Attachments.Add(New Attachment(rutaDestino, MediaTypeNames.Application.Pdf))
         End If
 
 
@@ -36,8 +36,6 @@ Partial Class EnviarCorreo
         Try
             clienteSmtp.Send(correo)
             Response.Write("<script>window.alert('¡Se ha enviado excitosamente el correo!') </script>")
-            txtDestinatario.Text = ""
-            txtRemitente.Text = ""
         Catch ex As Exception
             Response.Write("Error al enviar el correo: " & ex.Message)
         End Try

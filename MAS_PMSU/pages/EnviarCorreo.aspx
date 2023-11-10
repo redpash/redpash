@@ -15,18 +15,6 @@
                     A. Datos del Correo
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <asp:Label ID="lblAsunto" runat="server" Text="Remitente:      "></asp:Label>
-                            <asp:TextBox ID="txtRemitente" runat="server" AutoPostBack="false" CssClass="form-control"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <asp:Label ID="lblDestinatario" runat="server" Text="Destinatario:"></asp:Label>
-                            <asp:TextBox ID="txtDestinatario" runat="server" AutoPostBack="false" CssClass="form-control"></asp:TextBox>
-                        </div>
-                    </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <asp:Label ID="lblAdjunto" runat="server" Text="Adjuntar Archivo PDF:"></asp:Label>
