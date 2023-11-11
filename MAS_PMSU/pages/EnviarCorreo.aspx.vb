@@ -9,9 +9,9 @@ Partial Class EnviarCorreo
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     End Sub
     Protected Sub EnviarCorreo(sender As Object, e As EventArgs)
-        Dim destinatario As String = "josekilo.07@gmail.com"
-        Dim remitente As String = "josekilo.07@gmail.com"
-        Dim contra As String = "qvcl goqz fmrr drvv"
+        Dim destinatario As String = ""
+        Dim remitente As String = ""
+        Dim contra As String = ""
 
         Dim correo As New MailMessage()
         correo.From = New MailAddress(remitente)
