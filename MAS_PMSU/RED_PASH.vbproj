@@ -240,8 +240,10 @@
     <Content Include="pages\Inicio.aspx" />
     <Content Include="pages\Login.aspx" />
     <Content Include="pages\msubcs_visitaat.aspx" />
+    <Content Include="pages\msu_entregas_consolidado.aspx" />
     <Content Include="pages\plan_produccion_semilla_frijol.aspx" />
     <Content Include="pages\Portal_Sag.aspx" />
+    <Content Include="pages\Ventas.aspx" />
     <Content Include="pages\Registro_Banco_Semilla.aspx" />
     <Content Include="pages\Registro_ops_new.aspx" />
     <Content Include="pages\ProduccionCostes.aspx" />
@@ -470,6 +472,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="pages\msu_entregas_consolidado.aspx.designer.vb">
+      <DependentUpon>msu_entregas_consolidado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\msu_entregas_consolidado.aspx.vb">
+      <DependentUpon>msu_entregas_consolidado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="pages\plan_produccion_semilla_frijol.aspx.designer.vb">
       <DependentUpon>plan_produccion_semilla_frijol.aspx</DependentUpon>
     </Compile>
@@ -482,6 +491,13 @@
     </Compile>
     <Compile Include="pages\Portal_Sag.aspx.vb">
       <DependentUpon>Portal_Sag.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\Ventas.aspx.designer.vb">
+      <DependentUpon>Ventas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Ventas.aspx.vb">
+      <DependentUpon>Ventas.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Registro_Banco_Semilla.aspx.designer.vb">
