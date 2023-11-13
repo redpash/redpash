@@ -536,15 +536,6 @@ Partial Public Class Ventas
     Protected WithEvents TextBox13 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txt_observacion.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txt_observacion As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control txt_fuente.
     '''</summary>
     '''<remarks>

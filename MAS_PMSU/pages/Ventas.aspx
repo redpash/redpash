@@ -374,25 +374,6 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-heading">
-                                            <label>Observación sobre la venta</label>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <asp:TextBox ID="txt_observacion" CssClass="form-control" runat="server" Visible="true"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
                                 <asp:TextBox ID="txt_fuente" CssClass="form-control" runat="server" Visible="False"></asp:TextBox>
                                 <asp:TextBox ID="txt_habilitado" CssClass="form-control" runat="server" Visible="False"></asp:TextBox>
                                 <asp:TextBox ID="TxtCodOP" CssClass="form-control" runat="server" Visible="False"></asp:TextBox>

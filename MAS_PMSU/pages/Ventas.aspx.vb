@@ -589,7 +589,7 @@ Public Class Ventas
 
         cmd2.Connection = conex
         cmd2.CommandText = Sql
-        cmd2.Parameters.AddWithValue("@Observacion", txt_observacion.Text)
+        'cmd2.Parameters.AddWithValue("@Observacion", txt_observacion.Text)
         cmd2.Parameters.AddWithValue("@Usuario", User.Identity.Name)
         'cmd2.Parameters.AddWithValue("@ID2", TxtID.Text)
         cmd2.Parameters.AddWithValue("@COD_BCS", Text_codigo_bcs.Text)
