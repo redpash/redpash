@@ -313,7 +313,7 @@
                                              <br />
                                   
                                             <label for="TxtSemillaQQ">
-                                                Estimado semilla a producir QQ.</label>                           
+                                                Estimado semilla a producir QQ/MZ.</label>                           
                                             <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" onchange="calculateAreaHaEs();"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtSemillaQQ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                                             <br />

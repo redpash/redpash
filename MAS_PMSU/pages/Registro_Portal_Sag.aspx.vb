@@ -239,7 +239,7 @@ Public Class Registro_Portal_Sag
                 ' Se crean los valores del DropDownList tomando el número total de páginas...
                 Dim i As Integer
                 For i = 0 To GridDatos.PageCount - 1
-                    ' Se crea un objeto ListItem para representar la �gina...
+                    ' Se crea un objeto ListItem para representar la  gina...
                     Dim pageNumber As Integer = i + 1
                     Dim item As ListItem = New ListItem(pageNumber.ToString())
                     If i = GridDatos.PageIndex Then
@@ -250,9 +250,9 @@ Public Class Registro_Portal_Sag
                 Next i
             End If
             If Not pageLabel Is Nothing Then
-                ' Calcula el nº de �gina actual...
+                ' Calcula el nº de  gina actual...
                 Dim currentPage As Integer = GridDatos.PageIndex + 1
-                ' Actualiza el Label control con la �gina actual.
+                ' Actualiza el Label control con la  gina actual.
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
@@ -464,7 +464,7 @@ Public Class Registro_Portal_Sag
 
 
                 cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Convert.ToDouble(TxtRegistradaQQ.Text))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Convert.ToInt64(TxtCantLotes.Text))
+                cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", 1)
                 cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
                 cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
                 cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQHA.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
@@ -713,28 +713,15 @@ Public Class Registro_Portal_Sag
 
     Protected Sub DDL_Nlote_SelectedIndexChanged(sender As Object, e As EventArgs)
         If DDL_Nlote.SelectedItem.Text <> "" Then
-            Dim StrCombo As String = "SELECT produccion_est_hectareas, superficie_mz FROM solicitud_inscripcion_delotes WHERE nombre_lote = '" & DDL_Nlote.SelectedItem.Text & "'"
+            Dim StrCombo As String = "SELECT produccion_est_hectareas, superficie_mz, produccion_est_manzanas, superficie_hectarea FROM solicitud_inscripcion_delotes WHERE nombre_lote = '" & DDL_Nlote.SelectedItem.Text & "'"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
 
-            TxtSemillaQQ.Text = DtCombo.Rows(0)("produccion_est_hectareas").ToString
+            TxtProduccionQQHA.Text = DtCombo.Rows(0)("produccion_est_hectareas").ToString
+            TxtProduccionQQMZ.Text = DtCombo.Rows(0)("produccion_est_manzanas").ToString
             TxT_AreaMZ.Text = DtCombo.Rows(0)("superficie_mz").ToString
-
-            ' Calcular Txt_AreaHa.Text y TxtEstimadoProducir.Text
-            Dim areaMZ As Double
-            Dim semillaQQ As Double
-
-            If Double.TryParse(TxT_AreaMZ.Text, areaMZ) AndAlso Double.TryParse(TxtSemillaQQ.Text, semillaQQ) Then
-                Txt_AreaHa.Text = (areaMZ * 0.7).ToString("N2")
-                TxtEstimadoProducir.Text = (semillaQQ * 0.7).ToString("N2")
-            Else
-                areaMZ = Convert.ToDouble(TxT_AreaMZ.Text)
-                semillaQQ = Convert.ToDouble(TxtSemillaQQ.Text)
-
-                Txt_AreaHa.Text = (areaMZ * 0.7).ToString()
-                TxtEstimadoProducir.Text = (semillaQQ * 0.7).ToString()
-            End If
+            Txt_AreaHa.Text = DtCombo.Rows(0)("superficie_hectarea").ToString
         End If
     End Sub
 

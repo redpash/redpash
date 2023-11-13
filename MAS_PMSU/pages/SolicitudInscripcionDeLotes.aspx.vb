@@ -437,7 +437,7 @@ Public Class SolicitudInscripcionDeLotes
 
     Protected Sub TxtProHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProHectareas.TextChanged
         If TxtProHectareas.Text <> "" Then
-            TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * 0.7)
+            TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * Convert.ToDouble(TxtHectareas.Text) * 0.7)
             VerificarTextBox()
         Else
             TextBox7.Text = ""
