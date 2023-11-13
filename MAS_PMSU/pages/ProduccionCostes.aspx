@@ -209,7 +209,7 @@
 
                                     <label>¿Tuvo pérdida en el área que sembró?</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDL_perdidas" runat="server" AutoPostBack="false">
-                                        <asp:ListItem Text=""></asp:ListItem>
+                                         
                                         <asp:ListItem Text="No"></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                     </asp:DropDownList>
@@ -232,7 +232,7 @@
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Plagas y enfermedades</label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList_plaga_enfer" style="width:20%;" runat="server" AutoPostBack="false">
-                                                <asp:ListItem Text=""></asp:ListItem>
+                                                 
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -240,7 +240,7 @@
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Sequía/falta de lluvia</label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList_sequia_lluvia" style="width:20%;" runat="server" AutoPostBack="false">
-                                                <asp:ListItem Text=""></asp:ListItem>
+                                                 
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -248,7 +248,7 @@
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Exceso de lluvia</label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList_exce_lluvia" style="width:20%;" runat="server" AutoPostBack="false">
-                                                <asp:ListItem Text=""></asp:ListItem>
+                                                 
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -256,7 +256,7 @@
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Baja germinación</label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList_baja_germi" style="width:20%;" runat="server" AutoPostBack="false">
-                                                <asp:ListItem Text=""></asp:ListItem>
+                                                 
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -264,7 +264,7 @@
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Mal manejo cultivo</label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList_mal_culti" style="width:20%;" runat="server" AutoPostBack="false">
-                                                <asp:ListItem Text=""></asp:ListItem>
+                                                 
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -272,7 +272,7 @@
                                         <div class="col-lg-8" style="display: flex;">
                                             <label style="width:80%;">Otros factores (robo, daño de animales, etc.,)</label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList_otros" style="width:20%;" runat="server" AutoPostBack="false">
-                                                <asp:ListItem Text=""></asp:ListItem>
+                                                 
                                                 <asp:ListItem Text="No"></asp:ListItem>
                                                 <asp:ListItem Text="Si"></asp:ListItem>
                                             </asp:DropDownList>
@@ -286,7 +286,7 @@
                                     <br />
                                     <label>¿Dispone de los resultados del Centro de Procesamiento?</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDL_Procesamiento" runat="server" AutoPostBack="false">
-                                        <asp:ListItem Text=""></asp:ListItem>
+                                         
                                         <asp:ListItem Text="No"></asp:ListItem>
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                     </asp:DropDownList>
@@ -303,10 +303,12 @@
                                         <label for="TxtBasura">Cantidad de quintales clasificados como basura</label>
                                         <asp:TextBox ID="TxtBasura" runat="server" CssClass="form-control" autocomplete="off"/>
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator13" runat="server" ControlToValidate="TxtBasura" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
+                   
                                     </div>
                                 </div>
                                 
                                 <div class="modal-footer" style="text-align: center">
+                                    <label runat="server" id="aviso" visible="false" style="color:red;"> Los valores de las cantidates no coincide con el valor de producción de campo</label>
                                     <asp:Button ID="BtnGuardProd" Text="Guardar" Width="80px" runat="server" Class="btn btn-primary" />
                                     <asp:Button ID="BtnSaliProd" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />
                                 </div>
@@ -369,7 +371,7 @@
                                 <div class="modal-body">
                                     <label>Usar solo costo total</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLCostos" runat="server" AutoPostBack="false">
-                                        <asp:ListItem Text=""></asp:ListItem>
+                                         
                                         <asp:ListItem Text="Si"></asp:ListItem>
                                         <asp:ListItem Text="No"></asp:ListItem>
                                     </asp:DropDownList>
@@ -430,12 +432,15 @@
                             var ddlPerdidas = document.getElementById('<%= DDLCostos.ClientID %>');
                             var divmodalcostos = document.getElementById('<%= divmodalcostos.ClientID %>');
                             var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
+                            var txtToltal = document.getElementById('<%= TxtTotal.ClientID %>');
                             if (ddlPerdidas.value === 'No' || ddlPerdidas.value === "") {
                                 divmodalcostos.style.display = 'block';
                                 lblmodalcostos.style.display = 'none';
+                                txtToltal.disabled = true; 
                             } else {
                                 divmodalcostos.style.display = 'none';
                                 lblmodalcostos.style.display = 'block';
+                                txtToltal.disabled = false;
                             }
                         }
                         document.getElementById('<%= DDLCostos.ClientID %>').addEventListener('change', mostrarOcultardivmodalcostos);
@@ -508,7 +513,7 @@
                                     <br />
                                     <label for="DDL_Tipo">Tipo</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
-                                        <asp:ListItem Text=""></asp:ListItem>
+                                         
                                         <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
                                         <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
                                     </asp:DropDownList>
@@ -545,7 +550,7 @@
                                     <label for="TxtCategoria">
                                         Categoria</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtCategoria" runat="server">
-                                        <asp:ListItem Text=""></asp:ListItem>
+                                         
                                         <asp:ListItem>Certificada</asp:ListItem>
                                         <asp:ListItem>Comercial</asp:ListItem>
                                     </asp:DropDownList>
@@ -721,7 +726,7 @@
                                                 <div class="mb-3">
                                                 <label for="FileUploadSemilla" class="form-label">Tipo de semilla recibida para sembrar el lote de producción:</label>
                                                     <asp:DropDownList CssClass="form-control" ID="CmbTipoSemilla" runat="server" AutoPostBack="False">
-                                                            <asp:ListItem Text=""></asp:ListItem>
+                                                             
                                                             <asp:ListItem id="registrada" Text="Registrada"></asp:ListItem>
                                                             <asp:ListItem id="certificada" Text="Certificada"></asp:ListItem>
                                                             <asp:ListItem id="comercial" Text="Comercial"></asp:ListItem>

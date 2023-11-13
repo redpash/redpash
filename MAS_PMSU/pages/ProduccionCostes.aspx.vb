@@ -282,6 +282,11 @@ Public Class ProduccionCostes
 
     Protected Sub BGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardProd.Click
         Dim fecha As Date
+        Dim semilla As Double = Convert.ToDouble(TxtSemilla.Text)
+        Dim grano As Double = Convert.ToDouble(TxtGrano.Text)
+        Dim basura As Double = Convert.ToDouble(TxtBasura.Text)
+        Dim total As Double = semilla + grano + basura
+        Dim qqprod As Double = Convert.ToDouble(TxtQQProd.Text)
         If Date.TryParse(txt_fecha_sembro.Text, fecha) Then
             fecha.ToString("dd-MM-yyyy")
         End If
@@ -291,8 +296,9 @@ Public Class ProduccionCostes
         Dim Sql As String
         Dim cmd2 As New MySqlCommand()
 
-        If (TxtID.Text <> "") Then
-            Sql = " UPDATE bcs_inscripcion_senasa SET
+        If qqprod = total Then
+            If (TxtID.Text <> "") Then
+                Sql = " UPDATE bcs_inscripcion_senasa SET
                     AREA_TERRENO_SEMBRADA_MZ = @AREA_TERRENO_SEMBRADA_MZ,
                     AREA_TERRENO_SEMBRADA_HA = @AREA_TERRENO_SEMBRADA_HA,
                     FECHA_SEMBRO = @FECHA_SEMBRO,
@@ -312,62 +318,69 @@ Public Class ProduccionCostes
                     CANTIDAD_QQ_BASURA = @CANTIDAD_QQ_BASURA
                   WHERE ID = " & TxtID.Text & ""
 
-            cmd2.Connection = conex
-            cmd2.CommandText = Sql
+                cmd2.Connection = conex
+                cmd2.CommandText = Sql
 
-            cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_MZ", Convert.ToDouble(TxtAreaSembMz.Text))
-            cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_HA", Convert.ToDouble(TxtAreaSembHa.Text))
-            cmd2.Parameters.AddWithValue("@FECHA_SEMBRO", fecha)
+                cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_MZ", Convert.ToDouble(TxtAreaSembMz.Text))
+                cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_HA", Convert.ToDouble(TxtAreaSembHa.Text))
+                cmd2.Parameters.AddWithValue("@FECHA_SEMBRO", fecha)
 
-            cmd2.Parameters.AddWithValue("@TUVO_PERDIDA", DDL_perdidas.SelectedItem.Text)
-            If DDL_perdidas.SelectedItem.Text = "Si" Then
-                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble(TxtAreaPerdMz.Text))
-                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble(TxtAreaPerdHa.Text))
-                cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", DropDownList_plaga_enfer.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", DropDownList_sequia_lluvia.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", DropDownList_exce_lluvia.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", DropDownList_baja_germi.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", DropDownList_mal_culti.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", DropDownList_otros.SelectedItem.Text)
-            Else
-                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble("0.00"))
-                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble("0.00"))
-                cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", "No")
-                cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", "No")
-                cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", "No")
-                cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", "No")
-                cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", "No")
-                cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", "No")
+                cmd2.Parameters.AddWithValue("@TUVO_PERDIDA", DDL_perdidas.SelectedItem.Text)
+                If DDL_perdidas.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble(TxtAreaPerdMz.Text))
+                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble(TxtAreaPerdHa.Text))
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", DropDownList_plaga_enfer.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", DropDownList_sequia_lluvia.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", DropDownList_exce_lluvia.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", DropDownList_baja_germi.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", DropDownList_mal_culti.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", DropDownList_otros.SelectedItem.Text)
+                Else
+                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble("0.00"))
+                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble("0.00"))
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", "No")
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", "No")
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", "No")
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", "No")
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", "No")
+                    cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", "No")
+                End If
+
+                cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", Convert.ToDouble(TxtQQProd.Text))
+                cmd2.Parameters.AddWithValue("@RESULT_CENTRO_PROCES", DDL_Procesamiento.SelectedItem.Text)
+                If DDL_Procesamiento.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble(TxtSemilla.Text))
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble(TxtGrano.Text))
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble(TxtBasura.Text))
+                Else
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
+                End If
+                cmd2.ExecuteNonQuery()
+                conex.Close()
+
+                Label1.Text = "La producción se ha agreado exitosamente"
+
+
+
             End If
+            llenagrid()
+            aviso.Visible = False
+            BConfirm.Visible = True
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        Else
+            aviso.Visible = True
+            BConfirm.Visible = True
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
+            Label1.Text = "Las cantidades de los quintales clasificados no coinciden con el total"
 
-            cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", Convert.ToDouble(TxtQQProd.Text))
-            cmd2.Parameters.AddWithValue("@RESULT_CENTRO_PROCES", DDL_Procesamiento.SelectedItem.Text)
-            If DDL_Procesamiento.SelectedItem.Text = "Si" Then
-                cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble(TxtSemilla.Text))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble(TxtGrano.Text))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble(TxtBasura.Text))
-            Else
-                cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
-            End If
-            cmd2.ExecuteNonQuery()
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
             conex.Close()
-
-            Label1.Text = "La producción se ha agreado exitosamente"
-
-
-
         End If
-
-        llenagrid()
-
-        BConfirm.Visible = True
-        BBorrarsi.Visible = False
-        BBorrarno.Visible = False
-
-        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-
     End Sub
 
     Protected Sub BBorrarsi_Click(sender As Object, e As EventArgs) Handles BBorrarsi.Click
@@ -488,7 +501,7 @@ Public Class ProduccionCostes
 
                 cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
                 cmd.ExecuteNonQuery()
-                Label1.Text = "Los costo se ha almacenado exitosamente"
+                Label1.Text = "Los costos se ha almacenado exitosamente"
             End Using
         End Using
 
