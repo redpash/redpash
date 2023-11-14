@@ -70,24 +70,24 @@ Public Class Ventas
     Sub llenagrid()
         'import.Visible = False
 
-        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
+        Dim cadena As String = "ID AS ID, Departamento AS Departamento, Productor AS Productor, cultivo AS Cultivo, CICLO AS CICLO, VARIEDAD AS VARIEDAD, CATEGORIA AS CATEGORIA, AREA_HA AS AREA_HA, AREA_MZ AS AREA_MZ, QQ_Produccion_Campo AS QQ_Produccion_Campo, QQ_Oro AS QQ_Oro, QQ_Grano AS QQ_Grano, QQ_Basura AS QQ_Basura, Habilitado AS Habilitado, DATE_FORMAT(Fecha_siembra, '%d-%m-%Y') AS Fecha_siembra, QQ_semilla_entregado AS QQ_semilla_entregado, QQ_consumo_entregado AS QQ_consumo_entregado"
 
         If (DDL_cultivo.SelectedItem.Text = " ") Then
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Estado = '1' ORDER BY Departamento,Productor,CICLO "
         Else
             If (DDL_Categ.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
             Else
                 If (TxtCiclo.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                 Else
                     If (TxtDepto.SelectedItem.Text = " ") Then
-                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                     Else
                         If (TxtProductor.SelectedItem.Text = " ") Then
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                         Else
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                         End If
                     End If
                 End If
@@ -122,7 +122,7 @@ Public Class Ventas
                 ' Se crean los valores del DropDownList tomando el número total de páginas...
                 Dim i As Integer
                 For i = 0 To GridDatos.PageCount - 1
-                    ' Se crea un objeto ListItem para representar la �gina...
+                    ' Se crea un objeto ListItem para representar la  gina...
                     Dim pageNumber As Integer = i + 1
                     Dim item As ListItem = New ListItem(pageNumber.ToString())
                     If i = GridDatos.PageIndex Then
@@ -133,9 +133,9 @@ Public Class Ventas
                 Next i
             End If
             If Not pageLabel Is Nothing Then
-                ' Calcula el nº de �gina actual...
+                ' Calcula el nº de  gina actual...
                 Dim currentPage As Integer = GridDatos.PageIndex + 1
-                ' Actualiza el Label control con la �gina actual.
+                ' Actualiza el Label control con la  gina actual.
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
@@ -217,36 +217,124 @@ Public Class Ventas
         Response.End()
     End Sub
     '***********************************************************************************************************************************
-
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
-        'Dim fecha2 As Date
+        Dim fecha2 As Date
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+        Dim qq_entregado_con, qq_entregado_det As Decimal
 
-        If (e.CommandName = "Editar") Then
+        If (e.CommandName = "Ventas") Then
 
+            Guardar_registro.Visible = True
+            'llenarcombocompradores()
+            'llenarcombocompradores_grano()
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT * FROM vista_bcs_detalles WHERE ID = '" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "'"
+
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
-            nuevo = False
+            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
+            If txt_habilitado.Text = "🔒︎" Then
+                'Label8.Text = "Para este ciclo ya ha finalizado el tiempo para detallar los valores de ventas, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+            Else
+                'divedit.Visible = True
+                'divdatos.Visible = False
+                'TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                'TxtNom2.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                Text_departamento.Text = dt.Rows(0)("Departamento").ToString()
+                Text_municipio.Text = dt.Rows(0)("Municipio").ToString()
+                Text_aldea.Text = dt.Rows(0)("Aldea").ToString()
+                Text_caserio.Text = dt.Rows(0)("Caserio").ToString()
+                Text_codigo_bcs.Text = dt.Rows(0)("Codigo_BCS").ToString()
+                Text_nombre_productor.Text = dt.Rows(0)("Productor").ToString()
+                Text_categoria.Text = dt.Rows(0)("CATEGORIA").ToString()
+                Text_ciclo.Text = dt.Rows(0)("CICLO").ToString()
+                Text_variedad.Text = dt.Rows(0)("VARIEDAD").ToString()
+
+                Text_QQ_Produccion.Text = dt.Rows(0)("QQ_Produccion_Campo").ToString()
+                Text_QQ_Produccion_ORO.Text = dt.Rows(0)("QQ_ORO").ToString()
+                Text_QQ_Produccion_consumo.Text = dt.Rows(0)("QQ_Grano").ToString()
+                Text_QQ_Produccion_basura.Text = dt.Rows(0)("QQ_BASURA").ToString()
+
+                txt_fuente.Text = dt.Rows(0)("QQ_BASURA").ToString()
+
+
+                If txt_fuente.Text = "Dinamica" Then
+
+                    TXT_QQ_ORO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
+                    TXT_QQ_CONSUMO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+
+                    txt_semilla_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
+                    txt_consumo_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+
+                    '    TXT_QQ_ORO_ENTRE.Text = Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_consolidado").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_detallado").ToString()) + Convert.ToDecimal((dt.Rows(0)("QQ_consumo_semilla_consolidado").ToString())))
+                    '    TXT_QQ_CONSUMO_ENTRE.Text = Convert.ToDecimal((dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString()))
+
+                    '    txt_semilla_por_detallar.Text = Convert.ToDecimal(dt.Rows(0)("QQ_ORO").ToString()) - (Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_consolidado").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_detallado").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_consumo_semilla_consolidado").ToString())))
+                    '    txt_consumo_por_detallar.Text = Convert.ToDecimal(dt.Rows(0)("QQ_CONSUMO").ToString()) - (Convert.ToDecimal((dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString())))
+                Else
+
+                    TXT_QQ_ORO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
+                    TXT_QQ_CONSUMO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+
+                    txt_semilla_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
+                    txt_consumo_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+
+                End If
+
+                TXT_QQ_VENTA_GRANO.Text = dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString()
+
+                TXT_QQ_GRANO_CONSUMO.Text = dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString()
+
+                txt_qq.Text = 0
+                txt_precio.Text = 0
+                txt_qq_consumo.Text = 0
+                txt_precio_consumo.Text = 0
+
+                TXT_QQ_VENTA_GRANO.Text = 0
+
+                TXT_PRECIO_GRANO.Text = 0
+                TXT_QQ_GRANO_CONSUMO.Text = 0
+                TXT_PRECIO_GRANO_CONSUMO.Text = 0
+
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DetCostos').modal('show'); });", True)
+            End If
         End If
 
-        If (e.CommandName = "Eliminar") Then
+        If (e.CommandName = "eliminar") Then
+
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT COSTOS_INSUMOS, COSTOS_INSCRIPCION, COSTOS_MANO, COSTOS_OTROS, COSTOS_ACONDICIONAMIENTO_SEMILLA, COSTOS_EQUIPO,COSTO_TOTAL, Habilitado, check_costo FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa_prodcos_new_ventas` WHERE  ID2='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
+            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+            If txt_habilitado.Text = "🔒︎" Then
+                'Label8.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar los valores de ventas, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+            Else
+                'TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Text_codigo_bcs.Text = dt.Rows(0)("COD_BCS").ToString()
+                Text_nombre_productor.Text = dt.Rows(0)("Productor").ToString()
+                Text_categoria.Text = dt.Rows(0)("CATEGORIA").ToString()
+                Text_ciclo.Text = dt.Rows(0)("CICLO").ToString()
+                Text_variedad.Text = dt.Rows(0)("VARIEDAD").ToString()
+
+                'Label5.Text = "Hola " + Lb_user.Text + ", está seguro que desea todas las ventas registadas para el banco: " + Text_codigo_bcs.Text + "                                      ciclo: " + Text_ciclo.Text + " y Variedad: " + Text_variedad.Text + ""
+
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModalVENTA').modal('show'); });", True)
+            End If
+
         End If
+
     End Sub
-
     Private Sub llenarcombocompradores()
         Dim StrCombo As String
 

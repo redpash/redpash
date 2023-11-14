@@ -109,24 +109,28 @@
                                         <Columns>
 
                                             <asp:BoundField DataField="ID">
-                                                <HeaderStyle CssClass="hide" />
-                                                <ItemStyle CssClass="hide" />
-                                            </asp:BoundField>
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
-                                            <asp:BoundField DataField="Tipo_cultivo" HeaderText="CULTIVO" />
-                                            <asp:BoundField DataField="CATEGORIA" HeaderText="CATEGORIA" />
-                                            <asp:BoundField DataField="CICLO" HeaderText="CICLO" />
-                                            <asp:BoundField DataField="VARIEDAD" HeaderText="VARIEDAD" />
-                                            <asp:BoundField DataField="NOMBRE_LOTE_FINCA" HeaderText="NUMERO DE LOTE" />
-                                            <asp:BoundField DataField="AREA_SEMBRADA_MZ" HeaderText="AREA INSCRITA EN MZ" />
-                                            <asp:BoundField DataField="AREA_SEMBRADA_HA" HeaderText="AREA INSCRITA EN HA" />
-                                            <asp:BoundField DataField="FECHA_SIEMBRA" HeaderText="FECHA DE SIEMBRA INSCRITA" />
-                                            <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="COSECHA INSCRITA EN MZ" />
-                                            <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="COSECHA INSCRITA EN HA" />
+                                            <HeaderStyle CssClass="hide" />
+                                            <ItemStyle CssClass="hide" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
+                                        <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
+                                        <asp:BoundField DataField="Cultivo" HeaderText="CULTIVO" />
+                                        <asp:BoundField DataField="CATEGORIA" HeaderText="CATEGORIA" />
+                                        <asp:BoundField DataField="CICLO" HeaderText="CICLO" />
+                                        <asp:BoundField DataField="VARIEDAD" HeaderText="VARIEDAD" />
+                                        <asp:BoundField DataField="AREA_HA" HeaderText="AREA INSCRITA EN HA" />
+                                        <asp:BoundField DataField="AREA_MZ" HeaderText="AREA INSCRITA EN MZ" />
+                                        <asp:BoundField DataField="QQ_Produccion_Campo" HeaderText="QQ DE PRODUCCION EN CAMPO" />
+                                        <asp:BoundField DataField="QQ_Oro" HeaderText="QQ DE SEMILLA ORO" />
+                                        <asp:BoundField DataField="QQ_Grano" HeaderText="QQ DE SEMILLA GRANO" />
+                                        <asp:BoundField DataField="QQ_Basura" HeaderText="QQ DE SEMILLA BASURA" />
+                                        <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
+                                        <asp:BoundField DataField="Fecha_siembra" HeaderText="FECHA DE SIEMBRA INSCRITA" />
+                                        <asp:BoundField DataField="QQ_semilla_entregado" HeaderText="QQ DE SEMILLA ENTREGADO" />
+                                        <asp:BoundField DataField="QQ_consumo_entregado" HeaderText="QQ DE CONSUMO ENTREGADO" />
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 
-                                            <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
+                                            <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="Ventas" CommandName="Ventas">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
                                             <%--                                        <asp:TemplateField HeaderText="Check costo">
