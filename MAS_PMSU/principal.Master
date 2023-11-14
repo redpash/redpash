@@ -150,6 +150,9 @@
                                 <a href="ProduccionCostes.aspx"><i class="fa fa-university"></i> Produccion y Costes</a>
                             </li>
                             <li>
+                                <a href="ActaRecepcionSemilla.aspx"><i class="fa fa-university"></i> Acta de Recepción de Semilla</a>
+                            </li>
+                            <li>
                                 <a href="VisitaTecnicos.aspx"><i class="fa fa-clipboard"></i> Visita Tecnicos</a>
                             </li>
                             <li>

@@ -243,6 +243,7 @@
     <Content Include="pages\msu_entregas_consolidado.aspx" />
     <Content Include="pages\plan_produccion_semilla_frijol.aspx" />
     <Content Include="pages\Portal_Sag.aspx" />
+    <Content Include="pages\ActaRecepcionSemilla.aspx" />
     <Content Include="pages\Ventas.aspx" />
     <Content Include="pages\Registro_Banco_Semilla.aspx" />
     <Content Include="pages\Registro_ops_new.aspx" />
@@ -491,6 +492,13 @@
     </Compile>
     <Compile Include="pages\Portal_Sag.aspx.vb">
       <DependentUpon>Portal_Sag.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\ActaRecepcionSemilla.aspx.designer.vb">
+      <DependentUpon>ActaRecepcionSemilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ActaRecepcionSemilla.aspx.vb">
+      <DependentUpon>ActaRecepcionSemilla.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Ventas.aspx.designer.vb">
