@@ -3631,6 +3631,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label104">
+<summary>
+Control Label104.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_cultivo">
 <summary>
 Control DDL_cultivo.
@@ -5971,9 +5980,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ActaRecepcionSemilla._btnGuardarLote">
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._btnGuardarActa">
 <summary>
-Control btnGuardarLote.
+Control btnGuardarActa.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -5989,9 +5998,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ActaRecepcionSemilla._Button1">
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._BtnImprimir">
 <summary>
-Control Button1.
+Control BtnImprimir.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -6007,9 +6016,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ActaRecepcionSemilla._Button2">
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._BtnNuevo">
 <summary>
-Control Button2.
+Control BtnNuevo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label103">
+<summary>
+Control Label103.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._BConfirm">
+<summary>
+Control BConfirm.
 </summary>
 <remarks>
 Campo generado automáticamente.

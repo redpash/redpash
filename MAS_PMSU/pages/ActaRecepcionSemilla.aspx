@@ -55,6 +55,7 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Seleccione Cultivo:</label>
+                            <asp:Label ID="Label104" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:DropDownList CssClass="form-control" ID="DDL_cultivo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDL_cultivo_SelectedIndexChanged">
                                 <asp:ListItem Text=" "></asp:ListItem>
                                 <asp:ListItem Text="Frijol"></asp:ListItem>
@@ -891,21 +892,38 @@
         <label></label>
         <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" Visible="true" />
+        <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+        <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="true" OnClick="btnGuardarActa_Click"/>
     </div>
 
     <div>
         <label></label>
         <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir" OnClick="descargaPDF" Visible="false" />
+        <asp:Button CssClass="btn btn-primary" ID="BtnImprimir" runat="server" Text="Imprimir" OnClick="descargaPDF" Visible="false" />
     </div>
 
     <div>
         <label></label>
         <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Button CssClass="btn btn-primary" ID="Button2" runat="server" Text="Nuevo" OnClick="vaciar" Visible="false" />
+        <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Nuevo" OnClick="vaciar" Visible="false" />
+    </div>
+    
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ModalTitle2">REDPASH</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="Label103" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>
+                </div>
+                <div class="modal-footer" style="text-align: center">
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
     </div>
 
 </asp:Content>

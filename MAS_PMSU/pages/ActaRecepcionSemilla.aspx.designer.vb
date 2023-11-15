@@ -86,6 +86,15 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents TxtCeduIden As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control Label104.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label104 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control DDL_cultivo.
     '''</summary>
     '''<remarks>
@@ -2426,13 +2435,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents LabelGuardar As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control btnGuardarLote.
+    '''Control btnGuardarActa.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnGuardarLote As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnGuardarActa As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control Label18.
@@ -2444,13 +2453,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label18 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control Button1.
+    '''Control BtnImprimir.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents BtnImprimir As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control Label23.
@@ -2462,11 +2471,29 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label23 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control Button2.
+    '''Control BtnNuevo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents BtnNuevo As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Label103.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label103 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control BConfirm.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BConfirm As Global.System.Web.UI.WebControls.Button
 End Class
