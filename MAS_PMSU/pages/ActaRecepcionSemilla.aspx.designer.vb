@@ -104,13 +104,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Amadeus.
+    '''Control DDL_Amadeus.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Amadeus As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Amadeus As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label5.
@@ -122,13 +131,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Amadeus_Certificado.
+    '''Control DDL_Amadeus_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Amadeus_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Amadeus_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label6.
@@ -140,13 +149,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Amadeus_Comercial.
+    '''Control DDL_Amadeus_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Amadeus_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Amadeus_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegexValidator.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegexValidator As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label2.
@@ -158,13 +176,85 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtAmadeus.
+    '''Control txtAmadeusHumedad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtAmadeus As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtAmadeusHumedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label45.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label45 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtBultosAmadeus.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtBultosAmadeus As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label46.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label46 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoPrimAmadeus.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoPrimAmadeus As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label47.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label47 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoBrutAmadeus.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoBrutAmadeus As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label4.
@@ -176,13 +266,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Carrizalito.
+    '''Control DDL_Carrizalito.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Carrizalito As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Carrizalito As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label7.
@@ -194,13 +293,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Carrizalito_Certificado.
+    '''Control DDL_Carrizalito_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Carrizalito_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Carrizalito_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label8.
@@ -212,13 +311,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Carrizalito_Comercial.
+    '''Control DDL_Carrizalito_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Carrizalito_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Carrizalito_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator3 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label9.
@@ -230,13 +338,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtCarrizalito.
+    '''Control txtCarrizalitoHumedad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtCarrizalito As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtCarrizalitoHumedad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label10.
@@ -248,13 +356,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Deorho.
+    '''Control txtBultosCarrizalito.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Deorho As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtBultosCarrizalito As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator4 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label11.
@@ -266,13 +383,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Deorho_Certificado.
+    '''Control txtPesoPrimCarrizalito.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Deorho_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoPrimCarrizalito As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator5 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label12.
@@ -284,13 +410,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Deorho_Comercial.
+    '''Control txtPesoBrutCarrizalito.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Deorho_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoBrutCarrizalito As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label13.
@@ -302,13 +428,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label13 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtDeorho.
+    '''Control DDL_Deorho.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtDeorho As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_Deorho As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div3 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label15.
@@ -320,13 +455,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label15 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_ParaisitoMejoradoPM_2.
+    '''Control DDL_Deorho_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_ParaisitoMejoradoPM_2 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Deorho_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label16.
@@ -338,13 +473,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label16 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_ParaisitoMejoradoPM_2_Certificado.
+    '''Control DDL_Deorho_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_ParaisitoMejoradoPM_2_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Deorho_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator6 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label17.
@@ -356,13 +500,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label17 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_ParaisitoMejoradoPM_2_Comercial.
+    '''Control txtDeorhoHumedad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_ParaisitoMejoradoPM_2_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtDeorhoHumedad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label19.
@@ -374,13 +518,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label19 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtlb_ParaisitoMejoradoPM_2.
+    '''Control txtBultosDeorho.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtlb_ParaisitoMejoradoPM_2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtBultosDeorho As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator7 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label20.
@@ -392,13 +545,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label20 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Hondurasnutritivo.
+    '''Control txtPesoPrimDeorho.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Hondurasnutritivo As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoPrimDeorho As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator8 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label21.
@@ -410,13 +572,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label21 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Hondurasnutritivo_Certificado.
+    '''Control txtPesoBrutDeorho.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Hondurasnutritivo_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoBrutDeorho As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label22.
@@ -428,13 +590,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label22 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Hondurasnutritivo_Comercial.
+    '''Control DDL_Azabache.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Hondurasnutritivo_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Azabache As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div4 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label24.
@@ -446,13 +617,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label24 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtHondurasnutritivo.
+    '''Control DDL_Azabache_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtHondurasnutritivo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_Azabache_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label25.
@@ -464,13 +635,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label25 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_IntaCardenas.
+    '''Control DDL_Azabache_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_IntaCardenas As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Azabache_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator9.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator9 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label26.
@@ -482,13 +662,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label26 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_IntaCardenas_Certificado.
+    '''Control txtAzabacheHumedad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_IntaCardenas_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAzabacheHumedad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label27.
@@ -500,13 +680,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label27 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_IntaCardenas_Comercial.
+    '''Control txtBultosAzabache.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_IntaCardenas_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtBultosAzabache As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator10.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator10 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label28.
@@ -518,13 +707,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label28 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtIntaCardenas.
+    '''Control txtPesoPrimAzabache.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtIntaCardenas As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtPesoPrimAzabache As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator11.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator11 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label29.
@@ -536,13 +734,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label29 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Azabache40.
+    '''Control txtPesoBrutAzabache.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Azabache40 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoBrutAzabache As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label30.
@@ -554,13 +752,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label30 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Azabache40_Certificado.
+    '''Control DDL_ParaisitoMejoradoPM2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Azabache40_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_ParaisitoMejoradoPM2 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div5 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label31.
@@ -572,13 +779,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label31 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_Azabache40_Comercial.
+    '''Control DDL_ParaisitoMejoradoPM2_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_Azabache40_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_ParaisitoMejoradoPM2_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label32.
@@ -590,13 +797,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label32 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtAzabache40.
+    '''Control DDL_ParaisitoMejoradoPM2_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtAzabache40 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_ParaisitoMejoradoPM2_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator12.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator12 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label33.
@@ -608,13 +824,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label33 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_LencaPrecoz.
+    '''Control txtParaisitoMejoradoPM2Humedad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_LencaPrecoz As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtParaisitoMejoradoPM2Humedad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label34.
@@ -626,13 +842,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label34 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_LencaPrecoz_Certificado.
+    '''Control txtBultosParaisitoMejoradoPM2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_LencaPrecoz_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtBultosParaisitoMejoradoPM2 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator13.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator13 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label35.
@@ -644,13 +869,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label35 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_LencaPrecoz_Comercial.
+    '''Control txtPesoPrimParaisitoMejoradoPM2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_LencaPrecoz_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoPrimParaisitoMejoradoPM2 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator14.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator14 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label36.
@@ -662,13 +896,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label36 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtLencaPrecoz.
+    '''Control txtPesoBrutParaisitoMejoradoPM2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtLencaPrecoz As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtPesoBrutParaisitoMejoradoPM2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label37.
@@ -680,13 +914,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label37 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_RojoChorti.
+    '''Control DDL_Hondurasnutritivo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_RojoChorti As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Hondurasnutritivo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div6 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Label38.
@@ -698,13 +941,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label38 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_RojoChorti_Certificado.
+    '''Control DDL_Hondurasnutritivo_Certificado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_RojoChorti_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Hondurasnutritivo_Certificado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label39.
@@ -716,13 +959,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label39 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_RojoChorti_Comercial.
+    '''Control DDL_Hondurasnutritivo_Comercial.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_RojoChorti_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_Hondurasnutritivo_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator15.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator15 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label40.
@@ -734,13 +986,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label40 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtRojoChorti.
+    '''Control txtHondurasnutritivoHumedad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtRojoChorti As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtHondurasnutritivoHumedad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label41.
@@ -752,13 +1004,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label41 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_TolupanRojo.
+    '''Control txtBultosHondurasnutritivo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_TolupanRojo As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtBultosHondurasnutritivo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator16.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator16 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label42.
@@ -770,13 +1031,22 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label42 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_TolupanRojo_Certificado.
+    '''Control txtPesoPrimHondurasnutritivo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_TolupanRojo_Certificado As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoPrimHondurasnutritivo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator17.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator17 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''Control Label43.
@@ -788,13 +1058,13 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label43 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lb_TolupanRojo_Comercial.
+    '''Control txtPesoBrutHondurasnutritivo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lb_TolupanRojo_Comercial As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPesoBrutHondurasnutritivo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label44.
@@ -806,13 +1076,805 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents Label44 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtTolupanRojo.
+    '''Control DDL_IntaCardenas.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtTolupanRojo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_IntaCardenas As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div7 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control Label48.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label48 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_IntaCardenas_Certificado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_IntaCardenas_Certificado As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control Label49.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label49 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_IntaCardenas_Comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_IntaCardenas_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator18.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator18 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label50.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label50 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtIntaCardenasHumedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtIntaCardenasHumedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label51.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label51 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtBultosIntaCardenas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtBultosIntaCardenas As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator19.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator19 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label52.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label52 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoPrimIntaCardenas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoPrimIntaCardenas As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator20.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator20 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label53.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label53 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoBrutIntaCardenas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoBrutIntaCardenas As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label54.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label54 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Lencaprecoz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Lencaprecoz As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div8 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control Label55.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label55 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Lencaprecoz_Certificado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Lencaprecoz_Certificado As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control Label56.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label56 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Lencaprecoz_Comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Lencaprecoz_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator21.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator21 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label57.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label57 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtLencaprecozHumedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtLencaprecozHumedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label58.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label58 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtBultosLencaprecoz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtBultosLencaprecoz As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator22.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator22 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label59.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label59 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoPrimLencaprecoz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoPrimLencaprecoz As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator23.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator23 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label60.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label60 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoBrutLencaprecoz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoBrutLencaprecoz As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label61.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label61 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Rojochorti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Rojochorti As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div9.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div9 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control Label62.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label62 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Rojochorti_Certificado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Rojochorti_Certificado As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control Label63.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label63 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Rojochorti_Comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Rojochorti_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator24.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator24 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label64.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label64 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtRojochortiHumedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtRojochortiHumedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label65.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label65 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtBultosRojochorti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtBultosRojochorti As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator25.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator25 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label66.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label66 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoPrimRojochorti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoPrimRojochorti As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator26.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator26 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label67.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label67 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoBrutRojochorti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoBrutRojochorti As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label68.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label68 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Tolupanrojo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Tolupanrojo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div10.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div10 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control Label69.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label69 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Tolupanrojo_Certificado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Tolupanrojo_Certificado As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control Label70.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label70 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Tolupanrojo_Comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Tolupanrojo_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator27.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator27 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label71.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label71 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtTolupanrojoHumedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtTolupanrojoHumedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label72.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label72 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtBultosTolupanrojo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtBultosTolupanrojo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator28.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator28 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label73.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label73 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoPrimTolupanrojo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoPrimTolupanrojo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator29.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator29 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label74.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label74 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoBrutTolupanrojo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoBrutTolupanrojo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label75.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label75 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Otravariedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Otravariedad As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control div11.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents div11 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control Label76.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label76 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Otravariedad_Certificado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Otravariedad_Certificado As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control Label77.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label77 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Otravariedad_Comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Otravariedad_Comercial As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control RegularExpressionValidator30.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator30 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label78.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label78 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtOtravariedadHumedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtOtravariedadHumedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label79.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label79 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtBultosOtravariedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtBultosOtravariedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator31.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator31 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label80.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label80 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoPrimOtravariedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoPrimOtravariedad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control RegularExpressionValidator32.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator32 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control Label81.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label81 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoBrutOtravariedad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoBrutOtravariedad As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LabelGuardar.
