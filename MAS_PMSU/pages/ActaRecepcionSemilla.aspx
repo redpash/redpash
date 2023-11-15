@@ -14,7 +14,7 @@
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                A. Datos Generales
+                Datos Generales
             </div>
 
             <div class="panel-body">
@@ -55,7 +55,7 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Seleccione Cultivo:</label>
-                            <asp:DropDownList CssClass="form-control" ID="DDL_cultivo" runat="server" AutoPostBack="True">
+                            <asp:DropDownList CssClass="form-control" ID="DDL_cultivo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDL_cultivo_SelectedIndexChanged">
                                 <asp:ListItem Text=" "></asp:ListItem>
                                 <asp:ListItem Text="Frijol"></asp:ListItem>
                                 <asp:ListItem Text="Maiz"></asp:ListItem>
@@ -67,13 +67,12 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="DivVariedadFrijol" runat="server">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Variedad de Frijol
             </div>
             <div class="panel-body">
-
 
                 <div class="row">
 
@@ -641,12 +640,16 @@
                     <div class="col-lg-12">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Otra variedad, especificar nombre comercial:</label>
+                                <label>Otra variedad:</label>
                                 <asp:Label ID="Label75" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_Otravariedad" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Verificarvariedades">
                                     <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                 </asp:DropDownList>
+                                <div id="DivVariedadNombre" runat="server">
+                                    <label>Especificar nombre comercial:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtOtravariedad" runat="server" AutoPostBack="false"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
                         <div id="div11" runat="server">
@@ -694,7 +697,192 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row" id="DivVariedadesMaiz" runat="server">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Variedad de Maiz
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Dicta Maya</label>
+                                <asp:Label ID="Label82" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_DictaMaya" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Verificarvariedades">
+                                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                    <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <div id="div12" runat="server">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Certificado</label>
+                                    <asp:Label ID="Label83" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_DictaMaya_Certificado" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    </asp:DropDownList>
+
+                                    <label>Comercial</label>
+                                    <asp:Label ID="Label84" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control form-control-lg" ID="DDL_DictaMaya_Comercial" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>% Humedad:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator33" runat="server" ControlToValidate="txtDictaMayaHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label85" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtDictaMayaHumedad" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label># Bultos:</label>
+                                    <asp:Label ID="Label86" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtBultosDictaMaya" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Peso M. Prima:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator34" runat="server" ControlToValidate="txtPesoPrimDictaMaya" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label87" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtPesoPrimDictaMaya" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label>Peso Bruto:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator35" runat="server" ControlToValidate="txtPesoBrutDictaMaya" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label88" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtPesoBrutDictaMaya" CssClass="form-control" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Dicta Victoria</label>
+                                <asp:Label ID="Label89" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_DictaVictoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Verificarvariedades">
+                                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                    <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <div id="div13" runat="server">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Certificado</label>
+                                    <asp:Label ID="Label90" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_DictaVictoria_Certificado" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    </asp:DropDownList>
+
+                                    <label>Comercial</label>
+                                    <asp:Label ID="Label91" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control form-control-lg" ID="DDL_DictaVictoria_Comercial" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>% Humedad:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator36" runat="server" ControlToValidate="txtDictaVictoriaHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label92" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtDictaVictoriaHumedad" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label># Bultos:</label>
+                                    <asp:Label ID="Label93" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtBultosDictaVictoria" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Peso M. Prima:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator37" runat="server" ControlToValidate="txtPesoPrimDictaVictoria" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label94" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtPesoPrimDictaVictoria" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label>Peso Bruto:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator38" runat="server" ControlToValidate="txtPesoBrutDictaVictoria" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label95" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtPesoBrutDictaVictoria" CssClass="form-control" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Otra variedad:</label>
+                                <asp:Label ID="Label96" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_OtravariedadM" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Verificarvariedades">
+                                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                    <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                </asp:DropDownList>
+                                <div id="DivVariedaNombreM" runat="server">
+                                    <label>Especificar nombre comercial:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtOtravariedadM" runat="server" AutoPostBack="false"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div15" runat="server">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Certificado</label>
+                                    <asp:Label ID="Label97" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_OtravariedadM_Certificado" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    </asp:DropDownList>
+
+                                    <label>Comercial</label>
+                                    <asp:Label ID="Label98" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control form-control-lg" ID="DDL_OtravariedadM_Comercial" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>% Humedad:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator39" runat="server" ControlToValidate="txtOtravariedadMHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label99" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtOtravariedadMHumedad" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label># Bultos:</label>
+                                    <asp:Label ID="Label100" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtBultosOtravariedadM" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Peso M. Prima:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator40" runat="server" ControlToValidate="txtPesoPrimOtravariedadM" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label101" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtPesoPrimOtravariedadM" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <label>Peso Bruto:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator41" runat="server" ControlToValidate="txtPesoBrutOtravariedadM" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="Label102" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtPesoBrutOtravariedadM" CssClass="form-control" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

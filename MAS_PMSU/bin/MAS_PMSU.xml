@@ -3640,6 +3640,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DivVariedadFrijol">
+<summary>
+Control DivVariedadFrijol.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ActaRecepcionSemilla._Label3">
 <summary>
 Control Label3.
@@ -5278,6 +5287,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DivVariedadNombre">
+<summary>
+Control DivVariedadNombre.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtOtravariedad">
+<summary>
+Control txtOtravariedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ActaRecepcionSemilla._div11">
 <summary>
 Control div11.
@@ -5416,6 +5443,519 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoBrutOtravariedad">
 <summary>
 Control txtPesoBrutOtravariedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DivVariedadesMaiz">
+<summary>
+Control DivVariedadesMaiz.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label82">
+<summary>
+Control Label82.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_DictaMaya">
+<summary>
+Control DDL_DictaMaya.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._div12">
+<summary>
+Control div12.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label83">
+<summary>
+Control Label83.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_DictaMaya_Certificado">
+<summary>
+Control DDL_DictaMaya_Certificado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label84">
+<summary>
+Control Label84.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_DictaMaya_Comercial">
+<summary>
+Control DDL_DictaMaya_Comercial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator33">
+<summary>
+Control RegularExpressionValidator33.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label85">
+<summary>
+Control Label85.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtDictaMayaHumedad">
+<summary>
+Control txtDictaMayaHumedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label86">
+<summary>
+Control Label86.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtBultosDictaMaya">
+<summary>
+Control txtBultosDictaMaya.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator34">
+<summary>
+Control RegularExpressionValidator34.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label87">
+<summary>
+Control Label87.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoPrimDictaMaya">
+<summary>
+Control txtPesoPrimDictaMaya.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator35">
+<summary>
+Control RegularExpressionValidator35.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label88">
+<summary>
+Control Label88.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoBrutDictaMaya">
+<summary>
+Control txtPesoBrutDictaMaya.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label89">
+<summary>
+Control Label89.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_DictaVictoria">
+<summary>
+Control DDL_DictaVictoria.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._div13">
+<summary>
+Control div13.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label90">
+<summary>
+Control Label90.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_DictaVictoria_Certificado">
+<summary>
+Control DDL_DictaVictoria_Certificado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label91">
+<summary>
+Control Label91.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_DictaVictoria_Comercial">
+<summary>
+Control DDL_DictaVictoria_Comercial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator36">
+<summary>
+Control RegularExpressionValidator36.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label92">
+<summary>
+Control Label92.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtDictaVictoriaHumedad">
+<summary>
+Control txtDictaVictoriaHumedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label93">
+<summary>
+Control Label93.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtBultosDictaVictoria">
+<summary>
+Control txtBultosDictaVictoria.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator37">
+<summary>
+Control RegularExpressionValidator37.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label94">
+<summary>
+Control Label94.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoPrimDictaVictoria">
+<summary>
+Control txtPesoPrimDictaVictoria.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator38">
+<summary>
+Control RegularExpressionValidator38.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label95">
+<summary>
+Control Label95.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoBrutDictaVictoria">
+<summary>
+Control txtPesoBrutDictaVictoria.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label96">
+<summary>
+Control Label96.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_OtravariedadM">
+<summary>
+Control DDL_OtravariedadM.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DivVariedaNombreM">
+<summary>
+Control DivVariedaNombreM.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtOtravariedadM">
+<summary>
+Control txtOtravariedadM.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._div15">
+<summary>
+Control div15.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label97">
+<summary>
+Control Label97.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_OtravariedadM_Certificado">
+<summary>
+Control DDL_OtravariedadM_Certificado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label98">
+<summary>
+Control Label98.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._DDL_OtravariedadM_Comercial">
+<summary>
+Control DDL_OtravariedadM_Comercial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator39">
+<summary>
+Control RegularExpressionValidator39.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label99">
+<summary>
+Control Label99.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtOtravariedadMHumedad">
+<summary>
+Control txtOtravariedadMHumedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label100">
+<summary>
+Control Label100.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtBultosOtravariedadM">
+<summary>
+Control txtBultosOtravariedadM.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator40">
+<summary>
+Control RegularExpressionValidator40.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label101">
+<summary>
+Control Label101.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoPrimOtravariedadM">
+<summary>
+Control txtPesoPrimOtravariedadM.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._RegularExpressionValidator41">
+<summary>
+Control RegularExpressionValidator41.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._Label102">
+<summary>
+Control Label102.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ActaRecepcionSemilla._txtPesoBrutOtravariedadM">
+<summary>
+Control txtPesoBrutOtravariedadM.
 </summary>
 <remarks>
 Campo generado automáticamente.

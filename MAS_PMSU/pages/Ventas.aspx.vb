@@ -73,21 +73,21 @@ Public Class Ventas
         Dim cadena As String = "ID AS ID, Departamento AS Departamento, Productor AS Productor, cultivo AS Cultivo, CICLO AS CICLO, VARIEDAD AS VARIEDAD, CATEGORIA AS CATEGORIA, AREA_HA AS AREA_HA, AREA_MZ AS AREA_MZ, QQ_Produccion_Campo AS QQ_Produccion_Campo, QQ_Oro AS QQ_Oro, QQ_Grano AS QQ_Grano, QQ_Basura AS QQ_Basura, Habilitado AS Habilitado, DATE_FORMAT(Fecha_siembra, '%d-%m-%Y') AS Fecha_siembra, QQ_semilla_entregado AS QQ_semilla_entregado, QQ_consumo_entregado AS QQ_consumo_entregado"
 
         If (DDL_cultivo.SelectedItem.Text = " ") Then
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Estado = '1' ORDER BY Departamento,Productor,CICLO "
         Else
             If (DDL_Categ.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
             Else
                 If (TxtCiclo.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                 Else
                     If (TxtDepto.SelectedItem.Text = " ") Then
-                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                     Else
                         If (TxtProductor.SelectedItem.Text = " ") Then
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                         Else
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas_copy where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                         End If
                     End If
                 End If

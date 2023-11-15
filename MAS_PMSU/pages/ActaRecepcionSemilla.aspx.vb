@@ -21,6 +21,7 @@ Public Class ActaRecepcionSemilla
                 TxtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 FillComboBoxWithProductorNames()
                 Verificarvariedades()
+                DDL_cultivo_SelectedIndexChanged()
             End If
         End If
     End Sub
@@ -128,8 +129,43 @@ Public Class ActaRecepcionSemilla
 
         If DDL_Otravariedad.SelectedValue = "Si" Then
             div11.Style.Add("display", "block")
+            DivVariedadNombre.Style.Add("display", "block")
         Else
             div11.Style.Add("display", "none")
+            DivVariedadNombre.Style.Add("display", "none")
+        End If
+        '*************************************************************
+        If DDL_DictaMaya.SelectedValue = "Si" Then
+            div12.Style.Add("display", "block")
+        Else
+            div12.Style.Add("display", "none")
+        End If
+
+        If DDL_DictaVictoria.SelectedValue = "Si" Then
+            div13.Style.Add("display", "block")
+        Else
+            div13.Style.Add("display", "none")
+        End If
+
+        If DDL_OtravariedadM.SelectedValue = "Si" Then
+            div15.Style.Add("display", "block")
+            DivVariedaNombreM.Style.Add("display", "block")
+        Else
+            div15.Style.Add("display", "none")
+            DivVariedaNombreM.Style.Add("display", "none")
+        End If
+    End Sub
+
+    Protected Sub DDL_cultivo_SelectedIndexChanged()
+        If DDL_cultivo.SelectedValue = "Frijol" Then
+            DivVariedadFrijol.Style.Add("display", "block")
+            DivVariedadesMaiz.Style.Add("display", "none")
+        ElseIf DDL_cultivo.SelectedValue = "Maiz" Then
+            DivVariedadFrijol.Style.Add("display", "none")
+            DivVariedadesMaiz.Style.Add("display", "block")
+        Else
+            DivVariedadFrijol.Style.Add("display", "none")
+            DivVariedadesMaiz.Style.Add("display", "none")
         End If
     End Sub
 End Class
