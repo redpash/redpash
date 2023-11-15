@@ -1,4 +1,7 @@
-﻿Imports System.IO
+﻿
+
+
+Imports System.IO
 Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
 Imports MySql.Data.MySqlClient
@@ -73,21 +76,21 @@ Public Class Ventas
         Dim cadena As String = "ID AS ID, Departamento AS Departamento, Productor AS Productor, cultivo AS Cultivo, CICLO AS CICLO, VARIEDAD AS VARIEDAD, CATEGORIA AS CATEGORIA, AREA_HA AS AREA_HA, AREA_MZ AS AREA_MZ, QQ_Produccion_Campo AS QQ_Produccion_Campo, QQ_Oro AS QQ_Oro, QQ_Grano AS QQ_Grano, QQ_Basura AS QQ_Basura, Habilitado AS Habilitado, DATE_FORMAT(Fecha_siembra, '%d-%m-%Y') AS Fecha_siembra, QQ_semilla_entregado AS QQ_semilla_entregado, QQ_consumo_entregado AS QQ_consumo_entregado"
 
         If (DDL_cultivo.SelectedItem.Text = " ") Then
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Estado = '1' ORDER BY Departamento,Productor,CICLO "
         Else
             If (DDL_Categ.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
             Else
                 If (TxtCiclo.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                 Else
                     If (TxtDepto.SelectedItem.Text = " ") Then
-                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                     Else
                         If (TxtProductor.SelectedItem.Text = " ") Then
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                         Else
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bsc_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
                         End If
                     End If
                 End If
@@ -226,7 +229,7 @@ Public Class Ventas
         If (e.CommandName = "Ventas") Then
 
             Guardar_registro.Visible = True
-            'llenarcombocompradores()
+            llenarcombocompradores()
             'llenarcombocompradores_grano()
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
@@ -261,16 +264,25 @@ Public Class Ventas
                 Text_QQ_Produccion_consumo.Text = dt.Rows(0)("QQ_Grano").ToString()
                 Text_QQ_Produccion_basura.Text = dt.Rows(0)("QQ_BASURA").ToString()
 
-                txt_fuente.Text = dt.Rows(0)("QQ_BASURA").ToString()
+                'txt_fuente.Text = dt.Rows(0)("QQ_BASURA").ToString()
 
 
                 If txt_fuente.Text = "Dinamica" Then
 
-                    TXT_QQ_ORO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
-                    TXT_QQ_CONSUMO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+                    If String.IsNullOrWhiteSpace(HttpUtility.HtmlDecode(gvrow.Cells(15).Text).ToString) Then
+                        TXT_QQ_ORO_ENTRE.Text = "0"
+                    Else
+                        TXT_QQ_ORO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(15).Text).ToString
+                    End If
 
-                    txt_semilla_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
-                    txt_consumo_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+                    If String.IsNullOrWhiteSpace(HttpUtility.HtmlDecode(gvrow.Cells(16).Text).ToString) Then
+                        TXT_QQ_CONSUMO_ENTRE.Text = "0"
+                    Else
+                        TXT_QQ_CONSUMO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(16).Text).ToString
+                    End If
+
+                    'txt_semilla_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
+                    'txt_consumo_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
 
                     '    TXT_QQ_ORO_ENTRE.Text = Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_consolidado").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_detallado").ToString()) + Convert.ToDecimal((dt.Rows(0)("QQ_consumo_semilla_consolidado").ToString())))
                     '    TXT_QQ_CONSUMO_ENTRE.Text = Convert.ToDecimal((dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString()))
@@ -278,18 +290,42 @@ Public Class Ventas
                     '    txt_semilla_por_detallar.Text = Convert.ToDecimal(dt.Rows(0)("QQ_ORO").ToString()) - (Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_consolidado").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_venta_semilla_detallado").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_consumo_semilla_consolidado").ToString())))
                     '    txt_consumo_por_detallar.Text = Convert.ToDecimal(dt.Rows(0)("QQ_CONSUMO").ToString()) - (Convert.ToDecimal((dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString())) + Convert.ToDecimal((dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString())))
                 Else
+                    If String.IsNullOrWhiteSpace(HttpUtility.HtmlDecode(gvrow.Cells(15).Text).ToString) Then
+                        TXT_QQ_ORO_ENTRE.Text = "0"
+                    Else
+                        TXT_QQ_ORO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(15).Text).ToString
+                    End If
 
-                    TXT_QQ_ORO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
-                    TXT_QQ_CONSUMO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+                    If String.IsNullOrWhiteSpace(HttpUtility.HtmlDecode(gvrow.Cells(16).Text).ToString) Then
+                        TXT_QQ_CONSUMO_ENTRE.Text = "0"
+                    Else
+                        TXT_QQ_CONSUMO_ENTRE.Text = HttpUtility.HtmlDecode(gvrow.Cells(16).Text).ToString
+                    End If
 
-                    txt_semilla_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString
-                    txt_consumo_por_detallar.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString - HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString
+                    Dim valorCelda11 As String = HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString()
+                    Dim valorCelda15 As String = HttpUtility.HtmlDecode(gvrow.Cells(15).Text).ToString()
 
+                    If Not String.IsNullOrWhiteSpace(valorCelda11) AndAlso Not String.IsNullOrWhiteSpace(valorCelda15) Then
+                        Dim resultado As Double = Convert.ToDouble(valorCelda11) - Convert.ToDouble(valorCelda15)
+                        txt_semilla_por_detallar.Text = resultado.ToString()
+                    Else
+                        txt_semilla_por_detallar.Text = valorCelda11 ' o cualquier otro valor predeterminado
+                    End If
+
+                    Dim valorCelda12 As String = HttpUtility.HtmlDecode(gvrow.Cells(12).Text).ToString()
+                    Dim valorCelda16 As String = HttpUtility.HtmlDecode(gvrow.Cells(16).Text).ToString()
+
+                    If Not String.IsNullOrWhiteSpace(valorCelda12) AndAlso Not String.IsNullOrWhiteSpace(valorCelda16) Then
+                        Dim resultado As Double = Convert.ToDouble(valorCelda12) - Convert.ToDouble(valorCelda16)
+                        txt_consumo_por_detallar.Text = resultado.ToString()
+                    Else
+                        txt_consumo_por_detallar.Text = valorCelda12 ' o cualquier otro valor predeterminado
+                    End If
                 End If
 
-                TXT_QQ_VENTA_GRANO.Text = dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString()
+                'TXT_QQ_VENTA_GRANO.Text = dt.Rows(0)("QQ_Venta_Consumo_Detalle").ToString()
 
-                TXT_QQ_GRANO_CONSUMO.Text = dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString()
+                'TXT_QQ_GRANO_CONSUMO.Text = dt.Rows(0)("QQ_UsoPropio_Consumo_Detalle").ToString()
 
                 txt_qq.Text = 0
                 txt_precio.Text = 0
@@ -297,7 +333,6 @@ Public Class Ventas
                 txt_precio_consumo.Text = 0
 
                 TXT_QQ_VENTA_GRANO.Text = 0
-
                 TXT_PRECIO_GRANO.Text = 0
                 TXT_QQ_GRANO_CONSUMO.Text = 0
                 TXT_PRECIO_GRANO_CONSUMO.Text = 0
@@ -337,20 +372,27 @@ Public Class Ventas
     End Sub
     Private Sub llenarcombocompradores()
         Dim StrCombo As String
+        Dim newitem As New ListItem(" ", " ")
 
-        'If TxtCiclo.SelectedValue = "Todos" Then
-        '    StrCombo = "SELECT 'Todos' as Departamento "
-        'Else
-        StrCombo = "SELECT ' Todos' as Nombre UNION SELECT DISTINCT Nombre FROM `compradores` "
-        'End If
+        StrCombo = "SELECT * FROM comprador_provi_pash"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
         Dp_comprador.DataSource = DtCombo
-        Dp_comprador.DataValueField = DtCombo.Columns(0).ToString()
-        Dp_comprador.DataTextField = DtCombo.Columns(0).ToString()
+        Dp_comprador.DataValueField = DtCombo.Columns(1).ToString()
+        Dp_comprador.DataTextField = DtCombo.Columns(1).ToString()
         Dp_comprador.DataBind()
+        Dp_comprador.Items.Insert(0, newitem)
+        txt_detalle_comprador.Text = DtCombo.Rows(0)(2).ToString
+
+        dp_comprador_grano.DataSource = DtCombo
+        dp_comprador_grano.DataValueField = DtCombo.Columns(1).ToString
+        dp_comprador_grano.DataTextField = DtCombo.Columns(1).ToString
+        dp_comprador_grano.DataBind()
+        dp_comprador_grano.Items.Insert(0, newitem)
+        TXT_COMPRADOR_GRANO.Text = DtCombo.Rows(0)(2).ToString
+
     End Sub
 
     Protected Sub VALIDAR_ENTREGAS()
@@ -539,27 +581,27 @@ Public Class Ventas
 
     End Sub
 
-    Protected Sub validar()
-        If Dp_comprador.Text = "Otro" And txt_detalle_comprador.Text = "" Then
-            Guardar_registro.Visible = False
+    'Protected Sub validar()
+    '    If Dp_comprador.Text = "Otro" And txt_detalle_comprador.Text = "" Then
+    '        Guardar_registro.Visible = False
+    '
+    '    Else
+    '        Guardar_registro.Visible = True
+    '    End If
+    'End Sub
 
-        Else
-            Guardar_registro.Visible = True
-        End If
-    End Sub
-
-    Protected Sub Dp_comprador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Dp_comprador.SelectedIndexChanged
-        If Dp_comprador.Text = "Otro" Then
-            txt_detalle_comprador.ReadOnly = False
-            validar()
-        Else
-            txt_detalle_comprador.ReadOnly = True
-            txt_detalle_comprador.Text = ""
-            validar()
-        End If
-        VALIDAR_ENTREGAS()
-
-    End Sub
+    'Protected Sub Dp_comprador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Dp_comprador.SelectedIndexChanged
+    '    If Dp_comprador.Text = "Otro" Then
+    '        txt_detalle_comprador.ReadOnly = False
+    '        validar()
+    '    Else
+    '        txt_detalle_comprador.ReadOnly = True
+    '        txt_detalle_comprador.Text = ""
+    '        validar()
+    '    End If
+    '    VALIDAR_ENTREGAS()
+    '
+    'End Sub
 
     Protected Sub txt_qq_TextChanged(sender As Object, e As EventArgs) Handles txt_qq.TextChanged
         calcular_venta()
@@ -576,7 +618,7 @@ Public Class Ventas
     End Sub
 
     Protected Sub txt_detalle_comprador_TextChanged(sender As Object, e As EventArgs) Handles txt_detalle_comprador.TextChanged
-        validar()
+        'validar()
         VALIDAR_ENTREGAS()
     End Sub
 
@@ -640,22 +682,22 @@ Public Class Ventas
         calcular_venta_grano()
     End Sub
 
-    Protected Sub dp_comprador_grano_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dp_comprador_grano.SelectedIndexChanged
-
-
-        If dp_comprador_grano.Text = "Otro" Then
-            TXT_COMPRADOR_GRANO.ReadOnly = False
-            validar()
-        Else
-            TXT_COMPRADOR_GRANO.ReadOnly = True
-            TXT_COMPRADOR_GRANO.Text = ""
-            validar()
-        End If
-
-
-        VALIDAR_ENTREGAS()
-
-    End Sub
+    'Protected Sub dp_comprador_grano_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dp_comprador_grano.SelectedIndexChanged
+    '
+    '
+    '    If dp_comprador_grano.Text = "Otro" Then
+    '        TXT_COMPRADOR_GRANO.ReadOnly = False
+    '        validar()
+    '    Else
+    '        TXT_COMPRADOR_GRANO.ReadOnly = True
+    '        TXT_COMPRADOR_GRANO.Text = ""
+    '        validar()
+    '    End If
+    '
+    '
+    '    VALIDAR_ENTREGAS()
+    '
+    'End Sub
 
     Protected Sub TXT_COMPRADOR_GRANO_TextChanged(sender As Object, e As EventArgs) Handles TXT_COMPRADOR_GRANO.TextChanged
         VALIDAR_ENTREGAS()
@@ -673,90 +715,63 @@ Public Class Ventas
         Dim Sql As String
         Dim cmd2 As New MySqlCommand()
 
-        Sql = "INSERT INTO  bcs_entregas_new (Observacion, Usuario, ID2, COD_BCS, Ciclo, Variedad, Categoria, Tipo_venta, QQ_SEMILLA_VENTA, PRECIO_QQ_SEMILLA_VENTA, COMPRADOR_SEMILLA, DETALLE_COMPRADOR_SEMILLA, QQ_SEMILLA_CONSUMO, PRECIO_QQ_SEMILLA_CONSUMO, QQ_GRANO_VENTA, PRECIO_QQ_GRANO_VENTA, COMPRADOR_GRANO, DETALLE_COMPRADOR_GRANO, QQ_GRANO_CONSUMO, PRECIO_QQ_GRANO_CONSUMO) values(@Observacion,@Usuario, @ID2, @COD_BCS, @Ciclo, @Variedad, @Categoria, @Tipo_venta, @QQ_SEMILLA_VENTA, @PRECIO_QQ_SEMILLA_VENTA, @COMPRADOR_SEMILLA, @DETALLE_COMPRADOR_SEMILLA, @QQ_SEMILLA_CONSUMO, @PRECIO_QQ_SEMILLA_CONSUMO, @QQ_GRANO_VENTA, @PRECIO_QQ_GRANO_VENTA, @COMPRADOR_GRANO, @DETALLE_COMPRADOR_GRANO, @QQ_GRANO_CONSUMO, @PRECIO_QQ_GRANO_CONSUMO) "
+        Sql = "INSERT INTO ventas_pash (departamento, 
+        municipio, aldea, cacerio, codigo_bcs, nombre_productor, 
+        ciclo, variedad, QQ_produccion, QQ_semilla_certificada_comercial, 
+        QQ_consumo_granos_humano_usos, QQ_semilla_entregado, QQ_semilla_detallar, 
+        QQ_consumo_entregado, QQ_consumo_detallar, QQ_basura, QQ_semilla_cc_ventas, 
+        QQ_semilla_precio_cc_venta, comprador_cc_ventas, detalles_comprador_cc_ventas, 
+        ingreso_total_cc_ventas, QQ_semilla_cc_consumo, QQ_semilla_precio_cc_consumo, 
+        ingreso_total_cc_consumo, QQ_grano_humano_snc_ventas, QQ_grano_humano_precio_snc_ventas, 
+        comprador_snc_ventas, detalles_comprador_snc_ventas, ingreso_total_snc_ventas, QQ_grano_snc_consumo, 
+        QQ_grano_precio_snc_consumo, ingreso_total_snc_consumo) values (@departamento, @municipio, @aldea, @cacerio, 
+        @codigo_bcs, @nombre_productor, @ciclo, @variedad, @QQ_produccion, @QQ_semilla_certificada_comercial, @QQ_consumo_granos_humano_usos, 
+        @QQ_semilla_entregado, @QQ_semilla_detallar, @QQ_consumo_entregado, @QQ_consumo_detallar, @QQ_basura, @QQ_semilla_cc_ventas, @QQ_semilla_precio_cc_venta, 
+        @comprador_cc_ventas, @detalles_comprador_cc_ventas, @ingreso_total_cc_ventas, @QQ_semilla_cc_consumo, @QQ_semilla_precio_cc_consumo, @ingreso_total_cc_consumo, 
+        @QQ_grano_humano_snc_ventas, @QQ_grano_humano_precio_snc_ventas, @comprador_snc_ventas, @detalles_comprador_snc_ventas, @ingreso_total_snc_ventas, @QQ_grano_snc_consumo, 
+        @QQ_grano_precio_snc_consumo, @ingreso_total_snc_consumo)"
 
         cmd2.Connection = conex
         cmd2.CommandText = Sql
-        'cmd2.Parameters.AddWithValue("@Observacion", txt_observacion.Text)
-        cmd2.Parameters.AddWithValue("@Usuario", User.Identity.Name)
-        'cmd2.Parameters.AddWithValue("@ID2", TxtID.Text)
-        cmd2.Parameters.AddWithValue("@COD_BCS", Text_codigo_bcs.Text)
-        cmd2.Parameters.AddWithValue("@Ciclo", Text_ciclo.Text)
-        cmd2.Parameters.AddWithValue("@Variedad", Text_variedad.Text)
-        cmd2.Parameters.AddWithValue("@Categoria", Text_categoria.Text)
-        cmd2.Parameters.AddWithValue("@Tipo_venta", "Modulo consolidado")
 
-        If txt_qq.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@QQ_SEMILLA_VENTA", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@QQ_SEMILLA_VENTA", txt_qq.Text)
-        End If
+        cmd2.Parameters.AddWithValue("@departamento", Text_departamento.Text)
+        cmd2.Parameters.AddWithValue("@municipio", Text_municipio.Text)
+        cmd2.Parameters.AddWithValue("@aldea", Text_municipio.Text)
+        cmd2.Parameters.AddWithValue("@cacerio", Text_caserio.Text)
+        cmd2.Parameters.AddWithValue("@codigo_bcs", Text_codigo_bcs.Text)
+        cmd2.Parameters.AddWithValue("@nombre_productor", Text_nombre_productor.Text)
+        cmd2.Parameters.AddWithValue("@ciclo", Text_ciclo.Text)
+        cmd2.Parameters.AddWithValue("@variedad", Text_variedad.Text)
+        cmd2.Parameters.AddWithValue("@QQ_produccion", Text_QQ_Produccion.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_certificada_comercial", Text_QQ_Produccion_ORO.Text)
+        cmd2.Parameters.AddWithValue("@QQ_consumo_granos_humano_usos", Text_QQ_Produccion_consumo.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_entregado", TXT_QQ_ORO_ENTRE.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_detallar", txt_semilla_por_detallar.Text)
+        cmd2.Parameters.AddWithValue("@QQ_consumo_entregado", TXT_QQ_CONSUMO_ENTRE.Text)
+        cmd2.Parameters.AddWithValue("@QQ_consumo_detallar", txt_consumo_por_detallar.Text)
+        cmd2.Parameters.AddWithValue("@QQ_basura", Text_QQ_Produccion_basura.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_cc_ventas", txt_qq.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_precio_cc_venta", txt_precio.Text)
+        cmd2.Parameters.AddWithValue("@comprador_cc_ventas", Dp_comprador.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+        cmd2.Parameters.AddWithValue("@ingreso_total_cc_ventas", txt_total_venta.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_cc_consumo", txt_qq_consumo.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_precio_cc_consumo", txt_precio_consumo.Text)
+        cmd2.Parameters.AddWithValue("@ingreso_total_cc_consumo", txt_ingreso_consumo.Text)
+        cmd2.Parameters.AddWithValue("@QQ_grano_humano_snc_ventas", TXT_QQ_VENTA_GRANO.Text)
+        cmd2.Parameters.AddWithValue("@QQ_grano_humano_precio_snc_ventas", TXT_PRECIO_GRANO.Text)
+        cmd2.Parameters.AddWithValue("@comprador_snc_ventas", dp_comprador_grano.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+        cmd2.Parameters.AddWithValue("@ingreso_total_snc_ventas", TXT_INGRESO_TOTAL_VENGRANO.Text)
+        cmd2.Parameters.AddWithValue("@QQ_grano_snc_consumo", TXT_QQ_GRANO_CONSUMO.Text)
+        cmd2.Parameters.AddWithValue("@QQ_grano_precio_snc_consumo", TXT_PRECIO_GRANO_CONSUMO.Text)
+        cmd2.Parameters.AddWithValue("@ingreso_total_snc_consumo", TXT_INGRESO_TOTAL_CONSGRANO.Text)
 
-        If txt_precio.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_SEMILLA_VENTA", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_SEMILLA_VENTA", txt_precio.Text)
-        End If
-
-        If Dp_comprador.Text = " Todos" Then
-            cmd2.Parameters.AddWithValue("@COMPRADOR_SEMILLA", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@COMPRADOR_SEMILLA", Dp_comprador.SelectedValue)
-        End If
-
-        If txt_detalle_comprador.Text = "" Then
-            cmd2.Parameters.AddWithValue("@DETALLE_COMPRADOR_SEMILLA", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@DETALLE_COMPRADOR_SEMILLA", txt_detalle_comprador.Text)
-        End If
-
-        If txt_qq_consumo.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@QQ_SEMILLA_CONSUMO", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@QQ_SEMILLA_CONSUMO", txt_qq_consumo.Text)
-        End If
-
-        If txt_qq_consumo.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_SEMILLA_CONSUMO", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_SEMILLA_CONSUMO", txt_precio_consumo.Text)
-        End If
-
-        If TXT_QQ_VENTA_GRANO.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@QQ_GRANO_VENTA", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@QQ_GRANO_VENTA", TXT_QQ_VENTA_GRANO.Text)
-        End If
-
-        If TXT_QQ_VENTA_GRANO.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_VENTA", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_VENTA", TXT_PRECIO_GRANO.Text)
-        End If
-
-        If dp_comprador_grano.Text = " Todos" Then
-            cmd2.Parameters.AddWithValue("@COMPRADOR_GRANO", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@COMPRADOR_GRANO", dp_comprador_grano.SelectedValue)
-        End If
-
-        If TXT_COMPRADOR_GRANO.Text = "" Then
-            cmd2.Parameters.AddWithValue("@DETALLE_COMPRADOR_GRANO", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@DETALLE_COMPRADOR_GRANO", TXT_COMPRADOR_GRANO.Text)
-        End If
-
-        If TXT_QQ_GRANO_CONSUMO.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@QQ_GRANO_CONSUMO", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@QQ_GRANO_CONSUMO", TXT_QQ_GRANO_CONSUMO.Text)
-        End If
-
-        If TXT_PRECIO_GRANO_CONSUMO.Text <= 0 Then
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_CONSUMO", DBNull.Value)
-        Else
-            cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_CONSUMO", TXT_PRECIO_GRANO_CONSUMO.Text)
-        End If
+        'If TXT_PRECIO_GRANO_CONSUMO.Text <= 0 Then
+        '    cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_CONSUMO", DBNull.Value)
+        'Else
+        '    cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_CONSUMO", TXT_PRECIO_GRANO_CONSUMO.Text)
+        'End If
 
         cmd2.ExecuteNonQuery()
         conex.Close()

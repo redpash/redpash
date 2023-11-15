@@ -120,17 +120,17 @@
                                         <asp:BoundField DataField="VARIEDAD" HeaderText="VARIEDAD" />
                                         <asp:BoundField DataField="AREA_HA" HeaderText="AREA INSCRITA EN HA" />
                                         <asp:BoundField DataField="AREA_MZ" HeaderText="AREA INSCRITA EN MZ" />
+                                        <asp:BoundField DataField="Fecha_siembra" HeaderText="FECHA DE SIEMBRA INSCRITA" />
                                         <asp:BoundField DataField="QQ_Produccion_Campo" HeaderText="QQ DE PRODUCCION EN CAMPO" />
                                         <asp:BoundField DataField="QQ_Oro" HeaderText="QQ DE SEMILLA ORO" />
                                         <asp:BoundField DataField="QQ_Grano" HeaderText="QQ DE SEMILLA GRANO" />
                                         <asp:BoundField DataField="QQ_Basura" HeaderText="QQ DE SEMILLA BASURA" />
-                                        <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
-                                        <asp:BoundField DataField="Fecha_siembra" HeaderText="FECHA DE SIEMBRA INSCRITA" />
+                                        <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />                            
                                         <asp:BoundField DataField="QQ_semilla_entregado" HeaderText="QQ DE SEMILLA ENTREGADO" />
                                         <asp:BoundField DataField="QQ_consumo_entregado" HeaderText="QQ DE CONSUMO ENTREGADO" />
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 
-                                            <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="Ventas" CommandName="Ventas">
+                                            <asp:ButtonField ButtonType="Button" Text="Ventas" ControlStyle-CssClass="btn btn-success" HeaderText="Ventas" CommandName="Ventas">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
                                             <%--                                        <asp:TemplateField HeaderText="Check costo">
@@ -138,7 +138,7 @@
                                                 <asp:CheckBox ID="CheckBox1" runat="server" />
                                             </ItemTemplate>
                                             </asp:TemplateField>--%>
-                                            <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-danger" HeaderText="COSTOS" CommandName="Eliminar">
+                                            <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="Eliminar" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
