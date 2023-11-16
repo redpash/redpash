@@ -5,6 +5,7 @@ Imports System.Net.Mime
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Office.Word
+Imports DocumentFormat.OpenXml.Wordprocessing
 Imports MySql.Data.MySqlClient
 
 Public Class ActaRecepcionSemilla
@@ -16,9 +17,8 @@ Public Class ActaRecepcionSemilla
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
             If IsPostBack Then
-
             Else
-                TxtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
+                txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 FillComboBoxWithProductorNames()
                 Verificarvariedades()
                 DDL_cultivo_SelectedIndexChanged()
@@ -28,19 +28,55 @@ Public Class ActaRecepcionSemilla
     Protected Sub vaciar(sender As Object, e As EventArgs)
         Response.Redirect("Ventas.aspx")
     End Sub
-    Private Sub FillComboBoxWithProductorNames()
-        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
 
-        DropDownList7.DataSource = DtCombo
-        DropDownList7.DataValueField = DtCombo.Columns(0).ToString()
-        DropDownList7.DataTextField = DtCombo.Columns(0).ToString
-        DropDownList7.DataBind()
-        Dim newitem As New ListItem(" ", " ")
-        DropDownList7.Items.Insert(0, newitem)
+    Sub llenagrid()
+
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+        Else
+            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+        End If
+
     End Sub
+    Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
+        'Dim fecha2 As Date
+
+        Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+
+        If (e.CommandName = "Editar") Then
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+            nuevo = False
+
+            'TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+            If dt.Rows.Count > 0 Then
+
+            Else
+
+            End If
+        End If
+    End Sub
+
+    Protected Sub PageDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        ' Recupera la fila.
+        Dim pagerRow As GridViewRow = GridDatos.BottomPagerRow
+        ' Recupera el control DropDownList...
+        Dim pageList As DropDownList = CType(pagerRow.Cells(0).FindControl("PageDropDownList"), DropDownList)
+        ' Se Establece la propiedad PageIndex para visualizar la página seleccionada...
+        GridDatos.PageIndex = pageList.SelectedIndex
+        llenagrid()
+        'Quita el mensaje de información si lo hubiera...
+        'lblInfo.Text = ""
+    End Sub
+
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
         'nombre de dataset
