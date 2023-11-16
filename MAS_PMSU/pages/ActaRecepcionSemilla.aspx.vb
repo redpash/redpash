@@ -28,6 +28,26 @@ Public Class ActaRecepcionSemilla
     Protected Sub vaciar(sender As Object, e As EventArgs)
         Response.Redirect("Ventas.aspx")
     End Sub
+    Private Sub FillComboBoxWithProductorNames()
+        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DropDownList7.DataSource = DtCombo
+        DropDownList7.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList7.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList7.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList7.Items.Insert(0, newitem)
+
+        TxtProductor.DataSource = DtCombo
+        TxtProductor.DataValueField = DtCombo.Columns(0).ToString()
+        TxtProductor.DataTextField = DtCombo.Columns(0).ToString
+        TxtProductor.DataBind()
+        Dim newitem2 As New ListItem(" ", " ")
+        TxtProductor.Items.Insert(0, newitem2)
+    End Sub
 
     Sub llenagrid()
 
