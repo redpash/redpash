@@ -18,15 +18,28 @@ Public Class ActaRecepcionSemilla
             If IsPostBack Then
 
             Else
-                TxtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
+                txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
+                DivActa.Style.Add("display", "none")
+                DivGrid.Style.Add("display", "block")
                 FillComboBoxWithProductorNames()
                 Verificarvariedades()
                 DDL_cultivo_SelectedIndexChanged()
+                llenagrid()
             End If
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        Response.Redirect("Ventas.aspx")
+        Response.Redirect("ActaRecepcionSemilla.aspx")
+    End Sub
+    Protected Sub BtnNewActa_Click(sender As Object, e As EventArgs)
+        If String.IsNullOrEmpty(TxtProductor.SelectedValue) Then
+            txt_nombre_prod_new.Text = ""
+        Else
+            txt_nombre_prod_new.Text = TxtProductor.SelectedValue
+        End If
+        DivActa.Style.Add("display", "block")
+        DivGrid.Style.Add("display", "none")
+        btnGuardarActa.Visible = True
     End Sub
     Private Sub FillComboBoxWithProductorNames()
         Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla"
@@ -51,16 +64,34 @@ Public Class ActaRecepcionSemilla
     Sub llenagrid()
 
         Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
 
         If (TxtProductor.SelectedItem.Text = " ") Then
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            c1 = " "
         Else
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            c1 = "AND Productor = '" & TxtProductor.SelectedItem.Text & "' "
         End If
+
+        If (DDL_SelCult.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND Tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
+        End If
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' " & c1 & c2 & "ORDER BY Productor,Tipo_cultivo"
 
     End Sub
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
         llenagrid()
+    End Sub
+    Protected Sub DDL_SelCult_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_SelCult.SelectedIndexChanged
+        llenagrid()
+    End Sub
+    Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
+
+        lblTotalClientes.Text = e.AffectedRows.ToString()
+
     End Sub
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
         'Dim fecha2 As Date
@@ -101,7 +132,33 @@ Public Class ActaRecepcionSemilla
     End Sub
 
     Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
-
+        If (GridDatos.Rows.Count > 0) Then
+            ' Recupera la el PagerRow...
+            Dim pagerRow As GridViewRow = GridDatos.BottomPagerRow
+            ' Recupera los controles DropDownList y label...
+            Dim pageList As DropDownList = CType(pagerRow.Cells(0).FindControl("PageDropDownList"), DropDownList)
+            Dim pageLabel As Label = CType(pagerRow.Cells(0).FindControl("CurrentPageLabel"), Label)
+            If Not pageList Is Nothing Then
+                ' Se crean los valores del DropDownList tomando el número total de páginas...
+                Dim i As Integer
+                For i = 0 To GridDatos.PageCount - 1
+                    ' Se crea un objeto ListItem para representar la �gina...
+                    Dim pageNumber As Integer = i + 1
+                    Dim item As ListItem = New ListItem(pageNumber.ToString())
+                    If i = GridDatos.PageIndex Then
+                        item.Selected = True
+                    End If
+                    ' Se añade el ListItem a la colección de Items del DropDownList...
+                    pageList.Items.Add(item)
+                Next i
+            End If
+            If Not pageLabel Is Nothing Then
+                ' Calcula el nº de �gina actual...
+                Dim currentPage As Integer = GridDatos.PageIndex + 1
+                ' Actualiza el Label control con la �gina actual.
+                pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
+            End If
+        End If
     End Sub
 
 
@@ -966,7 +1023,5 @@ Public Class ActaRecepcionSemilla
     Protected Sub GuardarActa()
         'Aqui se guardara la informacion en la base de datos
     End Sub
-
-
 End Class
 

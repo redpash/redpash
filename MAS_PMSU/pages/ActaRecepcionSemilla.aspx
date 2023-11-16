@@ -10,16 +10,15 @@
             <h1 class="page-header">Acta de Recepcion de Semilla</h1>
         </div>
     </div>
+    <div id="DivGrid" runat="server">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Datos Generales
+                </div>
 
-    <div class="row">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                Datos Generales
-            </div>
+                <div class="panel-body">
 
-            <div class="panel-body">
-
-                <div id="DivGrid" runat="server">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -27,12 +26,29 @@
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductor" runat="server" AutoPostBack="True"></asp:DropDownList>
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Seleccione Cultivo:</label>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text="Frijol"></asp:ListItem>
+                                    <asp:ListItem Text="Maiz"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <asp:Button CssClass="btn btn-primary" ID="BtnNewActa" runat="server" Text="Nueva Acta de Recepción de Semillas" Visible="true" OnClick="BtnNewActa_Click" />
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <h3>
-                                    <span style="float: right;"><small># Lotes:</small>
+                                    <span style="float: right;"><small># Actas:</small>
                                         <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                 </h3>
                                 <p>&nbsp;</p>
@@ -71,20 +87,12 @@
                                             <HeaderStyle CssClass="hide" />
                                             <ItemStyle CssClass="hide" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
                                         <asp:BoundField DataField="Tipo_cultivo" HeaderText="CULTIVO" />
-                                        <asp:BoundField DataField="CATEGORIA" HeaderText="CATEGORIA" />
-                                        <asp:BoundField DataField="CICLO" HeaderText="CICLO" />
-                                        <asp:BoundField DataField="VARIEDAD" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="NOMBRE_LOTE_FINCA" HeaderText="NUMERO DE LOTE" />
-                                        <asp:BoundField DataField="AREA_SEMBRADA_MZ" HeaderText="AREA INSCRITA EN MZ" />
-                                        <asp:BoundField DataField="AREA_SEMBRADA_HA" HeaderText="AREA INSCRITA EN HA" />
+                                        <asp:BoundField DataField="CATEGORIA" HeaderText="DNI" />
                                         <asp:BoundField DataField="FECHA_SIEMBRA" HeaderText="FECHA DE SIEMBRA INSCRITA" />
-                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="COSECHA INSCRITA EN MZ" />
-                                        <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="COSECHA INSCRITA EN HA" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
+                                        <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-success" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>
@@ -101,9 +109,18 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <%--*************************************************************************************************************--%>
-                <div id="DivActa" runat="server">
+    <div id="DivActa" runat="server">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Datos Generales
+                </div>
+
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -120,7 +137,7 @@
                                 <label>Nombre Del Productor </label>
                                 <asp:Label ID="lb_nombre_new" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <div class="form-container" style="position: relative; width: 100%; height: auto;">
-                                    <asp:TextBox CssClass="form-control" ID="txt_nombre_prod_new" runat="server" AutoPostBack="false" Style="width: 90%; position: absolute; top: 0; left: 0; z-index: 1; border-right: 0;"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="txt_nombre_prod_new" runat="server" AutoPostBack="false" Style="width: 90%; position: absolute; top: 0; left: 0; z-index: 1; border-right: 0;" ReadOnly="true"></asp:TextBox>
                                     <asp:DropDownList CssClass="form-control" ID="DropDownList7" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList7_SelectedIndexChanged" Style="position: relative; z-index: 0;"></asp:DropDownList>
                                 </div>
                             </div>
@@ -133,6 +150,7 @@
                                 <label for="txt">Cédula de Identidad:</label>
                                 <asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtCeduIden" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:RegularExpressionValidator runat="server" class="label label-warning" ControlToValidate="TxtCeduIden" Display="Dynamic" ErrorMessage="Formato no válido. Debe ser XXXX-XXXX-XXXXX" ValidationExpression="\d{4}-\d{4}-\d{5}"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
@@ -980,21 +998,20 @@
         <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
         <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-        <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="true" OnClick="btnGuardarActa_Click" />
+        <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="false" OnClick="btnGuardarActa_Click" />
     </div>
 
     <div>
-        <label></label>
-        <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Button CssClass="btn btn-primary" ID="BtnImprimir" runat="server" Text="Imprimir" OnClick="descargaPDF" Visible="false" />
-    </div>
-
-    <div>
-        <label></label>
-        <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Nuevo" OnClick="vaciar" Visible="false" />
+        <div class="col-lg-2">
+            <div class="form-group">
+                <asp:Button CssClass="btn btn-primary" ID="BtnImprimir" runat="server" Text="Descargar en PDF " OnClick="descargaPDF" Visible="false" />
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="form-group">
+                <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Regresar" OnClick="vaciar" Visible="false" />
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2" aria-hidden="true">

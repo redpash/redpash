@@ -41,6 +41,24 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents TxtProductor As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control DDL_SelCult.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_SelCult As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control BtnNewActa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BtnNewActa As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control lblTotalClientes.
     '''</summary>
     '''<remarks>
@@ -2498,15 +2516,6 @@ Partial Public Class ActaRecepcionSemilla
     Protected WithEvents btnGuardarActa As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control Label18.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label18 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''Control BtnImprimir.
     '''</summary>
     '''<remarks>
@@ -2514,15 +2523,6 @@ Partial Public Class ActaRecepcionSemilla
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents BtnImprimir As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control Label23.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label23 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control BtnNuevo.
