@@ -99,6 +99,16 @@ Public Class ActaRecepcionSemilla
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
+            btnGuardarActa.Text = "Editar"
+            Label103.Text = "El Acta de Recepcion de semilla ha sido editada con exito"
+            If String.IsNullOrEmpty(TxtProductor.SelectedValue) Then
+                txt_nombre_prod_new.Text = ""
+            Else
+                txt_nombre_prod_new.Text = TxtProductor.SelectedValue
+            End If
+            DivActa.Style.Add("display", "block")
+            DivGrid.Style.Add("display", "none")
+            btnGuardarActa.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
@@ -307,7 +317,6 @@ Public Class ActaRecepcionSemilla
                 'Funcion para guardar en la BD
                 GuardarActa()
 
-                Label103.Text = "El Acta de Recepcion de semilla ha sido almacenada con exito"
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
             Else
                 Label103.Text = "Debe ingresar toda la informacion primero"

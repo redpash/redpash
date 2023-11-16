@@ -121,6 +121,15 @@
                 </div>
 
                 <div class="panel-body">
+                    <div class="row" style="display:none;">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="txt">ID:</label>
+                                <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
