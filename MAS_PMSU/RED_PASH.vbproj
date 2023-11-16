@@ -236,6 +236,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\SolicitudMuestreoSemilla.aspx" />
     <Content Include="pages\EnviarCorreo.aspx" />
     <Content Include="pages\Inicio.aspx" />
     <Content Include="pages\Login.aspx" />
@@ -445,6 +446,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="pages\SolicitudMuestreoSemilla.aspx.designer.vb">
+      <DependentUpon>SolicitudMuestreoSemilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\SolicitudMuestreoSemilla.aspx.vb">
+      <DependentUpon>SolicitudMuestreoSemilla.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\CrystalReport3.vb">
       <AutoGen>True</AutoGen>
