@@ -5,7 +5,6 @@ Imports System.Net.Mime
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Office.Word
-Imports DocumentFormat.OpenXml.Wordprocessing
 Imports MySql.Data.MySqlClient
 
 Public Class ActaRecepcionSemilla
@@ -17,8 +16,9 @@ Public Class ActaRecepcionSemilla
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
             If IsPostBack Then
+
             Else
-                txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
+                TxtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 FillComboBoxWithProductorNames()
                 Verificarvariedades()
                 DDL_cultivo_SelectedIndexChanged()
@@ -48,7 +48,6 @@ Public Class ActaRecepcionSemilla
         Dim newitem2 As New ListItem(" ", " ")
         TxtProductor.Items.Insert(0, newitem2)
     End Sub
-
     Sub llenagrid()
 
         Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
@@ -59,6 +58,9 @@ Public Class ActaRecepcionSemilla
             Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
         End If
 
+    End Sub
+    Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
+        llenagrid()
     End Sub
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
         'Dim fecha2 As Date
@@ -73,19 +75,20 @@ Public Class ActaRecepcionSemilla
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
+
             nuevo = False
 
             'TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
             If dt.Rows.Count > 0 Then
-
+                'TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
             Else
 
             End If
+
         End If
     End Sub
-
-    Protected Sub PageDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Protected Sub PageDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)
         ' Recupera la fila.
         Dim pagerRow As GridViewRow = GridDatos.BottomPagerRow
         ' Recupera el control DropDownList...
@@ -96,6 +99,11 @@ Public Class ActaRecepcionSemilla
         'Quita el mensaje de información si lo hubiera...
         'lblInfo.Text = ""
     End Sub
+
+    Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
+
+    End Sub
+
 
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
@@ -958,6 +966,7 @@ Public Class ActaRecepcionSemilla
     Protected Sub GuardarActa()
         'Aqui se guardara la informacion en la base de datos
     End Sub
+
 
 End Class
 
