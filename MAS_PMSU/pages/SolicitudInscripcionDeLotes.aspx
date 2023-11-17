@@ -122,10 +122,8 @@
                     <section id="todoDeptos" runat="server">
                         <div class="col-lg-3">
                             <div class="form-group">
-
                                 <label>Departamento</label>
                                 <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
-
                                 <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
                                     <asp:ListItem Text=" "></asp:ListItem>
                                 </asp:DropDownList>
@@ -134,9 +132,7 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-
                                 <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
-
                                 <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
                                     <asp:ListItem Text=" "></asp:ListItem>
                                 </asp:DropDownList>
@@ -145,7 +141,6 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-
                                 <label>Aldea</label>
                                 <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
@@ -156,10 +151,8 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-
                                 <label>Caserio</label>
                                 <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
-
                                 <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
                                     <asp:ListItem Text=" "></asp:ListItem>
                                 </asp:DropDownList>

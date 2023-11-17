@@ -100,6 +100,8 @@ Public Class ActaRecepcionSemilla
 
         If (e.CommandName = "Editar") Then
             btnGuardarActa.Text = "Editar"
+            BtnImprimir.Visible = True
+            BtnNuevo.Visible = True
             Label103.Text = "El Acta de Recepcion de semilla ha sido editada con exito"
             If String.IsNullOrEmpty(TxtProductor.SelectedValue) Then
                 txt_nombre_prod_new.Text = ""
@@ -1031,6 +1033,16 @@ Public Class ActaRecepcionSemilla
 
     Protected Sub GuardarActa()
         'Aqui se guardara la informacion en la base de datos
+        Dim cadena As String = ""
+
+        If btnGuardarActa.Text = "Guardar" Then
+            cadena = "INSERT "
+        Else
+            cadena = "UPDATE "
+        End If
+
+
+
     End Sub
 End Class
 
