@@ -87,10 +87,10 @@
                                             <HeaderStyle CssClass="hide" />
                                             <ItemStyle CssClass="hide" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
-                                        <asp:BoundField DataField="Tipo_cultivo" HeaderText="CULTIVO" />
-                                        <asp:BoundField DataField="CATEGORIA" HeaderText="DNI" />
-                                        <asp:BoundField DataField="FECHA_SIEMBRA" HeaderText="FECHA DE SIEMBRA INSCRITA" />
+                                        <asp:BoundField DataField="txt_nombre_prod_new" HeaderText="PRODUCTOR" />
+                                        <asp:BoundField DataField="DDL_cultivo" HeaderText="CULTIVO" />
+                                        <asp:BoundField DataField="TxtCeduIden" HeaderText="DNI" />
+                                        <asp:BoundField DataField="txtFechaSiembra" HeaderText="FECHA DE SIEMBRA INSCRITA" />
 
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-success" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
