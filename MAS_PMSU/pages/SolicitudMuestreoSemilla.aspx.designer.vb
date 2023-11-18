@@ -185,22 +185,22 @@ Partial Public Class SolicitudMuestreoSemilla
     Protected WithEvents CmbTipoSemilla As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control frijol.
+    '''Control Frijol.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents frijol As Global.System.Web.UI.WebControls.ListItem
+    Protected WithEvents Frijol As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
-    '''Control maiz.
+    '''Control Maiz.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents maiz As Global.System.Web.UI.WebControls.ListItem
+    Protected WithEvents Maiz As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control Section1.

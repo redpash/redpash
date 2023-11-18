@@ -573,18 +573,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._frijol">
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._Frijol">
 <summary>
-Control frijol.
+Control Frijol.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._maiz">
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._Maiz">
 <summary>
-Control maiz.
+Control Maiz.
 </summary>
 <remarks>
 Campo generado automáticamente.

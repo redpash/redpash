@@ -225,7 +225,7 @@ Public Class SolicitudMuestreoSemilla
     End Sub
 
     Protected Sub VerificarTextBox()
-        If (TxtCiclo.SelectedItem.Text = " ") Then
+        If (TxtCiclo.SelectedItem.Text = "") Then
             Label7.Text = "*"
             validarflag = 0
         Else
@@ -233,7 +233,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (TxtProductor.SelectedItem.Text = " ") Then
+        If (TxtProductor.SelectedItem.Text = "") Then
             Label8.Text = "*"
             validarflag = 0
         Else
@@ -241,7 +241,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (CmbTipoSemilla.SelectedItem.Text = " ") Then
+        If (CmbTipoSemilla.SelectedItem.Text = "") Then
             Label9.Text = "*"
             validarflag = 0
         Else
@@ -249,7 +249,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (DDL_VariedadF.SelectedItem.Text = " ") Then
+        If (DDL_VariedadF.SelectedItem.Text = "") Then
             Label3.Text = "*"
             validarflag = 0
         Else
@@ -257,7 +257,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (DDL_VariedadM.SelectedItem.Text = " ") Then
+        If (DDL_VariedadM.SelectedItem.Text = "") Then
             Label4.Text = "*"
             validarflag = 0
         Else
@@ -265,7 +265,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (gb_departamento_new.SelectedItem.Text = " ") Then
+        If (gb_departamento_new.SelectedItem.Text = "") Then
             lb_dept_new.Text = "*"
             validarflag = 0
         Else
@@ -273,7 +273,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (gb_municipio_new.SelectedItem.Text = " ") Then
+        If (gb_municipio_new.SelectedItem.Text = "") Then
             lb_mun_new.Text = "*"
             validarflag = 0
         Else
@@ -281,7 +281,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (gb_aldea_new.SelectedItem.Text = " ") Then
+        If (gb_aldea_new.SelectedItem.Text = "") Then
             lb_aldea_new.Text = "*"
             validarflag = 0
         Else
@@ -289,7 +289,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (gb_caserio_new.SelectedItem.Text = " ") Then
+        If (gb_caserio_new.SelectedItem.Text = "") Then
             lb_caserio_new.Text = "*"
             validarflag = 0
         Else
@@ -297,7 +297,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (DDL_Categ.SelectedItem.Text = " ") Then
+        If (DDL_Categ.SelectedItem.Text = "") Then
             Label10.Text = "*"
             validarflag = 0
         Else
@@ -385,23 +385,23 @@ Public Class SolicitudMuestreoSemilla
 
     Sub llenagrid()
 
-        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
+        Dim cadena As String = "ID, productor, departamento, municipio, aldea, caserio, ciclo, cultivo, variedadFrijol, variedadMaiz, categoria, lote_produc_semilla, cantidad_QQ_cosechada, DATE_FORMAT(FECHA, '%d-%m-%Y') AS FECHA_COSECHA"
         Dim c1 As String = ""
         Dim c2 As String = ""
 
         If (TxtProductor.SelectedItem.Text = " ") Then
             c1 = " "
         Else
-            c1 = "AND Productor = '" & TxtProductor.SelectedItem.Text & "' "
+            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
         If (CmbTipoSemilla.SelectedItem.Text = " ") Then
             c2 = " "
         Else
-            c2 = "AND Tipo_cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
+            c2 = "AND cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' " & c1 & c2 & "ORDER BY Productor,Tipo_cultivo"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & "ORDER BY productor,cultivo"
 
     End Sub
 
@@ -505,14 +505,14 @@ Public Class SolicitudMuestreoSemilla
         If validarflag = 0 Then
 
             validarflag = 0
-            Verificar()
+            VerificarTextBox()
             If validarflag = 0 Then
                 btnGuardarActa.Visible = False
                 BtnImprimir.Visible = True
                 BtnNuevo.Visible = True
 
                 'Funcion para guardar en la BD
-                GuardarActa()
+                GuardarMuestreo()
 
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
             Else
@@ -595,8 +595,52 @@ Public Class SolicitudMuestreoSemilla
         End If
     End Sub
 
-    Protected Sub GuardarActa()
-        'Aqui se guardara la informacion en la base de datos
+    Protected Sub GuardarMuestreo()
+        Dim conex As New MySqlConnection(conn)
+
+        Dim fecha As Date
+
+        If Date.TryParse(TxtFechCose.Text, fecha) Then
+            fecha.ToString("dd-MM-yyyy")
+        End If
+
+        conex.Open()
+        Dim Sql As String
+        Dim cmd2 As New MySqlCommand()
+
+        Sql = "INSERT INTO solicitud_muestreo_semilla (productor, departamento, municipio, aldea, caserio, ciclo, cultivo, variedadFrijol, variedadMaiz, categoria, lote_produc_semilla, cantidad_QQ_cosechada, fecha, estado) values (@productor, @departamento, @municipio, @aldea, @caserio, @ciclo, @cultivo, @variedadFrijol, @variedadMaiz, @categoria, @lote_produc_semilla, @cantidad_QQ_cosechada, @fecha, @estado)"
+
+        cmd2.Connection = conex
+        cmd2.CommandText = Sql
+
+        cmd2.Parameters.AddWithValue("@ciclo", TxtCiclo.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@productor", TxtProductor.Text)
+        cmd2.Parameters.AddWithValue("@cultivo", CmbTipoSemilla.SelectedItem.Text)
+        If CmbTipoSemilla.SelectedItem.Text = "Frijol" Then
+            cmd2.Parameters.AddWithValue("@variedadFrijol", DDL_VariedadF.SelectedItem.Text)
+        Else
+            cmd2.Parameters.AddWithValue("@variedadFrijol", DBNull.Value)
+        End If
+
+        If CmbTipoSemilla.SelectedItem.Text = "Maiz" Then
+            cmd2.Parameters.AddWithValue("@variedadMaiz", DDL_VariedadM.SelectedItem.Text)
+        Else
+            cmd2.Parameters.AddWithValue("@variedadMaiz", DBNull.Value)
+        End If
+        cmd2.Parameters.AddWithValue("@categoria", DDL_Categ.SelectedItem.Text)
+        cmd2.Parameters.AddWithValue("@lote_produc_semilla", TxtLoteSemi.Text)
+        cmd2.Parameters.AddWithValue("@fecha", fecha)
+        cmd2.Parameters.AddWithValue("@cantidad_QQ_cosechada", Convert.ToDouble(TxtQQCose.Text))
+        cmd2.Parameters.AddWithValue("@estado", "1")
+
+        cmd2.ExecuteNonQuery()
+        conex.Close()
+
+        llenagrid()
     End Sub
 End Class
 

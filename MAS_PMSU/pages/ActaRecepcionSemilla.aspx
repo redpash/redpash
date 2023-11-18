@@ -159,7 +159,8 @@
                                 <label for="txt">Cédula de Identidad:</label>
                                 <asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtCeduIden" runat="server" AutoPostBack="false"></asp:TextBox>
-                                <asp:RegularExpressionValidator runat="server" class="label label-warning" ControlToValidate="TxtCeduIden" Display="Dynamic" ErrorMessage="Formato no válido. Debe ser XXXX-XXXX-XXXXX" ValidationExpression="\d{4}-\d{4}-\d{5}"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator runat="server" class="label label-warning" ControlToValidate="TxtCeduIden" Display="Dynamic" ErrorMessage="Formato no válido. Debe tener 13 digitos " ValidationExpression="\d{13}"></asp:RegularExpressionValidator>
+
                             </div>
                         </div>
                     </div>
