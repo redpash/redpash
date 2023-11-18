@@ -131,6 +131,15 @@ Partial Public Class Ventas
     Protected WithEvents Text_codigo_bcs As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control TxtId2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtId2 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Text_categoria.
     '''</summary>
     '''<remarks>

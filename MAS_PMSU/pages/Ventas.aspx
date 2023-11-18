@@ -175,6 +175,7 @@
                                             <br />
                                             <label>Codigo BCS</label>
                                             <asp:TextBox CssClass="form-control" ID="Text_codigo_bcs" runat="server" AutoPostBack="True" ReadOnly="True"></asp:TextBox>
+                                            <asp:TextBox CssClass="form-control" ID="TxtId2" runat="server" AutoPostBack="True" ReadOnly="True" Visible="false"></asp:TextBox>
                                             <br />
                                             <label>Categoria</label>
                                             <asp:TextBox CssClass="form-control" ID="Text_categoria" runat="server" AutoPostBack="True" ReadOnly="True"></asp:TextBox>

@@ -76,7 +76,7 @@ Public Class SolicitudMuestreoSemilla
         DDL_Ciclo.DataBind()
         Dim newitem2 As New ListItem(" ", " ")
         DDL_Ciclo.Items.Insert(0, newitem2)
-        VerificarTextBox()
+        'VerificarTextBox()
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -97,7 +97,7 @@ Public Class SolicitudMuestreoSemilla
         DDL_Depto.DataBind()
         Dim newitem2 As New ListItem(" ", " ")
         DDL_Depto.Items.Insert(0, newitem2)
-        VerificarTextBox()
+        'VerificarTextBox()
     End Sub
 
     Private Function DevolverValorDepart(cadena As String)
@@ -115,7 +115,7 @@ Public Class SolicitudMuestreoSemilla
         End If
 
         Return 0
-        VerificarTextBox()
+        'VerificarTextBox()
     End Function
 
     Private Function DevolverValorMuni(cadena As String)
@@ -131,7 +131,7 @@ Public Class SolicitudMuestreoSemilla
             Return codigoMunicipio
         End If
         Return 0
-        VerificarTextBox()
+        'VerificarTextBox()
     End Function
 
     Private Function DevolverValorAlde(cadena As String)
@@ -147,7 +147,7 @@ Public Class SolicitudMuestreoSemilla
             Return codigoCaserio
         End If
         Return 0
-        VerificarTextBox()
+        'VerificarTextBox()
     End Function
     Private Sub llenarmunicipio()
         'If gb_departamento_new.SelectedItem.Text <> " " Then
@@ -163,7 +163,7 @@ Public Class SolicitudMuestreoSemilla
         gb_municipio_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_municipio_new.Items.Insert(0, newitem)
-        VerificarTextBox()
+        'VerificarTextBox()
         'End If
     End Sub
 
@@ -181,7 +181,7 @@ Public Class SolicitudMuestreoSemilla
         gb_aldea_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_aldea_new.Items.Insert(0, newitem)
-        VerificarTextBox()
+        'VerificarTextBox()
         'End If
     End Sub
 
@@ -199,7 +199,7 @@ Public Class SolicitudMuestreoSemilla
         gb_caserio_new.DataBind()
         Dim newitem As New ListItem(" ", " ")
         gb_caserio_new.Items.Insert(0, newitem)
-        VerificarTextBox()
+        'VerificarTextBox()
         'End If
     End Sub
     Protected Sub CmbTipoSemilla_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -377,6 +377,21 @@ Public Class SolicitudMuestreoSemilla
 
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' " & c1 & c2 & "ORDER BY Productor,Tipo_cultivo"
 
+    End Sub
+
+    Protected Sub gb_departamento_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_departamento_new.SelectedIndexChanged
+        llenarmunicipio()
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub gb_municipio_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_municipio_new.SelectedIndexChanged
+        llenarAldea()
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub gb_aldea_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_aldea_new.SelectedIndexChanged
+        llenarCaserio()
+        VerificarTextBox()
     End Sub
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
         llenagrid()

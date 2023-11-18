@@ -229,7 +229,8 @@ Public Class Ventas
         If (e.CommandName = "Ventas") Then
 
             Guardar_registro.Visible = True
-            llenarcombocompradores()
+            llenarcombocompradoresSemilla()
+            llenarcombocompradoresGrano()
             'llenarcombocompradores_grano()
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
@@ -240,7 +241,7 @@ Public Class Ventas
             adap.Fill(dt)
 
             txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
-
+            TxtId2.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
             If txt_habilitado.Text = "🔒︎" Then
                 'Label8.Text = "Para este ciclo ya ha finalizado el tiempo para detallar los valores de ventas, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
@@ -331,11 +332,15 @@ Public Class Ventas
                 txt_precio.Text = 0
                 txt_qq_consumo.Text = 0
                 txt_precio_consumo.Text = 0
+                txt_total_venta.Text = 0
+                txt_ingreso_consumo.Text = 0
 
                 TXT_QQ_VENTA_GRANO.Text = 0
                 TXT_PRECIO_GRANO.Text = 0
                 TXT_QQ_GRANO_CONSUMO.Text = 0
                 TXT_PRECIO_GRANO_CONSUMO.Text = 0
+                TXT_INGRESO_TOTAL_VENGRANO.Text = 0
+                TXT_INGRESO_TOTAL_CONSGRANO.Text = 0
 
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DetCostos').modal('show'); });", True)
             End If
@@ -370,7 +375,7 @@ Public Class Ventas
         End If
 
     End Sub
-    Private Sub llenarcombocompradores()
+    Private Sub llenarcombocompradoresSemilla()
         Dim StrCombo As String
         Dim newitem As New ListItem(" ", " ")
 
@@ -384,40 +389,72 @@ Public Class Ventas
         Dp_comprador.DataTextField = DtCombo.Columns(1).ToString()
         Dp_comprador.DataBind()
         Dp_comprador.Items.Insert(0, newitem)
-        txt_detalle_comprador.Text = DtCombo.Rows(0)(2).ToString
+    End Sub
+
+    Private Sub llenarcombocompradoresGrano()
+        Dim StrCombo As String
+        Dim newitem As New ListItem(" ", " ")
+
+        StrCombo = "SELECT * FROM comprador_provi_pash"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
 
         dp_comprador_grano.DataSource = DtCombo
         dp_comprador_grano.DataValueField = DtCombo.Columns(1).ToString
         dp_comprador_grano.DataTextField = DtCombo.Columns(1).ToString
         dp_comprador_grano.DataBind()
         dp_comprador_grano.Items.Insert(0, newitem)
-        TXT_COMPRADOR_GRANO.Text = DtCombo.Rows(0)(2).ToString
+    End Sub
 
+    Private Sub detallellenarcombocompradoresGrano()
+        Dim StrCombo As String
+        Dim newitem As New ListItem(" ", " ")
+
+        StrCombo = "SELECT * FROM comprador_provi_pash"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TXT_COMPRADOR_GRANO.Text = DtCombo.Rows(0)(2).ToString
+    End Sub
+
+    Private Sub detallellenarcombocompradoresSemilla()
+        Dim StrCombo As String
+        Dim newitem As New ListItem(" ", " ")
+
+        StrCombo = "SELECT * FROM comprador_provi_pash"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        txt_detalle_comprador.Text = DtCombo.Rows(0)(2).ToString
     End Sub
 
     Protected Sub VALIDAR_ENTREGAS()
-        Dim QQ_SEMILLA_ENTREGADO, QQ_VENTA_SEMILLA, QQ_ORO_PROD, TOTAL_LIMITE As Decimal
-        Dim entregado_grano, produccion_consumo, venta_qq_grano, consumo_qq_grano, total_qq_grano As Decimal
+        Dim QQ_SEMILLA_DETALLAR, QQ_VENTA_SEMILLA, TOTAL_LIMITE, QQ_VENTA_CONSUMO As Decimal
+        Dim grano_detallar, venta_qq_grano, consumo_qq_grano, total_qq_grano As Decimal
         Dim validado, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10 As Integer
 
         'semilla
-        QQ_ORO_PROD = Text_QQ_Produccion_ORO.Text
-        QQ_SEMILLA_ENTREGADO = TXT_QQ_ORO_ENTRE.Text
+        QQ_SEMILLA_DETALLAR = txt_semilla_por_detallar.Text
         QQ_VENTA_SEMILLA = txt_qq.Text
         QQ_VENTA_CONSUMO = txt_qq_consumo.Text
-        TOTAL_LIMITE = QQ_SEMILLA_ENTREGADO + QQ_VENTA_SEMILLA + QQ_VENTA_CONSUMO
+        TOTAL_LIMITE = QQ_VENTA_SEMILLA + QQ_VENTA_CONSUMO
 
         'grano
-        produccion_consumo = Text_QQ_Produccion_consumo.Text
-        entregado_grano = TXT_QQ_CONSUMO_ENTRE.Text
+        grano_detallar = txt_consumo_por_detallar.Text
         venta_qq_grano = TXT_QQ_VENTA_GRANO.Text
         consumo_qq_grano = TXT_QQ_GRANO_CONSUMO.Text
 
-        total_qq_grano = entregado_grano + venta_qq_grano + consumo_qq_grano
+        total_qq_grano = venta_qq_grano + consumo_qq_grano
 
-        If TOTAL_LIMITE > QQ_ORO_PROD Then
+        If TOTAL_LIMITE > QQ_SEMILLA_DETALLAR Then
 
-            LB_VALIDACION_QQ_sEMILLA.Text = "Por favor revisar la informacion a  ingresar, el resultado de  QQ a entregar + QQ entregado es:  " & TOTAL_LIMITE & "  y la producción de QQ  semilla es: " & QQ_ORO_PROD & " "
+            LB_VALIDACION_QQ_sEMILLA.Text = "Por favor revisar la informacion a  ingresar, los QQ por entregar es: " & TOTAL_LIMITE & "  y los QQ por detallar semilla es: " & QQ_SEMILLA_DETALLAR & " "
             a1 = 1
 
         Else
@@ -480,9 +517,9 @@ Public Class Ventas
         End If
 
         'campos venta grano (consumo)
-        If total_qq_grano > produccion_consumo Then
+        If total_qq_grano > grano_detallar Then
 
-            lb_validacion_consumo.Text = "Por favor revisar la informacion a  ingresar, el resultado de  QQ a entregar + QQ entregado es:  " & total_qq_grano & "  y la producción de QQ  semilla es: " & produccion_consumo & " "
+            lb_validacion_consumo.Text = "Por favor revisar la informacion a  ingresar, los QQ por entregar es: " & total_qq_grano & "  y los QQ por consumo por detallar es: " & grano_detallar & " "
             a6 = 1
 
         Else
@@ -590,31 +627,27 @@ Public Class Ventas
     '    End If
     'End Sub
 
-    'Protected Sub Dp_comprador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Dp_comprador.SelectedIndexChanged
-    '    If Dp_comprador.Text = "Otro" Then
-    '        txt_detalle_comprador.ReadOnly = False
-    '        validar()
-    '    Else
-    '        txt_detalle_comprador.ReadOnly = True
-    '        txt_detalle_comprador.Text = ""
-    '        validar()
-    '    End If
-    '    VALIDAR_ENTREGAS()
-    '
-    'End Sub
+    Protected Sub Dp_comprador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Dp_comprador.SelectedIndexChanged
+        If Dp_comprador.SelectedItem.Text <> "" Then
+            detallellenarcombocompradoresSemilla()
+            VALIDAR_ENTREGAS()
+        End If
 
-    Protected Sub txt_qq_TextChanged(sender As Object, e As EventArgs) Handles txt_qq.TextChanged
-        calcular_venta()
-
-
-
-        VALIDAR_ENTREGAS()
 
     End Sub
 
+    Protected Sub txt_qq_TextChanged(sender As Object, e As EventArgs) Handles txt_qq.TextChanged
+        If txt_qq.Text <> "" Then
+            calcular_venta()
+            VALIDAR_ENTREGAS()
+        End If
+    End Sub
+
     Protected Sub txt_precio_TextChanged(sender As Object, e As EventArgs) Handles txt_precio.TextChanged
-        calcular_venta()
-        VALIDAR_ENTREGAS()
+        If txt_precio.Text <> "" Then
+            calcular_venta()
+            VALIDAR_ENTREGAS()
+        End If
     End Sub
 
     Protected Sub txt_detalle_comprador_TextChanged(sender As Object, e As EventArgs) Handles txt_detalle_comprador.TextChanged
@@ -623,13 +656,17 @@ Public Class Ventas
     End Sub
 
     Protected Sub txt_qq_consumo_TextChanged(sender As Object, e As EventArgs) Handles txt_qq_consumo.TextChanged
-        calcular_venta_consumo()
-        VALIDAR_ENTREGAS()
+        If txt_qq_consumo.Text <> "" Then
+            calcular_venta_consumo()
+            VALIDAR_ENTREGAS()
+        End If
     End Sub
 
     Protected Sub txt_precio_consumo_TextChanged(sender As Object, e As EventArgs) Handles txt_precio_consumo.TextChanged
-        calcular_venta_consumo()
-        VALIDAR_ENTREGAS()
+        If txt_precio_consumo.Text <> "" Then
+            calcular_venta_consumo()
+            VALIDAR_ENTREGAS()
+        End If
     End Sub
 
     Protected Sub Txtproductor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtProductor.SelectedIndexChanged
@@ -637,75 +674,73 @@ Public Class Ventas
     End Sub
 
     Protected Sub Cancelar_edit_Click(sender As Object, e As EventArgs) Handles Cancelar_edit.Click
-        Response.Redirect(String.Format("~/pages/msu_entregas_consolidado.aspx"))
+        Response.Redirect(String.Format("~/pages/Ventas.aspx"))
 
     End Sub
 
-    Protected Sub SI_editar_Click(sender As Object, e As EventArgs) Handles SI_editar.Click
-        Dim conex As New MySqlConnection(conn)
-
-        conex.Open()
-        Dim Sql As String
-        Dim cmd2 As New MySqlCommand()
-        Sql = "UPDATE  `bcs_entregas_2022` set QQ_entregado=@QQ_entregado, Precio=@Precio , Total_entrega=@Total_entrega, comprador=@comprador, otro_comprador=@otro_comprador, QQ_entregado_consumo=@QQ_entregado_consumo,  Precio_consumo=@Precio_consumo,  Total_entrega_consumo=@Total_entrega_consumo  WHERE COD_BCS='" + Text_codigo_bcs.Text + "' AND Ciclo='" + Text_ciclo.Text + "' AND  variedad='" + Text_variedad.Text + "'  "
-
-        cmd2.Connection = conex
-        cmd2.CommandText = Sql
-
-        cmd2.Parameters.AddWithValue("@QQ_entregado", txt_qq.Text)
-        cmd2.Parameters.AddWithValue("@Precio", txt_precio.Text)
-        cmd2.Parameters.AddWithValue("@Total_entrega", txt_total_venta.Text)
-        cmd2.Parameters.AddWithValue("@comprador", Dp_comprador.Text)
-        cmd2.Parameters.AddWithValue("@otro_comprador", txt_detalle_comprador.Text)
-        cmd2.Parameters.AddWithValue("@QQ_entregado_consumo", txt_qq_consumo.Text)
-        cmd2.Parameters.AddWithValue("@Precio_consumo", txt_precio_consumo.Text)
-        cmd2.Parameters.AddWithValue("@Total_entrega_consumo", txt_ingreso_consumo.Text)
-
-        cmd2.ExecuteNonQuery()
-        conex.Close()
-
-        llenagrid()
-    End Sub
+    'Protected Sub SI_editar_Click(sender As Object, e As EventArgs) Handles SI_editar.Click
+    '    Dim conex As New MySqlConnection(conn)
+    '
+    '    conex.Open()
+    '    Dim Sql As String
+    '    Dim cmd2 As New MySqlCommand()
+    '    Sql = "UPDATE  `bcs_entregas_2022` set QQ_entregado=@QQ_entregado, Precio=@Precio , Total_entrega=@Total_entrega, comprador=@comprador, otro_comprador=@otro_comprador, QQ_entregado_consumo=@QQ_entregado_consumo,  Precio_consumo=@Precio_consumo,  Total_entrega_consumo=@Total_entrega_consumo  WHERE COD_BCS='" + Text_codigo_bcs.Text + "' AND Ciclo='" + Text_ciclo.Text + "' AND  variedad='" + Text_variedad.Text + "'  "
+    '
+    '    cmd2.Connection = conex
+    '    cmd2.CommandText = Sql
+    '
+    '    cmd2.Parameters.AddWithValue("@QQ_entregado", txt_qq.Text)
+    '    cmd2.Parameters.AddWithValue("@Precio", txt_precio.Text)
+    '    cmd2.Parameters.AddWithValue("@Total_entrega", txt_total_venta.Text)
+    '    cmd2.Parameters.AddWithValue("@comprador", Dp_comprador.Text)
+    '    cmd2.Parameters.AddWithValue("@otro_comprador", txt_detalle_comprador.Text)
+    '    cmd2.Parameters.AddWithValue("@QQ_entregado_consumo", txt_qq_consumo.Text)
+    '    cmd2.Parameters.AddWithValue("@Precio_consumo", txt_precio_consumo.Text)
+    '    cmd2.Parameters.AddWithValue("@Total_entrega_consumo", txt_ingreso_consumo.Text)
+    '
+    '    cmd2.ExecuteNonQuery()
+    '    conex.Close()
+    '
+    '    llenagrid()
+    'End Sub
 
     Protected Sub TXT_QQ_VENTA_GRANO_TextChanged(sender As Object, e As EventArgs) Handles TXT_QQ_VENTA_GRANO.TextChanged
-        VALIDAR_ENTREGAS()
-        calcular_venta_grano()
+        If TXT_QQ_VENTA_GRANO.Text <> "" Then
+            VALIDAR_ENTREGAS()
+            calcular_venta_grano()
+        End If
     End Sub
 
     Protected Sub TXT_QQ_GRANO_CONSUMO_TextChanged(sender As Object, e As EventArgs) Handles TXT_QQ_GRANO_CONSUMO.TextChanged
-        VALIDAR_ENTREGAS()
-        calcular_venta_consumo_grano()
+        If TXT_QQ_GRANO_CONSUMO.Text <> "" Then
+            VALIDAR_ENTREGAS()
+            calcular_venta_consumo_grano()
+        End If
     End Sub
 
     Protected Sub TXT_PRECIO_GRANO_TextChanged(sender As Object, e As EventArgs) Handles TXT_PRECIO_GRANO.TextChanged
-        VALIDAR_ENTREGAS()
-        calcular_venta_grano()
+        If TXT_PRECIO_GRANO.Text <> "" Then
+            VALIDAR_ENTREGAS()
+            calcular_venta_grano()
+        End If
     End Sub
 
-    'Protected Sub dp_comprador_grano_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dp_comprador_grano.SelectedIndexChanged
-    '
-    '
-    '    If dp_comprador_grano.Text = "Otro" Then
-    '        TXT_COMPRADOR_GRANO.ReadOnly = False
-    '        validar()
-    '    Else
-    '        TXT_COMPRADOR_GRANO.ReadOnly = True
-    '        TXT_COMPRADOR_GRANO.Text = ""
-    '        validar()
-    '    End If
-    '
-    '
-    '    VALIDAR_ENTREGAS()
-    '
-    'End Sub
+    Protected Sub dp_comprador_grano_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dp_comprador_grano.SelectedIndexChanged
+        If dp_comprador_grano.SelectedItem.Text <> "" Then
+            detallellenarcombocompradoresGrano()
+            VALIDAR_ENTREGAS()
+        End If
+    End Sub
 
     Protected Sub TXT_COMPRADOR_GRANO_TextChanged(sender As Object, e As EventArgs) Handles TXT_COMPRADOR_GRANO.TextChanged
         VALIDAR_ENTREGAS()
     End Sub
 
     Protected Sub TXT_PRECIO_GRANO_CONSUMO_TextChanged(sender As Object, e As EventArgs) Handles TXT_PRECIO_GRANO_CONSUMO.TextChanged
-        VALIDAR_ENTREGAS()
-        calcular_venta_consumo_grano()
+        If TXT_PRECIO_GRANO_CONSUMO.Text <> "" Then
+            VALIDAR_ENTREGAS()
+            calcular_venta_consumo_grano()
+        End If
     End Sub
 
     Protected Sub btn_si_Click(sender As Object, e As EventArgs) Handles btn_si.Click
@@ -714,6 +749,11 @@ Public Class Ventas
         conex.Open()
         Dim Sql As String
         Dim cmd2 As New MySqlCommand()
+        Dim total_entregado_semilla As Double
+        Dim total_entregado_grano As Double
+
+        total_entregado_semilla = Convert.ToDouble(txt_qq.Text) + Convert.ToDouble(txt_qq_consumo.Text)
+        total_entregado_grano = Convert.ToDouble(TXT_QQ_VENTA_GRANO.Text) + Convert.ToDouble(TXT_QQ_GRANO_CONSUMO.Text)
 
         Sql = "INSERT INTO ventas_pash (departamento, 
         municipio, aldea, cacerio, codigo_bcs, nombre_productor, 
@@ -724,12 +764,12 @@ Public Class Ventas
         ingreso_total_cc_ventas, QQ_semilla_cc_consumo, QQ_semilla_precio_cc_consumo, 
         ingreso_total_cc_consumo, QQ_grano_humano_snc_ventas, QQ_grano_humano_precio_snc_ventas, 
         comprador_snc_ventas, detalles_comprador_snc_ventas, ingreso_total_snc_ventas, QQ_grano_snc_consumo, 
-        QQ_grano_precio_snc_consumo, ingreso_total_snc_consumo) values (@departamento, @municipio, @aldea, @cacerio, 
+        QQ_grano_precio_snc_consumo, ingreso_total_snc_consumo, estado, id2) values (@departamento, @municipio, @aldea, @cacerio, 
         @codigo_bcs, @nombre_productor, @ciclo, @variedad, @QQ_produccion, @QQ_semilla_certificada_comercial, @QQ_consumo_granos_humano_usos, 
         @QQ_semilla_entregado, @QQ_semilla_detallar, @QQ_consumo_entregado, @QQ_consumo_detallar, @QQ_basura, @QQ_semilla_cc_ventas, @QQ_semilla_precio_cc_venta, 
         @comprador_cc_ventas, @detalles_comprador_cc_ventas, @ingreso_total_cc_ventas, @QQ_semilla_cc_consumo, @QQ_semilla_precio_cc_consumo, @ingreso_total_cc_consumo, 
         @QQ_grano_humano_snc_ventas, @QQ_grano_humano_precio_snc_ventas, @comprador_snc_ventas, @detalles_comprador_snc_ventas, @ingreso_total_snc_ventas, @QQ_grano_snc_consumo, 
-        @QQ_grano_precio_snc_consumo, @ingreso_total_snc_consumo)"
+        @QQ_grano_precio_snc_consumo, @ingreso_total_snc_consumo, @estado, @id2)"
 
         cmd2.Connection = conex
         cmd2.CommandText = Sql
@@ -745,9 +785,9 @@ Public Class Ventas
         cmd2.Parameters.AddWithValue("@QQ_produccion", Text_QQ_Produccion.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_certificada_comercial", Text_QQ_Produccion_ORO.Text)
         cmd2.Parameters.AddWithValue("@QQ_consumo_granos_humano_usos", Text_QQ_Produccion_consumo.Text)
-        cmd2.Parameters.AddWithValue("@QQ_semilla_entregado", TXT_QQ_ORO_ENTRE.Text)
+        cmd2.Parameters.AddWithValue("@QQ_semilla_entregado", total_entregado_semilla)
         cmd2.Parameters.AddWithValue("@QQ_semilla_detallar", txt_semilla_por_detallar.Text)
-        cmd2.Parameters.AddWithValue("@QQ_consumo_entregado", TXT_QQ_CONSUMO_ENTRE.Text)
+        cmd2.Parameters.AddWithValue("@QQ_consumo_entregado", total_entregado_grano)
         cmd2.Parameters.AddWithValue("@QQ_consumo_detallar", txt_consumo_por_detallar.Text)
         cmd2.Parameters.AddWithValue("@QQ_basura", Text_QQ_Produccion_basura.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_cc_ventas", txt_qq.Text)
@@ -766,6 +806,8 @@ Public Class Ventas
         cmd2.Parameters.AddWithValue("@QQ_grano_snc_consumo", TXT_QQ_GRANO_CONSUMO.Text)
         cmd2.Parameters.AddWithValue("@QQ_grano_precio_snc_consumo", TXT_PRECIO_GRANO_CONSUMO.Text)
         cmd2.Parameters.AddWithValue("@ingreso_total_snc_consumo", TXT_INGRESO_TOTAL_CONSGRANO.Text)
+        cmd2.Parameters.AddWithValue("@estado", "1")
+        cmd2.Parameters.AddWithValue("@id2", TxtId2.Text)
 
         'If TXT_PRECIO_GRANO_CONSUMO.Text <= 0 Then
         '    cmd2.Parameters.AddWithValue("@PRECIO_QQ_GRANO_CONSUMO", DBNull.Value)
@@ -776,7 +818,7 @@ Public Class Ventas
         cmd2.ExecuteNonQuery()
         conex.Close()
 
-        Response.Redirect(String.Format("~/pages/msu_entregas_consolidado.aspx"))
+        Response.Redirect(String.Format("~/pages/Ventas.aspx"))
 
         llenagrid()
 

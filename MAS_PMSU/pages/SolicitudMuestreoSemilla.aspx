@@ -167,7 +167,7 @@
                             <div class="form-group">
                                 <label for="txt">Cantidad de quintales cosechados::</label>
                                 <asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtQQCose" runat="server" AutoPostBack="true" TextMode="Number" OnTextChanged="VerificarTextbox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtQQCose" runat="server" AutoPostBack="false" TextMode="Number" OnTextChanged="VerificarTextbox"></asp:TextBox>
                             </div>
                         </div>
                     </div>

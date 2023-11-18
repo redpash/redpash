@@ -198,6 +198,71 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="T:MAS_PMSU.acta_recepcion">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcion.acta_recepcion_semillaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcion.acta_recepcion_semillaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcion.acta_recepcion_semillaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcionTableAdapters.acta_recepcion_semillaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.UpdateUpdatedRows(MAS_PMSU.acta_recepcion,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.UpdateInsertedRows(MAS_PMSU.acta_recepcion,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.UpdateDeletedRows(MAS_PMSU.acta_recepcion,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.UpdateAll(MAS_PMSU.acta_recepcion)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:MAS_PMSU.acta_recepcionTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSet1">
 <summary>
 Represents a strongly typed in-memory cache of data.
@@ -6829,6 +6894,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Ventas._Text_codigo_bcs">
 <summary>
 Control Text_codigo_bcs.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Ventas._TxtId2">
+<summary>
+Control TxtId2.
 </summary>
 <remarks>
 Campo generado automáticamente.
