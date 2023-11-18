@@ -122,11 +122,12 @@ Public Class ActaRecepcionSemilla
         If (e.CommandName = "Editar") Then
             btnGuardarActa.Text = "Editar"
 
-            'If String.IsNullOrEmpty(TxtProductor.SelectedValue) Then
-            '    txt_nombre_prod_new.Text = ""
-            'Else
-            '    txt_nombre_prod_new.Text = TxtProductor.SelectedValue
-            'End If
+            If String.IsNullOrEmpty(TxtProductor.SelectedValue) Then
+                txt_nombre_prod_new.Text = ""
+            Else
+                txt_nombre_prod_new.Text = TxtProductor.SelectedValue
+            End If
+
             DivActa.Style.Add("display", "block")
             DivGrid.Style.Add("display", "none")
             btnGuardarActa.Visible = True
@@ -390,8 +391,8 @@ Public Class ActaRecepcionSemilla
         Response.End()
     End Sub
     Protected Sub DropDownList7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-        Dim selectedValue As String = DropDownList7.SelectedValue
-        txt_nombre_prod_new.Text = selectedValue
+        txt_nombre_prod_new.Text = DropDownList7.SelectedValue
+        TxtProductor.SelectedValue = DropDownList7.SelectedValue
     End Sub
     Protected Sub Verificarvariedades()
         If DDL_Amadeus.SelectedValue = "Si" Then
@@ -494,6 +495,8 @@ Public Class ActaRecepcionSemilla
             DivVariedadFrijol.Style.Add("display", "none")
             DivVariedadesMaiz.Style.Add("display", "none")
         End If
+
+        DDL_SelCult.SelectedValue = DDL_cultivo.SelectedValue
     End Sub
 
     Protected Sub btnGuardarActa_Click(sender As Object, e As EventArgs)
@@ -513,7 +516,6 @@ Public Class ActaRecepcionSemilla
                 'Funcion para guardar en la BD
                 GuardarActa()
 
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
             Else
                 Label103.Text = "Debe ingresar toda la informacion primero"
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -1229,7 +1231,6 @@ Public Class ActaRecepcionSemilla
         Dim conex As New MySqlConnection(conn)
         Dim fecha As Date
 
-
         If Date.TryParse(txtFechaSiembra.Text, fecha) Then
             fecha.ToString("dd-MM-yyyy")
         End If
@@ -1238,7 +1239,7 @@ Public Class ActaRecepcionSemilla
 
         Dim cmd2 As New MySqlCommand()
 
-        If TxtID.Text = "" Then
+        If btnGuardarActa.Text = "Guardar" Then
             Dim Sql As String
             Sql = "INSERT INTO acta_recepcion_semilla (txtFechaSiembra, txt_nombre_prod_new, TxtCeduIden, DDL_cultivo, 
                DDL_Amadeus, DDL_Amadeus_Certificado, DDL_Amadeus_Comercial, txtAmadeusHumedad, txtBultosAmadeus, txtPesoPrimAmadeus, txtPesoBrutAmadeus, 
@@ -1646,11 +1647,16 @@ Public Class ActaRecepcionSemilla
 
                 llenagrid()
             End If
-        Else
-            Try
-                Dim ID As String = TxtID.Text
-                Dim Sql2 As String
-                Sql2 = "UPDATE acta_recepcion_semilla SET 
+
+
+            Label103.Text = "El Acta de Recepcion de semilla ha sido almacenada con exito"
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
+
+        If btnGuardarActa.Text = "Editar" Then
+            Dim ID As String = TxtID.Text
+            Dim Sql2 As String
+            Sql2 = "UPDATE acta_recepcion_semilla SET 
                         txtFechaSiembra = @txtFechaSiembra, 
                         txt_nombre_prod_new = @txt_nombre_prod_new, 
                         TxtCeduIden = @TxtCeduIden, 
@@ -1755,299 +1761,24 @@ Public Class ActaRecepcionSemilla
                         txtPesoBrutOtravariedadM = @txtPesoBrutOtravariedadM 
                    WHERE id = " & ID & ""
 
-                cmd2.Connection = conex
-                cmd2.CommandText = Sql2
+            cmd2.Connection = conex
+            cmd2.CommandText = Sql2
 
-                cmd2.Parameters.AddWithValue("@txtFechaSiembra", fecha)
-                cmd2.Parameters.AddWithValue("@txt_nombre_prod_new", txt_nombre_prod_new.Text)
-                cmd2.Parameters.AddWithValue("@TxtCeduIden", TxtCeduIden.Text)
-                cmd2.Parameters.AddWithValue("@DDL_cultivo", DDL_cultivo.Text)
+            cmd2.Parameters.AddWithValue("@txtFechaSiembra", fecha)
+            cmd2.Parameters.AddWithValue("@txt_nombre_prod_new", txt_nombre_prod_new.Text)
+            cmd2.Parameters.AddWithValue("@TxtCeduIden", TxtCeduIden.Text)
+            cmd2.Parameters.AddWithValue("@DDL_cultivo", DDL_cultivo.Text)
 
-                If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-                    If DDL_Amadeus.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Amadeus", DDL_Amadeus.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Amadeus_Certificado", DDL_Amadeus_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Amadeus_Comercial", DDL_Amadeus_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtAmadeusHumedad", Convert.ToDouble(txtAmadeusHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosAmadeus", Convert.ToInt64(txtBultosAmadeus.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimAmadeus", Convert.ToDouble(txtPesoPrimAmadeus.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutAmadeus", Convert.ToDouble(txtPesoBrutAmadeus.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Amadeus", DDL_Amadeus.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Amadeus_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Amadeus_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtAmadeusHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosAmadeus", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimAmadeus", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutAmadeus", DBNull.Value)
-                    End If
-
-                    If DDL_Carrizalito.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Carrizalito", DDL_Carrizalito.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Certificado", DDL_Carrizalito_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Comercial", DDL_Carrizalito_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtCarrizalitoHumedad", Convert.ToDouble(txtCarrizalitoHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosCarrizalito", Convert.ToInt64(txtBultosCarrizalito.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimCarrizalito", Convert.ToDouble(txtPesoPrimCarrizalito.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutCarrizalito", Convert.ToDouble(txtPesoBrutCarrizalito.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Carrizalito", DDL_Carrizalito.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtCarrizalitoHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosCarrizalito", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimCarrizalito", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutCarrizalito", DBNull.Value)
-                    End If
-
-                    If DDL_Deorho.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Deorho", DDL_Deorho.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Deorho_Certificado", DDL_Deorho_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Deorho_Comercial", DDL_Deorho_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtDeorhoHumedad", Convert.ToDouble(txtDeorhoHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosDeorho", Convert.ToInt64(txtBultosDeorho.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimDeorho", Convert.ToDouble(txtPesoPrimDeorho.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutDeorho", Convert.ToDouble(txtPesoBrutDeorho.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Deorho", DDL_Deorho.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Deorho_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Deorho_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtDeorhoHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosDeorho", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimDeorho", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutDeorho", DBNull.Value)
-                    End If
-
-                    If DDL_Azabache.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Azabache", DDL_Azabache.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Azabache_Certificado", DDL_Azabache_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Azabache_Comercial", DDL_Azabache_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtAzabacheHumedad", Convert.ToDouble(txtAzabacheHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosAzabache", Convert.ToInt64(txtBultosAzabache.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimAzabache", Convert.ToDouble(txtPesoPrimAzabache.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutAzabache", Convert.ToDouble(txtPesoBrutAzabache.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Azabache", DDL_Azabache.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Azabache_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Azabache_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtAzabacheHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosAzabache", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimAzabache", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutAzabache", DBNull.Value)
-                    End If
-
-                    If DDL_ParaisitoMejoradoPM2.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2", DDL_ParaisitoMejoradoPM2.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Certificado", DDL_ParaisitoMejoradoPM2_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Comercial", DDL_ParaisitoMejoradoPM2_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtParaisitoMejoradoPM2Humedad", Convert.ToDouble(txtParaisitoMejoradoPM2Humedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosParaisitoMejoradoPM2", Convert.ToInt64(txtBultosParaisitoMejoradoPM2.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimParaisitoMejoradoPM2", Convert.ToDouble(txtPesoPrimParaisitoMejoradoPM2.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutParaisitoMejoradoPM2", Convert.ToDouble(txtPesoBrutParaisitoMejoradoPM2.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2", DDL_ParaisitoMejoradoPM2.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtParaisitoMejoradoPM2Humedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosParaisitoMejoradoPM2", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimParaisitoMejoradoPM2", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutParaisitoMejoradoPM2", DBNull.Value)
-                    End If
-
-                    If DDL_Hondurasnutritivo.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo", DDL_Hondurasnutritivo.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Certificado", DDL_Hondurasnutritivo_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Comercial", DDL_Hondurasnutritivo_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtHondurasnutritivoHumedad", Convert.ToDouble(txtHondurasnutritivoHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosHondurasnutritivo", Convert.ToInt64(txtBultosHondurasnutritivo.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimHondurasnutritivo", Convert.ToDouble(txtPesoPrimHondurasnutritivo.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutHondurasnutritivo", Convert.ToDouble(txtPesoBrutHondurasnutritivo.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo", DDL_Hondurasnutritivo.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtHondurasnutritivoHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosHondurasnutritivo", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimHondurasnutritivo", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutHondurasnutritivo", DBNull.Value)
-                    End If
-
-                    If DDL_IntaCardenas.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_IntaCardenas", DDL_IntaCardenas.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Certificado", DDL_IntaCardenas_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Comercial", DDL_IntaCardenas_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtIntaCardenasHumedad", Convert.ToDouble(txtIntaCardenasHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosIntaCardenas", Convert.ToInt64(txtBultosIntaCardenas.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimIntaCardenas", Convert.ToDouble(txtPesoPrimIntaCardenas.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutIntaCardenas", Convert.ToDouble(txtPesoBrutIntaCardenas.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_IntaCardenas", DDL_IntaCardenas.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtIntaCardenasHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosIntaCardenas", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimIntaCardenas", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutIntaCardenas", DBNull.Value)
-                    End If
-
-                    If DDL_Lencaprecoz.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz", DDL_Lencaprecoz.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Certificado", DDL_Lencaprecoz_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Comercial", DDL_Lencaprecoz_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtLencaprecozHumedad", Convert.ToDouble(txtLencaprecozHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosLencaprecoz", Convert.ToInt64(txtBultosLencaprecoz.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimLencaprecoz", Convert.ToDouble(txtPesoPrimLencaprecoz.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutLencaprecoz", Convert.ToDouble(txtPesoBrutLencaprecoz.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz", DDL_Lencaprecoz.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtLencaprecozHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosLencaprecoz", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimLencaprecoz", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutLencaprecoz", DBNull.Value)
-                    End If
-
-                    If DDL_Rojochorti.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Rojochorti", DDL_Rojochorti.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Certificado", DDL_Rojochorti_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Comercial", DDL_Rojochorti_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtRojochortiHumedad", Convert.ToDouble(txtRojochortiHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosRojochorti", Convert.ToInt64(txtBultosRojochorti.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimRojochorti", Convert.ToDouble(txtPesoPrimRojochorti.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutRojochorti", Convert.ToDouble(txtPesoBrutRojochorti.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Rojochorti", DDL_Rojochorti.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtRojochortiHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosRojochorti", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimRojochorti", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutRojochorti", DBNull.Value)
-                    End If
-
-                    If DDL_Tolupanrojo.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo", DDL_Tolupanrojo.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Certificado", DDL_Tolupanrojo_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Comercial", DDL_Tolupanrojo_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtTolupanrojoHumedad", Convert.ToDouble(txtTolupanrojoHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosTolupanrojo", Convert.ToInt64(txtBultosTolupanrojo.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimTolupanrojo", Convert.ToDouble(txtPesoPrimTolupanrojo.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutTolupanrojo", Convert.ToDouble(txtPesoBrutTolupanrojo.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo", DDL_Tolupanrojo.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtTolupanrojoHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosTolupanrojo", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimTolupanrojo", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutTolupanrojo", DBNull.Value)
-                    End If
-
-                    If DDL_Otravariedad.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@txtOtravariedad", txtOtravariedad.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Certificado", DDL_Otravariedad_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Comercial", DDL_Otravariedad_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadHumedad", Convert.ToDouble(txtOtravariedadHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosOtravariedad", Convert.ToInt64(txtBultosOtravariedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedad", Convert.ToDouble(txtPesoPrimOtravariedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedad", Convert.ToDouble(txtPesoBrutOtravariedad.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadM", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosOtravariedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedad", DBNull.Value)
-                    End If
-
-                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya", DDL_DictaMaya.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Certificado", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Comercial", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtDictaMayaHumedad", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtBultosDictaMaya", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtPesoPrimDictaMaya", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtPesoBrutDictaMaya", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria", DDL_DictaVictoria.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Certificado", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Comercial", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtDictaVictoriaHumedad", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtBultosDictaVictoria", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtPesoPrimDictaVictoria", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtPesoBrutDictaVictoria", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtOtravariedadM", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Certificado", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Comercial", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtOtravariedadMHumedad", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtBultosOtravariedadM", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedadM", DBNull.Value)
-                    cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedadM", DBNull.Value)
-
-                    cmd2.ExecuteNonQuery()
-                    conex.Close()
-
-                    'Response.Redirect(String.Format("~/pages/ActaRecepcionSemilla.aspx"))
-
-                    llenagrid()
-
-                End If
-
-                If DDL_SelCult.SelectedItem.Text = "Maiz" Then
-                    If DDL_DictaMaya.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_DictaMaya", DDL_DictaMaya.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Certificado", DDL_DictaMaya_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Comercial", DDL_DictaMaya_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtDictaMayaHumedad", Convert.ToDouble(txtDictaMayaHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosDictaMaya", Convert.ToInt64(txtBultosDictaMaya.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimDictaMaya", Convert.ToDouble(txtPesoPrimDictaMaya.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutDictaMaya", Convert.ToDouble(txtPesoBrutDictaMaya.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_DictaMaya", DDL_DictaMaya.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtDictaMayaHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosDictaMaya", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimDictaMaya", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutDictaMaya", DBNull.Value)
-                    End If
-
-                    If DDL_DictaVictoria.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@DDL_DictaVictoria", DDL_DictaVictoria.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Certificado", DDL_DictaVictoria_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Comercial", DDL_DictaVictoria_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtDictaVictoriaHumedad", Convert.ToDouble(txtDictaVictoriaHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosDictaVictoria", Convert.ToInt64(txtBultosDictaVictoria.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimDictaVictoria", Convert.ToDouble(txtPesoPrimDictaVictoria.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutDictaVictoria", Convert.ToDouble(txtPesoBrutDictaVictoria.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@DDL_DictaVictoria", DDL_DictaVictoria.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtDictaVictoriaHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosDictaVictoria", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimDictaVictoria", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutDictaVictoria", DBNull.Value)
-                    End If
-
-                    If DDL_OtravariedadM.SelectedItem.Text = "Si" Then
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadM", txtOtravariedadM.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Certificado", DDL_OtravariedadM_Certificado.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Comercial", DDL_OtravariedadM_Comercial.SelectedItem.Text)
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadMHumedad", Convert.ToDouble(txtOtravariedadMHumedad.Text))
-                        cmd2.Parameters.AddWithValue("@txtBultosOtravariedadM", Convert.ToInt64(txtBultosOtravariedadM.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedadM", Convert.ToDouble(txtPesoPrimOtravariedadM.Text))
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedadM", Convert.ToDouble(txtPesoBrutOtravariedadM.Text))
-                    Else
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadM", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Certificado", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Comercial", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtOtravariedadMHumedad", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtBultosOtravariedadM", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedadM", DBNull.Value)
-                        cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedadM", DBNull.Value)
-                    End If
-
+            If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+                If DDL_Amadeus.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Amadeus", DDL_Amadeus.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Amadeus_Certificado", DDL_Amadeus_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Amadeus_Comercial", DDL_Amadeus_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtAmadeusHumedad", Convert.ToDouble(txtAmadeusHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosAmadeus", Convert.ToInt64(txtBultosAmadeus.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimAmadeus", Convert.ToDouble(txtPesoPrimAmadeus.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutAmadeus", Convert.ToDouble(txtPesoBrutAmadeus.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Amadeus", DDL_Amadeus.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Amadeus_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Amadeus_Comercial", DBNull.Value)
@@ -2055,6 +1786,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosAmadeus", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimAmadeus", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutAmadeus", DBNull.Value)
+                End If
+
+                If DDL_Carrizalito.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Carrizalito", DDL_Carrizalito.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Certificado", DDL_Carrizalito_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Comercial", DDL_Carrizalito_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtCarrizalitoHumedad", Convert.ToDouble(txtCarrizalitoHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosCarrizalito", Convert.ToInt64(txtBultosCarrizalito.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimCarrizalito", Convert.ToDouble(txtPesoPrimCarrizalito.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutCarrizalito", Convert.ToDouble(txtPesoBrutCarrizalito.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Carrizalito", DDL_Carrizalito.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Comercial", DBNull.Value)
@@ -2062,6 +1804,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosCarrizalito", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimCarrizalito", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutCarrizalito", DBNull.Value)
+                End If
+
+                If DDL_Deorho.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Deorho", DDL_Deorho.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Deorho_Certificado", DDL_Deorho_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Deorho_Comercial", DDL_Deorho_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtDeorhoHumedad", Convert.ToDouble(txtDeorhoHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosDeorho", Convert.ToInt64(txtBultosDeorho.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimDeorho", Convert.ToDouble(txtPesoPrimDeorho.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutDeorho", Convert.ToDouble(txtPesoBrutDeorho.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Deorho", DDL_Deorho.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Deorho_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Deorho_Comercial", DBNull.Value)
@@ -2069,6 +1822,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosDeorho", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimDeorho", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutDeorho", DBNull.Value)
+                End If
+
+                If DDL_Azabache.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Azabache", DDL_Azabache.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Azabache_Certificado", DDL_Azabache_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Azabache_Comercial", DDL_Azabache_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtAzabacheHumedad", Convert.ToDouble(txtAzabacheHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosAzabache", Convert.ToInt64(txtBultosAzabache.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimAzabache", Convert.ToDouble(txtPesoPrimAzabache.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutAzabache", Convert.ToDouble(txtPesoBrutAzabache.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Azabache", DDL_Azabache.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Azabache_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Azabache_Comercial", DBNull.Value)
@@ -2076,6 +1840,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosAzabache", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimAzabache", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutAzabache", DBNull.Value)
+                End If
+
+                If DDL_ParaisitoMejoradoPM2.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2", DDL_ParaisitoMejoradoPM2.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Certificado", DDL_ParaisitoMejoradoPM2_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Comercial", DDL_ParaisitoMejoradoPM2_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtParaisitoMejoradoPM2Humedad", Convert.ToDouble(txtParaisitoMejoradoPM2Humedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosParaisitoMejoradoPM2", Convert.ToInt64(txtBultosParaisitoMejoradoPM2.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimParaisitoMejoradoPM2", Convert.ToDouble(txtPesoPrimParaisitoMejoradoPM2.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutParaisitoMejoradoPM2", Convert.ToDouble(txtPesoBrutParaisitoMejoradoPM2.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2", DDL_ParaisitoMejoradoPM2.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Comercial", DBNull.Value)
@@ -2083,6 +1858,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosParaisitoMejoradoPM2", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimParaisitoMejoradoPM2", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutParaisitoMejoradoPM2", DBNull.Value)
+                End If
+
+                If DDL_Hondurasnutritivo.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo", DDL_Hondurasnutritivo.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Certificado", DDL_Hondurasnutritivo_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Comercial", DDL_Hondurasnutritivo_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtHondurasnutritivoHumedad", Convert.ToDouble(txtHondurasnutritivoHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosHondurasnutritivo", Convert.ToInt64(txtBultosHondurasnutritivo.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimHondurasnutritivo", Convert.ToDouble(txtPesoPrimHondurasnutritivo.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutHondurasnutritivo", Convert.ToDouble(txtPesoBrutHondurasnutritivo.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo", DDL_Hondurasnutritivo.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Comercial", DBNull.Value)
@@ -2090,6 +1876,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosHondurasnutritivo", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimHondurasnutritivo", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutHondurasnutritivo", DBNull.Value)
+                End If
+
+                If DDL_IntaCardenas.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_IntaCardenas", DDL_IntaCardenas.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Certificado", DDL_IntaCardenas_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Comercial", DDL_IntaCardenas_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtIntaCardenasHumedad", Convert.ToDouble(txtIntaCardenasHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosIntaCardenas", Convert.ToInt64(txtBultosIntaCardenas.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimIntaCardenas", Convert.ToDouble(txtPesoPrimIntaCardenas.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutIntaCardenas", Convert.ToDouble(txtPesoBrutIntaCardenas.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_IntaCardenas", DDL_IntaCardenas.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Comercial", DBNull.Value)
@@ -2097,6 +1894,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosIntaCardenas", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimIntaCardenas", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutIntaCardenas", DBNull.Value)
+                End If
+
+                If DDL_Lencaprecoz.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz", DDL_Lencaprecoz.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Certificado", DDL_Lencaprecoz_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Comercial", DDL_Lencaprecoz_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtLencaprecozHumedad", Convert.ToDouble(txtLencaprecozHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosLencaprecoz", Convert.ToInt64(txtBultosLencaprecoz.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimLencaprecoz", Convert.ToDouble(txtPesoPrimLencaprecoz.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutLencaprecoz", Convert.ToDouble(txtPesoBrutLencaprecoz.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz", DDL_Lencaprecoz.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Comercial", DBNull.Value)
@@ -2104,6 +1912,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosLencaprecoz", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimLencaprecoz", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutLencaprecoz", DBNull.Value)
+                End If
+
+                If DDL_Rojochorti.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Rojochorti", DDL_Rojochorti.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Certificado", DDL_Rojochorti_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Comercial", DDL_Rojochorti_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtRojochortiHumedad", Convert.ToDouble(txtRojochortiHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosRojochorti", Convert.ToInt64(txtBultosRojochorti.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimRojochorti", Convert.ToDouble(txtPesoPrimRojochorti.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutRojochorti", Convert.ToDouble(txtPesoBrutRojochorti.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Rojochorti", DDL_Rojochorti.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Comercial", DBNull.Value)
@@ -2111,6 +1930,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosRojochorti", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimRojochorti", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutRojochorti", DBNull.Value)
+                End If
+
+                If DDL_Tolupanrojo.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo", DDL_Tolupanrojo.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Certificado", DDL_Tolupanrojo_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Comercial", DDL_Tolupanrojo_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtTolupanrojoHumedad", Convert.ToDouble(txtTolupanrojoHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosTolupanrojo", Convert.ToInt64(txtBultosTolupanrojo.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimTolupanrojo", Convert.ToDouble(txtPesoPrimTolupanrojo.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutTolupanrojo", Convert.ToDouble(txtPesoBrutTolupanrojo.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo", DDL_Tolupanrojo.SelectedItem.Text)
                     cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Comercial", DBNull.Value)
@@ -2118,6 +1948,17 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosTolupanrojo", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimTolupanrojo", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutTolupanrojo", DBNull.Value)
+                End If
+
+                If DDL_Otravariedad.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@txtOtravariedad", txtOtravariedad.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Certificado", DDL_Otravariedad_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Comercial", DDL_Otravariedad_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtOtravariedadHumedad", Convert.ToDouble(txtOtravariedadHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosOtravariedad", Convert.ToInt64(txtBultosOtravariedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedad", Convert.ToDouble(txtPesoPrimOtravariedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedad", Convert.ToDouble(txtPesoBrutOtravariedad.Text))
+                Else
                     cmd2.Parameters.AddWithValue("@txtOtravariedad", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Certificado", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Comercial", DBNull.Value)
@@ -2125,18 +1966,182 @@ Public Class ActaRecepcionSemilla
                     cmd2.Parameters.AddWithValue("@txtBultosOtravariedad", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedad", DBNull.Value)
                     cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedad", DBNull.Value)
-
-                    cmd2.ExecuteNonQuery()
-                    conex.Close()
-
-                    'Response.Redirect(String.Format("~/pages/ActaRecepcionSemilla.aspx"))
-
-                    llenagrid()
                 End If
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-            'End If
+
+                cmd2.Parameters.AddWithValue("@DDL_DictaMaya", DDL_DictaMaya.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtDictaMayaHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosDictaMaya", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimDictaMaya", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutDictaMaya", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_DictaVictoria", DDL_DictaVictoria.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtDictaVictoriaHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosDictaVictoria", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimDictaVictoria", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutDictaVictoria", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtOtravariedadM", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtOtravariedadMHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosOtravariedadM", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedadM", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedadM", DBNull.Value)
+
+                cmd2.ExecuteNonQuery()
+                conex.Close()
+
+                'Response.Redirect(String.Format("~/pages/ActaRecepcionSemilla.aspx"))
+
+                llenagrid()
+
+            End If
+
+            If DDL_SelCult.SelectedItem.Text = "Maiz" Then
+                If DDL_DictaMaya.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya", DDL_DictaMaya.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Certificado", DDL_DictaMaya_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Comercial", DDL_DictaMaya_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtDictaMayaHumedad", Convert.ToDouble(txtDictaMayaHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosDictaMaya", Convert.ToInt64(txtBultosDictaMaya.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimDictaMaya", Convert.ToDouble(txtPesoPrimDictaMaya.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutDictaMaya", Convert.ToDouble(txtPesoBrutDictaMaya.Text))
+                Else
+                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya", DDL_DictaMaya.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Certificado", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaMaya_Comercial", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtDictaMayaHumedad", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtBultosDictaMaya", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimDictaMaya", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutDictaMaya", DBNull.Value)
+                End If
+
+                If DDL_DictaVictoria.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria", DDL_DictaVictoria.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Certificado", DDL_DictaVictoria_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Comercial", DDL_DictaVictoria_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtDictaVictoriaHumedad", Convert.ToDouble(txtDictaVictoriaHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosDictaVictoria", Convert.ToInt64(txtBultosDictaVictoria.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimDictaVictoria", Convert.ToDouble(txtPesoPrimDictaVictoria.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutDictaVictoria", Convert.ToDouble(txtPesoBrutDictaVictoria.Text))
+                Else
+                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria", DDL_DictaVictoria.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Certificado", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@DDL_DictaVictoria_Comercial", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtDictaVictoriaHumedad", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtBultosDictaVictoria", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimDictaVictoria", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutDictaVictoria", DBNull.Value)
+                End If
+
+                If DDL_OtravariedadM.SelectedItem.Text = "Si" Then
+                    cmd2.Parameters.AddWithValue("@txtOtravariedadM", txtOtravariedadM.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Certificado", DDL_OtravariedadM_Certificado.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Comercial", DDL_OtravariedadM_Comercial.SelectedItem.Text)
+                    cmd2.Parameters.AddWithValue("@txtOtravariedadMHumedad", Convert.ToDouble(txtOtravariedadMHumedad.Text))
+                    cmd2.Parameters.AddWithValue("@txtBultosOtravariedadM", Convert.ToInt64(txtBultosOtravariedadM.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedadM", Convert.ToDouble(txtPesoPrimOtravariedadM.Text))
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedadM", Convert.ToDouble(txtPesoBrutOtravariedadM.Text))
+                Else
+                    cmd2.Parameters.AddWithValue("@txtOtravariedadM", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Certificado", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@DDL_OtravariedadM_Comercial", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtOtravariedadMHumedad", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtBultosOtravariedadM", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedadM", DBNull.Value)
+                    cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedadM", DBNull.Value)
+                End If
+
+                cmd2.Parameters.AddWithValue("@DDL_Amadeus", DDL_Amadeus.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Amadeus_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Amadeus_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtAmadeusHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosAmadeus", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimAmadeus", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutAmadeus", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Carrizalito", DDL_Carrizalito.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Carrizalito_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtCarrizalitoHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosCarrizalito", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimCarrizalito", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutCarrizalito", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Deorho", DDL_Deorho.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Deorho_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Deorho_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtDeorhoHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosDeorho", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimDeorho", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutDeorho", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Azabache", DDL_Azabache.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Azabache_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Azabache_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtAzabacheHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosAzabache", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimAzabache", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutAzabache", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2", DDL_ParaisitoMejoradoPM2.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_ParaisitoMejoradoPM2_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtParaisitoMejoradoPM2Humedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosParaisitoMejoradoPM2", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimParaisitoMejoradoPM2", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutParaisitoMejoradoPM2", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo", DDL_Hondurasnutritivo.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Hondurasnutritivo_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtHondurasnutritivoHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosHondurasnutritivo", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimHondurasnutritivo", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutHondurasnutritivo", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_IntaCardenas", DDL_IntaCardenas.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_IntaCardenas_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtIntaCardenasHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosIntaCardenas", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimIntaCardenas", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutIntaCardenas", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz", DDL_Lencaprecoz.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Lencaprecoz_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtLencaprecozHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosLencaprecoz", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimLencaprecoz", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutLencaprecoz", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Rojochorti", DDL_Rojochorti.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Rojochorti_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtRojochortiHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosRojochorti", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimRojochorti", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutRojochorti", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo", DDL_Tolupanrojo.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Tolupanrojo_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtTolupanrojoHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosTolupanrojo", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimTolupanrojo", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutTolupanrojo", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtOtravariedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Certificado", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@DDL_Otravariedad_Comercial", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtOtravariedadHumedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtBultosOtravariedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoPrimOtravariedad", DBNull.Value)
+                cmd2.Parameters.AddWithValue("@txtPesoBrutOtravariedad", DBNull.Value)
+
+                cmd2.ExecuteNonQuery()
+                conex.Close()
+
+                'Response.Redirect(String.Format("~/pages/ActaRecepcionSemilla.aspx"))
+
+                llenagrid()
+            End If
+
+            Label103.Text = "El Acta de Recepcion de semilla ha sido editada con exito"
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
 End Class
