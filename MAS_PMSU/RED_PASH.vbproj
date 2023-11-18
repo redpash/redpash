@@ -348,6 +348,17 @@
     <Content Include="data\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="data\acta_recepcion.xsc">
+      <DependentUpon>acta_recepcion.xsd</DependentUpon>
+    </Content>
+    <None Include="data\acta_recepcion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>acta_recepcion.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\acta_recepcion.xss">
+      <DependentUpon>acta_recepcion.xsd</DependentUpon>
+    </Content>
     <None Include="data\DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -392,6 +403,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BDCrystal.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data\acta_recepcion.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>acta_recepcion.xsd</DependentUpon>
     </Compile>
     <Compile Include="data\DataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
