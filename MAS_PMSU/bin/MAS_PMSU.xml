@@ -447,6 +447,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._txtCodDep">
+<summary>
+Control txtCodDep.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudMuestreoSemilla._gb_departamento_new">
 <summary>
 Control gb_departamento_new.
@@ -459,6 +468,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudMuestreoSemilla._lb_mun_new">
 <summary>
 Control lb_mun_new.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._TxtCodMun">
+<summary>
+Control TxtCodMun.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -783,6 +801,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudMuestreoSemilla._TxtLoteSemi">
 <summary>
 Control TxtLoteSemi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._Txtcount">
+<summary>
+Control Txtcount.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -16593,6 +16620,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._txtCodDep">
+<summary>
+Control txtCodDep.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._gb_departamento_new">
 <summary>
 Control gb_departamento_new.
@@ -16605,6 +16641,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._lb_mun_new">
 <summary>
 Control lb_mun_new.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._TxtCodMun">
+<summary>
+Control TxtCodMun.
 </summary>
 <remarks>
 Campo generado automáticamente.

@@ -4,6 +4,7 @@ Imports System.Net.Mail
 Imports System.Net.Mime
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.[Shared].Json
+Imports DocumentFormat.OpenXml.Drawing.Spreadsheet
 Imports DocumentFormat.OpenXml.Office.Word
 Imports MySql.Data.MySqlClient
 
@@ -91,6 +92,7 @@ Public Class SolicitudMuestreoSemilla
         Dim newitem As New ListItem(" ", " ")
         gb_departamento_new.Items.Insert(0, newitem)
 
+
         DDL_Depto.DataSource = DtCombo
         DDL_Depto.DataValueField = DtCombo.Columns(0).ToString()
         DDL_Depto.DataTextField = DtCombo.Columns(2).ToString
@@ -109,7 +111,7 @@ Public Class SolicitudMuestreoSemilla
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
-
+            txtCodDep.Text = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString
             codigoDepartamento = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString()
             Return codigoDepartamento
         End If
@@ -121,12 +123,12 @@ Public Class SolicitudMuestreoSemilla
     Private Function DevolverValorMuni(cadena As String)
         If gb_municipio_new.SelectedItem.Text <> "" Then
             Dim codigoMunicipio As String = ""
-            Dim StrCombo As String = "SELECT CODIGO_MUNICIPIO FROM tb_municipio WHERE NOMBRE = @nombre"
+            Dim StrCombo As String = "SELECT CODIGO_MUNICIPIO FROM tb_municipio WHERE NOMBRE = @nombre AND CODIGO_DEPARTAMENTO = '" & txtCodDep.Text & "'"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
-
+            TxtCodMun.Text = DtCombo.Rows(0)("CODIGO_MUNICIPIO").ToString
             codigoMunicipio = DtCombo.Rows(0)("CODIGO_MUNICIPIO").ToString()
             Return codigoMunicipio
         End If
@@ -137,7 +139,7 @@ Public Class SolicitudMuestreoSemilla
     Private Function DevolverValorAlde(cadena As String)
         If gb_aldea_new.SelectedItem.Text <> "" Then
             Dim codigoCaserio As String = ""
-            Dim StrCombo As String = "SELECT CODIGO_ALDEA FROM tb_aldea WHERE NOMBRE = @nombre"
+            Dim StrCombo As String = "SELECT CODIGO_ALDEA FROM tb_aldea WHERE NOMBRE = @nombre AND CODIGO_MUNICIPIO = '" & TxtCodMun.Text & "'"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
             Dim DtCombo As New DataTable
@@ -170,6 +172,7 @@ Public Class SolicitudMuestreoSemilla
     Private Sub llenarAldea()
         'If gb_departamento_new.SelectedItem.Text <> " " Then
         Dim municipio As String = DevolverValorMuni(gb_municipio_new.SelectedItem.Text)
+
         Dim StrCombo As String = "SELECT * FROM tb_aldea WHERE CODIGO_MUNICIPIO = " & municipio & ""
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -345,7 +348,13 @@ Public Class SolicitudMuestreoSemilla
                     Dim ultimasLetrasCiclo As String = cicloSeleccionado.Substring(cicloSeleccionado.Length - 1, 1) & cicloSeleccionado.Substring(cicloSeleccionado.Length - 10, 2)
 
                     ' Obtener numero de lote
-                    Dim nlote As String = "-L-"
+                    Llenar_Lote(TxtProductor.SelectedItem.Text)
+                    Dim nlote As String
+                    If Txtcount.Text <> "" Then
+                        nlote = "-L" & Txtcount.Text & "-"
+                    Else
+                        nlote = ""
+                    End If
 
                     ' Construir el texto para TxtLoteSemi
                     Dim textoLoteSemi As String = "RP-" & primeras3LetrasDepartamento & "-" & inicialesProductor & nlote & ultimasLetrasCiclo
@@ -354,6 +363,23 @@ Public Class SolicitudMuestreoSemilla
                     TxtLoteSemi.Text = textoLoteSemi
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub Llenar_Lote(ByVal valor As String)
+        Dim strCombo As String = "SELECT COUNT(*) AS lote FROM solicitud_muestreo_semilla WHERE productor = @valor"
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", valor)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
+            Dim total As Integer = DtCombo.Rows(0)("lote")
+            total += 1
+            Txtcount.Text = total.ToString()
+        Else
+            Dim total1 As Integer = 1
+            Txtcount.Text = total1.ToString()
         End If
     End Sub
 

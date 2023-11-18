@@ -293,6 +293,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents lb_dept_new As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Control txtCodDep.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCodDep As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control gb_departamento_new.
     '''</summary>
     '''<remarks>
@@ -309,6 +318,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lb_mun_new As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtCodMun.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtCodMun As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control gb_municipio_new.

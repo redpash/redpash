@@ -640,6 +640,8 @@ Public Class Ventas
         If txt_qq.Text <> "" Then
             calcular_venta()
             VALIDAR_ENTREGAS()
+        Else
+            txt_qq.Text = 0
         End If
     End Sub
 
@@ -647,6 +649,8 @@ Public Class Ventas
         If txt_precio.Text <> "" Then
             calcular_venta()
             VALIDAR_ENTREGAS()
+        Else
+            txt_precio.Text = 0
         End If
     End Sub
 
@@ -659,6 +663,8 @@ Public Class Ventas
         If txt_qq_consumo.Text <> "" Then
             calcular_venta_consumo()
             VALIDAR_ENTREGAS()
+        Else
+            txt_qq_consumo.Text = 0
         End If
     End Sub
 
@@ -666,6 +672,8 @@ Public Class Ventas
         If txt_precio_consumo.Text <> "" Then
             calcular_venta_consumo()
             VALIDAR_ENTREGAS()
+        Else
+            txt_precio_consumo.Text = 0
         End If
     End Sub
 
@@ -708,6 +716,8 @@ Public Class Ventas
         If TXT_QQ_VENTA_GRANO.Text <> "" Then
             VALIDAR_ENTREGAS()
             calcular_venta_grano()
+        Else
+            TXT_QQ_VENTA_GRANO.Text = 0
         End If
     End Sub
 
@@ -715,6 +725,8 @@ Public Class Ventas
         If TXT_QQ_GRANO_CONSUMO.Text <> "" Then
             VALIDAR_ENTREGAS()
             calcular_venta_consumo_grano()
+        Else
+            TXT_QQ_GRANO_CONSUMO.Text = 0
         End If
     End Sub
 
@@ -722,6 +734,8 @@ Public Class Ventas
         If TXT_PRECIO_GRANO.Text <> "" Then
             VALIDAR_ENTREGAS()
             calcular_venta_grano()
+        Else
+            TXT_PRECIO_GRANO.Text = 0
         End If
     End Sub
 
@@ -740,6 +754,8 @@ Public Class Ventas
         If TXT_PRECIO_GRANO_CONSUMO.Text <> "" Then
             VALIDAR_ENTREGAS()
             calcular_venta_consumo_grano()
+        Else
+            TXT_PRECIO_GRANO_CONSUMO.Text = 0
         End If
     End Sub
 

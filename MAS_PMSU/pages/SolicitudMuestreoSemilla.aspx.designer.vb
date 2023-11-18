@@ -59,6 +59,15 @@ Partial Public Class SolicitudMuestreoSemilla
     Protected WithEvents lb_dept_new As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Control txtCodDep.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCodDep As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control gb_departamento_new.
     '''</summary>
     '''<remarks>
@@ -75,6 +84,15 @@ Partial Public Class SolicitudMuestreoSemilla
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lb_mun_new As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtCodMun.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtCodMun As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control gb_municipio_new.
@@ -399,6 +417,15 @@ Partial Public Class SolicitudMuestreoSemilla
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtLoteSemi As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Txtcount.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Txtcount As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label5.

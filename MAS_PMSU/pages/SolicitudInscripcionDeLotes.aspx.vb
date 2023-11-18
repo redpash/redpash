@@ -253,7 +253,7 @@ Public Class SolicitudInscripcionDeLotes
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
-
+            txtCodDep.Text = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString
             codigoDepartamento = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString()
             Return codigoDepartamento
         End If
@@ -265,12 +265,12 @@ Public Class SolicitudInscripcionDeLotes
     Private Function DevolverValorMuni(cadena As String)
         If gb_municipio_new.SelectedItem.Text <> "" Then
             Dim codigoMunicipio As String = ""
-            Dim StrCombo As String = "SELECT CODIGO_MUNICIPIO FROM tb_municipio WHERE NOMBRE = @nombre"
+            Dim StrCombo As String = "SELECT CODIGO_MUNICIPIO FROM tb_municipio WHERE NOMBRE = @nombre AND CODIGO_DEPARTAMENTO = '" & txtCodDep.Text & "'"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
-
+            TxtCodMun.Text = DtCombo.Rows(0)("CODIGO_MUNICIPIO").ToString
             codigoMunicipio = DtCombo.Rows(0)("CODIGO_MUNICIPIO").ToString()
             Return codigoMunicipio
         End If
@@ -281,7 +281,7 @@ Public Class SolicitudInscripcionDeLotes
     Private Function DevolverValorAlde(cadena As String)
         If gb_aldea_new.SelectedItem.Text <> "" Then
             Dim codigoCaserio As String = ""
-            Dim StrCombo As String = "SELECT CODIGO_ALDEA FROM tb_aldea WHERE NOMBRE = @nombre"
+            Dim StrCombo As String = "SELECT CODIGO_ALDEA FROM tb_aldea WHERE NOMBRE = @nombre AND CODIGO_MUNICIPIO = '" & TxtCodMun.Text & "'"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
             Dim DtCombo As New DataTable

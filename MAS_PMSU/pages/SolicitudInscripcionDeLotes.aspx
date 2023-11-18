@@ -124,6 +124,7 @@
                             <div class="form-group">
                                 <label>Departamento</label>
                                 <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtCodDep" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
                                 <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
                                     <asp:ListItem Text=" "></asp:ListItem>
                                 </asp:DropDownList>
@@ -133,6 +134,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TxtCodMun" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
                                 <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
                                     <asp:ListItem Text=" "></asp:ListItem>
                                 </asp:DropDownList>
