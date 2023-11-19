@@ -131,7 +131,9 @@
     <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -370,6 +372,17 @@
     <Content Include="data\DataSetLotes.xsc">
       <DependentUpon>DataSetLotes.xsd</DependentUpon>
     </Content>
+    <Content Include="data\muestreo_semilla.xsc">
+      <DependentUpon>muestreo_semilla.xsd</DependentUpon>
+    </Content>
+    <None Include="data\muestreo_semilla.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>muestreo_semilla.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\muestreo_semilla.xss">
+      <DependentUpon>muestreo_semilla.xsd</DependentUpon>
+    </Content>
     <None Include="data\DataSetLotes.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -416,6 +429,11 @@
     </Compile>
     <Compile Include="data\DataSet1.vb">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data\muestreo_semilla.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>muestreo_semilla.xsd</DependentUpon>
     </Compile>
     <Compile Include="data\DataSetLotes.Designer.vb">
       <AutoGen>True</AutoGen>

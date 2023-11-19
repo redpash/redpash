@@ -55,7 +55,7 @@ Public Class SolicitudMuestreoSemilla
         TxtProductor.DataValueField = DtCombo.Columns(0).ToString()
         TxtProductor.DataTextField = DtCombo.Columns(0).ToString
         TxtProductor.DataBind()
-        Dim newitem2 As New ListItem(" ", " ")
+        Dim newitem2 As New ListItem("", "")
         TxtProductor.Items.Insert(0, newitem2)
     End Sub
     Private Sub llenarcomboCiclo()
@@ -68,14 +68,14 @@ Public Class SolicitudMuestreoSemilla
         TxtCiclo.DataValueField = DtCombo.Columns(0).ToString()
         TxtCiclo.DataTextField = DtCombo.Columns(1).ToString
         TxtCiclo.DataBind()
-        Dim newitem As New ListItem(" ", " ")
+        Dim newitem As New ListItem("", "")
         TxtCiclo.Items.Insert(0, newitem)
 
         DDL_Ciclo.DataSource = DtCombo
         DDL_Ciclo.DataValueField = DtCombo.Columns(0).ToString()
         DDL_Ciclo.DataTextField = DtCombo.Columns(1).ToString
         DDL_Ciclo.DataBind()
-        Dim newitem2 As New ListItem(" ", " ")
+        Dim newitem2 As New ListItem("", "")
         DDL_Ciclo.Items.Insert(0, newitem2)
         'VerificarTextBox()
     End Sub
@@ -89,7 +89,7 @@ Public Class SolicitudMuestreoSemilla
         gb_departamento_new.DataValueField = DtCombo.Columns(0).ToString()
         gb_departamento_new.DataTextField = DtCombo.Columns(2).ToString
         gb_departamento_new.DataBind()
-        Dim newitem As New ListItem(" ", " ")
+        Dim newitem As New ListItem("", "")
         gb_departamento_new.Items.Insert(0, newitem)
 
 
@@ -97,7 +97,7 @@ Public Class SolicitudMuestreoSemilla
         DDL_Depto.DataValueField = DtCombo.Columns(0).ToString()
         DDL_Depto.DataTextField = DtCombo.Columns(2).ToString
         DDL_Depto.DataBind()
-        Dim newitem2 As New ListItem(" ", " ")
+        Dim newitem2 As New ListItem("", "")
         DDL_Depto.Items.Insert(0, newitem2)
         'VerificarTextBox()
     End Sub
@@ -163,7 +163,7 @@ Public Class SolicitudMuestreoSemilla
         gb_municipio_new.DataValueField = DtCombo.Columns(0).ToString()
         gb_municipio_new.DataTextField = DtCombo.Columns(3).ToString
         gb_municipio_new.DataBind()
-        Dim newitem As New ListItem(" ", " ")
+        Dim newitem As New ListItem("", "")
         gb_municipio_new.Items.Insert(0, newitem)
         'VerificarTextBox()
         'End If
@@ -182,7 +182,7 @@ Public Class SolicitudMuestreoSemilla
         gb_aldea_new.DataValueField = DtCombo.Columns(0).ToString()
         gb_aldea_new.DataTextField = DtCombo.Columns(3).ToString
         gb_aldea_new.DataBind()
-        Dim newitem As New ListItem(" ", " ")
+        Dim newitem As New ListItem("", "")
         gb_aldea_new.Items.Insert(0, newitem)
         'VerificarTextBox()
         'End If
@@ -200,7 +200,7 @@ Public Class SolicitudMuestreoSemilla
         gb_caserio_new.DataValueField = DtCombo.Columns(0).ToString()
         gb_caserio_new.DataTextField = DtCombo.Columns(5).ToString
         gb_caserio_new.DataBind()
-        Dim newitem As New ListItem(" ", " ")
+        Dim newitem As New ListItem("", "")
         gb_caserio_new.Items.Insert(0, newitem)
         'VerificarTextBox()
         'End If
@@ -249,21 +249,31 @@ Public Class SolicitudMuestreoSemilla
             validarflag = 1
         End If
 
-        If (DDL_VariedadF.SelectedItem.Text = "") Then
-            Label3.Text = "*"
-            validarflag = 0
-        Else
-            Label3.Text = ""
-            validarflag = 1
+        If CmbTipoSemilla.SelectedItem.Text = "Frijol" Then
+            If (DDL_VariedadF.SelectedItem.Text = "") Then
+                Label3.Text = "*"
+                validarflag = 0
+            Else
+                Label3.Text = ""
+                validarflag = 1
+            End If
+        ElseIf CmbTipoSemilla.SelectedItem.Text = "Maiz" Then
+            If (DDL_VariedadM.SelectedItem.Text = "") Then
+                Label4.Text = "*"
+                validarflag = 0
+            Else
+                Label4.Text = ""
+                validarflag = 1
+            End If
         End If
 
-        If (DDL_VariedadM.SelectedItem.Text = "") Then
-            Label4.Text = "*"
-            validarflag = 0
-        Else
-            Label4.Text = ""
-            validarflag = 1
-        End If
+        'If (DDL_VariedadM.SelectedItem.Text = "") Then
+        '    Label4.Text = "*"
+        '    validarflag = 0
+        'Else
+        '    Label4.Text = ""
+        '    validarflag = 1
+        'End If
 
         If (gb_departamento_new.SelectedItem.Text = "") Then
             lb_dept_new.Text = "*"
@@ -389,17 +399,17 @@ Public Class SolicitudMuestreoSemilla
         Dim c1 As String = ""
         Dim c2 As String = ""
 
-        If (TxtProductor.SelectedItem.Text = " ") Then
-            c1 = " "
-        Else
-            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
-        End If
-
-        If (CmbTipoSemilla.SelectedItem.Text = " ") Then
-            c2 = " "
-        Else
-            c2 = "AND cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
-        End If
+        ' If (TxtProductor.SelectedItem.Text = "") Then
+        '     c1 = " "
+        ' Else
+        '     c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
+        ' End If
+        '
+        ' If (CmbTipoSemilla.SelectedItem.Text = "") Then
+        '     c2 = " "
+        ' Else
+        '     c2 = "AND cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
+        ' End If
 
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & "ORDER BY productor,cultivo"
 
@@ -501,25 +511,19 @@ Public Class SolicitudMuestreoSemilla
     End Sub
 
     Protected Sub btnGuardarActa_Click(sender As Object, e As EventArgs)
+
         ' Verifica si los elementos no están vacíos
-        If validarflag = 0 Then
 
-            validarflag = 0
-            VerificarTextBox()
-            If validarflag = 0 Then
-                btnGuardarActa.Visible = False
-                BtnImprimir.Visible = True
-                BtnNuevo.Visible = True
+        validarflag = 0
+        VerificarTextBox()
+        If validarflag = 1 Then
+            btnGuardarActa.Visible = False
+            BtnImprimir.Visible = True
 
-                'Funcion para guardar en la BD
-                GuardarMuestreo()
-
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-            Else
-                Label103.Text = "Debe ingresar toda la informacion primero"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-            End If
-
+            'Funcion para guardar en la BD
+            GuardarMuestreo()
+            Label103.Text = "Se ha ingresado la solicitud de muestreo"
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         Else
             Label103.Text = "Debe ingresar toda la informacion primero"
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -554,7 +558,7 @@ Public Class SolicitudMuestreoSemilla
 
     End Sub
     Protected Sub Verificar()
-        If (DDL_Ciclo.SelectedItem.Text = " ") Then
+        If (DDL_Ciclo.SelectedItem.Text = "") Then
             Label11.Text = "*"
             validarflag2 = 0
         Else
@@ -562,7 +566,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 1
         End If
 
-        If (DDL_Depto.SelectedItem.Text = " ") Then
+        If (DDL_Depto.SelectedItem.Text = "") Then
             Label12.Text = "*"
             validarflag2 = 0
         Else

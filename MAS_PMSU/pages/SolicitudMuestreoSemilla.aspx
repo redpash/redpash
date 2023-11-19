@@ -23,8 +23,8 @@
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:Label ID="Label7" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtCiclo" runat="server" AutoPostBack="false" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                <asp:DropDownList CssClass="form-control" ID="TxtCiclo" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -34,9 +34,9 @@
                             <div class="form-group">
                                 <label>Departamento</label>
                                 <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCodDep" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtCodDep" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false" CausesValidation="false"></asp:TextBox>
                                 <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -44,9 +44,9 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtCodMun" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtCodMun" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false" CausesValidation="false"></asp:TextBox>
                                 <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                 <label>Aldea</label>
                                 <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                 <label>Caserio</label>
                                 <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                 <label>Seleccione Productor:</label>
                                 <asp:Label ID="Label8" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductor" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                 <label>Selecciones Cultivo:</label><asp:Label ID="Label2" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="Label9" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="CmbTipoSemilla" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CmbTipoSemilla_SelectedIndexChanged">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                     <asp:ListItem id="Frijol" Text="Frijol"></asp:ListItem>
                                     <asp:ListItem id="Maiz" Text="Maiz"></asp:ListItem>
                                 </asp:DropDownList>
@@ -101,7 +101,7 @@
                                     <div class="form-group">
                                         <label>Variedad Frijol</label>
                                         <asp:Label ID="Label3" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="DDL_VariedadF" runat="server" AutoPostBack="false" OnSelectedIndexChanged="VerificarTextBox">
+                                        <asp:DropDownList CssClass="form-control" ID="DDL_VariedadF" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
                                             <asp:ListItem Text=""></asp:ListItem>
                                             <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
                                             <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
@@ -122,7 +122,7 @@
                                 <div class="form-group">
                                     <label>Variedades Maiz</label>
                                     <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDL_VariedadM" runat="server" AutoPostBack="false" OnSelectedIndexChanged="VerificarTextBox">
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_VariedadM" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
                                         <asp:ListItem Text=""></asp:ListItem>
                                         <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
                                         <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
@@ -137,8 +137,8 @@
                             <div class="form-group">
                                 <label>Seleccione Categoria:</label>
                                 <asp:Label ID="Label10" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="DDL_Categ" runat="server" AutoPostBack="false" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_Categ" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                    <asp:ListItem Text=""></asp:ListItem>
                                     <asp:ListItem Text="Basica"></asp:ListItem>
                                     <asp:ListItem Text="Certificada"></asp:ListItem>
                                     <asp:ListItem Text="Registrada"></asp:ListItem>
@@ -152,7 +152,7 @@
                                 <label for="txt">Lote de Produccion de Semilla:</label>
                                 <asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtLoteSemi" runat="server" AutoPostBack="true" ReadOnly="true"></asp:TextBox>
-                                <asp:TextBox CssClass="form-control" ID="Txtcount" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Txtcount" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false" CausesValidation="false"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             <div class="form-group">
                                 <label for="txt">Fecha de la cosecha:</label>
                                 <asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtFechCose" runat="server" AutoPostBack="false" TextMode="Date" OnTextChanged="VerificarTextbox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtFechCose" runat="server" AutoPostBack="true" TextMode="Date" OnTextChanged="VerificarTextbox"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -170,14 +170,14 @@
                             <div class="form-group">
                                 <label for="txt">Cantidad de quintales cosechados::</label>
                                 <asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtQQCose" runat="server" AutoPostBack="false" TextMode="Number" OnTextChanged="VerificarTextbox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtQQCose" runat="server" AutoPostBack="true" TextMode="Number" OnTextChanged="VerificarTextbox"></asp:TextBox>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="BtnNewActa" runat="server" Text="Guardar registro de muestreo de semilla" Visible="true" OnClick="BtnNewActa_Click" />
+                                <asp:Button CssClass="btn btn-primary" ID="BtnNewActa" runat="server" Text="Guardar registro de muestreo de semilla" Visible="true" OnClick="btnGuardarActa_Click" />
                             </div>
                         </div>
                     </div>
@@ -325,7 +325,7 @@
                     <div class="row">
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Regresar" OnClick="vaciar"/>
+                                <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Regresar" OnClick="vaciar" Visible="false"/>
                             </div>
                         </div>
                     </div>
@@ -339,7 +339,7 @@
         <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
         <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-        <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="false" OnClick="btnGuardarActa_Click" />
+        <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="false" />
     </div>
 
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2" aria-hidden="true">
@@ -357,5 +357,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
