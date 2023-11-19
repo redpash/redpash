@@ -50,6 +50,24 @@ Partial Public Class SolicitudMuestreoSemilla
     Protected WithEvents TxtCiclo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control Label8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtProductor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtProductor As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control lb_dept_new.
     '''</summary>
     '''<remarks>
@@ -138,24 +156,6 @@ Partial Public Class SolicitudMuestreoSemilla
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents gb_caserio_new As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control Label8.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control TxtProductor.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtProductor As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control Label2.

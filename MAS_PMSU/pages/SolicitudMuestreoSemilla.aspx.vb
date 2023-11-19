@@ -325,15 +325,15 @@ Public Class SolicitudMuestreoSemilla
         End If
 
         generarlote()
-
+        llenagrid()
     End Sub
     Protected Sub generarlote()
         ' Verificar si se ha seleccionado algo en TxtCiclo
         If TxtCiclo.SelectedIndex > 0 Then
             ' Verificar si se ha seleccionado algo en gb_departamento_new
-            If gb_departamento_new.SelectedIndex > 0 Then
-                ' Verificar si se ha seleccionado algo en TxtProductor
-                If TxtProductor.SelectedIndex > 0 Then
+            'If gb_departamento_new.SelectedIndex > 0 Then
+            ' Verificar si se ha seleccionado algo en TxtProductor
+            If TxtProductor.SelectedIndex > 0 Then
                     ' Obtener el valor seleccionado en TxtCiclo
                     Dim cicloSeleccionado As String = TxtCiclo.SelectedItem.Text
 
@@ -365,7 +365,7 @@ Public Class SolicitudMuestreoSemilla
                     ' Asignar el texto a TxtLoteSemi
                     TxtLoteSemi.Text = textoLoteSemi
                 End If
-            End If
+            'End If
         End If
     End Sub
 
@@ -440,7 +440,7 @@ Public Class SolicitudMuestreoSemilla
             c7 = "AND caserio = '" & gb_caserio_new.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & c6 & c7 & " ORDER BY productor"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & c6 & c7 & " ORDER BY id DESC"
 
     End Sub
 
@@ -459,8 +459,26 @@ Public Class SolicitudMuestreoSemilla
         VerificarTextBox()
     End Sub
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(TxtProductor.SelectedValue) Then
+            Dim cadena As String = TxtProductor.SelectedItem.Text
+            Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = '" & cadena & "'"
+
+            Using adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+                Dim DtCombo As New DataTable
+                adaptcombo.Fill(DtCombo)
+                If DtCombo.Rows.Count > 0 Then
+                    gb_departamento_new.SelectedItem.Text = DtCombo.Rows(0)("Depto_Descripcion").ToString
+                    gb_municipio_new.SelectedItem.Text = DtCombo.Rows(0)("Muni_Descripcion").ToString
+                    gb_aldea_new.SelectedItem.Text = DtCombo.Rows(0)("Aldea_Descripcion").ToString
+                    gb_caserio_new.SelectedItem.Text = DtCombo.Rows(0)("Caserio_Descripcion").ToString
+                End If
+            End Using
+        End If
+
         llenagrid()
+        VerificarTextBox()
     End Sub
+
 
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
 
@@ -705,5 +723,6 @@ Public Class SolicitudMuestreoSemilla
         Div2.Style.Add("display", "none")
         DivGrid.Style.Add("display", "none")
     End Sub
+
 End Class
 
