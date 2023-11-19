@@ -500,6 +500,24 @@ Partial Public Class SolicitudMuestreoSemilla
     Protected WithEvents GridDatos As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''Control Div2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Div2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control BtnSoliMuesSemi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BtnSoliMuesSemi As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control Div1.
     '''</summary>
     '''<remarks>
@@ -554,13 +572,31 @@ Partial Public Class SolicitudMuestreoSemilla
     Protected WithEvents Label15 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control TxtPara.
+    '''Control TxtNombComp.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtPara As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TxtNombComp As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label16.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label16 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtNombCarg.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtNombCarg As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label11.

@@ -328,6 +328,71 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSet2">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2.solicitud_muestreo_semillaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2.solicitud_muestreo_semillaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2.solicitud_muestreo_semillaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2TableAdapters.solicitud_muestreo_semillaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.UpdateUpdatedRows(MAS_PMSU.DataSet2,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.UpdateInsertedRows(MAS_PMSU.DataSet2,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.UpdateDeletedRows(MAS_PMSU.DataSet2,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.UpdateAll(MAS_PMSU.DataSet2)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSet2TableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetLotes">
 <summary>
 Represents a strongly typed in-memory cache of data.
@@ -888,6 +953,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._Div2">
+<summary>
+Control Div2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._BtnSoliMuesSemi">
+<summary>
+Control BtnSoliMuesSemi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.SolicitudMuestreoSemilla._Div1">
 <summary>
 Control Div1.
@@ -942,9 +1025,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._TxtPara">
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._TxtNombComp">
 <summary>
-Control TxtPara.
+Control TxtNombComp.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._Label16">
+<summary>
+Control Label16.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudMuestreoSemilla._TxtNombCarg">
+<summary>
+Control TxtNombCarg.
 </summary>
 <remarks>
 Campo generado automáticamente.

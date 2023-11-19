@@ -21,7 +21,8 @@ Public Class SolicitudMuestreoSemilla
 
             Else
                 'txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
-                'DivActa.Style.Add("display", "none")
+                Div1.Style.Add("display", "none")
+                Div2.Style.Add("display", "block")
                 DivGrid.Style.Add("display", "block")
                 llenarcomboDepto()
                 llenarcomboCiclo()
@@ -267,14 +268,6 @@ Public Class SolicitudMuestreoSemilla
             End If
         End If
 
-        'If (DDL_VariedadM.SelectedItem.Text = "") Then
-        '    Label4.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    Label4.Text = ""
-        '    validarflag = 1
-        'End If
-
         If (gb_departamento_new.SelectedItem.Text = "") Then
             lb_dept_new.Text = "*"
             validarflag = 0
@@ -398,20 +391,56 @@ Public Class SolicitudMuestreoSemilla
         Dim cadena As String = "ID, productor, departamento, municipio, aldea, caserio, ciclo, cultivo, variedadFrijol, variedadMaiz, categoria, lote_produc_semilla, cantidad_QQ_cosechada, DATE_FORMAT(FECHA, '%d-%m-%Y') AS FECHA_COSECHA"
         Dim c1 As String = ""
         Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
 
-        ' If (TxtProductor.SelectedItem.Text = "") Then
-        '     c1 = " "
-        ' Else
-        '     c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
-        ' End If
-        '
-        ' If (CmbTipoSemilla.SelectedItem.Text = "") Then
-        '     c2 = " "
-        ' Else
-        '     c2 = "AND cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
-        ' End If
+        If (TxtProductor.SelectedItem.Text = "") Then
+            c1 = " "
+        Else
+            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & "ORDER BY productor,cultivo"
+        If (CmbTipoSemilla.SelectedItem.Text = "") Then
+            c2 = " "
+        Else
+            c2 = "AND cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = "") Then
+            c3 = " "
+        Else
+            c3 = "AND ciclo = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (gb_departamento_new.SelectedItem.Text = "") Then
+            c4 = " "
+        Else
+            c4 = "AND departamento = '" & gb_departamento_new.SelectedItem.Text & "' "
+        End If
+
+        If (gb_municipio_new.SelectedItem.Text = "") Then
+            c5 = " "
+        Else
+            c5 = "AND municipio = '" & gb_municipio_new.SelectedItem.Text & "' "
+        End If
+
+        If (gb_aldea_new.SelectedItem.Text = "") Then
+            c6 = " "
+        Else
+            c6 = "AND aldea = '" & gb_aldea_new.SelectedItem.Text & "' "
+        End If
+
+        If (gb_caserio_new.SelectedItem.Text = "") Then
+            c7 = " "
+        Else
+            c7 = "AND caserio = '" & gb_caserio_new.SelectedItem.Text & "' "
+        End If
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & c6 & c7 & " ORDER BY productor"
 
     End Sub
 
@@ -536,16 +565,31 @@ Public Class SolicitudMuestreoSemilla
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetLotes
-            Dim Str As String = "SELECT * FROM solicitud_inscripcion_delotes WHERE nombre_lote = @valor"
+            Dim Str As String = "SELECT * FROM solicitud_muestreo_semilla WHERE ciclo = @ciclo AND departamento = @departamento"
             Dim adap As New MySqlDataAdapter(Str, conn)
-            adap.SelectCommand.Parameters.AddWithValue("@valor", TxtProductor.Text)
+            adap.SelectCommand.Parameters.AddWithValue("@ciclo", DDL_Ciclo.SelectedItem.Text)
+            adap.SelectCommand.Parameters.AddWithValue("@departamento", DDL_Depto.SelectedItem.Text)
             Dim dt As New DataTable
-            adap.Fill(ds, "solicitud_inscripcion_delotes")
+            adap.Fill(ds, "solicitud_muestreo_semilla")
             Dim nombre As String
 
-            nombre = "Solicitud Inscripcion de Lote o Campo _" + Today
-            rptdocument.Load(Server.MapPath("~/pages/Solicitud Inscripcion de Lote.rpt"))
+            nombre = "Solicitud de Muestreo de Semilla_Ciclo_" & DDL_Ciclo.SelectedItem.Text & "_Departamento_" & DDL_Depto.SelectedItem.Text & "_" + Today
+            rptdocument.Load(Server.MapPath("~/pages/SolicitudMuestreoSemillas.rpt"))
             rptdocument.SetDataSource(ds)
+
+            rptdocument.SetParameterValue("Lugar", TxtLugar.Text)
+            rptdocument.SetParameterValue("Fecha", txtFechaSoli.Text)
+            rptdocument.SetParameterValue("NombreCompleto", TxtNombComp.Text)
+            rptdocument.SetParameterValue("Cargo", TxtNombCarg.Text)
+
+            Dim nombrep As String = TxtNombComp.Text
+            ' Dividir la cadena en palabras
+            Dim palabras As String() = nombrep.Split(" "c)
+            ' Tomar la última palabra como el apellido
+            Dim apellido As String = palabras(palabras.Length - 1)
+
+            rptdocument.SetParameterValue("Apellido", apellido)
+
             Response.Buffer = False
             Response.ClearContent()
             Response.ClearHeaders()
@@ -558,7 +602,7 @@ Public Class SolicitudMuestreoSemilla
 
     End Sub
     Protected Sub Verificar()
-        If (DDL_Ciclo.SelectedItem.Text = "") Then
+        If String.IsNullOrEmpty(DDL_Ciclo.SelectedValue) Then
             Label11.Text = "*"
             validarflag2 = 0
         Else
@@ -566,7 +610,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 1
         End If
 
-        If (DDL_Depto.SelectedItem.Text = "") Then
+        If String.IsNullOrEmpty(DDL_Depto.SelectedValue) Then
             Label12.Text = "*"
             validarflag2 = 0
         Else
@@ -590,13 +634,22 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 1
         End If
 
-        If (TxtPara.Text = "") Then
+        If (TxtNombComp.Text = "") Then
             Label15.Text = "*"
             validarflag2 = 0
         Else
             Label15.Text = ""
             validarflag2 = 1
         End If
+
+        If (TxtNombCarg.Text = "") Then
+            Label16.Text = "*"
+            validarflag2 = 0
+        Else
+            Label16.Text = ""
+            validarflag2 = 1
+        End If
+
     End Sub
 
     Protected Sub GuardarMuestreo()
@@ -645,6 +698,12 @@ Public Class SolicitudMuestreoSemilla
         conex.Close()
 
         llenagrid()
+    End Sub
+
+    Protected Sub BtnSoliMuesSemi_Click(sender As Object, e As EventArgs)
+        Div1.Style.Add("display", "block")
+        Div2.Style.Add("display", "none")
+        DivGrid.Style.Add("display", "none")
     End Sub
 End Class
 

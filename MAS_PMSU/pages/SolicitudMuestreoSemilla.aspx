@@ -224,7 +224,7 @@
                                             <HeaderStyle CssClass="hide" />
                                             <ItemStyle CssClass="hide" />
                                         </asp:BoundField>
-                                        
+
                                         <asp:BoundField DataField="productor" HeaderText="PRODUCTOR" />
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
@@ -258,12 +258,30 @@
             </div>
         </div>
     </div>
+    <div id="Div2" runat="server">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Generar Solicitud de Muestreo de Semilla
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <asp:Button CssClass="btn btn-primary" ID="BtnSoliMuesSemi" runat="server" Text="Generar" OnClick="BtnSoliMuesSemi_Click"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="Div1" runat="server">
         <div class="row">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Descargar Solicitud de Muestreo de Semilla
+                    Generar Solicitud de Muestreo de Semilla
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -278,18 +296,25 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Lugar:</label>
+                                <label for="TxtLugar">Lugar:</label>
                                 <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtLugar" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                             </div>
                         </div>
                     </div>
-                                        <div class="row">
+                    <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Para:</label>
+                                <label for="TxtNombComp">Para (nombre):</label>
                                 <asp:Label ID="Label15" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtPara" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtNombComp" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="TxtNombCarg">Cargo:</label>
+                                <asp:Label ID="Label16" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TxtNombCarg" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -299,18 +324,16 @@
                                 <label>Seleccione Ciclo:</label>
                                 <asp:Label ID="Label11" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_Ciclo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Verificar">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Departamento</label>
                                 <asp:Label ID="Label12" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_Depto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Verificar">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:ListItem Text=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -325,7 +348,7 @@
                     <div class="row">
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Regresar" OnClick="vaciar" Visible="false"/>
+                                <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Regresar" OnClick="vaciar"/>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,4 @@
-﻿.
-
-<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="principal.master.vb" Inherits="MAS_PMSU.principal" %>
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="principal.master.vb" Inherits="MAS_PMSU.principal" %>
 
 <head runat="server">
 
@@ -148,19 +146,19 @@
                             </li>
 
                             <li>
-                                <a href="ProduccionCostes.aspx"><i class="fa fa-university"></i> Produccion y Costes</a>
+                                <a href="ProduccionCostes.aspx"><i class="fa fa-briefcase"></i> Produccion y Costes</a>
                             </li>
 
                             <li>
-                                <a href="Ventas.aspx"><i class="fa fa-university"></i> Ventas</a>
+                                <a href="Ventas.aspx"><i class="fa fa-money "></i> Ventas</a>
                             </li>
 
                             <li>
-                                <a href="ActaRecepcionSemilla.aspx"><i class="fa fa-university"></i> Acta de Recepción de Semilla</a>
+                                <a href="ActaRecepcionSemilla.aspx"><i class="fa fa-file-text"></i> Acta de Recepción de Semilla</a>
                             </li>
                             
                             <li>
-                                <a href="SolicitudMuestreoSemilla.aspx"><i class="fa fa-university"></i> Solicitud de Muestreo de Semilla</a>
+                                <a href="SolicitudMuestreoSemilla.aspx"><i class="fa fa-file-text"></i> Solicitud de Muestreo de Semilla</a>
                             </li>
 
                             <li>

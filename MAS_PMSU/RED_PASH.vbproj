@@ -543,6 +543,12 @@
       <DependentUpon>ActaRecepcionSemilla.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="pages\SolicitudMuestreoSemillas.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolicitudMuestreoSemillas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="pages\Ventas.aspx.designer.vb">
       <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
@@ -655,6 +661,10 @@
     <EmbeddedResource Include="pages\Solicitud Inscripcion de Lote.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Solicitud Inscripcion de Lote.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\SolicitudMuestreoSemillas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SolicitudMuestreoSemillas.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
