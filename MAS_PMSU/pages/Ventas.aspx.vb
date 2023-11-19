@@ -167,7 +167,7 @@ Public Class Ventas
     End Sub
 
     Protected Sub limpiarFiltros(sender As Object, e As EventArgs)
-        Response.Redirect("ProduccionCostes.aspx")
+        Response.Redirect("Ventas.aspx")
     End Sub
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
         Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
