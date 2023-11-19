@@ -99,11 +99,10 @@ Public Class RegistrosVentas
         If (e.CommandName = "Eliminar") Then
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim id As String = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString()
 
-            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa_prodcos_new_ventas` WHERE  ID2='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            Dim dt As New DataTable
-            adap.Fill(dt)
+            updateVenta(id)
+
 
         End If
 
@@ -114,19 +113,20 @@ Public Class RegistrosVentas
 
     End Sub
 
-    Protected Sub btn_si_Click(sender As Object, e As EventArgs) Handles btn_si.Click
+    Protected Sub updateVenta(ByVal id As String)
         Dim conex As New MySqlConnection(conn)
 
         conex.Open()
         Dim Sql As String
         Dim cmd2 As New MySqlCommand()
 
-        Sql = "UPDATE ventas_pash SET estado = @estado WHERE ID2 = "
+        Sql = "UPDATE ventas_pash SET estado = @estado WHERE id = @id "
 
         cmd2.Connection = conex
         cmd2.CommandText = Sql
 
         cmd2.Parameters.AddWithValue("@estado", "0")
+        cmd2.Parameters.AddWithValue("@id", id)
 
         cmd2.ExecuteNonQuery()
         conex.Close()

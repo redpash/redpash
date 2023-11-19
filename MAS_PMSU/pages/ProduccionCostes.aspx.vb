@@ -125,8 +125,8 @@ Public Class ProduccionCostes
         If (e.CommandName = "Editar") Then
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-
-            Dim Str As String = "SELECT * FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim cadena As String = "AREA_TERRENO_SEMBRADA_MZ, AREA_TERRENO_SEMBRADA_HA, FECHA_SEMBRO, TUVO_PERDIDA, AREA_TERRENO_PERDIDA_MZ, AREA_TERRENO_PERDIDA_HA, FACT_PERD_PLA_ENFER, FACT_PERD_SEQ_LLUV, FACT_PERD_EXC_LLUV, FACT_PERD_BAJA_GERMI, FACT_PERD_MAL_MANE_CULTI, FACT_PERD_OTROS_FACT, QQ_PRODU_CAMPO, RESULT_CENTRO_PROCES, CANTIDAD_QQ_SEMI, CANTIDAD_QQ_GRANO, CANTIDAD_QQ_BASURA"
+            Dim Str As String = "SELECT " & cadena & " FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -134,35 +134,78 @@ Public Class ProduccionCostes
             nuevo = False
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    limpiarProduccion()
+                    TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
+                    TxtAreaSembHa.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_HA").ToString
+                    Dim fecha As Date
+                    If Date.TryParse(dt.Rows(0)("FECHA_SEMBRO").ToString, fecha) Then
+                        txt_fecha_sembro.Text = fecha.ToString("yyyy-MM-dd")
+                    End If
+                    DDL_perdidas.Text = dt.Rows(0)("TUVO_PERDIDA").ToString
+                    TxtAreaPerdMz.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_MZ").ToString
+                    TxtAreaPerdHa.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_HA").ToString
+                    DropDownList_plaga_enfer.Text = dt.Rows(0)("FACT_PERD_PLA_ENFER").ToString
+                    DropDownList_sequia_lluvia.Text = dt.Rows(0)("FACT_PERD_SEQ_LLUV").ToString
+                    DropDownList_exce_lluvia.Text = dt.Rows(0)("FACT_PERD_EXC_LLUV").ToString
+                    DropDownList_baja_germi.Text = dt.Rows(0)("FACT_PERD_BAJA_GERMI").ToString
+                    DropDownList_mal_culti.Text = dt.Rows(0)("FACT_PERD_MAL_MANE_CULTI").ToString
+                    DropDownList_otros.Text = dt.Rows(0)("FACT_PERD_OTROS_FACT").ToString
+                    TxtQQProd.Text = dt.Rows(0)("QQ_PRODU_CAMPO").ToString
+                    DDL_Procesamiento.Text = dt.Rows(0)("RESULT_CENTRO_PROCES").ToString
+                    TxtSemilla.Text = dt.Rows(0)("CANTIDAD_QQ_SEMI").ToString
+                    TxtGrano.Text = dt.Rows(0)("CANTIDAD_QQ_GRANO").ToString
+                    TxtBasura.Text = dt.Rows(0)("CANTIDAD_QQ_BASURA").ToString
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+                Else
+                    limpiarProduccion()
+                    TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
+                    TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+                End If
+            Next
             'txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
-            If dt.Rows.Count > 0 Then
-                'limpiarCosto()
-                TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
-                TxtAreaSembHa.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_HA").ToString
-                Dim fecha As Date
-                If Date.TryParse(dt.Rows(0)("FECHA_SEMBRO").ToString, fecha) Then
-                    txt_fecha_sembro.Text = fecha.ToString("yyyy-MM-dd")
-                End If
-                DDL_perdidas.Text = dt.Rows(0)("TUVO_PERDIDA").ToString
-                TxtAreaPerdMz.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_MZ").ToString
-                TxtAreaPerdHa.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_HA").ToString
-                DropDownList_plaga_enfer.Text = dt.Rows(0)("FACT_PERD_PLA_ENFER").ToString
-                DropDownList_sequia_lluvia.Text = dt.Rows(0)("FACT_PERD_SEQ_LLUV").ToString
-                DropDownList_exce_lluvia.Text = dt.Rows(0)("FACT_PERD_EXC_LLUV").ToString
-                DropDownList_baja_germi.Text = dt.Rows(0)("FACT_PERD_BAJA_GERMI").ToString
-                DropDownList_mal_culti.Text = dt.Rows(0)("FACT_PERD_MAL_MANE_CULTI").ToString
-                DropDownList_otros.Text = dt.Rows(0)("FACT_PERD_OTROS_FACT").ToString
-                TxtQQProd.Text = dt.Rows(0)("QQ_PRODU_CAMPO").ToString
-                DDL_Procesamiento.Text = dt.Rows(0)("RESULT_CENTRO_PROCES").ToString
-                TxtSemilla.Text = dt.Rows(0)("CANTIDAD_QQ_SEMI").ToString
-                TxtGrano.Text = dt.Rows(0)("CANTIDAD_QQ_GRANO").ToString
-                TxtBasura.Text = dt.Rows(0)("CANTIDAD_QQ_BASURA").ToString
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
-            Else
-                'limpiarCosto()
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
-            End If
+            'If dt.Rows.Count > 0 Then
+            '    limpiarProduccion()
+            '    TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
+            '    TxtAreaSembHa.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_HA").ToString
+            '    Dim fecha As Date
+            '    If Date.TryParse(dt.Rows(0)("FECHA_SEMBRO").ToString, fecha) Then
+            '        txt_fecha_sembro.Text = fecha.ToString("yyyy-MM-dd")
+            '    End If
+            '    DDL_perdidas.Text = dt.Rows(0)("TUVO_PERDIDA").ToString
+            '    TxtAreaPerdMz.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_MZ").ToString
+            '    TxtAreaPerdHa.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_HA").ToString
+            '    DropDownList_plaga_enfer.Text = dt.Rows(0)("FACT_PERD_PLA_ENFER").ToString
+            '    DropDownList_sequia_lluvia.Text = dt.Rows(0)("FACT_PERD_SEQ_LLUV").ToString
+            '    DropDownList_exce_lluvia.Text = dt.Rows(0)("FACT_PERD_EXC_LLUV").ToString
+            '    DropDownList_baja_germi.Text = dt.Rows(0)("FACT_PERD_BAJA_GERMI").ToString
+            '    DropDownList_mal_culti.Text = dt.Rows(0)("FACT_PERD_MAL_MANE_CULTI").ToString
+            '    DropDownList_otros.Text = dt.Rows(0)("FACT_PERD_OTROS_FACT").ToString
+            '    TxtQQProd.Text = dt.Rows(0)("QQ_PRODU_CAMPO").ToString
+            '    DDL_Procesamiento.Text = dt.Rows(0)("RESULT_CENTRO_PROCES").ToString
+            '    TxtSemilla.Text = dt.Rows(0)("CANTIDAD_QQ_SEMI").ToString
+            '    TxtGrano.Text = dt.Rows(0)("CANTIDAD_QQ_GRANO").ToString
+            '    TxtBasura.Text = dt.Rows(0)("CANTIDAD_QQ_BASURA").ToString
+            '    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+            'Else
+            '    limpiarProduccion()
+            '    TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
+            '    TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
+            '    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+            'End If
+
 
             'If txt_habilitado.Text = "NO" Then
 

@@ -350,7 +350,7 @@ Public Class Portal_Sag
             cmd2.Parameters.AddWithValue("@SEMILLA_A_PRODUCIR", TxtPronostico.Text)
             cmd2.Parameters.AddWithValue("@Estado", "1")
 
-            cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", 0)
+            cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", DBNull.Value)
             cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipos.SelectedValue)
             cmd2.ExecuteNonQuery()
             conex.Close()
