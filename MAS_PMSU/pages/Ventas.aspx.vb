@@ -346,31 +346,13 @@ Public Class Ventas
             End If
         End If
 
-        If (e.CommandName = "eliminar") Then
+        If (e.CommandName = "Eliminar") Then
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim idSeleccionado As String = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa_prodcos_new_ventas` WHERE  ID2='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            Dim dt As New DataTable
-            adap.Fill(dt)
-
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
-            If txt_habilitado.Text = "🔒︎" Then
-                'Label8.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar los valores de ventas, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-            Else
-                'TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-                Text_codigo_bcs.Text = dt.Rows(0)("COD_BCS").ToString()
-                Text_nombre_productor.Text = dt.Rows(0)("Productor").ToString()
-                Text_categoria.Text = dt.Rows(0)("CATEGORIA").ToString()
-                Text_ciclo.Text = dt.Rows(0)("CICLO").ToString()
-                Text_variedad.Text = dt.Rows(0)("VARIEDAD").ToString()
-
-                'Label5.Text = "Hola " + Lb_user.Text + ", está seguro que desea todas las ventas registadas para el banco: " + Text_codigo_bcs.Text + "                                      ciclo: " + Text_ciclo.Text + " y Variedad: " + Text_variedad.Text + ""
-
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModalVENTA').modal('show'); });", True)
-            End If
+            ' Redirigir a la otra página llevando consigo el ID como parámetro en la URL
+            Response.Redirect("RegistrosVentas.aspx?id=" & idSeleccionado)
 
         End If
 

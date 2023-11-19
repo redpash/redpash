@@ -138,7 +138,7 @@
                                                 <asp:CheckBox ID="CheckBox1" runat="server" />
                                             </ItemTemplate>
                                             </asp:TemplateField>--%>
-                                            <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="Eliminar" CommandName="Eliminar">
+                                            <asp:ButtonField ButtonType="Button" Text="Registros ventas" ControlStyle-CssClass="btn btn-danger" HeaderText="Registros ventas" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>

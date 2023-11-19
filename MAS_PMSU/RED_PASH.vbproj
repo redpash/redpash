@@ -238,6 +238,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\RegistrosVentas.aspx" />
     <Content Include="pages\SolicitudMuestreoSemilla.aspx" />
     <Content Include="pages\EnviarCorreo.aspx" />
     <Content Include="pages\Inicio.aspx" />
@@ -480,6 +481,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="pages\RegistrosVentas.aspx.designer.vb">
+      <DependentUpon>RegistrosVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\RegistrosVentas.aspx.vb">
+      <DependentUpon>RegistrosVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\SolicitudMuestreoSemilla.aspx.designer.vb">
       <DependentUpon>SolicitudMuestreoSemilla.aspx</DependentUpon>
