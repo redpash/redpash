@@ -1,7 +1,4 @@
-﻿
-
-
-Imports System.IO
+﻿Imports System.IO
 Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
 Imports MySql.Data.MySqlClient
@@ -18,6 +15,8 @@ Public Class Ventas
                 llenarcomboCiclo()
                 llenarcomboDepto()
                 llenagrid()
+                Div2.Style.Add("display", "none")
+                Div1.Style.Add("display", "block")
             End If
         End If
 
@@ -228,6 +227,8 @@ Public Class Ventas
 
         If (e.CommandName = "Ventas") Then
 
+            Div1.Style.Add("display", "none")
+            Div2.Style.Add("display", "block")
             Guardar_registro.Visible = True
             llenarcombocompradoresSemilla()
             llenarcombocompradoresGrano()
@@ -663,9 +664,8 @@ Public Class Ventas
         llenagrid()
     End Sub
 
-    Protected Sub Cancelar_edit_Click(sender As Object, e As EventArgs) Handles Cancelar_edit.Click
+    Protected Sub Cancelar_edit_Click(sender As Object, e As EventArgs) Handles Cancelar.Click
         Response.Redirect(String.Format("~/pages/Ventas.aspx"))
-
     End Sub
 
     'Protected Sub SI_editar_Click(sender As Object, e As EventArgs) Handles SI_editar.Click
