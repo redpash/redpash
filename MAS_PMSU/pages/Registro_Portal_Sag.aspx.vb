@@ -653,7 +653,7 @@ Public Class Registro_Portal_Sag
         adap.Fill(ds, "vista_inscripcion_senasa_lote")
 
         Dim nombre As String
-        nombre = "Solicitud Inscripcion de Lote o Campo _" + Today
+        nombre = "Orden de Compra de Semilla Registrada _" + Today
         rptdocument.Load(Server.MapPath("~/pages/CrystalReport3.rpt"))
         rptdocument.SetDataSource(ds)
 

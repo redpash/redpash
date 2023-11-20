@@ -510,7 +510,7 @@ Public Class ActaRecepcionSemilla
             Verificar()
             If validarflag = 0 Then
                 btnGuardarActa.Visible = False
-                BtnImprimir.Visible = True
+                BtnImprimir.Visible = False
                 BtnNuevo.Visible = True
 
                 'Funcion para guardar en la BD
