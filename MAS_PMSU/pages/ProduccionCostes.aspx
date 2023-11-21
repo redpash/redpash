@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"></h1>
+            <h1 class="page-header">Producción y Costes</h1>
         </div>
     </div>
     <div id="panelmasiso" runat="server">
@@ -14,7 +14,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        Registro Plan Producciòn Semilla Frijol
+                        Registro de Producción y Costes
                     </div>
                     <div class="panel-body">
                         <div class="row">
