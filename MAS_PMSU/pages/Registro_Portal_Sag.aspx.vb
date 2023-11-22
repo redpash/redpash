@@ -77,7 +77,7 @@ Public Class Registro_Portal_Sag
         BAgregar.Visible = False
         'import.Visible = False
 
-        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado, QQ_PRODU_CAMPO, COSTO_TOTAL"
+        Dim cadena As String = "*"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -291,6 +291,38 @@ Public Class Registro_Portal_Sag
                 Dim currentPage As Integer = GridDatos.PageIndex + 1
                 ' Actualiza el Label control con la  gina actual.
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
+            End If
+        End If
+    End Sub
+    Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            ' Obtén los datos de la fila actual
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "ESTIMADO_PRODUCIR_QQ").ToString()
+            Dim tipoSemilla As String = DataBinder.Eval(e.Row.DataItem, "TIPO_SEMILLA").ToString()
+
+            ' Encuentra los botones en la fila por índice
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(6).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnEliminar As Button = DirectCast(e.Row.Cells(7).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+
+            ' Modifica el texto y el color de los botones según la lógica que desees
+            If Not String.IsNullOrEmpty(estimadoProduccion) Then
+                btnEditar.Text = "Editar Plan"
+                btnEditar.CssClass = "btn btn-info"
+                btnEditar.ControlStyle.CssClass = "btn btn-info"
+            Else
+                btnEditar.Text = "Agregar Plan"
+                btnEditar.CssClass = "btn btn-success"
+                btnEditar.ControlStyle.CssClass = "btn btn-success"
+            End If
+
+            If Not String.IsNullOrEmpty(tipoSemilla) Then
+                btnEliminar.Text = "Editar Archivos"
+                btnEliminar.CssClass = "btn btn-info"
+                btnEliminar.ControlStyle.CssClass = "btn btn-info"
+            Else
+                btnEliminar.Text = "Agregar Archivos"
+                btnEliminar.CssClass = "btn btn-success"
+                btnEliminar.ControlStyle.CssClass = "btn btn-success"
             End If
         End If
     End Sub
