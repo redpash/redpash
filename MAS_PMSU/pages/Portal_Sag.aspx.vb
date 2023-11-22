@@ -18,6 +18,7 @@ Public Class Portal_Sag
             If (Not IsPostBack) Then
 
                 llenarcomboDepto()
+                llenarcomboCiclo()
                 llenarcomboProductor()
                 llenagrid()
 
@@ -27,7 +28,19 @@ Public Class Portal_Sag
         End If
 
     End Sub
+    Private Sub llenarcomboCiclo()
+        Dim StrCombo As String = "SELECT * FROM redpash_ciclo"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
 
+        TxtCiclo.DataSource = DtCombo
+        TxtCiclo.DataValueField = DtCombo.Columns(0).ToString()
+        TxtCiclo.DataTextField = DtCombo.Columns(1).ToString
+        TxtCiclo.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtCiclo.Items.Insert(0, newitem)
+    End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String
 
@@ -66,31 +79,35 @@ Public Class Portal_Sag
     End Sub
 
     Sub llenagrid()
+        Dim cadena As String = "*"
+        Dim c1 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
 
         BAgregar.Visible = False
-        If TxtCiclo.SelectedValue = "Todos" Then
-            Me.SqlDataSource1.SelectCommand = "SELECT * FROM `mas+bcs_inscripcion_senasa`  ORDER BY Departamento,Productor,CICLO "
+
+        If (TxtProductor.SelectedItem.Text = "Todos") Then
+            c1 = " "
         Else
-
-            If (TxtDepto.SelectedValue = "Todos") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT * FROM `mas+bcs_inscripcion_senasa` where CICLO='" & TxtCiclo.SelectedValue & "'   ORDER BY Departamento,Productor,CICLO "
-            Else
-
-                If (TxtProductor.Text = "00") Then
-                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM `mas+bcs_inscripcion_senasa` where CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "'  ORDER BY Departamento,Productor,CICLO "
-                Else
-
-
-
-                    Me.SqlDataSource1.SelectCommand = " SELECT * FROM `mas+bcs_inscripcion_senasa` where CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "' AND COD_BCS='" & TxtProductor.SelectedValue & "'   ORDER BY Departamento,Productor,CICLO "
-                    BAgregar.Visible = True
-                End If
-            End If
-
+            c1 = "AND Productor = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
-        GridDatos.DataBind()
+        If (TxtCiclo.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
 
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+
+        BAgregar.Visible = True
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `mas+bcs_inscripcion_senasa` WHERE 1 = 1 " & c1 & c3 & c4 
+
+        GridDatos.DataBind()
     End Sub
 
     Protected Sub TxtCiclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCiclo.SelectedIndexChanged
@@ -292,32 +309,24 @@ Public Class Portal_Sag
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
 
-        If TxtCiclo.Text = "2022-Ciclo A" Or TxtCiclo.Text = "2022-Ciclo B" Or TxtCiclo.Text = "2022-Ciclo C" Or TxtCiclo.Text = "2023-Ciclo A" Or TxtCiclo.Text = "2023-Ciclo B" Or TxtCiclo.Text = "2023-Ciclo C" Then
+        TxtID.Text = ""
 
-            TxtID.Text = ""
+        Dim fecha2 As Date
 
-            Dim fecha2 As Date
+        TxtNom.Text = TxtProductor.SelectedItem.Text
+        TxtCicloD.Text = TxtCiclo.SelectedItem.Text
+        TxtVariedad.SelectedIndex = 0
+        TxtCategoria.SelectedIndex = 0
+        TxtAreaSemb.Text = 0
 
-            TxtNom.Text = TxtProductor.SelectedItem.Text
-            TxtCicloD.Text = TxtCiclo.SelectedItem.Text
-            TxtVariedad.SelectedIndex = 0
-            TxtCategoria.SelectedIndex = 0
-            TxtAreaSemb.Text = 0
+        fecha2 = Now
+        TxtDia.SelectedValue = fecha2.Day
+        TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
+        TxtAno.SelectedValue = fecha2.Year
 
-            fecha2 = Now
-            TxtDia.SelectedValue = fecha2.Day
-            TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-            TxtAno.SelectedValue = fecha2.Year
+        TxtPronostico.Text = 0
 
-            TxtPronostico.Text = 0
-
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-        Else
-
-            Label3.Text = "Para este ciclo ya ha finalizado el tiempo para agregar registros, por favor si desea agregar el registro realizar la solicitud mediante correo electronico"
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-
-        End If
+        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
     End Sub
 

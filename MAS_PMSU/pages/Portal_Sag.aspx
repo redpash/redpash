@@ -20,17 +20,6 @@
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtCiclo" runat="server" AutoPostBack="True">
-                                    <asp:ListItem>Todos</asp:ListItem>
-
-                                    <asp:ListItem>2023-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2023-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2023-Ciclo C</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2024-Ciclo C</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo A</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo B</asp:ListItem>
-                                    <asp:ListItem>2025-Ciclo C</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
