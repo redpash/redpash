@@ -314,7 +314,33 @@ Public Class InscSENASA_DescArch
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
+
     End Sub
+    Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
+        ' Verifica si es una fila de datos y no el encabezado o el pie de página
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            ' Obtén los valores de los campos IMAGEN_FICHA, IMAGEN_PAGO_TGR, e IMAGEN_ETIQUETA_SEMILLA
+            Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "IMAGEN_FICHA").ToString()
+            Dim imagenPagoTGR As String = DataBinder.Eval(e.Row.DataItem, "IMAGEN_PAGO_TGR").ToString()
+            Dim imagenEtiqueta As String = DataBinder.Eval(e.Row.DataItem, "IMAGEN_ETIQUETA_SEMILLA").ToString()
+
+            ' Encuentra los botones en la fila por índice
+            Dim indexFicha As Integer = 5 ' Índice del ButtonField para Ficha de Lote
+            Dim indexPagoTGR As Integer = 6 ' Índice del ButtonField para Pago de TGR
+            Dim indexEtiqueta As Integer = 7 ' Índice del ButtonField para Etiqueta de Semilla Registrada
+
+            ' Encuentra los botones en la fila
+            Dim btnFicha As Button = CType(e.Row.Cells(indexFicha).Controls(0), Button)
+            Dim btnPagoTGR As Button = CType(e.Row.Cells(indexPagoTGR).Controls(0), Button)
+            Dim btnEtiqueta As Button = CType(e.Row.Cells(indexEtiqueta).Controls(0), Button)
+
+            ' Oculta los botones según las condiciones que necesites
+            btnFicha.Visible = Not String.IsNullOrEmpty(imagenFicha)
+            btnPagoTGR.Visible = Not String.IsNullOrEmpty(imagenPagoTGR)
+            btnEtiqueta.Visible = Not String.IsNullOrEmpty(imagenEtiqueta)
+        End If
+    End Sub
+
 
     Protected Sub PageDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         ' Recupera la fila.
