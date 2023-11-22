@@ -262,8 +262,8 @@
                                  <script type="text/javascript">
                                      function calculateAreaHa() {
                                          var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
-                                                var total = areaMZ * 0.7;
-                                             document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
+                                         var total = areaMZ * 0.7;
+                                         document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
                                      }
                                  </script>
                                     <label for="TxtFecha">Fecha que siembrarà:</label>

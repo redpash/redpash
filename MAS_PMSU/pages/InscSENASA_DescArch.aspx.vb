@@ -15,8 +15,11 @@ Public Class InscSENASA_DescArch
             Else
                 llenarcomboCiclo()
                 llenarcomboDepto()
+                Dim newitem As New ListItem(" ", " ")
+                TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
                 div_nuevo_prod.Visible = False
+                TxtProductor.Enabled = False
             End If
         End If
 
@@ -69,33 +72,39 @@ Public Class InscSENASA_DescArch
         End If
     End Sub
 
+
     Sub llenagrid()
         BAgregar.Visible = False
-        'import.Visible = False
+        Dim cadena As String = "*"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
 
-        If TxtCiclo.SelectedItem.Text = " " Then
-            Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
         Else
-
-            If (TxtDepto.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            Else
-
-                If (TxtProductor.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                Else
-
-                    BAgregar.Visible = False
-                    Button2.Visible = False
-                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-
-                End If
-            End If
-
+            c3 = "AND ciclo = '" & TxtCiclo.SelectedItem.Text & "' "
         End If
 
-        GridDatos.DataBind()
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
 
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' " & c1 & c3 & c4 & " ORDER BY Departamento,Productor,CICLO"
+        GridDatos.DataBind()
     End Sub
 
     Protected Sub TxtCiclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCiclo.SelectedIndexChanged
@@ -105,9 +114,15 @@ Public Class InscSENASA_DescArch
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        llenarcomboProductor()
-        llenagrid()
-
+        If TxtDepto.SelectedItem.Text <> " " Then
+            llenarcomboProductor()
+            llenagrid()
+            TxtProductor.Enabled = True
+        Else
+            TxtProductor.Enabled = False
+            llenarcomboProductor()
+            llenagrid()
+        End If
     End Sub
 
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
@@ -121,99 +136,152 @@ Public Class InscSENASA_DescArch
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "FichaLote") Then
-
-
-
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             Dim Str As String = "SELECT IMAGEN_FICHA FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim connectionString As String = conn
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
 
-            Using connection As New MySqlConnection(connectionString)
-                connection.Open()
-                Using command As New MySqlCommand(Str, connection)
-                    Using reader As mySqlDataReader = command.ExecuteReader()
-                        If reader.Read() Then
-                            Dim imageData As Byte() = DirectCast(reader("IMAGEN_FICHA"), Byte())
-                            Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                            Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
-                            ' Configura la respuesta HTTP para descargar la imagen
-                            HttpContext.Current.Response.Clear()
-                            HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FICHA_INSCRIPCION_LOTE_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
-                            HttpContext.Current.Response.BinaryWrite(imageData)
-                            HttpContext.Current.Response.Flush()
-                            HttpContext.Current.Response.End()
-                        End If
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    Using connection As New MySqlConnection(conn)
+                        connection.Open()
+                        Using command As New MySqlCommand(Str, connection)
+                            Using reader As MySqlDataReader = command.ExecuteReader()
+                                If reader.Read() Then
+                                    Dim imageData As Byte() = DirectCast(reader("IMAGEN_FICHA"), Byte())
+                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    ' Configura la respuesta HTTP para descargar la imagen
+                                    HttpContext.Current.Response.Clear()
+                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FICHA_INSCRIPCION_LOTE_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.BinaryWrite(imageData)
+                                    HttpContext.Current.Response.Flush()
+                                    HttpContext.Current.Response.End()
+                                End If
+                            End Using
+                        End Using
                     End Using
-                End Using
-            End Using
 
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                    TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Else
+                    BBorrarsi.Visible = False
+                    BConfirm.Visible = True
+                    BBorrarno.Visible = False
+                    Label1.Text = "¡No hay archivo para descarga!"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End If
+            Next
         End If
 
         If (e.CommandName = "PagoTGR") Then
-
-
-
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             Dim Str As String = "SELECT IMAGEN_PAGO_TGR FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim connectionString As String = conn
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
 
-            Using connection As New MySqlConnection(connectionString)
-                connection.Open()
-                Using command As New MySqlCommand(Str, connection)
-                    Using reader As MySqlDataReader = command.ExecuteReader()
-                        If reader.Read() Then
-                            Dim imageData As Byte() = DirectCast(reader("IMAGEN_PAGO_TGR"), Byte())
-                            Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                            Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
-                            ' Configura la respuesta HTTP para descargar la imagen
-                            HttpContext.Current.Response.Clear()
-                            HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=PAGO_TGR_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
-                            HttpContext.Current.Response.BinaryWrite(imageData)
-                            HttpContext.Current.Response.Flush()
-                            HttpContext.Current.Response.End()
-                        End If
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    Using connection As New MySqlConnection(conn)
+                        connection.Open()
+                        Using command As New MySqlCommand(Str, connection)
+                            Using reader As MySqlDataReader = command.ExecuteReader()
+                                If reader.Read() Then
+                                    Dim imageData As Byte() = DirectCast(reader("IMAGEN_PAGO_TGR"), Byte())
+                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    ' Configura la respuesta HTTP para descargar la imagen
+                                    HttpContext.Current.Response.Clear()
+                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=PAGO_TGR_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.BinaryWrite(imageData)
+                                    HttpContext.Current.Response.Flush()
+                                    HttpContext.Current.Response.End()
+                                End If
+                            End Using
+                        End Using
                     End Using
-                End Using
-            End Using
 
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                    TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Else
+                    BBorrarsi.Visible = False
+                    BConfirm.Visible = True
+                    BBorrarno.Visible = False
+                    Label1.Text = "¡No hay archivo para descarga!"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End If
+            Next
         End If
 
         If (e.CommandName = "Etiqueta") Then
 
-
-
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-
             Dim Str As String = "SELECT IMAGEN_ETIQUETA_SEMILLA FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim connectionString As String = conn
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
 
-            Using connection As New MySqlConnection(connectionString)
-                connection.Open()
-                Using command As New MySqlCommand(Str, connection)
-                    Using reader As MySqlDataReader = command.ExecuteReader()
-                        If reader.Read() Then
-                            Dim imageData As Byte() = DirectCast(reader("IMAGEN_ETIQUETA_SEMILLA"), Byte())
-                            Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                            Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
-                            ' Configura la respuesta HTTP para descargar la imagen
-                            HttpContext.Current.Response.Clear()
-                            HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=ETIQUETA_SEMILLA_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
-                            HttpContext.Current.Response.BinaryWrite(imageData)
-                            HttpContext.Current.Response.Flush()
-                            HttpContext.Current.Response.End()
-                        End If
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    Using connection As New MySqlConnection(conn)
+                        connection.Open()
+                        Using command As New MySqlCommand(Str, connection)
+                            Using reader As MySqlDataReader = command.ExecuteReader()
+                                If reader.Read() Then
+                                    Dim imageData As Byte() = DirectCast(reader("IMAGEN_ETIQUETA_SEMILLA"), Byte())
+                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    ' Configura la respuesta HTTP para descargar la imagen
+                                    HttpContext.Current.Response.Clear()
+                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=ETIQUETA_SEMILLA_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.BinaryWrite(imageData)
+                                    HttpContext.Current.Response.Flush()
+                                    HttpContext.Current.Response.End()
+                                End If
+                            End Using
+                        End Using
                     End Using
-                End Using
-            End Using
-
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                    TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Else
+                    BBorrarsi.Visible = False
+                    BConfirm.Visible = True
+                    BBorrarno.Visible = False
+                    Label1.Text = "¡No hay archivo para descarga!"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End If
+            Next
         End If
     End Sub
 
@@ -229,7 +297,7 @@ Public Class InscSENASA_DescArch
                 ' Se crean los valores del DropDownList tomando el número total de páginas...
                 Dim i As Integer
                 For i = 0 To GridDatos.PageCount - 1
-                    ' Se crea un objeto ListItem para representar la �gina...
+                    ' Se crea un objeto ListItem para representar la  gina...
                     Dim pageNumber As Integer = i + 1
                     Dim item As ListItem = New ListItem(pageNumber.ToString())
                     If i = GridDatos.PageIndex Then
@@ -240,9 +308,9 @@ Public Class InscSENASA_DescArch
                 Next i
             End If
             If Not pageLabel Is Nothing Then
-                ' Calcula el nº de �gina actual...
+                ' Calcula el nº de  gina actual...
                 Dim currentPage As Integer = GridDatos.PageIndex + 1
-                ' Actualiza el Label control con la �gina actual.
+                ' Actualiza el Label control con la  gina actual.
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
