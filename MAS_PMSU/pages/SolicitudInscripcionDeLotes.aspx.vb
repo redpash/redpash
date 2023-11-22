@@ -12,6 +12,7 @@ Public Class SolicitudInscripcionDeLotes
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
     Dim sentencia As String
     Dim validarflag As Integer
+    Dim id2 As String = "1"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
@@ -22,6 +23,7 @@ Public Class SolicitudInscripcionDeLotes
                 btnNuevoProductor.Visible = False
                 VerificarTextBox()
                 FillComboBoxWithProductorNames()
+                llenatxtproductor()
             End If
         End If
     End Sub
@@ -861,6 +863,15 @@ Public Class SolicitudInscripcionDeLotes
 
 
         Response.End()
+    End Sub
+    Sub llenatxtproductor()
+        Dim id2 As String = Request.QueryString("id")
+
+        If Not String.IsNullOrEmpty(id2) Then
+            txt_nombre_prod_new.Text = id2
+        Else
+            txt_nombre_prod_new.Text = " "
+        End If
     End Sub
 
 End Class

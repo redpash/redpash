@@ -7,6 +7,7 @@ Imports MySql.Data.MySqlClient
 Public Class Registro_Portal_Sag
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
+    Dim nombreproductor As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
@@ -15,8 +16,11 @@ Public Class Registro_Portal_Sag
             Else
                 llenarcomboCiclo()
                 llenarcomboDepto()
+                Dim newitem As New ListItem(" ", " ")
+                TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
                 div_nuevo_prod.Visible = False
+                TxtProductor.Enabled = False
             End If
         End If
 
@@ -73,21 +77,46 @@ Public Class Registro_Portal_Sag
         BAgregar.Visible = False
         'import.Visible = False
 
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado, QQ_PRODU_CAMPO, COSTO_TOTAL"
+        Dim c1 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' " & c1 & c3 & c4 & " ORDER BY Departamento,Productor,CICLO"
+
+
         If TxtCiclo.SelectedItem.Text = " " Then
-            Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            Button2.Visible = False
         Else
 
             If (TxtDepto.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                Button2.Visible = False
             Else
 
                 If (TxtProductor.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
+                    Button2.Visible = False
                 Else
 
                     BAgregar.Visible = False
                     Button2.Visible = True
-                    Me.SqlDataSource1.SelectCommand = "SELECT * FROM bcs_inscripcion_senasa where CICLO='" & TxtCiclo.SelectedItem.Text & "' AND Departamento='" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
 
                 End If
             End If
@@ -105,9 +134,15 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        llenarcomboProductor()
-        llenagrid()
-
+        If TxtDepto.SelectedItem.Text <> " " Then
+            llenarcomboProductor()
+            llenagrid()
+            TxtProductor.Enabled = True
+        Else
+            TxtProductor.Enabled = False
+            llenarcomboProductor()
+            llenagrid()
+        End If
     End Sub
 
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
@@ -132,6 +167,8 @@ Public Class Registro_Portal_Sag
             adap.Fill(dt)
 
             nuevo = False
+
+            Txtnombreproductor.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
 
             DDL_Tipo.SelectedIndex = 0
 
@@ -345,12 +382,17 @@ Public Class Registro_Portal_Sag
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
-        DDL_Nlote.DataSource = DtCombo
-        DDL_Nlote.DataValueField = "nombre_lote"
-        DDL_Nlote.DataTextField = "nombre_lote"
-        DDL_Nlote.DataBind()
-        Dim newitem As New ListItem(" ", " ")
-        DDL_Nlote.Items.Insert(0, newitem)
+        If DtCombo.Rows.Count > 0 Then
+            DDL_Nlote.DataSource = DtCombo
+            DDL_Nlote.DataValueField = "nombre_lote"
+            DDL_Nlote.DataTextField = "nombre_lote"
+            DDL_Nlote.DataBind()
+            Dim newitem As New ListItem(" ", " ")
+            DDL_Nlote.Items.Insert(0, newitem)
+        Else
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
+        End If
+
     End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
@@ -611,6 +653,13 @@ Public Class Registro_Portal_Sag
     End Function
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Response.Redirect(String.Format("~/pages/Registro_Portal_Sag.aspx"))
+
+    End Sub
+    Protected Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Response.Redirect(String.Format("~/pages/SolicitudInscripcionDeLotes.aspx?id=" & Txtnombreproductor.Text))
+    End Sub
+    Protected Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Response.Redirect(String.Format("~/pages/Registro_Portal_Sag.aspx"))
 
     End Sub

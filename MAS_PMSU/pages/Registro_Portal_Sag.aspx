@@ -10,6 +10,8 @@
     </div>
     <div id="panelmasiso" runat="server">
 
+    <asp:TextBox ID="Txtnombreproductor" runat="server" Visible="false" Enabled="false"></asp:TextBox>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-primary">
@@ -33,7 +35,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Seleccione Productor:</label>
+                                <label>Seleccione Productor con lote registrado:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductor" runat="server" AutoPostBack="True"></asp:DropDownList>
                             </div>
                         </div>
@@ -129,6 +131,7 @@
                             </div>
                         </div>
                         <div class="col-lg-2">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
                                 <asp:Button CssClass="btn btn-danger" ID="Button2" runat="server" Text="Exportar orden de compra a PDF" OnClick="descargaPDF" visible="false"/>
@@ -143,7 +146,7 @@
                                 <div class="modal-header">
                                     <%--  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                                     &times;</button>--%>
-                                    <h4 class="modal-title" id="ModalTitle2">MAS 2.0 - DICTA - MSU</h4>
+                                    <h4 class="modal-title" id="ModalTitle2">REDPASH </h4>
                                 </div>
                                 <div class="modal-body">
                                     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
@@ -175,6 +178,22 @@
                         </div>
                     </div>
 
+                    <div class="modal fade" id="DeleteModal3" tabindex="-1" role="dialog" aria-labelledby="ModalTitle3" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="ModalTitle4">REDPASH</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <asp:Label ID="Label4" runat="server" Text="El productor no tiene ningun lote registrado. ¿Desea agregarlo?"></asp:Label>
+                                </div>
+                                <div class="modal-footer" style="text-align: center">
+                                    <asp:Button ID="Button4" Text="Si" Width="80px" runat="server" Class="btn btn-primary" />
+                                    <asp:Button ID="Button5" Text="No" Width="80px" runat="server" Class="btn btn-warning" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal fade" id="AdInscrip" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
                         aria-hidden="true">
                         <div class="modal-dialog">
