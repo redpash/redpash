@@ -238,9 +238,6 @@
                                         <asp:BoundField DataField="cantidad_QQ_cosechada" HeaderText="QQ COSECHA" />
                                         <asp:BoundField DataField="FECHA_COSECHA" HeaderText="FECHA DE COSECHA" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-success" HeaderText="EDITAR" CommandName="Editar">
-                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
-                                        </asp:ButtonField>
                                     </Columns>
                                     <EditRowStyle BackColor="#7C6F57" />
                                     <RowStyle BackColor="#E3EAEB" />
