@@ -379,7 +379,7 @@ Public Class SolicitudInscripcionDeLotes
 
 
     Protected Sub llenarProdutor()
-        Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
+        Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor ORDER BY Productor ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", txt_nombre_prod_new.Text)
         Dim DtCombo As New DataTable

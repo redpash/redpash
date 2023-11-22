@@ -125,7 +125,8 @@
                                             <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="COSECHA INSCRITA EN MZ" />
                                             <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="COSECHA INSCRITA EN HA" />
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
-
+                                             
+                                            <asp:BoundField DataField="QQ_PRODU_CAMPO" HeaderText="QQ PRODUCCION" />
                                             <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
@@ -134,6 +135,7 @@
                                             <asp:CheckBox ID="CheckBox1" runat="server" />
                                         </ItemTemplate>
                                         </asp:TemplateField>--%>
+                                            <asp:BoundField DataField="COSTO_TOTAL" HeaderText="COSTO TOTAL" />
                                             <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-danger" HeaderText="COSTOS" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>

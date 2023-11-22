@@ -14,8 +14,11 @@ Public Class ProduccionCostes
             Else
                 llenarcomboCiclo()
                 llenarcomboDepto()
+                Dim newitem As New ListItem(" ", " ")
+                TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
                 div_nuevo_prod.Visible = False
+                TxtProductor.Enabled = False
             End If
         End If
 
@@ -72,29 +75,46 @@ Public Class ProduccionCostes
         BAgregar.Visible = False
         'import.Visible = False
 
-        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado"
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, Habilitado, QQ_PRODU_CAMPO, COSTO_TOTAL"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND  Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
 
         If (DDL_cultivo.SelectedItem.Text = " ") Then
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+            c2 = " "
         Else
-            If (DDL_Categ.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            Else
-                If (TxtCiclo.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                Else
-                    If (TxtDepto.SelectedItem.Text = " ") Then
-                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                    Else
-                        If (TxtProductor.SelectedItem.Text = " ") Then
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                        Else
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa where Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                        End If
-                    End If
-                End If
-            End If
+            c2 = "AND Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' "
         End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
 
     End Sub
     Protected Sub DDL_cultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_cultivo.SelectedIndexChanged
@@ -108,11 +128,18 @@ Public Class ProduccionCostes
         llenagrid()
     End Sub
 
-    Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        llenarcomboProductor()
-        llenagrid()
-    End Sub
 
+    Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
+        If TxtDepto.SelectedItem.Text <> " " Then
+            llenarcomboProductor()
+            llenagrid()
+            TxtProductor.Enabled = True
+        Else
+            TxtProductor.Enabled = False
+            llenarcomboProductor()
+            llenagrid()
+        End If
+    End Sub
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
         llenagrid()
     End Sub
@@ -325,9 +352,25 @@ Public Class ProduccionCostes
 
     Protected Sub BGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardProd.Click
         Dim fecha As Date
-        Dim semilla As Double = Convert.ToDouble(TxtSemilla.Text)
-        Dim grano As Double = Convert.ToDouble(TxtGrano.Text)
-        Dim basura As Double = Convert.ToDouble(TxtBasura.Text)
+        Dim semilla As Double
+        If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
+            semilla = Convert.ToDouble("0")
+        Else
+            semilla = Convert.ToDouble(TxtSemilla.Text)
+        End If
+        Dim grano As Double
+        If String.IsNullOrWhiteSpace(TxtGrano.Text) Then
+            grano = Convert.ToDouble("0")
+        Else
+            grano = Convert.ToDouble(TxtGrano.Text)
+        End If
+        Dim basura As Double
+        If String.IsNullOrWhiteSpace(TxtBasura.Text) Then
+            basura = Convert.ToDouble("0")
+        Else
+            basura = Convert.ToDouble(TxtBasura.Text)
+        End If
+
         Dim total As Double = semilla + grano + basura
         Dim qqprod As Double = Convert.ToDouble(TxtQQProd.Text)
         If Date.TryParse(txt_fecha_sembro.Text, fecha) Then
@@ -392,9 +435,24 @@ Public Class ProduccionCostes
                 cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", Convert.ToDouble(TxtQQProd.Text))
                 cmd2.Parameters.AddWithValue("@RESULT_CENTRO_PROCES", DDL_Procesamiento.SelectedItem.Text)
                 If DDL_Procesamiento.SelectedItem.Text = "Si" Then
-                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble(TxtSemilla.Text))
-                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble(TxtGrano.Text))
-                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble(TxtBasura.Text))
+
+                    If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
+                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
+                    Else
+                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble(TxtSemilla.Text))
+                    End If
+
+                    If String.IsNullOrWhiteSpace(TxtGrano.Text) Then
+                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
+                    Else
+                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble(TxtGrano.Text))
+                    End If
+
+                    If String.IsNullOrWhiteSpace(TxtBasura.Text) Then
+                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
+                    Else
+                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble(TxtBasura.Text))
+                    End If
                 Else
                     cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
                     cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
