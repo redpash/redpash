@@ -438,6 +438,7 @@ Public Class Ventas
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
+        txt_detalle_comprador.Text = DtCombo.Rows(0)(2).ToString
         TXT_COMPRADOR_GRANO.Text = DtCombo.Rows(0)(2).ToString
     End Sub
 
@@ -452,6 +453,7 @@ Public Class Ventas
         adaptcombo.Fill(DtCombo)
 
         txt_detalle_comprador.Text = DtCombo.Rows(0)(2).ToString
+        TXT_COMPRADOR_GRANO.Text = DtCombo.Rows(0)(2).ToString
     End Sub
 
     Protected Sub VALIDAR_ENTREGAS()
@@ -762,13 +764,11 @@ Public Class Ventas
             TxtCom_new2.Visible = True
             TXT_COMPRADOR_GRANO.Text = ""
             TXT_COMPRADOR_GRANO.Enabled = True
-            Dp_comprador.SelectedValue = dp_comprador_grano.SelectedValue
             TxtCom_new.Text = TxtCom_new2.Text
             txt_detalle_comprador.Text = ""
             TxtCom_new.Visible = True
             txt_detalle_comprador.Text = ""
             txt_detalle_comprador.Enabled = True
-            dp_comprador_grano.SelectedValue = Dp_comprador.SelectedValue
             TxtCom_new2.Text = TxtCom_new.Text
             TXT_COMPRADOR_GRANO.Text = ""
             VALIDAR_ENTREGAS()
@@ -779,6 +779,7 @@ Public Class Ventas
             TxtCom_new2.Visible = False
             TXT_COMPRADOR_GRANO.Enabled = False
             TXT_COMPRADOR_GRANO.Text = ""
+            detallellenarcombocompradoresGrano()
             VALIDAR_ENTREGAS()
         End If
     End Sub
@@ -794,13 +795,11 @@ Public Class Ventas
             TxtCom_new2.Visible = True
             TXT_COMPRADOR_GRANO.Text = ""
             TXT_COMPRADOR_GRANO.Enabled = True
-            Dp_comprador.SelectedValue = dp_comprador_grano.SelectedValue
             TxtCom_new.Text = TxtCom_new2.Text
             txt_detalle_comprador.Text = ""
             TxtCom_new.Visible = True
             txt_detalle_comprador.Text = ""
             txt_detalle_comprador.Enabled = True
-            dp_comprador_grano.SelectedValue = Dp_comprador.SelectedValue
             TxtCom_new2.Text = TxtCom_new.Text
             TXT_COMPRADOR_GRANO.Text = ""
             VALIDAR_ENTREGAS()
@@ -811,9 +810,9 @@ Public Class Ventas
             TxtCom_new2.Visible = False
             TXT_COMPRADOR_GRANO.Enabled = False
             TXT_COMPRADOR_GRANO.Text = ""
+            detallellenarcombocompradoresSemilla()
             VALIDAR_ENTREGAS()
         End If
-
     End Sub
 
     Protected Sub TXT_COMPRADOR_GRANO_TextChanged(sender As Object, e As EventArgs) Handles TXT_COMPRADOR_GRANO.TextChanged
@@ -879,12 +878,17 @@ Public Class Ventas
         cmd2.Parameters.AddWithValue("@QQ_semilla_cc_ventas", txt_qq.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_precio_cc_venta", txt_precio.Text)
 
-        If Dp_comprador.SelectedItem.Text = "Otro" Then
-            cmd2.Parameters.AddWithValue("@comprador_cc_ventas", TxtCom_new.Text)
-            cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+        If txt_precio.Text = "0" Then
+            cmd2.Parameters.AddWithValue("@comprador_cc_ventas", DBNull.Value)
+            cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", DBNull.Value)
         Else
-            cmd2.Parameters.AddWithValue("@comprador_cc_ventas", Dp_comprador.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+            If Dp_comprador.SelectedItem.Text = "Otro" Then
+                cmd2.Parameters.AddWithValue("@comprador_cc_ventas", TxtCom_new.Text)
+                cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+            Else
+                cmd2.Parameters.AddWithValue("@comprador_cc_ventas", Dp_comprador.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+            End If
         End If
 
         cmd2.Parameters.AddWithValue("@ingreso_total_cc_ventas", txt_total_venta.Text)
@@ -894,12 +898,17 @@ Public Class Ventas
         cmd2.Parameters.AddWithValue("@QQ_grano_humano_snc_ventas", TXT_QQ_VENTA_GRANO.Text)
         cmd2.Parameters.AddWithValue("@QQ_grano_humano_precio_snc_ventas", TXT_PRECIO_GRANO.Text)
 
-        If dp_comprador_grano.SelectedItem.Text = "Otro" Then
-            cmd2.Parameters.AddWithValue("@comprador_snc_ventas", TxtCom_new2.Text)
-            cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+        If TXT_PRECIO_GRANO.Text = "0" Then
+            cmd2.Parameters.AddWithValue("@comprador_snc_ventas", DBNull.Value)
+            cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", DBNull.Value)
         Else
-            cmd2.Parameters.AddWithValue("@comprador_snc_ventas", dp_comprador_grano.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+            If dp_comprador_grano.SelectedItem.Text = "Otro" Then
+                cmd2.Parameters.AddWithValue("@comprador_snc_ventas", TxtCom_new2.Text)
+                cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+            Else
+                cmd2.Parameters.AddWithValue("@comprador_snc_ventas", dp_comprador_grano.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+            End If
         End If
 
         cmd2.Parameters.AddWithValue("@ingreso_total_snc_ventas", TXT_INGRESO_TOTAL_VENGRANO.Text)
