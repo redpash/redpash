@@ -58,13 +58,14 @@
                                         <HeaderStyle CssClass="hide" />
                                         <ItemStyle CssClass="hide" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="comprador_cc_ventas" HeaderText="COMPRADOR" />
+                                    <asp:BoundField DataField="comprador_cc_ventas" HeaderText="COMPRADOR SEMILLA" />
                                     <asp:BoundField DataField="QQ_semilla_cc_ventas" HeaderText="QQ SEMILLA CERTIFICADA/COMERCIAL" />
                                     <asp:BoundField DataField="QQ_semilla_precio_cc_venta" HeaderText="PRECIO CERTIFICADA/COMERCIAL" />
                                     <asp:BoundField DataField="ingreso_total_cc_ventas" HeaderText="TOTAL CERTIFICADA/COMERCIAL" />
                                     <asp:BoundField DataField="QQ_semilla_cc_consumo" HeaderText="QQ CONSUMO SEMILLA" />
                                     <asp:BoundField DataField="QQ_semilla_precio_cc_consumo" HeaderText="PRECIO SEMILLA CONSUMO" />
                                     <asp:BoundField DataField="ingreso_total_cc_consumo" HeaderText="TOTAL SEMILLA CONSUMO" />
+                                    <asp:BoundField DataField="comprador_snc_ventas" HeaderText="COMPRADOR GRANO" />                                       
                                     <asp:BoundField DataField="QQ_grano_humano_snc_ventas" HeaderText="QQ GRANO " />
                                     <asp:BoundField DataField="QQ_grano_humano_precio_snc_ventas" HeaderText="PRECIO GRANO" />
                                     <asp:BoundField DataField="ingreso_total_snc_ventas" HeaderText="TOTAL GRANO" />

@@ -14,9 +14,12 @@ Public Class Ventas
             Else
                 llenarcomboCiclo()
                 llenarcomboDepto()
+                Dim newitem As New ListItem(" ", " ")
+                TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
                 Div2.Style.Add("display", "none")
                 Div1.Style.Add("display", "block")
+                TxtProductor.Enabled = False
             End If
         End If
 
@@ -70,31 +73,49 @@ Public Class Ventas
     End Sub
 
     Sub llenagrid()
-        'import.Visible = False
 
+        'import.Visible = False
         Dim cadena As String = "ID AS ID, Departamento AS Departamento, Productor AS Productor, cultivo AS Cultivo, CICLO AS CICLO, VARIEDAD AS VARIEDAD, CATEGORIA AS CATEGORIA, AREA_HA AS AREA_HA, AREA_MZ AS AREA_MZ, QQ_Produccion_Campo AS QQ_Produccion_Campo, QQ_Oro AS QQ_Oro, QQ_Grano AS QQ_Grano, QQ_Basura AS QQ_Basura, Habilitado AS Habilitado, DATE_FORMAT(Fecha_siembra, '%d-%m-%Y') AS Fecha_siembra, QQ_semilla_entregado AS QQ_semilla_entregado, QQ_consumo_entregado AS QQ_consumo_entregado"
 
-        If (DDL_cultivo.SelectedItem.Text = " ") Then
-            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
         Else
-            If (DDL_Categ.SelectedItem.Text = " ") Then
-                Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            Else
-                If (TxtCiclo.SelectedItem.Text = " ") Then
-                    Me.SqlDataSource1.SelectCommand = " SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                Else
-                    If (TxtDepto.SelectedItem.Text = " ") Then
-                        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                    Else
-                        If (TxtProductor.SelectedItem.Text = " ") Then
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                        Else
-                            Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas where Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' AND Departamento= '" & TxtDepto.SelectedItem.Text & "' AND Productor = '" & TxtProductor.SelectedItem.Text & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-                        End If
-                    End If
-                End If
-            End If
+            c1 = "AND  Productor = '" & TxtProductor.SelectedItem.Text & "' "
         End If
+
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND Cultivo = '" & DDL_cultivo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
 
     End Sub
     Protected Sub DDL_cultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_cultivo.SelectedIndexChanged
@@ -109,8 +130,15 @@ Public Class Ventas
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        llenarcomboProductor()
-        llenagrid()
+        If TxtDepto.SelectedItem.Text <> " " Then
+            llenarcomboProductor()
+            llenagrid()
+            TxtProductor.Enabled = True
+        Else
+            TxtProductor.Enabled = False
+            llenarcomboProductor()
+            llenagrid()
+        End If
     End Sub
 
     Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
@@ -367,11 +395,16 @@ Public Class Ventas
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
+
+        Dim contador As Integer = DtCombo.Rows.Count
+
         Dp_comprador.DataSource = DtCombo
         Dp_comprador.DataValueField = DtCombo.Columns(1).ToString()
         Dp_comprador.DataTextField = DtCombo.Columns(1).ToString()
         Dp_comprador.DataBind()
         Dp_comprador.Items.Insert(0, newitem)
+        Dim newitem2 As New ListItem("Otro", "Otro")
+        Dp_comprador.Items.Insert(contador + 1, newitem2)
     End Sub
 
     Private Sub llenarcombocompradoresGrano()
@@ -384,11 +417,15 @@ Public Class Ventas
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
+        Dim contador As Integer = DtCombo.Rows.Count
+
         dp_comprador_grano.DataSource = DtCombo
         dp_comprador_grano.DataValueField = DtCombo.Columns(1).ToString
         dp_comprador_grano.DataTextField = DtCombo.Columns(1).ToString
         dp_comprador_grano.DataBind()
         dp_comprador_grano.Items.Insert(0, newitem)
+        Dim newitem2 As New ListItem("Otro", "Otro")
+        dp_comprador_grano.Items.Insert(contador + 1, newitem2)
     End Sub
 
     Private Sub detallellenarcombocompradoresGrano()
@@ -610,14 +647,7 @@ Public Class Ventas
     '    End If
     'End Sub
 
-    Protected Sub Dp_comprador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Dp_comprador.SelectedIndexChanged
-        If Dp_comprador.SelectedItem.Text <> "" Then
-            detallellenarcombocompradoresSemilla()
-            VALIDAR_ENTREGAS()
-        End If
 
-
-    End Sub
 
     Protected Sub txt_qq_TextChanged(sender As Object, e As EventArgs) Handles txt_qq.TextChanged
         If txt_qq.Text <> "" Then
@@ -722,10 +752,68 @@ Public Class Ventas
     End Sub
 
     Protected Sub dp_comprador_grano_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dp_comprador_grano.SelectedIndexChanged
+        Dp_comprador.SelectedValue = dp_comprador_grano.SelectedValue
         If dp_comprador_grano.SelectedItem.Text <> "" Then
             detallellenarcombocompradoresGrano()
             VALIDAR_ENTREGAS()
         End If
+
+        If dp_comprador_grano.SelectedItem.Text = "Otro" Then
+            TxtCom_new2.Visible = True
+            TXT_COMPRADOR_GRANO.Text = ""
+            TXT_COMPRADOR_GRANO.Enabled = True
+            Dp_comprador.SelectedValue = dp_comprador_grano.SelectedValue
+            TxtCom_new.Text = TxtCom_new2.Text
+            txt_detalle_comprador.Text = ""
+            TxtCom_new.Visible = True
+            txt_detalle_comprador.Text = ""
+            txt_detalle_comprador.Enabled = True
+            dp_comprador_grano.SelectedValue = Dp_comprador.SelectedValue
+            TxtCom_new2.Text = TxtCom_new.Text
+            TXT_COMPRADOR_GRANO.Text = ""
+            VALIDAR_ENTREGAS()
+        Else
+            TxtCom_new.Visible = False
+            txt_detalle_comprador.Enabled = False
+            txt_detalle_comprador.Text = ""
+            TxtCom_new2.Visible = False
+            TXT_COMPRADOR_GRANO.Enabled = False
+            TXT_COMPRADOR_GRANO.Text = ""
+            VALIDAR_ENTREGAS()
+        End If
+    End Sub
+
+    Protected Sub Dp_comprador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Dp_comprador.SelectedIndexChanged
+        dp_comprador_grano.SelectedValue = Dp_comprador.SelectedValue
+        If Dp_comprador.SelectedItem.Text <> "" Then
+            detallellenarcombocompradoresSemilla()
+            VALIDAR_ENTREGAS()
+        End If
+
+        If Dp_comprador.SelectedItem.Text = "Otro" Then
+            TxtCom_new2.Visible = True
+            TXT_COMPRADOR_GRANO.Text = ""
+            TXT_COMPRADOR_GRANO.Enabled = True
+            Dp_comprador.SelectedValue = dp_comprador_grano.SelectedValue
+            TxtCom_new.Text = TxtCom_new2.Text
+            txt_detalle_comprador.Text = ""
+            TxtCom_new.Visible = True
+            txt_detalle_comprador.Text = ""
+            txt_detalle_comprador.Enabled = True
+            dp_comprador_grano.SelectedValue = Dp_comprador.SelectedValue
+            TxtCom_new2.Text = TxtCom_new.Text
+            TXT_COMPRADOR_GRANO.Text = ""
+            VALIDAR_ENTREGAS()
+        Else
+            TxtCom_new.Visible = False
+            txt_detalle_comprador.Enabled = False
+            txt_detalle_comprador.Text = ""
+            TxtCom_new2.Visible = False
+            TXT_COMPRADOR_GRANO.Enabled = False
+            TXT_COMPRADOR_GRANO.Text = ""
+            VALIDAR_ENTREGAS()
+        End If
+
     End Sub
 
     Protected Sub TXT_COMPRADOR_GRANO_TextChanged(sender As Object, e As EventArgs) Handles TXT_COMPRADOR_GRANO.TextChanged
@@ -790,16 +878,30 @@ Public Class Ventas
         cmd2.Parameters.AddWithValue("@QQ_basura", Text_QQ_Produccion_basura.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_cc_ventas", txt_qq.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_precio_cc_venta", txt_precio.Text)
-        cmd2.Parameters.AddWithValue("@comprador_cc_ventas", Dp_comprador.SelectedItem.Text)
-        cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+
+        If Dp_comprador.SelectedItem.Text = "Otro" Then
+            cmd2.Parameters.AddWithValue("@comprador_cc_ventas", TxtCom_new.Text)
+            cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+        Else
+            cmd2.Parameters.AddWithValue("@comprador_cc_ventas", Dp_comprador.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@detalles_comprador_cc_ventas", txt_detalle_comprador.Text)
+        End If
+
         cmd2.Parameters.AddWithValue("@ingreso_total_cc_ventas", txt_total_venta.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_cc_consumo", txt_qq_consumo.Text)
         cmd2.Parameters.AddWithValue("@QQ_semilla_precio_cc_consumo", txt_precio_consumo.Text)
         cmd2.Parameters.AddWithValue("@ingreso_total_cc_consumo", txt_ingreso_consumo.Text)
         cmd2.Parameters.AddWithValue("@QQ_grano_humano_snc_ventas", TXT_QQ_VENTA_GRANO.Text)
         cmd2.Parameters.AddWithValue("@QQ_grano_humano_precio_snc_ventas", TXT_PRECIO_GRANO.Text)
-        cmd2.Parameters.AddWithValue("@comprador_snc_ventas", dp_comprador_grano.SelectedItem.Text)
-        cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+
+        If dp_comprador_grano.SelectedItem.Text = "Otro" Then
+            cmd2.Parameters.AddWithValue("@comprador_snc_ventas", TxtCom_new2.Text)
+            cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+        Else
+            cmd2.Parameters.AddWithValue("@comprador_snc_ventas", dp_comprador_grano.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@detalles_comprador_snc_ventas", TXT_COMPRADOR_GRANO.Text)
+        End If
+
         cmd2.Parameters.AddWithValue("@ingreso_total_snc_ventas", TXT_INGRESO_TOTAL_VENGRANO.Text)
         cmd2.Parameters.AddWithValue("@QQ_grano_snc_consumo", TXT_QQ_GRANO_CONSUMO.Text)
         cmd2.Parameters.AddWithValue("@QQ_grano_precio_snc_consumo", TXT_PRECIO_GRANO_CONSUMO.Text)
@@ -816,11 +918,51 @@ Public Class Ventas
         cmd2.ExecuteNonQuery()
         conex.Close()
 
+        If Dp_comprador.SelectedItem.Text = "Otro" Then
+            Dim valor1 As String = TxtCom_new.Text
+            Dim valor2 As String = txt_detalle_comprador.Text
+            guardar_comprar(valor1, valor2)
+        End If
+
         Response.Redirect(String.Format("~/pages/Ventas.aspx"))
 
         llenagrid()
 
         'divedit.Visible = False
         'divdatos.Visible = True
+
+    End Sub
+    Protected Sub guardar_comprar(valor1 As String, valor2 As String)
+        Dim conex As New MySqlConnection(conn)
+
+        conex.Open()
+        Dim cmd2 As New MySqlCommand()
+        Dim Sql As String
+        Sql = "INSERT INTO comprador_provi_pash (nombre_comprador, detalle_comprador) values (@nombre_comprador, @detalle_comprador)"
+
+        cmd2.Connection = conex
+        cmd2.CommandText = Sql
+
+        cmd2.Parameters.AddWithValue("@nombre_comprador", valor1)
+        cmd2.Parameters.AddWithValue("@detalle_comprador", valor2)
+
+        cmd2.ExecuteNonQuery()
+        conex.Close()
+    End Sub
+
+    Protected Sub txt_detalle_comprador_TextChanged1(sender As Object, e As EventArgs)
+        TXT_COMPRADOR_GRANO.Text = txt_detalle_comprador.Text
+    End Sub
+
+    Protected Sub TXT_COMPRADOR_GRANO_TextChanged1(sender As Object, e As EventArgs)
+        txt_detalle_comprador.Text = TXT_COMPRADOR_GRANO.Text
+    End Sub
+
+    Protected Sub TxtCom_new_TextChanged(sender As Object, e As EventArgs)
+        TxtCom_new2.Text = TxtCom_new.Text
+    End Sub
+
+    Protected Sub TxtCom_new2_TextChanged(sender As Object, e As EventArgs)
+        TxtCom_new.Text = TxtCom_new2.Text
     End Sub
 End Class

@@ -20,7 +20,7 @@ Public Class RegistrosVentas
     Sub llenagrid()
         'import.Visible = False
         Dim id2 As String = Request.QueryString("id").ToString
-        Dim cadena As String = "id,comprador_cc_ventas,QQ_semilla_cc_ventas,QQ_semilla_precio_cc_venta,ingreso_total_cc_ventas,QQ_semilla_cc_consumo,QQ_semilla_precio_cc_consumo,ingreso_total_cc_consumo,QQ_grano_humano_snc_ventas,QQ_grano_humano_precio_snc_ventas,ingreso_total_snc_ventas,QQ_grano_snc_consumo,QQ_grano_precio_snc_consumo,ingreso_total_snc_consumo"
+        Dim cadena As String = "id,comprador_cc_ventas,QQ_semilla_cc_ventas,QQ_semilla_precio_cc_venta,ingreso_total_cc_ventas,QQ_semilla_cc_consumo,QQ_semilla_precio_cc_consumo,ingreso_total_cc_consumo,QQ_grano_humano_snc_ventas,QQ_grano_humano_precio_snc_ventas,ingreso_total_snc_ventas,QQ_grano_snc_consumo,QQ_grano_precio_snc_consumo,ingreso_total_snc_consumo, comprador_snc_ventas"
 
         If Not String.IsNullOrEmpty(id2) Then
             Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM ventas_pash WHERE Estado = '1' AND id2 = " & id2
