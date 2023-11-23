@@ -645,6 +645,7 @@ Public Class ProduccionCostes
                     cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
                     cmd.ExecuteNonQuery()
                     Label1.Text = "Los costos se ha almacenado exitosamente"
+                    llenagrid()
                 End Using
 
             End Using
@@ -839,6 +840,11 @@ Public Class ProduccionCostes
     Protected Sub TxtTotal_TextChanged(sender As Object, e As EventArgs)
         CalcularTotal()
         Verificar()
+        If DDLCostos.SelectedItem.Text = "Si" Then
+            TxtTotal.Enabled = True
+        Else
+            TxtTotal.Enabled = False
+        End If
     End Sub
 
     Protected Sub TxtOtros_TextChanged(sender As Object, e As EventArgs)

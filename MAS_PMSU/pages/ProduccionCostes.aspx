@@ -502,13 +502,16 @@
                                 var acondicio = parseFloat(document.getElementById('<%= TxtAcondiSemilla.ClientID %>').value) || 0;
                                 var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value) || 0;
                                 var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
+                                var txtToltal = document.getElementById('<%= TxtTotal.ClientID %>');
+                                
                                 if (total !== 0 || !isNaN(total)) {
                                     document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
                                     var lblTotal = document.getElementById('<%= lbTotal.ClientID %>');
                                     
                                     lblTotal.innerText = "";
+                                    txtToltal.disabled = true;
                                 }
-                                mostrarOcultardivmodalcostos();
+                                txtToltal.disabled = true;
                             }
 
                             function mostrarOcultardivmodalcostos() {
