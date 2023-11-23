@@ -212,6 +212,15 @@ Partial Public Class ProduccionCostes
     Protected WithEvents RegularExpressionValidator7 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
+    '''Control UpdatePanel11.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents UpdatePanel11 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Control Label4.
     '''</summary>
     '''<remarks>
@@ -219,6 +228,15 @@ Partial Public Class ProduccionCostes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control lbfecha_sembro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbfecha_sembro As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control txt_fecha_sembro.

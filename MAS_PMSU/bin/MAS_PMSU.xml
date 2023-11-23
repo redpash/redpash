@@ -13877,9 +13877,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.ProduccionCostes._UpdatePanel11">
+<summary>
+Control UpdatePanel11.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.ProduccionCostes._Label4">
 <summary>
 Control Label4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ProduccionCostes._lbfecha_sembro">
+<summary>
+Control lbfecha_sembro.
 </summary>
 <remarks>
 Campo generado automáticamente.

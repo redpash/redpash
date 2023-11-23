@@ -193,7 +193,7 @@
                                                 <div class="form-group">
                                                     <label for="TxtAreaSembMz">Area del terreno sembradas (Mz)</label>
                                                     <asp:label id="lbAreaSembMz" class="label label-warning" runat="server" Text=""></asp:label>
-                                                    <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaInsc();" AutoPostBack="true" OnTextChanged="TxtAreaSembMz_TextChanged" />
+                                                    <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" ReadOnly="true" onchange="calculateAreaHaInsc();" AutoPostBack="true"/>
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TxtAreaSembMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </div>
                                             </div>
@@ -211,12 +211,17 @@
 
                                         <label for="TxtFecha">Fecha que sembró:</label>
                                         <div class="row">
+                                            <asp:UpdatePanel ID="UpdatePanel11" runat="server">
+                                            <ContentTemplate>
                                             <div class="col-lg-3">
                                                 <div class="form-group">
                                                     <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox CssClass="form-control" ID="txt_fecha_sembro" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
+                                                    <asp:label id="lbfecha_sembro" class="label label-warning" runat="server" Text=""></asp:label>
+                                                    <asp:TextBox CssClass="form-control" ID="txt_fecha_sembro" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
                                                 </div>
                                             </div>
+                                           </ContentTemplate>
+                                           </asp:UpdatePanel>
                                         </div>
 
                                         <label>¿Tuvo pérdida en el área que sembró?</label>
@@ -234,7 +239,7 @@
                                             <div class="col-lg-4">
                                                 <label for="TxtAreaPerdMz">Area del terreno sembradas perdidas (Mz)</label>
                                                 <asp:label id="lbAreaPerdMz" class="label label-warning" runat="server" Text=""></asp:label>
-                                                <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaPer();" />
+                                                <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaPer();" AutoPostBack="true"/>
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="TxtAreaPerdMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                             </div>
                                             </ContentTemplate>
@@ -342,23 +347,16 @@
                         <script type="text/javascript">
                             function calculateAreaHaPer() {
                                 var areaMZ = parseFloat(document.getElementById('<%= TxtAreaPerdMz.ClientID %>').value);
-                                if (isNaN(areaMZ)) {
-                                    var total = '';                   
-                                } else {
-
-                                    var total = areaMZ * 0.7;
-                                }                   
+                                    var total = areaMZ * 0.7;  
+                                    
                                 document.getElementById('<%= TxtAreaPerdHa.ClientID %>').value = total.toFixed(2);
                             }
 
                             function calculateAreaHaInsc() {
                                 var areaMZ = parseFloat(document.getElementById('<%= TxtAreaSembMz.ClientID %>').value);
-                                if (isNaN(areaMZ)) {
-                                    var total = '';
+                                
+                                var total = areaMZ * 0.7;
 
-                                } else {
-                                    var total = areaMZ * 0.7;
-                                } 
                             document.getElementById('<%= TxtAreaSembHa.ClientID %>').value = total.toFixed(2);
                             }
                             // Función para mostrar u ocultar DIVsiembraperdida

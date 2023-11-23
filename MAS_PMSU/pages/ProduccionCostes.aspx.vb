@@ -153,7 +153,9 @@ Public Class ProduccionCostes
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
+            limpiarProduccion()
             VerificarTextBox()
+
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
             Dim cadena As String = "AREA_TERRENO_SEMBRADA_MZ, AREA_TERRENO_SEMBRADA_HA, FECHA_SEMBRO, TUVO_PERDIDA, AREA_TERRENO_PERDIDA_MZ, AREA_TERRENO_PERDIDA_HA, FACT_PERD_PLA_ENFER, FACT_PERD_SEQ_LLUV, FACT_PERD_EXC_LLUV, FACT_PERD_BAJA_GERMI, FACT_PERD_MAL_MANE_CULTI, FACT_PERD_OTROS_FACT, QQ_PRODU_CAMPO, RESULT_CENTRO_PROCES, CANTIDAD_QQ_SEMI, CANTIDAD_QQ_GRANO, CANTIDAD_QQ_BASURA"
             Dim Str As String = "SELECT " & cadena & " FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
@@ -202,8 +204,8 @@ Public Class ProduccionCostes
                 Else
                     limpiarProduccion()
                     VerificarTextBox()
-                    'TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
-                    'TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
+                    TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
+                    TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
                     ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
                 End If
             Next
@@ -317,13 +319,6 @@ Public Class ProduccionCostes
     End Sub
 
     Protected Sub VerificarTextBox()
-        If (TxtAreaSembMz.Text = "") Then
-            lbAreaSembMz.Text = "*"
-            validarflag = 0
-        Else
-            lbAreaSembMz.Text = ""
-            validarflag = 1
-        End If
 
         If DDL_perdidas.SelectedItem.Text = "Si" Then
             If (TxtAreaPerdMz.Text = "") Then
@@ -331,8 +326,11 @@ Public Class ProduccionCostes
                 validarflag = 0
             Else
                 lbAreaPerdMz.Text = ""
-                validarflag = 1
+                validarflag += 1
             End If
+
+        Else
+            validarflag += 1
         End If
 
         If (TxtQQProd.Text = "") Then
@@ -340,7 +338,15 @@ Public Class ProduccionCostes
             validarflag = 0
         Else
             lbQQProd.Text = ""
-            validarflag = 1
+            validarflag += 1
+        End If
+
+        If (txt_fecha_sembro.Text = "") Then
+            lbfecha_sembro.Text = "*"
+            validarflag = 0
+        Else
+            lbfecha_sembro.Text = ""
+            validarflag += 1
         End If
     End Sub
 
@@ -358,7 +364,7 @@ Public Class ProduccionCostes
 
         validarflag = 0
         VerificarTextBox()
-        If validarflag = 1 Then
+        If validarflag = 3 Then
 
             Dim semilla As Double
             If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
@@ -476,7 +482,7 @@ Public Class ProduccionCostes
             cmd2.ExecuteNonQuery()
             conex.Close()
 
-            Label1.Text = "La producción se ha agreado exitosamente"
+            Label1.Text = "La producción se ha agregado exitosamente"
 
 
             llenagrid()
@@ -856,5 +862,9 @@ Public Class ProduccionCostes
 
     Protected Sub TxtInsumo_TextChanged(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Protected Sub txt_fecha_sembro_TextChanged(sender As Object, e As EventArgs) Handles txt_fecha_sembro.TextChanged
+        VerificarTextBox()
     End Sub
 End Class
