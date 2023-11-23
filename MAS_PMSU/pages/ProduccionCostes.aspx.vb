@@ -6,6 +6,8 @@ Imports MySql.Data.MySqlClient
 Public Class ProduccionCostes
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
+    Dim validarflag As Integer
+    Dim validarflag2 As Integer
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
@@ -17,6 +19,7 @@ Public Class ProduccionCostes
                 Dim newitem As New ListItem(" ", " ")
                 TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
+                VerificarTextBox()
                 div_nuevo_prod.Visible = False
                 TxtProductor.Enabled = False
             End If
@@ -114,7 +117,7 @@ Public Class ProduccionCostes
             c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' AND NOMBRE_LOTE_FINCA IS NOT NULL " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
 
     End Sub
     Protected Sub DDL_cultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_cultivo.SelectedIndexChanged
@@ -150,7 +153,7 @@ Public Class ProduccionCostes
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
-
+            VerificarTextBox()
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
             Dim cadena As String = "AREA_TERRENO_SEMBRADA_MZ, AREA_TERRENO_SEMBRADA_HA, FECHA_SEMBRO, TUVO_PERDIDA, AREA_TERRENO_PERDIDA_MZ, AREA_TERRENO_PERDIDA_HA, FACT_PERD_PLA_ENFER, FACT_PERD_SEQ_LLUV, FACT_PERD_EXC_LLUV, FACT_PERD_BAJA_GERMI, FACT_PERD_MAL_MANE_CULTI, FACT_PERD_OTROS_FACT, QQ_PRODU_CAMPO, RESULT_CENTRO_PROCES, CANTIDAD_QQ_SEMI, CANTIDAD_QQ_GRANO, CANTIDAD_QQ_BASURA"
             Dim Str As String = "SELECT " & cadena & " FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
@@ -173,6 +176,7 @@ Public Class ProduccionCostes
 
                 If Not todosNulos Then
                     limpiarProduccion()
+
                     TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
                     TxtAreaSembHa.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_HA").ToString
                     Dim fecha As Date
@@ -194,54 +198,16 @@ Public Class ProduccionCostes
                     TxtGrano.Text = dt.Rows(0)("CANTIDAD_QQ_GRANO").ToString
                     TxtBasura.Text = dt.Rows(0)("CANTIDAD_QQ_BASURA").ToString
                     ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+                    VerificarTextBox()
                 Else
                     limpiarProduccion()
-                    TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
-                    TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
+                    VerificarTextBox()
+                    'TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
+                    'TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
                     ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
                 End If
             Next
-            'txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
-            'If dt.Rows.Count > 0 Then
-            '    limpiarProduccion()
-            '    TxtAreaSembMz.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_MZ").ToString
-            '    TxtAreaSembHa.Text = dt.Rows(0)("AREA_TERRENO_SEMBRADA_HA").ToString
-            '    Dim fecha As Date
-            '    If Date.TryParse(dt.Rows(0)("FECHA_SEMBRO").ToString, fecha) Then
-            '        txt_fecha_sembro.Text = fecha.ToString("yyyy-MM-dd")
-            '    End If
-            '    DDL_perdidas.Text = dt.Rows(0)("TUVO_PERDIDA").ToString
-            '    TxtAreaPerdMz.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_MZ").ToString
-            '    TxtAreaPerdHa.Text = dt.Rows(0)("AREA_TERRENO_PERDIDA_HA").ToString
-            '    DropDownList_plaga_enfer.Text = dt.Rows(0)("FACT_PERD_PLA_ENFER").ToString
-            '    DropDownList_sequia_lluvia.Text = dt.Rows(0)("FACT_PERD_SEQ_LLUV").ToString
-            '    DropDownList_exce_lluvia.Text = dt.Rows(0)("FACT_PERD_EXC_LLUV").ToString
-            '    DropDownList_baja_germi.Text = dt.Rows(0)("FACT_PERD_BAJA_GERMI").ToString
-            '    DropDownList_mal_culti.Text = dt.Rows(0)("FACT_PERD_MAL_MANE_CULTI").ToString
-            '    DropDownList_otros.Text = dt.Rows(0)("FACT_PERD_OTROS_FACT").ToString
-            '    TxtQQProd.Text = dt.Rows(0)("QQ_PRODU_CAMPO").ToString
-            '    DDL_Procesamiento.Text = dt.Rows(0)("RESULT_CENTRO_PROCES").ToString
-            '    TxtSemilla.Text = dt.Rows(0)("CANTIDAD_QQ_SEMI").ToString
-            '    TxtGrano.Text = dt.Rows(0)("CANTIDAD_QQ_GRANO").ToString
-            '    TxtBasura.Text = dt.Rows(0)("CANTIDAD_QQ_BASURA").ToString
-            '    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
-            'Else
-            '    limpiarProduccion()
-            '    TxtAreaSembMz.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
-            '    TxtAreaSembHa.Text = HttpUtility.HtmlDecode(gvrow.Cells(9).Text).ToString
-            '    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
-            'End If
-
-
-            'If txt_habilitado.Text = "NO" Then
-
-            'l3.Text = "Para este ciclo ya ha finalizado el tiempo de edición, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-            'Else
-            'limpiarProduccion()
-            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
-            'End If
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -350,29 +316,37 @@ Public Class ProduccionCostes
 
     End Sub
 
-    Protected Sub BGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardProd.Click
-        Dim fecha As Date
-        Dim semilla As Double
-        If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
-            semilla = Convert.ToDouble("0")
+    Protected Sub VerificarTextBox()
+        If (TxtAreaSembMz.Text = "") Then
+            lbAreaSembMz.Text = "*"
+            validarflag = 0
         Else
-            semilla = Convert.ToDouble(TxtSemilla.Text)
-        End If
-        Dim grano As Double
-        If String.IsNullOrWhiteSpace(TxtGrano.Text) Then
-            grano = Convert.ToDouble("0")
-        Else
-            grano = Convert.ToDouble(TxtGrano.Text)
-        End If
-        Dim basura As Double
-        If String.IsNullOrWhiteSpace(TxtBasura.Text) Then
-            basura = Convert.ToDouble("0")
-        Else
-            basura = Convert.ToDouble(TxtBasura.Text)
+            lbAreaSembMz.Text = ""
+            validarflag = 1
         End If
 
-        Dim total As Double = semilla + grano + basura
-        Dim qqprod As Double = Convert.ToDouble(TxtQQProd.Text)
+        If DDL_perdidas.SelectedItem.Text = "Si" Then
+            If (TxtAreaPerdMz.Text = "") Then
+                lbAreaPerdMz.Text = "*"
+                validarflag = 0
+            Else
+                lbAreaPerdMz.Text = ""
+                validarflag = 1
+            End If
+        End If
+
+        If (TxtQQProd.Text = "") Then
+            lbQQProd.Text = "*"
+            validarflag = 0
+        Else
+            lbQQProd.Text = ""
+            validarflag = 1
+        End If
+    End Sub
+
+    Protected Sub BGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardProd.Click
+        Dim fecha As Date
+
         If Date.TryParse(txt_fecha_sembro.Text, fecha) Then
             fecha.ToString("dd-MM-yyyy")
         End If
@@ -382,9 +356,37 @@ Public Class ProduccionCostes
         Dim Sql As String
         Dim cmd2 As New MySqlCommand()
 
-        If qqprod = total Then
-            If (TxtID.Text <> "") Then
-                Sql = " UPDATE bcs_inscripcion_senasa SET
+        validarflag = 0
+        VerificarTextBox()
+        If validarflag = 1 Then
+
+            Dim semilla As Double
+            If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
+                semilla = Convert.ToDouble("0")
+            Else
+                semilla = Convert.ToDouble(TxtSemilla.Text)
+            End If
+            Dim grano As Double
+            If String.IsNullOrWhiteSpace(TxtGrano.Text) Then
+                grano = Convert.ToDouble("0")
+            Else
+                grano = Convert.ToDouble(TxtGrano.Text)
+            End If
+            Dim basura As Double
+            If String.IsNullOrWhiteSpace(TxtBasura.Text) Then
+                basura = Convert.ToDouble("0")
+            Else
+                basura = Convert.ToDouble(TxtBasura.Text)
+            End If
+
+            Dim total As Double = semilla + grano + basura
+            Dim qqprod As Double
+
+            If TxtQQProd.Text <> "" Then
+                qqprod = Convert.ToDouble(TxtQQProd.Text)
+            End If
+
+            Sql = " UPDATE bcs_inscripcion_senasa SET
                     AREA_TERRENO_SEMBRADA_MZ = @AREA_TERRENO_SEMBRADA_MZ,
                     AREA_TERRENO_SEMBRADA_HA = @AREA_TERRENO_SEMBRADA_HA,
                     FECHA_SEMBRO = @FECHA_SEMBRO,
@@ -402,70 +404,81 @@ Public Class ProduccionCostes
                     CANTIDAD_QQ_SEMI = @CANTIDAD_QQ_SEMI,
                     CANTIDAD_QQ_GRANO = @CANTIDAD_QQ_GRANO,
                     CANTIDAD_QQ_BASURA = @CANTIDAD_QQ_BASURA
-                  WHERE ID = " & TxtID.Text & ""
+            WHERE ID = " & TxtID.Text & ""
 
-                cmd2.Connection = conex
-                cmd2.CommandText = Sql
+            cmd2.Connection = conex
+            cmd2.CommandText = Sql
 
-                cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_MZ", Convert.ToDouble(TxtAreaSembMz.Text))
-                cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_HA", Convert.ToDouble(TxtAreaSembHa.Text))
-                cmd2.Parameters.AddWithValue("@FECHA_SEMBRO", fecha)
+            cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_MZ", Convert.ToDouble(TxtAreaSembMz.Text))
+            cmd2.Parameters.AddWithValue("@AREA_TERRENO_SEMBRADA_HA", Convert.ToDouble(TxtAreaSembHa.Text))
+            cmd2.Parameters.AddWithValue("@FECHA_SEMBRO", fecha)
 
-                cmd2.Parameters.AddWithValue("@TUVO_PERDIDA", DDL_perdidas.SelectedItem.Text)
-                If DDL_perdidas.SelectedItem.Text = "Si" Then
-                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble(TxtAreaPerdMz.Text))
-                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble(TxtAreaPerdHa.Text))
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", DropDownList_plaga_enfer.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", DropDownList_sequia_lluvia.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", DropDownList_exce_lluvia.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", DropDownList_baja_germi.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", DropDownList_mal_culti.SelectedItem.Text)
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", DropDownList_otros.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@TUVO_PERDIDA", DDL_perdidas.SelectedItem.Text)
+            If DDL_perdidas.SelectedItem.Text = "Si" Then
+                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble(TxtAreaPerdMz.Text))
+                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble(TxtAreaPerdHa.Text))
+                cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", DropDownList_plaga_enfer.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", DropDownList_sequia_lluvia.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", DropDownList_exce_lluvia.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", DropDownList_baja_germi.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", DropDownList_mal_culti.SelectedItem.Text)
+                cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", DropDownList_otros.SelectedItem.Text)
+            Else
+                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble("0.00"))
+                cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble("0.00"))
+                cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", "No")
+                cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", "No")
+                cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", "No")
+                cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", "No")
+                cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", "No")
+                cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", "No")
+            End If
+
+            cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", Convert.ToDouble(TxtQQProd.Text))
+            cmd2.Parameters.AddWithValue("@RESULT_CENTRO_PROCES", DDL_Procesamiento.SelectedItem.Text)
+            If DDL_Procesamiento.SelectedItem.Text = "Si" And qqprod = total Then
+
+                If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
                 Else
-                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_MZ", Convert.ToDouble("0.00"))
-                    cmd2.Parameters.AddWithValue("@AREA_TERRENO_PERDIDA_HA", Convert.ToDouble("0.00"))
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_PLA_ENFER", "No")
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_SEQ_LLUV", "No")
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_EXC_LLUV", "No")
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_BAJA_GERMI", "No")
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_MAL_MANE_CULTI", "No")
-                    cmd2.Parameters.AddWithValue("@FACT_PERD_OTROS_FACT", "No")
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble(TxtSemilla.Text))
                 End If
 
-                cmd2.Parameters.AddWithValue("@QQ_PRODU_CAMPO", Convert.ToDouble(TxtQQProd.Text))
-                cmd2.Parameters.AddWithValue("@RESULT_CENTRO_PROCES", DDL_Procesamiento.SelectedItem.Text)
-                If DDL_Procesamiento.SelectedItem.Text = "Si" Then
-
-                    If String.IsNullOrWhiteSpace(TxtSemilla.Text) Then
-                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
-                    Else
-                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble(TxtSemilla.Text))
-                    End If
-
-                    If String.IsNullOrWhiteSpace(TxtGrano.Text) Then
-                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
-                    Else
-                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble(TxtGrano.Text))
-                    End If
-
-                    If String.IsNullOrWhiteSpace(TxtBasura.Text) Then
-                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
-                    Else
-                        cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble(TxtBasura.Text))
-                    End If
+                If String.IsNullOrWhiteSpace(TxtGrano.Text) Then
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
                 Else
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble(TxtGrano.Text))
+                End If
+
+                If String.IsNullOrWhiteSpace(TxtBasura.Text) Then
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
+                Else
+                    cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble(TxtBasura.Text))
+                End If
+            Else
+                If DDL_Procesamiento.SelectedItem.Text = "No" Then
                     cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_SEMI", Convert.ToDouble("0.00"))
                     cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_GRANO", Convert.ToDouble("0.00"))
                     cmd2.Parameters.AddWithValue("@CANTIDAD_QQ_BASURA", Convert.ToDouble("0.00"))
+                Else
+                    aviso.Visible = False
+                    Label1.Visible = True
+                    BConfirm.Visible = True
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    Label1.Text = "Las cantidades de los quintales clasificados no coinciden con el total"
+
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                    conex.Close()
+                    Exit Sub
                 End If
-                cmd2.ExecuteNonQuery()
-                conex.Close()
-
-                Label1.Text = "La producción se ha agreado exitosamente"
-
-
-
             End If
+            cmd2.ExecuteNonQuery()
+            conex.Close()
+
+            Label1.Text = "La producción se ha agreado exitosamente"
+
+
             llenagrid()
             aviso.Visible = False
             BConfirm.Visible = True
@@ -473,13 +486,13 @@ Public Class ProduccionCostes
             BBorrarno.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         Else
-            aviso.Visible = True
+            aviso.Visible = False
+            Label1.Visible = True
             BConfirm.Visible = True
             BBorrarsi.Visible = False
             BBorrarno.Visible = False
-            Label1.Text = "Las cantidades de los quintales clasificados no coinciden con el total"
-
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalProduccion').modal('show'); });", True)
+            Label1.Text = "Llene todo los campos por favor"
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
             conex.Close()
         End If
     End Sub
@@ -544,6 +557,67 @@ Public Class ProduccionCostes
     Protected Sub limpiarFiltros(sender As Object, e As EventArgs)
         Response.Redirect("ProduccionCostes.aspx")
     End Sub
+
+    Protected Sub Verificar()
+        If DDLCostos.SelectedItem.Text = "No" Then
+            If (TxtInsumo.Text = "") Then
+                lbInsumo.Text = "*"
+                validarflag2 = 0
+            Else
+                lbInsumo.Text = ""
+                validarflag2 = 1
+            End If
+
+            If (TxtManoObra.Text = "") Then
+                lbManoObra.Text = "*"
+                validarflag2 = 0
+            Else
+                lbManoObra.Text = ""
+                validarflag2 = 1
+            End If
+
+            If (TxtEquiMaqui.Text = "") Then
+                lbEquiMaqui.Text = "*"
+                validarflag2 = 0
+            Else
+                lbEquiMaqui.Text = ""
+                validarflag2 = 1
+            End If
+
+            If (TxtInscri.Text = "") Then
+                lbinscri.Text = "*"
+                validarflag2 = 0
+            Else
+                lbinscri.Text = ""
+                validarflag2 = 1
+            End If
+
+            If (TxtAcondiSemilla.Text = "") Then
+                lbAcondiSemilla.Text = "*"
+                validarflag2 = 0
+            Else
+                lbAcondiSemilla.Text = ""
+                validarflag2 = 1
+            End If
+
+            If (TxtOtros.Text = "") Then
+                lbOtros.Text = "*"
+                validarflag2 = 0
+            Else
+                lbOtros.Text = ""
+                validarflag2 = 1
+            End If
+        Else
+            If (TxtTotal.Text = "") Then
+                lbTotal.Text = "*"
+                validarflag2 = 0
+            Else
+                lbTotal.Text = ""
+                validarflag2 = 1
+            End If
+        End If
+    End Sub
+
     Protected Sub BtnCosto_Click(sender As Object, e As EventArgs) Handles BtnGuardCost.Click
         'Try
         Dim connectionString As String = conn
@@ -606,11 +680,11 @@ Public Class ProduccionCostes
             End Using
         End Using
 
-            'Catch ex As Exception
-            '    MsgBox(ex.Message)
-            'End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
 
-            BConfirm.Visible = True
+        BConfirm.Visible = True
         BBorrarsi.Visible = False
         BBorrarno.Visible = False
 
@@ -730,16 +804,57 @@ Public Class ProduccionCostes
     Protected Sub TxtAreaSembMz_TextChanged(sender As Object, e As EventArgs) Handles TxtAreaSembMz.TextChanged
         If TxtAreaSembMz.Text <> "" Then
             TxtAreaSembHa.Text = Convert.ToString(Convert.ToDouble(TxtAreaSembMz.Text) * 0.7)
+            VerificarTextBox()
         Else
             TxtAreaSembHa.Text = ""
+            VerificarTextBox()
         End If
     End Sub
 
     Protected Sub TxtAreaPerdMz_TextChanged(sender As Object, e As EventArgs) Handles TxtAreaPerdMz.TextChanged
         If TxtAreaPerdMz.Text <> "" Then
             TxtAreaPerdHa.Text = Convert.ToString(Convert.ToDouble(TxtAreaSembMz.Text) * 0.7)
+            VerificarTextBox()
         Else
             TxtAreaPerdHa.Text = ""
+            VerificarTextBox()
         End If
+    End Sub
+
+    Protected Sub TxtQQProd_TextChanged(sender As Object, e As EventArgs)
+        If TxtQQProd.Text <> "" Then
+            VerificarTextBox()
+        Else
+            TxtQQProd.Text = ""
+            VerificarTextBox()
+        End If
+    End Sub
+
+    Protected Sub TxtTotal_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub TxtOtros_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub TxtAcondiSemilla_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub TxtInscri_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub TxtEquiMaqui_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub TxtManoObra_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub TxtInsumo_TextChanged(sender As Object, e As EventArgs)
+
     End Sub
 End Class
