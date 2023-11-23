@@ -122,6 +122,15 @@ Partial Public Class Ventas
     Protected WithEvents GridDatos As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''Control LinkButton1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
     '''Control Div2.
     '''</summary>
     '''<remarks>

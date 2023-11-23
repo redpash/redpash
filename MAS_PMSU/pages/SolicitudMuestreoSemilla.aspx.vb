@@ -2,6 +2,7 @@
 Imports System.Net
 Imports System.Net.Mail
 Imports System.Net.Mime
+Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Drawing.Spreadsheet
@@ -342,41 +343,40 @@ Public Class SolicitudMuestreoSemilla
             'If gb_departamento_new.SelectedIndex > 0 Then
             ' Verificar si se ha seleccionado algo en TxtProductor
             If TxtProductor.SelectedIndex > 0 Then
-                    ' Obtener el valor seleccionado en TxtCiclo
-                    Dim cicloSeleccionado As String = TxtCiclo.SelectedItem.Text
+                ' Obtener el valor seleccionado en TxtCiclo
+                Dim cicloSeleccionado As String = TxtCiclo.SelectedItem.Text
 
-                    ' Obtener el valor seleccionado en gb_departamento_new
-                    Dim departamentoSeleccionado As String = gb_departamento_new.SelectedItem.Text
-                    ' Obtener las primeras 3 letras del departamento
-                    Dim primeras3LetrasDepartamento As String = departamentoSeleccionado.Substring(0, Math.Min(departamentoSeleccionado.Length, 3))
+                ' Obtener el valor seleccionado en gb_departamento_new
+                Dim departamentoSeleccionado As String = gb_departamento_new.SelectedItem.Text
+                ' Obtener las primeras 3 letras del departamento
+                Dim primeras3LetrasDepartamento As String = departamentoSeleccionado.Substring(0, Math.Min(departamentoSeleccionado.Length, 3))
 
-                    ' Obtener el valor seleccionado en TxtProductor
-                    Dim productorSeleccionado As String = TxtProductor.SelectedItem.Text
-                    ' Obtener las iniciales del productor
-                    Dim inicialesProductor As String = String.Join("", productorSeleccionado.Split().Select(Function(s) s(0)))
+                ' Obtener el valor seleccionado en TxtProductor
+                Dim productorSeleccionado As String = TxtProductor.SelectedItem.Text
+                ' Obtener las iniciales del productor
+                Dim inicialesProductor As String = String.Join("", productorSeleccionado.Split().Select(Function(s) s(0)))
 
-                    ' Obtener las últimas dos letras y el último caracter de TxtCiclo
-                    Dim ultimasLetrasCiclo As String = cicloSeleccionado.Substring(cicloSeleccionado.Length - 1, 1) & cicloSeleccionado.Substring(cicloSeleccionado.Length - 10, 2)
+                ' Obtener las últimas dos letras y el último caracter de TxtCiclo
+                Dim ultimasLetrasCiclo As String = cicloSeleccionado.Substring(cicloSeleccionado.Length - 1, 1) & cicloSeleccionado.Substring(cicloSeleccionado.Length - 10, 2)
 
-                    ' Obtener numero de lote
-                    Llenar_Lote(TxtProductor.SelectedItem.Text)
-                    Dim nlote As String
-                    If Txtcount.Text <> "" Then
-                        nlote = "-L" & Txtcount.Text & "-"
-                    Else
-                        nlote = ""
-                    End If
-
-                    ' Construir el texto para TxtLoteSemi
-                    Dim textoLoteSemi As String = "RP-" & primeras3LetrasDepartamento & "-" & inicialesProductor & nlote & ultimasLetrasCiclo
-
-                    ' Asignar el texto a TxtLoteSemi
-                    TxtLoteSemi.Text = textoLoteSemi
+                ' Obtener numero de lote
+                Llenar_Lote(TxtProductor.SelectedItem.Text)
+                Dim nlote As String
+                If Txtcount.Text <> "" Then
+                    nlote = "-L" & Txtcount.Text & "-"
+                Else
+                    nlote = ""
                 End If
+
+                ' Construir el texto para TxtLoteSemi
+                Dim textoLoteSemi As String = "RP-" & primeras3LetrasDepartamento & "-" & inicialesProductor & nlote & ultimasLetrasCiclo
+
+                ' Asignar el texto a TxtLoteSemi
+                TxtLoteSemi.Text = textoLoteSemi
+            End If
             'End If
         End If
     End Sub
-
     Private Sub Llenar_Lote(ByVal valor As String)
         Dim strCombo As String = "SELECT COUNT(*) AS lote FROM solicitud_muestreo_semilla WHERE productor = @valor"
         Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
@@ -709,5 +709,70 @@ Public Class SolicitudMuestreoSemilla
     Protected Sub DDL_SelCultG_SelectedIndexChanged(sender As Object, e As EventArgs)
         llenagrid()
     End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        exportar()
+    End Sub
+
+    Private Sub exportar()
+
+        Dim query As String = ""
+        Dim cadena As String = "productor, departamento, municipio, aldea, caserio, ciclo, cultivo, variedadFrijol, variedadMaiz, categoria, lote_produc_semilla, cantidad_QQ_cosechada, fecha, estado"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+
+        If (TxtProductorG.SelectedItem.Text = "") Then
+            c1 = " "
+        Else
+            c1 = "AND productor = '" & TxtProductorG.SelectedItem.Text & "' "
+        End If
+
+        If (DDL_SelCultG.SelectedItem.Text = "") Then
+            c2 = " "
+        Else
+            c2 = "AND cultivo = '" & DDL_SelCultG.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE 1 = 1 " & c1 & c2
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Solicitud de Muestreo de Semilla  " & Today & " " & TxtProductorG.SelectedItem.Text & " " & DDL_SelCultG.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
+
 End Class
 

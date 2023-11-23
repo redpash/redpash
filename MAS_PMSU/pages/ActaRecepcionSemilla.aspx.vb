@@ -2,6 +2,7 @@
 Imports System.Net
 Imports System.Net.Mail
 Imports System.Net.Mime
+Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Office.Word
@@ -2144,4 +2145,83 @@ Public Class ActaRecepcionSemilla
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        exportar()
+    End Sub
+    Private Sub exportar()
+
+        Dim cadena As String = "txtFechaSiembra, txt_nombre_prod_new, TxtCeduIden, DDL_cultivo, 
+               DDL_Amadeus, DDL_Amadeus_Certificado, DDL_Amadeus_Comercial, txtAmadeusHumedad, txtBultosAmadeus, txtPesoPrimAmadeus, txtPesoBrutAmadeus, 
+               DDL_Carrizalito, DDL_Carrizalito_Certificado, DDL_Carrizalito_Comercial, txtCarrizalitoHumedad, txtBultosCarrizalito, txtPesoPrimCarrizalito, txtPesoBrutCarrizalito, 
+               DDL_Deorho, DDL_Deorho_Certificado, DDL_Deorho_Comercial, txtDeorhoHumedad, txtBultosDeorho, txtPesoPrimDeorho, txtPesoBrutDeorho, 
+               DDL_Azabache, DDL_Azabache_Certificado, DDL_Azabache_Comercial, txtAzabacheHumedad, txtBultosAzabache, txtPesoPrimAzabache, txtPesoBrutAzabache, 
+               DDL_ParaisitoMejoradoPM2, DDL_ParaisitoMejoradoPM2_Certificado, DDL_ParaisitoMejoradoPM2_Comercial, txtParaisitoMejoradoPM2Humedad, txtBultosParaisitoMejoradoPM2, txtPesoPrimParaisitoMejoradoPM2, txtPesoBrutParaisitoMejoradoPM2, 
+               DDL_Hondurasnutritivo, DDL_Hondurasnutritivo_Certificado, DDL_Hondurasnutritivo_Comercial, txtHondurasnutritivoHumedad, txtBultosHondurasnutritivo, txtPesoPrimHondurasnutritivo, txtPesoBrutHondurasnutritivo, 
+               DDL_IntaCardenas, DDL_IntaCardenas_Certificado, DDL_IntaCardenas_Comercial, txtIntaCardenasHumedad, txtBultosIntaCardenas, txtPesoPrimIntaCardenas, txtPesoBrutIntaCardenas, 
+               DDL_Lencaprecoz, DDL_Lencaprecoz_Certificado, DDL_Lencaprecoz_Comercial, txtLencaprecozHumedad, txtBultosLencaprecoz, txtPesoPrimLencaprecoz, txtPesoBrutLencaprecoz, 
+               DDL_Rojochorti, DDL_Rojochorti_Certificado, DDL_Rojochorti_Comercial, txtRojochortiHumedad, txtBultosRojochorti, txtPesoPrimRojochorti, txtPesoBrutRojochorti, 
+               DDL_Tolupanrojo, DDL_Tolupanrojo_Certificado, DDL_Tolupanrojo_Comercial, txtTolupanrojoHumedad, txtBultosTolupanrojo, txtPesoPrimTolupanrojo, txtPesoBrutTolupanrojo, 
+               txtOtravariedad, DDL_Otravariedad_Certificado, DDL_Otravariedad_Comercial, txtOtravariedadHumedad, txtBultosOtravariedad, txtPesoPrimOtravariedad, txtPesoBrutOtravariedad, 
+               DDL_DictaMaya, DDL_DictaMaya_Certificado, DDL_DictaMaya_Comercial, txtDictaMayaHumedad, txtBultosDictaMaya, txtPesoPrimDictaMaya, txtPesoBrutDictaMaya, 
+               DDL_DictaVictoria, DDL_DictaVictoria_Certificado, DDL_DictaVictoria_Comercial, txtDictaVictoriaHumedad, txtBultosDictaVictoria, txtPesoPrimDictaVictoria, txtPesoBrutDictaVictoria, 
+               txtOtravariedadM, DDL_OtravariedadM_Certificado, DDL_OtravariedadM_Comercial, txtOtravariedadMHumedad, txtBultosOtravariedadM, txtPesoPrimOtravariedadM, txtPesoBrutOtravariedadM, estado"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim query As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND txt_nombre_prod_new = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (DDL_SelCult.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND DDL_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM acta_recepcion_semilla where Estado = '1' " & c1 & c2 & "ORDER BY txt_nombre_prod_new,DDL_cultivo"
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Acta de Recepcion de Semilla  " & Today & " " & TxtProductor.SelectedItem.Text & " " & DDL_SelCult.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
+
+
 End Class

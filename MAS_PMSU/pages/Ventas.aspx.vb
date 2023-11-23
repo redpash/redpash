@@ -974,4 +974,61 @@ Public Class Ventas
     Protected Sub TxtCom_new2_TextChanged(sender As Object, e As EventArgs)
         TxtCom_new.Text = TxtCom_new2.Text
     End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        exportar()
+    End Sub
+
+    Private Sub exportar()
+
+        ' Create a DataTable to hold the data from the GridView
+        Dim dt As New DataTable()
+
+        ' Iterate through the columns in the GridView and add them to the DataTable
+        For Each field As DataControlField In GridDatos.Columns
+            If TypeOf field Is BoundField Then
+                Dim boundField As BoundField = DirectCast(field, BoundField)
+                dt.Columns.Add(boundField.DataField)
+            End If
+        Next
+
+        ' Iterate through the rows in the GridView and add them to the DataTable
+        For Each row As GridViewRow In GridDatos.Rows
+            Dim dr As DataRow = dt.NewRow()
+            For Each field As DataControlField In GridDatos.Columns
+                If TypeOf field Is BoundField Then
+                    Dim boundField As BoundField = DirectCast(field, BoundField)
+                    Dim cell As TableCell = row.Cells(GridDatos.Columns.IndexOf(boundField))
+                    dr(boundField.DataField) = cell.Text
+                End If
+            Next
+            dt.Rows.Add(dr)
+        Next
+
+        ' Provide a name for the DataTable
+        dt.TableName = "GridViewData"
+
+        ' Create an Excel workbook and add the DataTable as a worksheet
+        Using wb As New XLWorkbook()
+            ' Add DataTable as Worksheet.
+            Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+            ' Set auto width for all columns based on content.
+            ws.Columns().AdjustToContents()
+
+            ' Export the Excel file.
+            Response.Clear()
+            Response.Buffer = True
+            Response.Charset = ""
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            Response.AddHeader("content-disposition", "attachment;filename=VENTAS  " & Today & ".xlsx")
+            Using MyMemoryStream As New MemoryStream()
+                wb.SaveAs(MyMemoryStream)
+                MyMemoryStream.WriteTo(Response.OutputStream)
+                Response.Flush()
+                Response.End()
+            End Using
+        End Using
+    End Sub
+
 End Class

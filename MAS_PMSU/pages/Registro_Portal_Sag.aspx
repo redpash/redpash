@@ -116,9 +116,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" runat="server" visible="false">
+                        <div class="row" runat="server">
                             <div class="col-lg-12">
-                                <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
                             </div>
                         </div>

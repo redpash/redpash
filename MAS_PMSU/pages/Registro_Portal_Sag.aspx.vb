@@ -72,6 +72,76 @@ Public Class Registro_Portal_Sag
             TxtProductor.SelectedValue = " "
         End If
     End Sub
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        exportar()
+    End Sub
+
+    Private Sub exportar()
+
+        Dim query As String = ""
+        Dim cadena As String = "Productor, CICLO, Departamento, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado, Tipo_cultivo, Habilitado"
+        Dim c1 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' " & c1 & c3 & c4 & " ORDER BY Departamento,Productor,CICLO"
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=PLAN PRODUCCIÓN DE SEMILLA DE FRIJOL  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
 
     Sub llenagrid()
         BAgregar.Visible = False
@@ -342,64 +412,6 @@ Public Class Registro_Portal_Sag
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
 
         lblTotalClientes.Text = e.AffectedRows.ToString()
-
-    End Sub
-
-    Private Sub exportar()
-
-        Dim query As String = ""
-
-        If TxtCiclo.SelectedValue = "Todos" Then
-            query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Departamento,Productor,CICLO "
-        Else
-            If (TxtDepto.SelectedValue = " Todos") Then
-                query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE CICLO='" & TxtCiclo.SelectedValue & "'  AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            Else
-                query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            End If
-        End If
-
-        Using con As New MySqlConnection(conn)
-            Using cmd As New MySqlCommand(query)
-                Using sda As New MySqlDataAdapter()
-                    cmd.Connection = con
-                    sda.SelectCommand = cmd
-                    Using ds As New DataSet()
-                        sda.Fill(ds)
-
-                        'Set Name of DataTables.
-                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
-
-                        Using wb As New XLWorkbook()
-                            For Each dt As DataTable In ds.Tables
-                                ' Add DataTable as Worksheet.
-                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
-
-                                ' Set auto width for all columns based on content.
-                                ws.Columns().AdjustToContents()
-                            Next
-
-                            ' Export the Excel file.
-                            Response.Clear()
-                            Response.Buffer = True
-                            Response.Charset = ""
-                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=PLAN PRODUCCIÓN DE SEMILLA DE FRIJOL  " & Today & ".xlsx")
-                            Using MyMemoryStream As New MemoryStream()
-                                wb.SaveAs(MyMemoryStream)
-                                MyMemoryStream.WriteTo(Response.OutputStream)
-                                Response.Flush()
-                                Response.End()
-                            End Using
-                        End Using
-                    End Using
-                End Using
-            End Using
-        End Using
-    End Sub
-
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
-        exportar()
 
     End Sub
 
