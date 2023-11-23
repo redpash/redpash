@@ -504,7 +504,11 @@
                                 var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
                                 if (total !== 0 || !isNaN(total)) {
                                     document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
+                                    var lblTotal = document.getElementById('<%= lbTotal.ClientID %>');
+                                    
+                                    lblTotal.innerText = "";
                                 }
+                                mostrarOcultardivmodalcostos();
                             }
 
                             function mostrarOcultardivmodalcostos() {
@@ -512,7 +516,7 @@
                                 var divmodalcostos = document.getElementById('<%= divmodalcostos.ClientID %>');
                                 var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
                                 var txtToltal = document.getElementById('<%= TxtTotal.ClientID %>');
-                                if (ddlPerdidas.value === 'No' || ddlPerdidas.value === "") {
+                                if (ddlPerdidas.value === 'No') {
                                     divmodalcostos.style.display = 'block';
                                     lblmodalcostos.style.display = 'none';
                                     txtToltal.disabled = true;

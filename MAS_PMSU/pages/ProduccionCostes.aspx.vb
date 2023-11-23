@@ -827,7 +827,11 @@ Public Class ProduccionCostes
             Dim total As Double = insumo + inscripcion + manoObra + otros + acondiSemilla + equiMaqui
 
             ' Mostrar el resultado en el TextBox TxtTotal
-            TxtTotal.Text = total.ToString()
+            If total <> 0 Then
+                TxtTotal.Text = total.ToString()
+            Else
+                TxtTotal.Text = ""
+            End If
         End If
     End Sub
 
