@@ -553,7 +553,7 @@ Public Class SolicitudMuestreoSemilla
 
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Verificar()
-        If validarflag2 = 1 Then
+        If validarflag2 = 6 Then
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetLotes
@@ -599,7 +599,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 0
         Else
             Label11.Text = ""
-            validarflag2 = 1
+            validarflag2 += 1
         End If
 
         If String.IsNullOrEmpty(DDL_Depto.SelectedValue) Then
@@ -607,7 +607,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 0
         Else
             Label12.Text = ""
-            validarflag2 = 1
+            validarflag2 += 1
         End If
 
         If (txtFechaSoli.Text = "") Then
@@ -615,7 +615,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 0
         Else
             Label13.Text = ""
-            validarflag2 = 1
+            validarflag2 += 1
         End If
 
         If (TxtLugar.Text = "") Then
@@ -623,7 +623,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 0
         Else
             Label14.Text = ""
-            validarflag2 = 1
+            validarflag2 += 1
         End If
 
         If (TxtNombComp.Text = "") Then
@@ -631,7 +631,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 0
         Else
             Label15.Text = ""
-            validarflag2 = 1
+            validarflag2 += 1
         End If
 
         If (TxtNombCarg.Text = "") Then
@@ -639,7 +639,7 @@ Public Class SolicitudMuestreoSemilla
             validarflag2 = 0
         Else
             Label16.Text = ""
-            validarflag2 = 1
+            validarflag2 += 1
         End If
 
     End Sub

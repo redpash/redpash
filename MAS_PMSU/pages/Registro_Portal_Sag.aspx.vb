@@ -516,8 +516,7 @@ Public Class Registro_Portal_Sag
             Label1.Text = "La inscripcion del lote ha sido agregada"
         Else
 
-            Try
-                Sql = "UPDATE bcs_inscripcion_senasa SET
+            Sql = "UPDATE bcs_inscripcion_senasa SET
                     Productor = @Productor,
                     CICLO = @CICLO,
                     VARIEDAD = @VARIEDAD,
@@ -561,10 +560,7 @@ Public Class Registro_Portal_Sag
                 conex.Close()
 
 
-                Label1.Text = "La inscripcion del lote ha sido actualizada"
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
+            Label1.Text = "La inscripcion del lote ha sido actualizada"
             limpiar()
 
 

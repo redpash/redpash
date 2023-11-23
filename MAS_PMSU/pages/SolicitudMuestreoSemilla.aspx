@@ -10,6 +10,25 @@
             <h1 class="page-header">Solicitud de Muestreo de Semilla</h1>
         </div>
     </div>
+    
+    <div id="Div2" runat="server">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Generar Solicitud de Muestreo de Semilla
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <asp:Button CssClass="btn btn-primary" ID="BtnSoliMuesSemi" runat="server" Text="Generar PDF" OnClick="BtnSoliMuesSemi_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="DivGridG" runat="server">
         <div class="row">
@@ -306,24 +325,7 @@
             </div>
         </div>
     </div>
-    <div id="Div2" runat="server">
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Generar Solicitud de Muestreo de Semilla
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="BtnSoliMuesSemi" runat="server" Text="Generar PDF" OnClick="BtnSoliMuesSemi_Click" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <div id="Div1" runat="server">
         <div class="row">

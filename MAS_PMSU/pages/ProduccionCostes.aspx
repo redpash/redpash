@@ -154,10 +154,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" runat="server" visible="false">
-                            <div class="col-lg-12">
-                                <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
+                        <div class="row" runat="server">
+                            <div class="col-lg-3">
                                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-warning" Text="Exportar Datos de Producción"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos de Producción</asp:LinkButton>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-warning" Text="Exportar Datos de Costos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos de Costos</asp:LinkButton>
                             </div>
                         </div>
                         <div class="row">

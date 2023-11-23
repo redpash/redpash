@@ -502,10 +502,10 @@ Public Class ActaRecepcionSemilla
 
     Protected Sub btnGuardarActa_Click(sender As Object, e As EventArgs)
         ' Verifica si los elementos no están vacíos
-        If Not String.IsNullOrWhiteSpace(txtFechaSiembra.Text) Then 'AndAlso
-            'Not String.IsNullOrWhiteSpace(txt_nombre_prod_new.Text) AndAlso
-            'Not String.IsNullOrWhiteSpace(TxtCeduIden.Text) AndAlso
-            'Not String.IsNullOrWhiteSpace(DDL_cultivo.SelectedValue) Then
+        If Not String.IsNullOrWhiteSpace(txtFechaSiembra.Text) AndAlso
+            Not String.IsNullOrWhiteSpace(txt_nombre_prod_new.Text) AndAlso
+            Not String.IsNullOrWhiteSpace(TxtCeduIden.Text) AndAlso
+            Not String.IsNullOrWhiteSpace(DDL_cultivo.SelectedValue) Then
 
             validarflag = 0
             Verificar()

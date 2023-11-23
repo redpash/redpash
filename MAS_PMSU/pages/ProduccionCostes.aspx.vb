@@ -836,7 +836,6 @@ Public Class ProduccionCostes
         End If
     End Sub
 
-
     Protected Sub TxtTotal_TextChanged(sender As Object, e As EventArgs)
         CalcularTotal()
         Verificar()
@@ -879,5 +878,262 @@ Public Class ProduccionCostes
 
     Protected Sub txt_fecha_sembro_TextChanged(sender As Object, e As EventArgs) Handles txt_fecha_sembro.TextChanged
         VerificarTextBox()
+    End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        exportar()
+    End Sub
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+        exportarP()
+    End Sub
+    Protected Sub LinkButton3_Click(sender As Object, e As EventArgs) Handles LinkButton3.Click
+        exportarC()
+    End Sub
+
+    Private Sub exportar()
+
+        Dim query As String = ""
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, QQ_PRODU_CAMPO, COSTO_TOTAL"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND  Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' AND NOMBRE_LOTE_FINCA IS NOT NULL " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Datos de Producción y Costes  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
+    Private Sub exportarP()
+
+        Dim query As String = ""
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, AREA_TERRENO_SEMBRADA_MZ, AREA_TERRENO_SEMBRADA_HA, FECHA_SEMBRO, TUVO_PERDIDA, AREA_TERRENO_PERDIDA_MZ, AREA_TERRENO_PERDIDA_HA, FACT_PERD_PLA_ENFER, FACT_PERD_SEQ_LLUV, FACT_PERD_EXC_LLUV, FACT_PERD_BAJA_GERMI, FACT_PERD_MAL_MANE_CULTI, FACT_PERD_OTROS_FACT, QQ_PRODU_CAMPO, RESULT_CENTRO_PROCES, CANTIDAD_QQ_SEMI, CANTIDAD_QQ_GRANO, CANTIDAD_QQ_BASURA"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND  Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' AND NOMBRE_LOTE_FINCA IS NOT NULL " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Datos de Producción  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
+    Private Sub exportarC()
+
+        Dim query As String = ""
+        Dim cadena As String = "ID, Departamento, Productor, Tipo_cultivo, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, COSTOS_INSUMOS, COSTOS_INSCRIPCION, COSTOS_MANO, COSTOS_OTROS, COSTOS_ACONDICIONAMIENTO_SEMILLA, COSTOS_EQUIPO,COSTO_TOTAL"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND  Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' AND NOMBRE_LOTE_FINCA IS NOT NULL " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Datos de Costes  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
     End Sub
 End Class
