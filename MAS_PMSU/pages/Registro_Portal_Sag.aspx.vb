@@ -287,9 +287,7 @@ Public Class Registro_Portal_Sag
 
                 TxtRegistradaQQ.Text = dt.Rows(0)("REQUERIEMIENTO_REGISTRADA_QQ").ToString()
                 TxtCantLotes.Text = dt.Rows(0)("CANTIDAD_LOTES_SEMBRAR").ToString()
-                Dim v As String = dt.Rows(0)("NOMBRE_LOTE_FINCA").ToString()
-                Dim v2 As New ListItem(v, v)
-                DDL_Nlote.Items.Insert(0, v2)
+                SeleccionarItemEnDropDownList(DDL_Nlote, dt.Rows(0)("NOMBRE_LOTE_FINCA").ToString())
                 TxtProduccionQQMZ.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_MZ").ToString()
                 TxtProduccionQQHA.Text = dt.Rows(0)("ESTIMADO_PRO_QQ_HA").ToString()
                 TxtSemillaQQ.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQ").ToString()
@@ -418,7 +416,16 @@ Public Class Registro_Portal_Sag
     Private Sub llenarVAIDAD_CICLO()
 
     End Sub
-
+    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
+        For Each item As ListItem In Prodname.Items
+            If item.Text = DtCombo Then
+                Prodname.SelectedValue = item.Value
+                Return True ' Se encontró una coincidencia, devolver verdadero
+            End If
+        Next
+        ' No se encontró ninguna coincidencia
+        Return 0
+    End Function
     Protected Sub obtener_numero_lote(cadena As String)
 
         Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
@@ -534,30 +541,30 @@ Public Class Registro_Portal_Sag
                     Estado = @Estado,
                     Tipo_cultivo = @Tipo_cultivo
                 WHERE ID=" & TxtID.Text & " "
-                cmd2.Connection = conex
-                cmd2.CommandText = Sql
+            cmd2.Connection = conex
+            cmd2.CommandText = Sql
 
-                cmd2.Parameters.AddWithValue("@Productor", TxtNom.Text)
-                cmd2.Parameters.AddWithValue("@CICLO", TxtCicloD.Text)
-                cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@Productor", TxtNom.Text)
+            cmd2.Parameters.AddWithValue("@CICLO", TxtCicloD.Text)
+            cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
 
-                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
-                cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(Txt_AreaHa.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
-                cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
+            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
+            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(Txt_AreaHa.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
 
 
-                cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Convert.ToDouble(TxtRegistradaQQ.Text))
-                cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", 1)
-                cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQHA.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
-                cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtEstimadoProducir.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
-                cmd2.Parameters.AddWithValue("@Estado", "1")
-                cmd2.ExecuteNonQuery()
-                conex.Close()
+            cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Convert.ToDouble(TxtRegistradaQQ.Text))
+            cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", 1)
+            cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQHA.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
+            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtEstimadoProducir.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
+            cmd2.Parameters.AddWithValue("@Estado", "1")
+            cmd2.ExecuteNonQuery()
+            conex.Close()
 
 
             Label1.Text = "La inscripcion del lote ha sido actualizada"
