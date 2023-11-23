@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports ClosedXML.Excel
 Imports CrystalDecisions.CrystalReports.Engine
+Imports DocumentFormat.OpenXml.Vml
 Imports MySql.Data.MySqlClient
 
 Public Class ProduccionCostes
@@ -20,6 +21,7 @@ Public Class ProduccionCostes
                 TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
                 VerificarTextBox()
+                Verificar()
                 div_nuevo_prod.Visible = False
                 TxtProductor.Enabled = False
             End If
@@ -213,6 +215,8 @@ Public Class ProduccionCostes
         End If
 
         If (e.CommandName = "Eliminar") Then
+            Verificar()
+            limpiarCosto()
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             Dim Str As String = "SELECT COSTOS_INSUMOS, COSTOS_INSCRIPCION, COSTOS_MANO, COSTOS_OTROS, COSTOS_ACONDICIONAMIENTO_SEMILLA, COSTOS_EQUIPO,COSTO_TOTAL, Habilitado, check_costo FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
@@ -236,6 +240,7 @@ Public Class ProduccionCostes
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
             Else
                 limpiarCosto()
+                Verificar()
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#ModalCostos').modal('show'); });", True)
             End If
         End If
@@ -499,6 +504,7 @@ Public Class ProduccionCostes
             BBorrarno.Visible = False
             Label1.Text = "Llene todo los campos por favor"
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
             conex.Close()
         End If
     End Sub
@@ -551,6 +557,7 @@ Public Class ProduccionCostes
     End Sub
 
     Public Sub limpiarCosto()
+        DDLCostos.SelectedIndex = 0
         TxtInsumo.Text = ""
         TxtInscri.Text = ""
         TxtManoObra.Text = ""
@@ -565,72 +572,27 @@ Public Class ProduccionCostes
     End Sub
 
     Protected Sub Verificar()
-        If DDLCostos.SelectedItem.Text = "No" Then
-            If (TxtInsumo.Text = "") Then
-                lbInsumo.Text = "*"
-                validarflag2 = 0
-            Else
-                lbInsumo.Text = ""
-                validarflag2 = 1
-            End If
 
-            If (TxtManoObra.Text = "") Then
-                lbManoObra.Text = "*"
-                validarflag2 = 0
-            Else
-                lbManoObra.Text = ""
-                validarflag2 = 1
-            End If
-
-            If (TxtEquiMaqui.Text = "") Then
-                lbEquiMaqui.Text = "*"
-                validarflag2 = 0
-            Else
-                lbEquiMaqui.Text = ""
-                validarflag2 = 1
-            End If
-
-            If (TxtInscri.Text = "") Then
-                lbinscri.Text = "*"
-                validarflag2 = 0
-            Else
-                lbinscri.Text = ""
-                validarflag2 = 1
-            End If
-
-            If (TxtAcondiSemilla.Text = "") Then
-                lbAcondiSemilla.Text = "*"
-                validarflag2 = 0
-            Else
-                lbAcondiSemilla.Text = ""
-                validarflag2 = 1
-            End If
-
-            If (TxtOtros.Text = "") Then
-                lbOtros.Text = "*"
-                validarflag2 = 0
-            Else
-                lbOtros.Text = ""
-                validarflag2 = 1
-            End If
+        If (TxtTotal.Text = "") Then
+            lbTotal.Text = "*"
+            validarflag2 = 0
         Else
-            If (TxtTotal.Text = "") Then
-                lbTotal.Text = "*"
-                validarflag2 = 0
-            Else
-                lbTotal.Text = ""
-                validarflag2 = 1
-            End If
+            lbTotal.Text = ""
+            validarflag2 = 1
         End If
     End Sub
 
     Protected Sub BtnCosto_Click(sender As Object, e As EventArgs) Handles BtnGuardCost.Click
-        'Try
-        Dim connectionString As String = conn
-        Using conn As New MySqlConnection(connectionString)
-            conn.Open()
+        validarflag2 = 0
+        Verificar()
+        If validarflag2 = 1 Then
+            Dim connectionString As String = conn
 
-            Dim query As String = "UPDATE bcs_inscripcion_senasa SET 
+            Using conn As New MySqlConnection(connectionString)
+                conn.Open()
+
+
+                Dim query As String = "UPDATE bcs_inscripcion_senasa SET 
                 COSTOS_INSUMOS = @COSTOS_INSUMOS,
                 COSTOS_MANO = @COSTOS_MANO,
                 COSTOS_EQUIPO = @COSTOS_EQUIPO,
@@ -640,61 +602,68 @@ Public Class ProduccionCostes
                 COSTO_TOTAL = @COSTO_TOTAL,
                 check_costo = @check_costo WHERE ID=" & TxtID.Text & " "
 
-            Using cmd As New MySqlCommand(query, conn)
-                If TxtInsumo.Text = "" Then
-                    cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble("0"))
-                Else
-                    cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble(TxtInsumo.Text))
-                End If
+                Using cmd As New MySqlCommand(query, conn)
+                    If TxtInsumo.Text = "" Then
+                        cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble("0"))
+                    Else
+                        cmd.Parameters.AddWithValue("@COSTOS_INSUMOS", Convert.ToDouble(TxtInsumo.Text))
+                    End If
 
-                If TxtManoObra.Text = "" Then
-                    cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble("0"))
-                Else
-                    cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble(TxtManoObra.Text))
-                End If
+                    If TxtManoObra.Text = "" Then
+                        cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble("0"))
+                    Else
+                        cmd.Parameters.AddWithValue("@COSTOS_MANO", Convert.ToDouble(TxtManoObra.Text))
+                    End If
 
-                If TxtEquiMaqui.Text = "" Then
-                    cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble("0"))
-                Else
-                    cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble(TxtEquiMaqui.Text))
-                End If
+                    If TxtEquiMaqui.Text = "" Then
+                        cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble("0"))
+                    Else
+                        cmd.Parameters.AddWithValue("@COSTOS_EQUIPO", Convert.ToDouble(TxtEquiMaqui.Text))
+                    End If
 
-                If TxtOtros.Text = "" Then
-                    cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble("0"))
-                Else
-                    cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble(TxtOtros.Text))
-                End If
+                    If TxtOtros.Text = "" Then
+                        cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble("0"))
+                    Else
+                        cmd.Parameters.AddWithValue("@COSTOS_OTROS", Convert.ToDouble(TxtOtros.Text))
+                    End If
 
-                If TxtInscri.Text = "" Then
-                    cmd.Parameters.AddWithValue("@COSTOS_INSCRIPCION", Convert.ToDouble("0"))
-                Else
-                    cmd.Parameters.AddWithValue("@COSTOS_INSCRIPCION", Convert.ToDouble(TxtInscri.Text))
-                End If
+                    If TxtInscri.Text = "" Then
+                        cmd.Parameters.AddWithValue("@COSTOS_INSCRIPCION", Convert.ToDouble("0"))
+                    Else
+                        cmd.Parameters.AddWithValue("@COSTOS_INSCRIPCION", Convert.ToDouble(TxtInscri.Text))
+                    End If
 
-                If TxtAcondiSemilla.Text = "" Then
-                    cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble("0"))
-                Else
-                    cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble(TxtAcondiSemilla.Text))
-                End If
-                If DDLCostos.SelectedItem.Text <> "" Then
-                    cmd.Parameters.AddWithValue("@check_costo", DDLCostos.SelectedItem.Text)
-                End If
+                    If TxtAcondiSemilla.Text = "" Then
+                        cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble("0"))
+                    Else
+                        cmd.Parameters.AddWithValue("@COSTOS_ACONDICIONAMIENTO_SEMILLA", Convert.ToDouble(TxtAcondiSemilla.Text))
+                    End If
+                    If DDLCostos.SelectedItem.Text <> "" Then
+                        cmd.Parameters.AddWithValue("@check_costo", DDLCostos.SelectedItem.Text)
+                    End If
 
-                cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
-                cmd.ExecuteNonQuery()
-                Label1.Text = "Los costos se ha almacenado exitosamente"
+                    cmd.Parameters.AddWithValue("@COSTO_TOTAL", Convert.ToDouble(TxtTotal.Text))
+                    cmd.ExecuteNonQuery()
+                    Label1.Text = "Los costos se ha almacenado exitosamente"
+                End Using
+
             End Using
-        End Using
+            BConfirm.Visible = True
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
 
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-        'End Try
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        Else
+            Verificar()
+            Label1.Text = "El total no esta asigando llene el\los campos necesarios"
+            BConfirm.Visible = True
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
 
-        BConfirm.Visible = True
-        BBorrarsi.Visible = False
-        BBorrarno.Visible = False
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
 
-        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
     End Sub
 
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
@@ -836,32 +805,66 @@ Public Class ProduccionCostes
         End If
     End Sub
 
-    Protected Sub TxtTotal_TextChanged(sender As Object, e As EventArgs)
+    Private Sub CalcularTotal()
+        If DDLCostos.SelectedItem.Text = "No" Then
+            ' Variables para almacenar los valores de los TextBox
+            Dim insumo As Double = 0
+            Dim inscripcion As Double = 0
+            Dim manoObra As Double = 0
+            Dim otros As Double = 0
+            Dim acondiSemilla As Double = 0
+            Dim equiMaqui As Double = 0
 
+            ' Intentar convertir el texto de los TextBox a números, manejar el caso de TextBox vacíos
+            Double.TryParse(TxtInsumo.Text, insumo)
+            Double.TryParse(TxtInscri.Text, inscripcion)
+            Double.TryParse(TxtManoObra.Text, manoObra)
+            Double.TryParse(TxtOtros.Text, otros)
+            Double.TryParse(TxtAcondiSemilla.Text, acondiSemilla)
+            Double.TryParse(TxtEquiMaqui.Text, equiMaqui)
+
+            ' Calcular la suma total
+            Dim total As Double = insumo + inscripcion + manoObra + otros + acondiSemilla + equiMaqui
+
+            ' Mostrar el resultado en el TextBox TxtTotal
+            TxtTotal.Text = total.ToString()
+        End If
+    End Sub
+
+
+    Protected Sub TxtTotal_TextChanged(sender As Object, e As EventArgs)
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub TxtOtros_TextChanged(sender As Object, e As EventArgs)
-
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub TxtAcondiSemilla_TextChanged(sender As Object, e As EventArgs)
-
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub TxtInscri_TextChanged(sender As Object, e As EventArgs)
-
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub TxtEquiMaqui_TextChanged(sender As Object, e As EventArgs)
-
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub TxtManoObra_TextChanged(sender As Object, e As EventArgs)
-
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub TxtInsumo_TextChanged(sender As Object, e As EventArgs)
-
+        CalcularTotal()
+        Verificar()
     End Sub
 
     Protected Sub txt_fecha_sembro_TextChanged(sender As Object, e As EventArgs) Handles txt_fecha_sembro.TextChanged

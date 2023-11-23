@@ -126,8 +126,8 @@
                                             <asp:BoundField DataField="ESTIMADO_PRO_QQ_MZ" HeaderText="COSECHA INSCRITA EN MZ" />
                                             <asp:BoundField DataField="ESTIMADO_PRO_QQ_HA" HeaderText="COSECHA INSCRITA EN HA" />
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
-                                             
-                                            
+
+
                                             <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-success" HeaderText="PRODUCCIÓN" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
@@ -137,7 +137,7 @@
                                             <asp:CheckBox ID="CheckBox1" runat="server" />
                                         </ItemTemplate>
                                         </asp:TemplateField>--%>
-                                            
+
                                             <asp:ButtonField ButtonType="Button" Text="+" ControlStyle-CssClass="btn btn-danger" HeaderText="COSTOS" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
@@ -188,21 +188,21 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                            <ContentTemplate>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="TxtAreaSembMz">Area del terreno sembradas (Mz)</label>
-                                                    <asp:label id="lbAreaSembMz" class="label label-warning" runat="server" Text=""></asp:label>
-                                                    <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" ReadOnly="true" onchange="calculateAreaHaInsc();" AutoPostBack="true"/>
-                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TxtAreaSembMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                                </div>
-                                            </div>
-                                            </ContentTemplate>
+                                                <ContentTemplate>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="TxtAreaSembMz">Area del terreno sembradas (Mz)</label>
+                                                            <asp:Label ID="lbAreaSembMz" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                            <asp:TextBox ID="TxtAreaSembMz" runat="server" CssClass="form-control" autocomplete="off" ReadOnly="true" onchange="calculateAreaHaInsc();" AutoPostBack="true" />
+                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TxtAreaSembMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                        </div>
+                                                    </div>
+                                                </ContentTemplate>
                                             </asp:UpdatePanel>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="TxtAreaSembHa">Area del terreno sembradas (Ha)</label>
-                                                    <asp:label id="lbAreaSembHa" class="label label-warning" runat="server" Text=""></asp:label>
+                                                    <asp:Label ID="lbAreaSembHa" class="label label-warning" runat="server" Text=""></asp:Label>
                                                     <asp:TextBox ID="TxtAreaSembHa" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="TxtAreaSembHa" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </div>
@@ -212,16 +212,16 @@
                                         <label for="TxtFecha">Fecha que sembró:</label>
                                         <div class="row">
                                             <asp:UpdatePanel ID="UpdatePanel11" runat="server">
-                                            <ContentTemplate>
-                                            <div class="col-lg-3">
-                                                <div class="form-group">
-                                                    <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:label id="lbfecha_sembro" class="label label-warning" runat="server" Text=""></asp:label>
-                                                    <asp:TextBox CssClass="form-control" ID="txt_fecha_sembro" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
-                                                </div>
-                                            </div>
-                                           </ContentTemplate>
-                                           </asp:UpdatePanel>
+                                                <ContentTemplate>
+                                                    <div class="col-lg-3">
+                                                        <div class="form-group">
+                                                            <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                            <asp:Label ID="lbfecha_sembro" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                            <asp:TextBox CssClass="form-control" ID="txt_fecha_sembro" TextMode="date" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                         </div>
 
                                         <label>¿Tuvo pérdida en el área que sembró?</label>
@@ -235,18 +235,18 @@
                                             <label>¿En cuántas manzanas de terreno que sembró tuvo pérdidas?</label>
                                             <br />
                                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                            <ContentTemplate>
-                                            <div class="col-lg-4">
-                                                <label for="TxtAreaPerdMz">Area del terreno sembradas perdidas (Mz)</label>
-                                                <asp:label id="lbAreaPerdMz" class="label label-warning" runat="server" Text=""></asp:label>
-                                                <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaPer();" AutoPostBack="true"/>
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="TxtAreaPerdMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </div>
-                                            </ContentTemplate>
+                                                <ContentTemplate>
+                                                    <div class="col-lg-4">
+                                                        <label for="TxtAreaPerdMz">Area del terreno sembradas perdidas (Mz)</label>
+                                                        <asp:Label ID="lbAreaPerdMz" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                        <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaPer();" AutoPostBack="true" />
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="TxtAreaPerdMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                    </div>
+                                                </ContentTemplate>
                                             </asp:UpdatePanel>
                                             <div class="col-lg-4">
                                                 <label for="TxtAreaPerdHa">Area de lterreno sembradas perdidas (Ha)</label>
-                                                <asp:label id="lbAreaPerdHa" class="label label-warning" runat="server" Text=""></asp:label>
+                                                <asp:Label ID="lbAreaPerdHa" class="label label-warning" runat="server" Text=""></asp:Label>
                                                 <asp:TextBox ID="TxtAreaPerdHa" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="TxtAreaPerdHa" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                             </div>
@@ -304,12 +304,12 @@
                                         <br />
                                         <label></label>
                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                        <ContentTemplate>
-                                        <label for="TxtQQProd">Quintales producidos en campo: </label>
-                                        <asp:label id="lbQQProd" class="label label-warning" runat="server" Text=""></asp:label>
-                                        <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off" AutoPostBack="true" OnTextChanged="TxtQQProd_TextChanged"/>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="TxtQQProd" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                        </ContentTemplate>
+                                            <ContentTemplate>
+                                                <label for="TxtQQProd">Quintales producidos en campo: </label>
+                                                <asp:Label ID="lbQQProd" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off" AutoPostBack="true" OnTextChanged="TxtQQProd_TextChanged" />
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="TxtQQProd" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                            </ContentTemplate>
                                         </asp:UpdatePanel>
                                         <br />
                                         <label>¿Dispone de los resultados del Centro de Procesamiento?</label>
@@ -347,22 +347,22 @@
                         <script type="text/javascript">
                             function calculateAreaHaPer() {
                                 var areaMZ = parseFloat(document.getElementById('<%= TxtAreaPerdMz.ClientID %>').value);
-                                    var total = areaMZ * 0.7;  
-                                    
+                                var total = areaMZ * 0.7;
+
                                 document.getElementById('<%= TxtAreaPerdHa.ClientID %>').value = total.toFixed(2);
                             }
 
                             function calculateAreaHaInsc() {
                                 var areaMZ = parseFloat(document.getElementById('<%= TxtAreaSembMz.ClientID %>').value);
-                                
+
                                 var total = areaMZ * 0.7;
 
-                            document.getElementById('<%= TxtAreaSembHa.ClientID %>').value = total.toFixed(2);
+                                document.getElementById('<%= TxtAreaSembHa.ClientID %>').value = total.toFixed(2);
                             }
                             // Función para mostrar u ocultar DIVsiembraperdida
                             function mostrarOcultarSiembraperdida() {
                                 var ddlPerdidas = document.getElementById('<%= DDL_perdidas.ClientID %>');
-                            var divSiembraperdida = document.getElementById('<%= DIVsiembraperdida.ClientID %>');
+                                var divSiembraperdida = document.getElementById('<%= DIVsiembraperdida.ClientID %>');
                                 if (ddlPerdidas.value === 'Si') {
                                     divSiembraperdida.style.display = 'block';
                                 } else {
@@ -373,7 +373,7 @@
                             // Función para mostrar u ocultar DIVproduccion
                             function mostrarOcultarProduccion() {
                                 var ddlProcesamiento = document.getElementById('<%= DDL_Procesamiento.ClientID %>');
-                            var divProduccion = document.getElementById('<%= DIVproduccion.ClientID %>');
+                                var divProduccion = document.getElementById('<%= DIVproduccion.ClientID %>');
                                 if (ddlProcesamiento.value === 'Si') {
                                     divProduccion.style.display = 'block';
                                 } else {
@@ -399,7 +399,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         <h4 class="modal-title" id="ModalCostosTitle">Costos</h4>
                                     </div>
-                                    
+
                                     <div class="modal-body">
                                         <label>Usar solo costo total</label>
                                         <asp:DropDownList CssClass="form-control" ID="DDLCostos" runat="server" AutoPostBack="false">
@@ -410,81 +410,81 @@
                                         <br />
                                         <label id="lblmodalcostos" runat="server">Favor estimar el costo global en lempiras para el total de área sembrada (independientemente si perdió el total del área sembrada reportada) </label>
                                         <br />
-                                        
+
                                         <div id="divmodalcostos" runat="server">
-                                             
-                                            
+
+
                                             <label for="TxtCost1">Insumos: </label>
                                             <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                            <ContentTemplate>
-                                            <asp:label id="lbInsumo" class="label label-warning" runat="server" Text=""></asp:label>
-                                            <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" autocomplete="true" onchange="calculateTotalCosto();" OnTextChanged="TxtInsumo_TextChanged"/>
-                                            <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxtInsumo" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </ContentTemplate>
-                                            </asp:UpdatePanel>                                        
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lbInsumo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" OnTextChanged="TxtInsumo_TextChanged" />
+                                                    <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxtInsumo" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                             <br />
-                                           
+
                                             <label for="TxtCost2">Mano de obra: </label>
                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
-                                            <ContentTemplate>
-                                            <asp:label id="lbManoObra" class="label label-warning" runat="server" Text=""></asp:label>
-                                            <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtManoObra_TextChanged"/>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtManoObra" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </ContentTemplate>
-                                            </asp:UpdatePanel> 
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lbManoObra" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtManoObra_TextChanged" />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtManoObra" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                             <br />
 
                                             <label for="TxtCost3">Equipos y maquinaria: </label>
                                             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                                            <ContentTemplate>
-                                            <asp:label id="lbEquiMaqui" class="label label-warning" runat="server" Text=""></asp:label>
-                                            <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtEquiMaqui_TextChanged"/>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtEquiMaqui" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </ContentTemplate>
-                                            </asp:UpdatePanel> 
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lbEquiMaqui" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtEquiMaqui_TextChanged" />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtEquiMaqui" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                             <br />
 
                                             <label for="TxtCost4">Inscripción: </label>
                                             <asp:UpdatePanel ID="UpdatePanel7" runat="server">
-                                            <ContentTemplate>
-                                            <asp:label id="lbinscri" class="label label-warning" runat="server" Text=""></asp:label>
-                                            <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtInscri_TextChanged"/>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtInscri" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </ContentTemplate>
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lbinscri" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtInscri_TextChanged" />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtInscri" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                </ContentTemplate>
                                             </asp:UpdatePanel>
                                             <br />
 
                                             <label for="TxtCost5">Acondicionamiento de semilla: </label>
                                             <asp:UpdatePanel ID="UpdatePanel8" runat="server">
-                                            <ContentTemplate>
-                                            <asp:label id="lbAcondiSemilla" class="label label-warning" runat="server" Text=""></asp:label>
-                                            <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged ="TxtAcondiSemilla_TextChanged"/>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TxtAcondiSemilla" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </ContentTemplate>
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lbAcondiSemilla" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtAcondiSemilla_TextChanged" />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TxtAcondiSemilla" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                </ContentTemplate>
                                             </asp:UpdatePanel>
                                             <br />
 
                                             <label for="TxtCost6">Otros costos: </label>
                                             <asp:UpdatePanel ID="UpdatePanel9" runat="server">
-                                            <ContentTemplate>
-                                            <asp:label id="lbOtros" class="label label-warning" runat="server" Text=""></asp:label>
-                                            <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtOtros_TextChanged"/>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtOtros" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                            </ContentTemplate>
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lbOtros" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtOtros_TextChanged" />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtOtros" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                                </ContentTemplate>
                                             </asp:UpdatePanel>
                                             <br />
                                         </div>
-                                       
+
                                         <label for="TxtCost7">TOTAL: </label>
                                         <asp:UpdatePanel ID="UpdatePanel10" runat="server">
-                                        <ContentTemplate>
-                                        <asp:label id="lbTotal" class="label label-warning" runat="server" Text=""></asp:label>
-                                        <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtTotal_TextChanged"/>
-                                        </ContentTemplate>
+                                            <ContentTemplate>
+                                                <asp:Label ID="lbTotal" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtTotal_TextChanged" />
+                                            </ContentTemplate>
                                         </asp:UpdatePanel>
                                         <br />
                                     </div>
-                                    
+
                                     <div class="modal-footer" style="text-align: center">
                                         <asp:Button ID="BtnGuardCost" Text="Guardar" Width="80px" runat="server" Class="btn btn-primary" />
                                         <asp:Button ID="BtnSaliCost" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />
@@ -496,20 +496,22 @@
                         <script type="text/javascript">
                             function calculateTotalCosto() {
                                 var insumo = parseFloat(document.getElementById('<%= TxtInsumo.ClientID %>').value) || 0;
-                            var mano_obra = parseFloat(document.getElementById('<%= TxtManoObra.ClientID %>').value) || 0;
-                            var equi_maqui = parseFloat(document.getElementById('<%= TxtEquiMaqui.ClientID %>').value) || 0;
-                            var inscrip = parseFloat(document.getElementById('<%= TxtInscri.ClientID %>').value) || 0;
-                            var acondicio = parseFloat(document.getElementById('<%= TxtAcondiSemilla.ClientID %>').value) || 0;
-                            var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value) || 0;
-                            var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
-                            document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
+                                var mano_obra = parseFloat(document.getElementById('<%= TxtManoObra.ClientID %>').value) || 0;
+                                var equi_maqui = parseFloat(document.getElementById('<%= TxtEquiMaqui.ClientID %>').value) || 0;
+                                var inscrip = parseFloat(document.getElementById('<%= TxtInscri.ClientID %>').value) || 0;
+                                var acondicio = parseFloat(document.getElementById('<%= TxtAcondiSemilla.ClientID %>').value) || 0;
+                                var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value) || 0;
+                                var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
+                                if (total !== 0 || !isNaN(total)) {
+                                    document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
+                                }
                             }
 
                             function mostrarOcultardivmodalcostos() {
                                 var ddlPerdidas = document.getElementById('<%= DDLCostos.ClientID %>');
-                            var divmodalcostos = document.getElementById('<%= divmodalcostos.ClientID %>');
-                            var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
-                            var txtToltal = document.getElementById('<%= TxtTotal.ClientID %>');
+                                var divmodalcostos = document.getElementById('<%= divmodalcostos.ClientID %>');
+                                var lblmodalcostos = document.getElementById('<%= lblmodalcostos.ClientID %>');
+                                var txtToltal = document.getElementById('<%= TxtTotal.ClientID %>');
                                 if (ddlPerdidas.value === 'No' || ddlPerdidas.value === "") {
                                     divmodalcostos.style.display = 'block';
                                     lblmodalcostos.style.display = 'none';
@@ -608,7 +610,7 @@
                                             // Función para actualizar las opciones de TxtVariedad
                                             function updateTxtVariedad() {
                                                 var ddlTipo = document.getElementById('<%= DDL_Tipo.ClientID %>');
-                                            var txtVariedad = document.getElementById('<%= TxtVariedad.ClientID %>');
+                                                var txtVariedad = document.getElementById('<%= TxtVariedad.ClientID %>');
                                                 var selectedValue = ddlTipo.options[ddlTipo.selectedIndex].value;
 
                                                 // Limpiar las opciones actuales en TxtVariedad
@@ -646,8 +648,8 @@
                                         <script type="text/javascript">
                                             function calculateAreaHa() {
                                                 var areaMZ = parseFloat(document.getElementById('<%= TxT_AreaMZ.ClientID %>').value);
-                                         var total = areaMZ * 0.7;
-                                         document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
+                                                var total = areaMZ * 0.7;
+                                                document.getElementById('<%= Txt_AreaHa.ClientID %>').value = total.toFixed(2);
                                             }
                                         </script>
                                         <label for="TxtFecha">Fecha que siembrarà:</label>
@@ -688,9 +690,9 @@
                                         <script type="text/javascript">
                                             function calculateAreaHaPRO() {
                                                 var areaMZ = parseFloat(document.getElementById('<%= TxtProduccionQQMZ.ClientID %>').value);
-                                            var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                            var total = areaMZ * 0.7;
-                                            document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
+                                                var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
+                                                var total = areaMZ * 0.7;
+                                                document.getElementById('<%= TxtProduccionQQHA.ClientID %>').value = total.toFixed(2);
                                             }
                                         </script>
                                         <br />
@@ -708,9 +710,9 @@
 
                                             function calculateAreaHaEs() {
                                                 var areaMZ = parseFloat(document.getElementById('<%= TxtSemillaQQ.ClientID %>').value);
-                                             var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
-                                             calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
-                                             document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
+                                                var areaHA = parseFloat(document.getElementById('<%= Txt_AreaHa.ClientID %>').value);
+                                                calculatedTotal = areaMZ * 0.7; // Guardar el total en la variable
+                                                document.getElementById('<%= TxtEstimadoProducir.ClientID %>').value = calculatedTotal.toFixed(2);
                                             }
                                         </script>
                                         <br />
