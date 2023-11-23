@@ -42,7 +42,7 @@ Public Class ActaRecepcionSemilla
         btnGuardarActa.Visible = True
     End Sub
     Private Sub FillComboBoxWithProductorNames()
-        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla"
+        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla  ORDER BY PROD_NOMBRE ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)

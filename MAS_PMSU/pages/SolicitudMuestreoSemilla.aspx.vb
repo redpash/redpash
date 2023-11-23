@@ -23,12 +23,13 @@ Public Class SolicitudMuestreoSemilla
                 'txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 Div1.Style.Add("display", "none")
                 Div2.Style.Add("display", "block")
-                DivGrid.Style.Add("display", "block")
+                DivGrid.Style.Add("display", "none")
+                DivGridG.Style.Add("display", "block")
+                FillComboBoxWithProductorNames()
                 llenarcomboDepto()
                 llenarcomboCiclo()
                 VerificarTextBox()
                 Verificar()
-                FillComboBoxWithProductorNames()
                 llenagrid()
             End If
         End If
@@ -47,7 +48,7 @@ Public Class SolicitudMuestreoSemilla
         btnGuardarActa.Visible = True
     End Sub
     Private Sub FillComboBoxWithProductorNames()
-        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla"
+        Dim StrCombo As String = "SELECT PROD_NOMBRE FROM registros_bancos_semilla ORDER BY PROD_NOMBRE ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -58,6 +59,13 @@ Public Class SolicitudMuestreoSemilla
         TxtProductor.DataBind()
         Dim newitem2 As New ListItem("", "")
         TxtProductor.Items.Insert(0, newitem2)
+
+        TxtProductorG.DataSource = DtCombo
+        TxtProductorG.DataValueField = DtCombo.Columns(0).ToString()
+        TxtProductorG.DataTextField = DtCombo.Columns(0).ToString
+        TxtProductorG.DataBind()
+        Dim newitem3 As New ListItem("", "")
+        TxtProductorG.Items.Insert(0, newitem3)
     End Sub
     Private Sub llenarcomboCiclo()
         Dim StrCombo As String = "SELECT * FROM redpash_ciclo"
@@ -391,56 +399,20 @@ Public Class SolicitudMuestreoSemilla
         Dim cadena As String = "ID, productor, departamento, municipio, aldea, caserio, ciclo, cultivo, variedadFrijol, variedadMaiz, categoria, lote_produc_semilla, cantidad_QQ_cosechada, DATE_FORMAT(FECHA, '%d-%m-%Y') AS FECHA_COSECHA"
         Dim c1 As String = ""
         Dim c2 As String = ""
-        Dim c3 As String = ""
-        Dim c4 As String = ""
-        Dim c5 As String = ""
-        Dim c6 As String = ""
-        Dim c7 As String = ""
-        Dim c8 As String = ""
 
-        If (TxtProductor.SelectedItem.Text = "") Then
+        If (TxtProductorG.SelectedItem.Text = "") Then
             c1 = " "
         Else
-            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
+            c1 = "AND productor = '" & TxtProductorG.SelectedItem.Text & "' "
         End If
 
-        If (CmbTipoSemilla.SelectedItem.Text = "") Then
+        If (DDL_SelCultG.SelectedItem.Text = "") Then
             c2 = " "
         Else
-            c2 = "AND cultivo = '" & CmbTipoSemilla.SelectedItem.Text & "' "
+            c2 = "AND cultivo = '" & DDL_SelCultG.SelectedItem.Text & "' "
         End If
 
-        If (TxtCiclo.SelectedItem.Text = "") Then
-            c3 = " "
-        Else
-            c3 = "AND ciclo = '" & TxtCiclo.SelectedItem.Text & "' "
-        End If
-
-        If (gb_departamento_new.SelectedItem.Text = "") Then
-            c4 = " "
-        Else
-            c4 = "AND departamento = '" & gb_departamento_new.SelectedItem.Text & "' "
-        End If
-
-        If (gb_municipio_new.SelectedItem.Text = "") Then
-            c5 = " "
-        Else
-            c5 = "AND municipio = '" & gb_municipio_new.SelectedItem.Text & "' "
-        End If
-
-        If (gb_aldea_new.SelectedItem.Text = "") Then
-            c6 = " "
-        Else
-            c6 = "AND aldea = '" & gb_aldea_new.SelectedItem.Text & "' "
-        End If
-
-        If (gb_caserio_new.SelectedItem.Text = "") Then
-            c7 = " "
-        Else
-            c7 = "AND caserio = '" & gb_caserio_new.SelectedItem.Text & "' "
-        End If
-
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & c6 & c7 & " ORDER BY id DESC"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM solicitud_muestreo_semilla WHERE 1 = 1 " & c1 & c2
 
     End Sub
 
@@ -478,7 +450,9 @@ Public Class SolicitudMuestreoSemilla
         llenagrid()
         VerificarTextBox()
     End Sub
-
+    Protected Sub TxtProductorG_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductorG.SelectedIndexChanged
+        llenagrid()
+    End Sub
 
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
 
@@ -722,7 +696,18 @@ Public Class SolicitudMuestreoSemilla
         Div1.Style.Add("display", "block")
         Div2.Style.Add("display", "none")
         DivGrid.Style.Add("display", "none")
+        DivGridG.Style.Add("display", "none")
     End Sub
 
+    Protected Sub BtnNewSol_Click(sender As Object, e As EventArgs)
+        Div1.Style.Add("display", "none")
+        Div2.Style.Add("display", "none")
+        DivGrid.Style.Add("display", "block")
+        DivGridG.Style.Add("display", "none")
+    End Sub
+
+    Protected Sub DDL_SelCultG_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenagrid()
+    End Sub
 End Class
 
