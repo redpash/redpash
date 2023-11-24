@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class Registro_Portal_Sag
 
     '''<summary>
+    '''Control ScriptManager1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''Control panelmasiso.
     '''</summary>
     '''<remarks>
@@ -248,6 +257,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents TxtTabla As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control Label7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control TxtNom.
     '''</summary>
     '''<remarks>
@@ -257,6 +275,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents TxtNom As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control Label5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control TxtCicloD.
     '''</summary>
     '''<remarks>
@@ -264,6 +291,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtCicloD As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Label8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control DDL_Tipo.
@@ -293,6 +329,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents maiz As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
+    '''Control Label9.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control TxtVariedad.
     '''</summary>
     '''<remarks>
@@ -300,6 +345,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtVariedad As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control Label10.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control TxtCategoria.
@@ -320,13 +374,13 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents updatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''Control ScriptManager1.
+    '''Control lbDDL_Nlote.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+    Protected WithEvents lbDDL_Nlote As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control DDL_Nlote.
@@ -336,6 +390,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents DDL_Nlote As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control lbAreaMZ.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbAreaMZ As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control TxT_AreaMZ.
@@ -374,13 +437,13 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
-    '''Control Label14.
+    '''Control lbFechaSiembra.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label14 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbFechaSiembra As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control TxtFechaSiembra.
@@ -390,6 +453,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtFechaSiembra As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lbRegistradaQQ.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbRegistradaQQ As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control TxtRegistradaQQ.
@@ -410,6 +482,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
+    '''Control lbCantLotes.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbCantLotes As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control TxtCantLotes.
     '''</summary>
     '''<remarks>
@@ -417,6 +498,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtCantLotes As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lbProduccionQQMZ.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbProduccionQQMZ As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control TxtProduccionQQMZ.
@@ -453,6 +543,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents RegularExpressionValidator4 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''Control lbSemillaQQ.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbSemillaQQ As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control TxtSemillaQQ.

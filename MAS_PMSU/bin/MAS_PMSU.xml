@@ -15425,6 +15425,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._ScriptManager1">
+<summary>
+Control ScriptManager1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._panelmasiso">
 <summary>
 Control panelmasiso.
@@ -15659,6 +15668,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._Label7">
+<summary>
+Control Label7.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtNom">
 <summary>
 Control TxtNom.
@@ -15668,9 +15686,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._Label5">
+<summary>
+Control Label5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtCicloD">
 <summary>
 Control TxtCicloD.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._Label8">
+<summary>
+Control Label8.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15704,9 +15740,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._Label9">
+<summary>
+Control Label9.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtVariedad">
 <summary>
 Control TxtVariedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._Label10">
+<summary>
+Control Label10.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15731,9 +15785,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Registro_Portal_Sag._ScriptManager1">
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbDDL_Nlote">
 <summary>
-Control ScriptManager1.
+Control lbDDL_Nlote.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15743,6 +15797,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Registro_Portal_Sag._DDL_Nlote">
 <summary>
 Control DDL_Nlote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbAreaMZ">
+<summary>
+Control lbAreaMZ.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15785,9 +15848,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Registro_Portal_Sag._Label14">
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbFechaSiembra">
 <summary>
-Control Label14.
+Control lbFechaSiembra.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15797,6 +15860,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtFechaSiembra">
 <summary>
 Control TxtFechaSiembra.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbRegistradaQQ">
+<summary>
+Control lbRegistradaQQ.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15821,9 +15893,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbCantLotes">
+<summary>
+Control lbCantLotes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Registro_Portal_Sag._TxtCantLotes">
 <summary>
 Control TxtCantLotes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbProduccionQQMZ">
+<summary>
+Control lbProduccionQQMZ.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -15860,6 +15950,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Registro_Portal_Sag._RegularExpressionValidator4">
 <summary>
 Control RegularExpressionValidator4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Registro_Portal_Sag._lbSemillaQQ">
+<summary>
+Control lbSemillaQQ.
 </summary>
 <remarks>
 Campo generado automáticamente.

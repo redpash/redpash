@@ -115,7 +115,7 @@ Public Class Ventas
             c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas WHERE Estado = '1' " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_bcs_ventas WHERE Estado = '1' AND QQ_Produccion_Campo IS NOT NULL AND QQ_Oro IS NOT NULL AND QQ_Grano IS NOT NULL AND QQ_Basura IS NOT NULL " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
 
     End Sub
     Protected Sub DDL_cultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_cultivo.SelectedIndexChanged

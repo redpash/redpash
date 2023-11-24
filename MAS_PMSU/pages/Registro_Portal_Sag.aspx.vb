@@ -8,6 +8,7 @@ Public Class Registro_Portal_Sag
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
     Dim nombreproductor As String
+    Dim validarflag As Integer
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
@@ -19,6 +20,7 @@ Public Class Registro_Portal_Sag
                 Dim newitem As New ListItem(" ", " ")
                 TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
+                verificar()
                 div_nuevo_prod.Visible = False
                 TxtProductor.Enabled = False
             End If
@@ -220,13 +222,59 @@ Public Class Registro_Portal_Sag
 
     End Sub
 
+    Protected Sub verificar()
+        If DDL_Nlote.SelectedItem IsNot Nothing Then
+            If Not String.IsNullOrEmpty(DDL_Nlote.SelectedItem.Text) Then
+                lbDDL_Nlote.Text = ""
+                validarflag += 1
+
+            Else
+                lbDDL_Nlote.Text = "*"
+                validarflag = 0
+            End If
+        End If
+        If (TxT_AreaMZ.Text = "") Then
+            lbAreaMZ.Text = "*"
+            validarflag = 0
+        Else
+            lbAreaMZ.Text = ""
+            validarflag += 1
+        End If
+
+        If (TxtRegistradaQQ.Text = "") Then
+            lbRegistradaQQ.Text = "*"
+            validarflag = 0
+        Else
+            lbRegistradaQQ.Text = ""
+            validarflag += 1
+        End If
+
+        If (TxtProduccionQQMZ.Text = "") Then
+            lbProduccionQQMZ.Text = "*"
+            validarflag = 0
+        Else
+            lbProduccionQQMZ.Text = ""
+            validarflag += 1
+        End If
+
+        If (TxtSemillaQQ.Text = "") Then
+            lbSemillaQQ.Text = "*"
+            validarflag = 0
+        Else
+            lbSemillaQQ.Text = ""
+            validarflag += 1
+        End If
+
+    End Sub
+
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
         'Dim fecha2 As Date
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
-
+            limpiar()
+            verificar()
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
@@ -244,38 +292,38 @@ Public Class Registro_Portal_Sag
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
             txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
-            obtener_numero_lote(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
 
             If txt_habilitado.Text = "NO" Then
 
                 Label3.Text = "Para este ciclo ya ha finalizado el tiempo de edición, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
             Else
-
+                limpiar()
                 TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
                 TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
-
+                obtener_numero_lote(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
                 Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
 
                 TxtVariedad.Items.Clear()
                 If vv = "Frijol" Then
                     DDL_Tipo.SelectedIndex = 1
-                    TxtVariedad.Items.Insert(0, "Amadeus-77")
-                    TxtVariedad.Items.Insert(1, "Carrizalito")
-                    TxtVariedad.Items.Insert(2, "Deorho")
-                    TxtVariedad.Items.Insert(3, "Azabache")
-                    TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
-                    TxtVariedad.Items.Insert(5, "Honduras nutritivo")
-                    TxtVariedad.Items.Insert(6, "Inta Cárdenas")
-                    TxtVariedad.Items.Insert(7, "Lenca precoz")
-                    TxtVariedad.Items.Insert(8, "Rojo chortí")
-                    TxtVariedad.Items.Insert(9, "Tolupan rojo")
-                    TxtVariedad.Items.Insert(10, "Otra especificar")
+                    TxtVariedad.Items.Insert(0, "")
+                    TxtVariedad.Items.Insert(1, "Amadeus-77")
+                    TxtVariedad.Items.Insert(2, "Carrizalito")
+                    TxtVariedad.Items.Insert(3, "Deorho")
+                    TxtVariedad.Items.Insert(4, "Azabache")
+                    TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
+                    TxtVariedad.Items.Insert(6, "Honduras nutritivo")
+                    TxtVariedad.Items.Insert(7, "Inta Cárdenas")
+                    TxtVariedad.Items.Insert(8, "Lenca precoz")
+                    TxtVariedad.Items.Insert(9, "Rojo chortí")
+                    TxtVariedad.Items.Insert(10, "Tolupan rojo")
                 Else
                     DDL_Tipo.SelectedIndex = 2
-                    TxtVariedad.Items.Insert(0, "Dicta Maya")
-                    TxtVariedad.Items.Insert(1, "Dicta Victoria")
-                    TxtVariedad.Items.Insert(2, "Otra especificar")
+                    TxtVariedad.Items.Insert(0, "")
+                    TxtVariedad.Items.Insert(1, "Dicta Maya")
+                    TxtVariedad.Items.Insert(2, "Dicta Victoria")
+                    TxtVariedad.Items.Insert(3, "Otra especificar")
                 End If
 
                 TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
@@ -293,15 +341,8 @@ Public Class Registro_Portal_Sag
                 TxtSemillaQQ.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQ").ToString()
                 TxtEstimadoProducir.Text = dt.Rows(0)("ESTIMADO_PRODUCIR_QQHA").ToString()
 
-
-                'fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
-                'TxtDia.SelectedValue = fecha2.Day
-                'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-                'TxtAno.SelectedValue = fecha2.Year
-
-
-
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+                verificar()
             End If
         End If
 
@@ -427,7 +468,7 @@ Public Class Registro_Portal_Sag
         Return 0
     End Function
     Protected Sub obtener_numero_lote(cadena As String)
-
+        DDL_Nlote.Items.Clear()
         Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -438,7 +479,7 @@ Public Class Registro_Portal_Sag
             DDL_Nlote.DataValueField = "nombre_lote"
             DDL_Nlote.DataTextField = "nombre_lote"
             DDL_Nlote.DataBind()
-            Dim newitem As New ListItem(" ", " ")
+            Dim newitem As New ListItem("", "")
             DDL_Nlote.Items.Insert(0, newitem)
         Else
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
@@ -477,51 +518,19 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub BGuardar_Click(sender As Object, e As EventArgs) Handles BGuardar.Click
-        Dim fecha As Date
-        If Date.TryParse(TxtFechaSiembra.Text, fecha) Then
-            fecha.ToString("dd-MM-yyyy")
-        End If
-        Dim conex As New MySqlConnection(conn)
+        validarflag = 0
+        verificar()
 
-        conex.Open()
-        Dim Sql As String
-        Dim cmd2 As New MySqlCommand()
+        If validarflag = 5 Then
+            Dim fecha As Date
+            If Date.TryParse(TxtFechaSiembra.Text, fecha) Then
+                fecha.ToString("dd-MM-yyyy")
+            End If
+            Dim conex As New MySqlConnection(conn)
 
-        If (TxtID.Text = "") Then
-            Sql = "INSERT INTO bcs_inscripcion_senasa (Productor, CICLO, Departamento, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado, Tipo_cultivo, Habilitado)
-            VALUES(@Productor, @CICLO, @Departamento, @VARIEDAD, @CATEGORIA, @AREA_SEMBRADA_MZ, @AREA_SEMBRADA_HA, @FECHA_SIEMBRA, @REQUERIEMIENTO_REGISTRADA_QQ, @CANTIDAD_LOTES_SEMBRAR, @NOMBRE_LOTE_FINCA, @ESTIMADO_PRO_QQ_MZ, @ESTIMADO_PRO_QQ_HA, @ESTIMADO_PRODUCIR_QQ, @ESTIMADO_PRODUCIR_QQHA, @Estado, @Tipo_cultivo, @Habilitado)"
-
-            cmd2.Connection = conex
-            cmd2.CommandText = Sql
-
-            cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)    'REVISADO
-            cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
-
-            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_MZ", Convert.ToDouble(TxT_AreaMZ.Text))
-            cmd2.Parameters.AddWithValue("@AREA_SEMBRADA_HA", Convert.ToDouble(Txt_AreaHa.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
-            cmd2.Parameters.AddWithValue("@FECHA_SIEMBRA", fecha)
-
-
-            cmd2.Parameters.AddWithValue("@REQUERIEMIENTO_REGISTRADA_QQ", Convert.ToDouble(TxtRegistradaQQ.Text))
-            cmd2.Parameters.AddWithValue("@CANTIDAD_LOTES_SEMBRAR", Convert.ToInt64(TxtCantLotes.Text))
-            cmd2.Parameters.AddWithValue("@NOMBRE_LOTE_FINCA", DDL_Nlote.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_MZ", Convert.ToDouble(TxtProduccionQQMZ.Text))
-            cmd2.Parameters.AddWithValue("@ESTIMADO_PRO_QQ_HA", Convert.ToDouble(TxtProduccionQQHA.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
-            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
-            cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtEstimadoProducir.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
-            cmd2.Parameters.AddWithValue("@Estado", "1")
-            cmd2.Parameters.AddWithValue("@Habilitado", "SI")
-            'cmd2.Parameters.AddWithValue("@FECHA_SEMBRARA", Convert.ToDateTime(fecha))
-
-            cmd2.ExecuteNonQuery()
-            conex.Close()
-
-            Label1.Text = "La inscripcion del lote ha sido agregada"
-        Else
+            conex.Open()
+            Dim Sql As String
+            Dim cmd2 As New MySqlCommand()
 
             Sql = "UPDATE bcs_inscripcion_senasa SET
                     Productor = @Productor,
@@ -563,24 +572,30 @@ Public Class Registro_Portal_Sag
             cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQ", Convert.ToDouble(TxtSemillaQQ.Text))
             cmd2.Parameters.AddWithValue("@ESTIMADO_PRODUCIR_QQHA", Convert.ToDouble(TxtEstimadoProducir.Text)) 'CAMBIAR LA VARIABLE POR LA QUE ES
             cmd2.Parameters.AddWithValue("@Estado", "1")
+
             cmd2.ExecuteNonQuery()
             conex.Close()
 
 
             Label1.Text = "La inscripcion del lote ha sido actualizada"
             limpiar()
+            llenagrid()
 
+            BConfirm.Visible = True
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
 
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        Else
+            Label1.Text = "Por favor llenar todos los campos"
+            BConfirm.Visible = True
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
 
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
-        llenagrid()
 
-        BConfirm.Visible = True
-        BBorrarsi.Visible = False
-        BBorrarno.Visible = False
-
-        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
     End Sub
 
@@ -620,22 +635,24 @@ Public Class Registro_Portal_Sag
         TxtVariedad.Items.Clear()
         If vv = "Frijol" Then
             DDL_Tipo.SelectedIndex = 1
-            TxtVariedad.Items.Insert(0, "Amadeus-77")
-            TxtVariedad.Items.Insert(1, "Carrizalito")
-            TxtVariedad.Items.Insert(2, "Deorho")
-            TxtVariedad.Items.Insert(3, "Azabache")
-            TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
-            TxtVariedad.Items.Insert(5, "Honduras nutritivo")
-            TxtVariedad.Items.Insert(6, "Inta Cárdenas")
-            TxtVariedad.Items.Insert(7, "Lenca precoz")
-            TxtVariedad.Items.Insert(8, "Rojo chortí")
-            TxtVariedad.Items.Insert(9, "Tolupan rojo")
-            TxtVariedad.Items.Insert(10, "Otra especificar")
+            TxtVariedad.Items.Insert(0, "")
+            TxtVariedad.Items.Insert(1, "Amadeus-77")
+            TxtVariedad.Items.Insert(2, "Carrizalito")
+            TxtVariedad.Items.Insert(3, "Deorho")
+            TxtVariedad.Items.Insert(4, "Azabache")
+            TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
+            TxtVariedad.Items.Insert(6, "Honduras nutritivo")
+            TxtVariedad.Items.Insert(7, "Inta Cárdenas")
+            TxtVariedad.Items.Insert(8, "Lenca precoz")
+            TxtVariedad.Items.Insert(9, "Rojo chortí")
+            TxtVariedad.Items.Insert(10, "Tolupan rojo")
+            TxtVariedad.Items.Insert(11, "Otra especificar")
         ElseIf vv = "Maiz" Then
             DDL_Tipo.SelectedIndex = 2
-            TxtVariedad.Items.Insert(0, "Dicta Maya")
-            TxtVariedad.Items.Insert(1, "Dicta Victoria")
-            TxtVariedad.Items.Insert(2, "Otra especificar")
+            TxtVariedad.Items.Insert(0, "")
+            TxtVariedad.Items.Insert(1, "Dicta Maya")
+            TxtVariedad.Items.Insert(2, "Dicta Victoria")
+            TxtVariedad.Items.Insert(3, "Otra especificar")
         Else
             TxtVariedad.Items.Insert(0, "")
         End If
@@ -717,6 +734,7 @@ Public Class Registro_Portal_Sag
         Else
             TxtProduccionQQHA.Text = ""
         End If
+        verificar()
     End Sub
 
     Protected Sub TxtSemillaQQ_TextChanged(sender As Object, e As EventArgs)
@@ -725,6 +743,7 @@ Public Class Registro_Portal_Sag
         Else
             TxtEstimadoProducir.Text = ""
         End If
+        verificar()
     End Sub
 
     Protected Sub TxT_AreaMZ_TextChanged(sender As Object, e As EventArgs)
@@ -733,6 +752,7 @@ Public Class Registro_Portal_Sag
         Else
             Txt_AreaHa.Text = ""
         End If
+        verificar()
     End Sub
 
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
@@ -784,23 +804,25 @@ Public Class Registro_Portal_Sag
         TxtVariedad.Items.Clear()
         If vv = "Frijol" Then
             DDL_Tipo.SelectedIndex = 1
-            TxtVariedad.Items.Insert(0, "Amadeus-77")
-            TxtVariedad.Items.Insert(1, "Carrizalito")
-            TxtVariedad.Items.Insert(2, "Deorho")
-            TxtVariedad.Items.Insert(3, "Azabache")
-            TxtVariedad.Items.Insert(4, "Paraisito mejorado PM-2")
-            TxtVariedad.Items.Insert(5, "Honduras nutritivo")
-            TxtVariedad.Items.Insert(6, "Inta Cárdenas")
-            TxtVariedad.Items.Insert(7, "Lenca precoz")
-            TxtVariedad.Items.Insert(8, "Rojo chortí")
-            TxtVariedad.Items.Insert(9, "Tolupan rojo")
-            TxtVariedad.Items.Insert(10, "Otra especificar")
+            TxtVariedad.Items.Insert(0, "")
+            TxtVariedad.Items.Insert(1, "Amadeus-77")
+            TxtVariedad.Items.Insert(2, "Carrizalito")
+            TxtVariedad.Items.Insert(3, "Deorho")
+            TxtVariedad.Items.Insert(4, "Azabache")
+            TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
+            TxtVariedad.Items.Insert(6, "Honduras nutritivo")
+            TxtVariedad.Items.Insert(7, "Inta Cárdenas")
+            TxtVariedad.Items.Insert(8, "Lenca precoz")
+            TxtVariedad.Items.Insert(9, "Rojo chortí")
+            TxtVariedad.Items.Insert(10, "Tolupan rojo")
+            TxtVariedad.Items.Insert(11, "Otra especificar")
             provi = TxtVariedad.SelectedItem.Text
         ElseIf vv = "Maiz" Then
             DDL_Tipo.SelectedIndex = 2
-            TxtVariedad.Items.Insert(0, "Dicta Maya")
-            TxtVariedad.Items.Insert(1, "Dicta Victoria")
-            TxtVariedad.Items.Insert(2, "Otra especificar")
+            TxtVariedad.Items.Insert(0, "")
+            TxtVariedad.Items.Insert(1, "Dicta Maya")
+            TxtVariedad.Items.Insert(2, "Dicta Victoria")
+            TxtVariedad.Items.Insert(3, "Otra especificar")
             provi = TxtVariedad.SelectedItem.Text
         Else
             DDL_Tipo.SelectedIndex = 0
@@ -818,7 +840,11 @@ Public Class Registro_Portal_Sag
             TxtProduccionQQMZ.Text = DtCombo.Rows(0)("produccion_est_manzanas").ToString
             TxT_AreaMZ.Text = DtCombo.Rows(0)("superficie_mz").ToString
             Txt_AreaHa.Text = DtCombo.Rows(0)("superficie_hectarea").ToString
+            verificar()
         End If
     End Sub
 
+    Protected Sub TxtRegistradaQQ_TextChanged(sender As Object, e As EventArgs)
+        verificar()
+    End Sub
 End Class

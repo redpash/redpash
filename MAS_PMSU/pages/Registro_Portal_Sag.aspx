@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
@@ -205,33 +206,36 @@
                                             <asp:TextBox ID="TxtID" runat="server" Visible="False"></asp:TextBox>
                                             <asp:TextBox ID="txt_habilitado" runat="server" Visible="False"></asp:TextBox>
                                             <asp:TextBox ID="TextBox1" runat="server" Visible="False"></asp:TextBox>
-
                                             <asp:TextBox ID="TxtTabla" runat="server" Visible="False"></asp:TextBox>
                                             <%--<asp:CheckBox ID="CheckBox1" runat="server" Visible="False" />--%>
                                             <br />
                                             <label for="TxtNom3">
                                                 Nombre del Productor</label>
-                                            <asp:TextBox ID="TxtNom" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
+                                            <asp:Label ID="Label7" class="label label-warning" runat="server" Text=""></asp:Label>
+                                            <asp:TextBox ID="TxtNom" runat="server" Enabled="false" CssClass="form-control" autocomplete="off" />
                                             <br />
                                             <label for="Txtciclo">
                                                 Ciclo</label>
-                                            <asp:TextBox ID="TxtCicloD" runat="server" ReadOnly="true" CssClass="form-control" autocomplete="off" />
+                                            <asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
+                                            <asp:TextBox ID="TxtCicloD" runat="server" Enabled="false" CssClass="form-control" autocomplete="off" />
                                             <br />
                                             <label for="DDL_Tipo">Tipo</label>
-                                            <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
+                                            <asp:Label ID="Label8" class="label label-warning" runat="server" Text=""></asp:Label>
+                                            <asp:DropDownList CssClass="form-control" ID="DDL_Tipo" runat="server" onchange="updateTxtVariedad();" Enabled="false" OnSelectedIndexChanged="DDL_Tipo_SelectedIndexChanged" AutoPostBack="false">
                                                 <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem id="frijol" Text="Frijol"></asp:ListItem>
                                                 <asp:ListItem id="maiz" Text="Maiz"></asp:ListItem>
                                             </asp:DropDownList>
                                             <br />
                                             <label for="TxtVariedad">Variedad</label>
-                                            <asp:DropDownList CssClass="form-control" ID="TxtVariedad" runat="server">
+                                            <asp:Label ID="Label9" class="label label-warning" runat="server" Text=""></asp:Label>
+                                            <asp:DropDownList CssClass="form-control" Enabled="false" ID="TxtVariedad" runat="server">
                                             </asp:DropDownList>
 
                                             <script type="text/javascript">
                                                 var variedades = {
-                                                    "Frijol": ["Amadeus77", "Carrizalito", "Deorho", "Azabache", "Paraisitomejorado", "Honduras_nutritivo", "IntaCardenas", "Lencaprecoz", "Rojochortí", "Tolupanrojo", "OtraVariedad"],
-                                                    "Maiz": ["Dicta Maya", "Dicta Victoria", "Otra especificar"]
+                                                    "Frijol": ["","Amadeus77", "Carrizalito", "Deorho", "Azabache", "Paraisitomejorado", "Honduras_nutritivo", "IntaCardenas", "Lencaprecoz", "Rojochortí", "Tolupanrojo", "OtraVariedad"],
+                                                    "Maiz": ["", "Dicta Maya", "Dicta Victoria", "Otra especificar"]
                                                 };
 
                                                 // Función para actualizar las opciones de TxtVariedad
@@ -255,7 +259,8 @@
                                             <br />
                                             <label for="TxtCategoria">
                                                 Categoria</label>
-                                            <asp:DropDownList CssClass="form-control" ID="TxtCategoria" runat="server">
+                                            <asp:Label ID="Label10" class="label label-warning" runat="server" Text=""></asp:Label>
+                                            <asp:DropDownList CssClass="form-control" Enabled="false" ID="TxtCategoria" runat="server" ReadOnly="true">
                                                 <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem>Certificada</asp:ListItem>
                                                 <asp:ListItem>Comercial</asp:ListItem>
@@ -263,15 +268,18 @@
                                             <br />
                                             <asp:UpdatePanel runat="server" ID="updatePanel" UpdateMode="Conditional">
                                                 <ContentTemplate>
-                                                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
                                                     <label for="txtNombreFinca">
                                                         Nombre o No. del lote dentro de la finca</label>
-                                                    <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDL_Nlote_SelectedIndexChanged"></asp:DropDownList>
+                                                    <asp:Label ID="lbDDL_Nlote" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDL_Nlote_SelectedIndexChanged">
+                                                        <asp:ListItem Text=""></asp:ListItem>
+                                                    </asp:DropDownList>
                                                     <br />
 
                                                     <label for="TxtQuintales">
                                                         Area a Sembrar En MZ.</label>
+                                                    <asp:Label ID="lbAreaMZ" class="label label-warning" runat="server" Text=""></asp:Label>
                                                     <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" OnTextChanged="TxT_AreaMZ_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxT_AreaMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <label for="Txt_AreaHa">
@@ -292,7 +300,7 @@
 
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
-                                                                <asp:Label ID="Label14" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                                <asp:Label ID="lbFechaSiembra" class="label label-warning" runat="server" Text=""></asp:Label>
                                                                 <asp:TextBox CssClass="form-control" ID="TxtFechaSiembra" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
                                                             </div>
                                                         </div>
@@ -300,18 +308,21 @@
                                                     <br />
                                                     <label for="TxtRegistradaQQ">
                                                         Requerimiento de semilla registrada QQ</label>
-                                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" />
+                                                    <asp:Label ID="lbRegistradaQQ" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtRegistradaQQ" runat="server" CssClass="form-control" AutoPostBack="true" onkeypress="return numericOnly(this);" autocomplete="off" OnTextChanged="TxtRegistradaQQ_TextChanged"/>
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtRegistradaQQ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <br />
 
                                                     <label for="TxtCantLotes" runat="server" visible="false">
                                                         Cantidad de lotes a sembrar</label>
+                                                    <asp:Label ID="lbCantLotes" class="label label-warning" runat="server" Text=""></asp:Label>
                                                     <asp:TextBox ID="TxtCantLotes" runat="server" CssClass="form-control" onkeypress="return numericOnly(this);" autocomplete="off" Visible="false" Text="1" />
                                                     <br />
 
                                                     <label for="TxtProduccionQQMZ">
                                                         Estimado de producción en campo QQ/MZ</label>
-                                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtProduccionQQMZ_TextChanged" onchange="calculateAreaHaPRO();"></asp:TextBox>
+                                                    <asp:Label ID="lbProduccionQQMZ" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtProduccionQQMZ_TextChanged" onchange="calculateAreaHaPRO();"></asp:TextBox>
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtProduccionQQMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <br />
 
@@ -331,7 +342,8 @@
 
                                                     <label for="TxtSemillaQQ">
                                                         Estimado semilla a producir QQ/MZ.</label>
-                                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="False" OnTextChanged="TxtSemillaQQ_TextChanged" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                                    <asp:Label ID="lbSemillaQQ" class="label label-warning" runat="server" Text=""></asp:Label>
+                                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtSemillaQQ_TextChanged" onchange="calculateAreaHaEs();"></asp:TextBox>
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtSemillaQQ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <br />
 
