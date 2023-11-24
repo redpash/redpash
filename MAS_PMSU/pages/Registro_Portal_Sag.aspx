@@ -484,21 +484,37 @@
                                             Etiqueta De Semilla Registrada</label>
                                         <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" />
                                         <br />
-                                        <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="True" class="btn btn-primary" />
-                                        <asp:Button ID="Button1" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-warning" />
+                                        <asp:Label ID="Label12" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
+                                        <asp:Label ID="Label13" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
+                                        <br />
+                                        <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="false" class="btn btn-primary" />
+                                        <asp:Button ID="Button1" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-primary" />
                                         <hr />
-
-
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade" id="DeleteModal4" tabindex="-1" role="dialog" aria-labelledby="ModalTitle5" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="ModalTitle5">REDPASH</h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="Label11" runat="server" Text="El productor no tiene ningun lote registrado. ¿Desea agregarlo?"></asp:Label>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <asp:Button ID="Button6" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </asp:Content>

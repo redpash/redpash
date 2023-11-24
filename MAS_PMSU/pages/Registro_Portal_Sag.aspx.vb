@@ -677,18 +677,15 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
-        Try
+
+        If ValidarFormulario() Then
+
             Dim connectionString As String = conn
             Using conn As New MySqlConnection(connectionString)
                 conn.Open()
-
-                ' Leer archivos como bytes
-
                 Dim bytesFicha As Byte() = FileUploadToBytes(FileUploadFicha)
                 Dim bytesPagoTGR As Byte() = FileUploadToBytes(FileUploadPagoTGR)
                 Dim bytesEtiqueta As Byte() = FileUploadToBytes(FileUploadEtiquetaSemilla)
-
-
 
                 ' Actualizar bytes en la base de datos
                 Dim query As String = "UPDATE bcs_inscripcion_senasa SET TIPO_SEMILLA= @TIPO_SEMILLA, IMAGEN_FICHA=@ImagenFicha, IMAGEN_PAGO_TGR=@ImagenPagoTGR, IMAGEN_ETIQUETA_SEMILLA=@ImagenEtiquetaSemilla WHERE ID=" & TxtID.Text & " "
@@ -701,11 +698,32 @@ Public Class Registro_Portal_Sag
                 End Using
             End Using
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        Response.Redirect(String.Format("~/pages/Registro_Portal_Sag.aspx"))
+            Label12.Visible = False
+            Label13.Visible = True
+            BtnUpload.Visible = False
+        Else
+            Label12.Visible = True
+            Label13.Visible = False
+            BtnUpload.Visible = True
+        End If
+
     End Sub
+
+    Protected Function ValidarFormulario() As Boolean
+        If String.IsNullOrEmpty(CmbTipoSemilla.SelectedItem.Text) Then
+            Return False
+        End If
+        If Not FileUploadFicha.HasFile Then
+            Return False
+        End If
+        If Not FileUploadPagoTGR.HasFile Then
+            Return False
+        End If
+        If Not FileUploadEtiquetaSemilla.HasFile Then
+            Return False
+        End If
+        Return True
+    End Function
 
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
         Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream

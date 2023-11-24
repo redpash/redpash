@@ -126,7 +126,36 @@ Public Class Portal_Sag
         llenagrid()
 
     End Sub
+    Protected Sub DDL_Tipos_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim vv As String = DDL_Tipos.SelectedItem.Text
 
+        TxtVariedad.Items.Clear()
+        If vv = "Frijol" Then
+            DDL_Tipos.SelectedIndex = 1
+            TxtVariedad.Items.Insert(0, "")
+            TxtVariedad.Items.Insert(1, "Amadeus-77")
+            TxtVariedad.Items.Insert(2, "Carrizalito")
+            TxtVariedad.Items.Insert(3, "Deorho")
+            TxtVariedad.Items.Insert(4, "Azabache")
+            TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
+            TxtVariedad.Items.Insert(6, "Honduras nutritivo")
+            TxtVariedad.Items.Insert(7, "Inta Cárdenas")
+            TxtVariedad.Items.Insert(8, "Lenca precoz")
+            TxtVariedad.Items.Insert(9, "Rojo chortí")
+            TxtVariedad.Items.Insert(10, "Tolupan rojo")
+            TxtVariedad.Items.Insert(11, "Otra especificar")
+            provi = TxtVariedad.SelectedItem.Text
+        ElseIf vv = "Maiz" Then
+            DDL_Tipos.SelectedIndex = 2
+            TxtVariedad.Items.Insert(0, "")
+            TxtVariedad.Items.Insert(1, "Dicta Maya")
+            TxtVariedad.Items.Insert(2, "Dicta Victoria")
+            TxtVariedad.Items.Insert(3, "Otra especificar")
+            provi = TxtVariedad.SelectedItem.Text
+        Else
+            DDL_Tipos.SelectedIndex = 0
+        End If
+    End Sub
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
         Dim fecha2 As Date
 
@@ -146,27 +175,45 @@ Public Class Portal_Sag
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
             txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
 
-            If txt_habilitado.Text = "NO" Then
+            TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+            TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
+            Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
 
-                Label3.Text = "Para este ciclo ya ha finalizado el tiempo de edición, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+            TxtVariedad.Items.Clear()
+            If vv = "Frijol" Then
+                DDL_Tipos.SelectedIndex = 1
+                TxtVariedad.Items.Insert(0, "")
+                TxtVariedad.Items.Insert(1, "Amadeus-77")
+                TxtVariedad.Items.Insert(2, "Carrizalito")
+                TxtVariedad.Items.Insert(3, "Deorho")
+                TxtVariedad.Items.Insert(4, "Azabache")
+                TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
+                TxtVariedad.Items.Insert(6, "Honduras nutritivo")
+                TxtVariedad.Items.Insert(7, "Inta Cárdenas")
+                TxtVariedad.Items.Insert(8, "Lenca precoz")
+                TxtVariedad.Items.Insert(9, "Rojo chortí")
+                TxtVariedad.Items.Insert(10, "Tolupan rojo")
             Else
-
-                TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
-                TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
-                TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
-
-                fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
-                TxtDia.SelectedValue = fecha2.Day
-                TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-                TxtAno.SelectedValue = fecha2.Year
-
-                TxtAreaSemb.Text = dt.Rows(0)("INVENTARIO_EN_DICTA").ToString()
-                TxtPronostico.Text = dt.Rows(0)("SEMILLA_A_PRODUCIR").ToString()
-
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+                DDL_Tipos.SelectedIndex = 2
+                TxtVariedad.Items.Insert(0, "")
+                TxtVariedad.Items.Insert(1, "Dicta Maya")
+                TxtVariedad.Items.Insert(2, "Dicta Victoria")
+                TxtVariedad.Items.Insert(3, "Otra especificar")
             End If
+
+            TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
+            TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
+
+            fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
+            TxtDia.SelectedValue = fecha2.Day
+            TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
+            TxtAno.SelectedValue = fecha2.Year
+
+            TxtAreaSemb.Text = dt.Rows(0)("INVENTARIO_EN_DICTA").ToString()
+            TxtPronostico.Text = dt.Rows(0)("SEMILLA_A_PRODUCIR").ToString()
+
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+
         End If
 
         If (e.CommandName = "Eliminar") Then
