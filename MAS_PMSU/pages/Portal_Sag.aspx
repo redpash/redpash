@@ -38,6 +38,13 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
+                            <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+                            <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el ciclo, el departamento y el productor"/>
+                            <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" Visible="false"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
                             <div class="table-responsive">
                                 <h3>
                                     <span style="float: right;"><small># Lotes:</small>
@@ -117,12 +124,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             -----------------------------
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-                            <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" />
                         </div>
                     </div>
 

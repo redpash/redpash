@@ -21,7 +21,7 @@ Public Class Portal_Sag
                 llenarcomboCiclo()
                 llenarcomboProductor()
                 llenagrid()
-
+                btnagregarV()
             End If
         Else
             Response.Redirect(String.Format("~/pages/login.aspx"))
@@ -109,21 +109,49 @@ Public Class Portal_Sag
 
         GridDatos.DataBind()
     End Sub
+    Sub btnagregarV()
+        Dim v As Integer = 0
+        If TxtCiclo.SelectedIndex <> 0 Then
+            v += 1
+        Else
+            v = 0
+        End If
+        If TxtDepto.SelectedIndex <> 0 Then
+            v += 1
+        Else
+            v = 0
+        End If
+        If TxtProductor.SelectedIndex <> 0 Then
+            v += 1
+        Else
+            v = 0
+        End If
 
+        If v = 3 Then
+            Label2.Visible = False
+            BAgregar.Visible = True
+        Else
+            Label2.Visible = True
+            BAgregar.Visible = False
+        End If
+    End Sub
     Protected Sub TxtCiclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCiclo.SelectedIndexChanged
         llenarcomboDepto()
         llenarcomboProductor()
         llenagrid()
+        btnagregarV()
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenarcomboProductor()
         llenagrid()
+        btnagregarV()
 
     End Sub
 
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
         llenagrid()
+        btnagregarV()
 
     End Sub
     Protected Sub DDL_Tipos_SelectedIndexChanged(sender As Object, e As EventArgs)

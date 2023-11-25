@@ -41,6 +41,24 @@ Partial Public Class Portal_Sag
     Protected WithEvents TxtProductor As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control Label2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control BAgregar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BAgregar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control lblTotalClientes.
     '''</summary>
     '''<remarks>
@@ -75,15 +93,6 @@ Partial Public Class Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
-
-    '''<summary>
-    '''Control BAgregar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents BAgregar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control Label1.
