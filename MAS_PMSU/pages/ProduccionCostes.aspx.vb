@@ -880,14 +880,16 @@ Public Class ProduccionCostes
         VerificarTextBox()
     End Sub
 
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
-        exportar()
-    End Sub
-    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
-        exportarP()
-    End Sub
-    Protected Sub LinkButton3_Click(sender As Object, e As EventArgs) Handles LinkButton3.Click
-        exportarC()
+    Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
+        If DDl_ExpoArch.SelectedItem.Text = "Datos Generales" Then
+            exportar()
+        End If
+        If DDl_ExpoArch.SelectedItem.Text = "Datos de Producción" Then
+            exportarP()
+        End If
+        If DDl_ExpoArch.SelectedItem.Text = "Datos de Costos" Then
+            exportarC()
+        End If
     End Sub
 
     Private Sub exportar()

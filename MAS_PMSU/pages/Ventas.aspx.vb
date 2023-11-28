@@ -257,7 +257,7 @@ Public Class Ventas
 
             Div1.Style.Add("display", "none")
             Div2.Style.Add("display", "block")
-            Guardar_registro.Visible = True
+            Guardar_registro.Visible = False
             llenarcombocompradoresSemilla()
             llenarcombocompradoresGrano()
             'llenarcombocompradores_grano()
@@ -614,8 +614,6 @@ Public Class Ventas
             Guardar_registro.Visible = True
         Else
             Guardar_registro.Visible = False
-
-
         End If
 
     End Sub

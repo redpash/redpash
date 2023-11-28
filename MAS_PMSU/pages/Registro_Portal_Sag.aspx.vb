@@ -234,10 +234,8 @@ Public Class Registro_Portal_Sag
             End If
         End If
         If (TxT_AreaMZ.Text = "") Then
-            lbAreaMZ.Text = "*"
             validarflag = 0
         Else
-            lbAreaMZ.Text = ""
             validarflag += 1
         End If
 
@@ -250,18 +248,14 @@ Public Class Registro_Portal_Sag
         End If
 
         If (TxtProduccionQQMZ.Text = "") Then
-            lbProduccionQQMZ.Text = "*"
             validarflag = 0
         Else
-            lbProduccionQQMZ.Text = ""
             validarflag += 1
         End If
 
         If (TxtSemillaQQ.Text = "") Then
-            lbSemillaQQ.Text = "*"
             validarflag = 0
         Else
-            lbSemillaQQ.Text = ""
             validarflag += 1
         End If
 
@@ -709,22 +703,6 @@ Public Class Registro_Portal_Sag
 
     End Sub
 
-    Protected Function ValidarFormulario() As Boolean
-        If String.IsNullOrEmpty(CmbTipoSemilla.SelectedItem.Text) Then
-            Return False
-        End If
-        If Not FileUploadFicha.HasFile Then
-            Return False
-        End If
-        If Not FileUploadPagoTGR.HasFile Then
-            Return False
-        End If
-        If Not FileUploadEtiquetaSemilla.HasFile Then
-            Return False
-        End If
-        Return True
-    End Function
-
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
         Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
             Dim length As Integer = fileUpload.PostedFile.ContentLength
@@ -747,30 +725,57 @@ Public Class Registro_Portal_Sag
     End Sub
 
     Protected Sub TxtProduccionQQMZ_TextChanged(sender As Object, e As EventArgs)
-        If TxtProduccionQQMZ.Text <> "" Then
-            TxtProduccionQQHA.Text = Convert.ToString(Convert.ToDouble(TxtProduccionQQMZ.Text) * 0.7)
-        Else
-            TxtProduccionQQHA.Text = ""
-        End If
-        verificar()
+        Try
+            If TxtProduccionQQMZ.Text <> "" Then
+                TxtProduccionQQHA.Text = Convert.ToString(Convert.ToDouble(TxtProduccionQQMZ.Text) * 0.7)
+                lbProduccionQQMZ.Text = ""
+            Else
+                TxtProduccionQQHA.Text = ""
+                lbProduccionQQMZ.Text = "*"
+            End If
+            verificar()
+        Catch ex As FormatException
+            ' Manejo de error: El formato del texto no es válido para la conversión.
+            lbProduccionQQMZ.Text = "Ingresa un número válido."
+        Catch ex As Exception
+            ' Manejo de otros errores inesperados.
+        End Try
     End Sub
 
     Protected Sub TxtSemillaQQ_TextChanged(sender As Object, e As EventArgs)
-        If TxtSemillaQQ.Text <> "" Then
-            TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) * 0.7)
-        Else
-            TxtEstimadoProducir.Text = ""
-        End If
-        verificar()
+        Try
+            If TxtSemillaQQ.Text <> "" Then
+                TxtEstimadoProducir.Text = Convert.ToString(Convert.ToDouble(TxtSemillaQQ.Text) * 0.7)
+                lbSemillaQQ.Text = ""
+            Else
+                TxtEstimadoProducir.Text = ""
+                lbSemillaQQ.Text = "*"
+            End If
+            verificar()
+        Catch ex As FormatException
+            ' Manejo de error: El formato del texto no es válido para la conversión.
+            lbSemillaQQ.Text = "Ingresa un número válido."
+        Catch ex As Exception
+            ' Manejo de otros errores inesperados.
+        End Try
     End Sub
 
     Protected Sub TxT_AreaMZ_TextChanged(sender As Object, e As EventArgs)
-        If TxT_AreaMZ.Text <> "" Then
-            Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.7)
-        Else
-            Txt_AreaHa.Text = ""
-        End If
-        verificar()
+        Try
+            If TxT_AreaMZ.Text <> "" Then
+                Txt_AreaHa.Text = Convert.ToString(Convert.ToDouble(TxT_AreaMZ.Text) * 0.7)
+                lbAreaMZ.Text = ""
+            Else
+                Txt_AreaHa.Text = ""
+                lbAreaMZ.Text = "*"
+            End If
+            verificar()
+        Catch ex As FormatException
+            ' Manejo de error: El formato del texto no es válido para la conversión.
+            lbAreaMZ.Text = "Ingresa un número válido."
+        Catch ex As Exception
+            ' Manejo de otros errores inesperados.
+        End Try
     End Sub
 
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
@@ -865,4 +870,39 @@ Public Class Registro_Portal_Sag
     Protected Sub TxtRegistradaQQ_TextChanged(sender As Object, e As EventArgs)
         verificar()
     End Sub
+
+    Protected Function ValidarFormulario() As Boolean
+        Dim esValido As Boolean = True
+        Label14.Visible = False
+        Label15.Visible = False
+        Label16.Visible = False
+        If String.IsNullOrEmpty(CmbTipoSemilla.SelectedItem.Text) Then
+            esValido = False
+        End If
+        If Not FileUploadFicha.HasFile OrElse Not EsExtensionValida(FileUploadFicha.FileName) Then
+            Label14.Visible = True
+            esValido = False
+        End If
+        If Not FileUploadPagoTGR.HasFile OrElse Not EsExtensionValida(FileUploadPagoTGR.FileName) Then
+            Label15.Visible = True
+            esValido = False
+        End If
+        If Not FileUploadEtiquetaSemilla.HasFile OrElse Not EsExtensionValida(FileUploadEtiquetaSemilla.FileName) Then
+            Label16.Visible = True
+            esValido = False
+        End If
+
+        Return esValido
+    End Function
+
+    Private Function EsExtensionValida(fileName As String) As Boolean
+        Dim extension As String = Path.GetExtension(fileName)
+        Dim esValida As Boolean = False
+        If extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
+            esValida = True
+        End If
+        Return esValida
+    End Function
 End Class

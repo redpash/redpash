@@ -428,23 +428,39 @@ Public Class SolicitudInscripcionDeLotes
     End Sub
 
     Protected Sub TxtHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtHectareas.TextChanged
-        If TxtHectareas.Text <> "" Then
-            TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) / 0.7)
+        Try
+            If TxtHectareas.Text <> "" Then
+                TxtSuperficieMZ.Text = Convert.ToString(Convert.ToDouble(TxtHectareas.Text) / 0.7)
+                Label12.Text = ""
+            Else
+                TxtSuperficieMZ.Text = ""
+                Label12.Text = "*"
+            End If
             VerificarTextBox()
-        Else
-            TxtSuperficieMZ.Text = ""
-            VerificarTextBox()
-        End If
+        Catch ex As FormatException
+            ' Manejo de error: El formato del texto no es válido para la conversión.
+            Label12.Text = "Ingresa un número válido."
+        Catch ex As Exception
+            ' Manejo de otros errores inesperados.
+        End Try
     End Sub
 
     Protected Sub TxtProHectareas_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProHectareas.TextChanged
-        If TxtProHectareas.Text <> "" Then
-            TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * Convert.ToDouble(TxtHectareas.Text) * 0.7)
+        Try
+            If TxtProHectareas.Text <> "" Then
+                TextBox7.Text = Convert.ToString(Convert.ToDouble(TxtProHectareas.Text) * Convert.ToDouble(TxtHectareas.Text) * 0.7)
+                Label19.Text = ""
+            Else
+                TextBox7.Text = ""
+                Label19.Text = "*"
+            End If
             VerificarTextBox()
-        Else
-            TextBox7.Text = ""
-            VerificarTextBox()
-        End If
+        Catch ex As FormatException
+            ' Manejo de error: El formato del texto no es válido para la conversión.
+            Label19.Text = "Ingresa un número válido."
+        Catch ex As Exception
+            ' Manejo de otros errores inesperados.
+        End Try
     End Sub
 
     Protected Sub btnNuevoProductor_click(ByVal sender As Object, ByVal e As EventArgs) Handles btnNuevoProductor.Click
@@ -659,10 +675,11 @@ Public Class SolicitudInscripcionDeLotes
             validarflag = 1
         End If
 
-        If fileUpload.HasFile Then
+        If fileUpload.HasFile AndAlso EsExtensionValida(fileUpload.FileName) Then
             validarflag = 1
         Else
             validarflag = 0
+            Label25.Visible = True
         End If
 
         If String.IsNullOrEmpty(CmbTipoSemilla.Text) Then
@@ -754,10 +771,8 @@ Public Class SolicitudInscripcionDeLotes
         End If
 
         If String.IsNullOrEmpty(TxtHectareas.Text) Then
-            Label12.Text = "*"
             validarflag = 0
         Else
-            Label12.Text = ""
             validarflag = 1
         End If
 
@@ -786,10 +801,8 @@ Public Class SolicitudInscripcionDeLotes
         End If
 
         If String.IsNullOrEmpty(TxtProHectareas.Text) Then
-            Label19.Text = "*"
             validarflag = 0
         Else
-            Label19.Text = ""
             validarflag = 1
         End If
 
@@ -874,5 +887,15 @@ Public Class SolicitudInscripcionDeLotes
         End If
     End Sub
 
+    Private Function EsExtensionValida(fileName As String) As Boolean
+        Dim extension As String = Path.GetExtension(fileName)
+        Dim esValida As Boolean = False
+        If extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
+            esValida = True
+        End If
+        Return esValida
+    End Function
 End Class
 

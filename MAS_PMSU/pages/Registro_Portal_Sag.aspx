@@ -277,13 +277,12 @@
                                                     </asp:DropDownList>
                                                     <br />
 
-                                                    <label for="TxtQuintales">
-                                                        Area a Sembrar En MZ.</label>
+                                                    <label for="TxtQuintales">Area a Sembrar En MZ.</label>
                                                     <asp:Label ID="lbAreaMZ" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" OnTextChanged="TxT_AreaMZ_TextChanged" />
+                                                    <asp:TextBox ID="TxT_AreaMZ" runat="server" CssClass="form-control" AutoPostBack="False" onchange="calculateAreaHa();" OnTextChanged="TxT_AreaMZ_TextChanged" onkeypress="return numericOnly(this);"/>
                                                     <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxT_AreaMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                                    <label for="Txt_AreaHa">
-                                                        Area a Sembrar En HA</label>
+                                                    
+                                                    <label for="Txt_AreaHa">Area a Sembrar En HA</label>
                                                     <asp:TextBox ID="Txt_AreaHa" runat="server" CssClass="form-control" AutoPostBack="True" ReadOnly="true" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Txt_AreaHa" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <br />
@@ -322,7 +321,7 @@
                                                     <label for="TxtProduccionQQMZ">
                                                         Estimado de producción en campo QQ/MZ</label>
                                                     <asp:Label ID="lbProduccionQQMZ" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtProduccionQQMZ_TextChanged" onchange="calculateAreaHaPRO();"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtProduccionQQMZ" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtProduccionQQMZ_TextChanged" onchange="calculateAreaHaPRO();" onkeypress="return numericOnly(this);"></asp:TextBox>
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtProduccionQQMZ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <br />
 
@@ -343,7 +342,7 @@
                                                     <label for="TxtSemillaQQ">
                                                         Estimado semilla a producir QQ/MZ.</label>
                                                     <asp:Label ID="lbSemillaQQ" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtSemillaQQ_TextChanged" onchange="calculateAreaHaEs();"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtSemillaQQ" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtSemillaQQ_TextChanged" onchange="calculateAreaHaEs();" onkeypress="return numericOnly(this);"></asp:TextBox>
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtSemillaQQ" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     <br />
 
@@ -471,19 +470,23 @@
                                         <br />
                                         <div class="mb-3">
                                             <label for="FileUploadFicha" class="form-label">Ficha de inscripción de lote o campos para la producción de semilla</label>
-                                            <asp:FileUpload ID="FileUploadFicha" runat="server" class="form-control" />
+                                            <asp:Label ID="Label14" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                            <asp:FileUpload ID="FileUploadFicha" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
                                         </div>
                                         <br />
                                         <div class="mb-3">
                                             <label for="FileUploadPagoTGR" class="form-label">Pago de TGR:</label>
-                                            <asp:FileUpload ID="FileUploadPagoTGR" runat="server" class="form-control" />
+                                            <asp:Label ID="Label15" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                            <asp:FileUpload ID="FileUploadPagoTGR" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
+                                        </div>
+                                        <br />
+                                        <div class="mb-3">
+                                            <label for="TxtSemillaQQ">Etiqueta De Semilla Registrada</label>
+                                            <asp:Label ID="Label16" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                            <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
                                         </div>
                                         <br />
 
-                                        <label for="TxtSemillaQQ">
-                                            Etiqueta De Semilla Registrada</label>
-                                        <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" />
-                                        <br />
                                         <asp:Label ID="Label12" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
                                         <asp:Label ID="Label13" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
                                         <br />

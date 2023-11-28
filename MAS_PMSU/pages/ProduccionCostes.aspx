@@ -154,15 +154,20 @@
                                 </div>
                             </div>
                         </div>
+                        <br />
                         <div class="row" runat="server">
-                            <div class="col-lg-3">
-                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Seleccione que datos desea exportar:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDl_ExpoArch" runat="server" AutoPostBack="false">
+                                        <asp:ListItem Text="Datos Generales"></asp:ListItem>
+                                        <asp:ListItem Text="Datos de Producción"></asp:ListItem>
+                                        <asp:ListItem Text="Datos de Costos"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
                             </div>
                             <div class="col-lg-3">
-                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-warning" Text="Exportar Datos de Producción"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos de Producción</asp:LinkButton>
-                            </div>
-                            <div class="col-lg-3">
-                                <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-warning" Text="Exportar Datos de Costos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos de Costos</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-primary" Text="Descargar"><span class="glyphicon glyphicon-save"></span>&nbsp;Descargar</asp:LinkButton>
                             </div>
                         </div>
                         <div class="row">

@@ -707,6 +707,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents comercial As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
+    '''Control Label14.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label14 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control FileUploadFicha.
     '''</summary>
     '''<remarks>
@@ -716,6 +725,15 @@ Partial Public Class Registro_Portal_Sag
     Protected WithEvents FileUploadFicha As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
+    '''Control Label15.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label15 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control FileUploadPagoTGR.
     '''</summary>
     '''<remarks>
@@ -723,6 +741,15 @@ Partial Public Class Registro_Portal_Sag
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents FileUploadPagoTGR As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
+    '''Control Label16.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label16 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control FileUploadEtiquetaSemilla.

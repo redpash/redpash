@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="row" id="PanelA2" runat="server" visible="false">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label>Nombre del Multiplicador o Reproductor:</label><asp:Label ID="lbNombreRe" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:TextBox CssClass="form-control" ID="txtNombreRe" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
@@ -86,13 +86,13 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <label>Cédula de identidad del Multiplicador o Reproductor:</label><asp:Label ID="lbIdentidadRe" class="label label-warning" runat="server" Text=""></asp:Label>
+                            <label>Identidad del Multiplicador:</label><asp:Label ID="lbIdentidadRe" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:TextBox CssClass="form-control" ID="txtIdentidadRe" runat="server" AutoPostBack="true" MaxLength="13" OnTextChanged="VerificarTextBox"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <label>Telefono del Multiplicador o Reproductor:</label><asp:Label ID="LbTelefonoRe" class="label label-warning" runat="server" Text=""></asp:Label>
+                            <label>Telefono del Multiplicador:</label><asp:Label ID="LbTelefonoRe" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:TextBox CssClass="form-control" ID="TxtTelefonoRe" runat="server" AutoPostBack="true" MaxLength="8" OnTextChanged="VerificarTextBox"></asp:TextBox>
                         </div>
                     </div>
@@ -163,9 +163,7 @@
                     </section>
                     <div class="col-lg-3">
                         <div class="form-group">
-
-                            <label>Nombre de la persona Para Entenderse En la Finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
-
+                            <label>Nombre del encargado de la finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:TextBox CssClass="form-control" ID="TxtPersonaFinca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                         </div>
                     </div>
@@ -178,11 +176,11 @@
 
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <label>Croquis de Lote con puntos de referencia</label>
+                            <label>Croquis del Lote</label>
                             <asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
-
+                            <asp:Label ID="Label25" runat="server" Text="" class="label label-warning" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
                             <!-- Agrega el control FileUpload para cargar una imagen -->
-                            <asp:FileUpload ID="fileUpload" runat="server" PostBackUrl="SolicitudInscripcionDeLotes.aspx"/>
+                            <asp:FileUpload ID="fileUpload" runat="server" PostBackUrl="SolicitudInscripcionDeLotes.aspx" accept=".png,.jpg,.jpeg"/>
                         </div>
                     </div>
                 </div>
@@ -380,7 +378,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Superficie a Sembrar Hectareas:</label><asp:Label ID="Label12" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" CausesValidation="false"></asp:TextBox>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtHectareas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>

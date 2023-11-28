@@ -122,31 +122,22 @@ Partial Public Class ProduccionCostes
     Protected WithEvents GridDatos As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control LinkButton1.
+    '''Control DDl_ExpoArch.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents DDl_ExpoArch As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control LinkButton2.
+    '''Control LinkButton4.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents LinkButton2 As Global.System.Web.UI.WebControls.LinkButton
-
-    '''<summary>
-    '''Control LinkButton3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents LinkButton3 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
     '''Control BAgregar.
