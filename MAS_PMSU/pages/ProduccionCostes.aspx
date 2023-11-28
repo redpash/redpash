@@ -249,7 +249,7 @@
                                                     <div class="col-lg-4">
                                                         <label for="TxtAreaPerdMz">Area del terreno sembradas perdidas (Mz)</label>
                                                         <asp:Label ID="lbAreaPerdMz" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                        <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onchange="calculateAreaHaPer();" AutoPostBack="true" />
+                                                        <asp:TextBox ID="TxtAreaPerdMz" runat="server" CssClass="form-control" autocomplete="off" onkeypress="return numericOnly(this)" onchange="calculateAreaHaPer();" AutoPostBack="true" />
                                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="TxtAreaPerdMz" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                     </div>
                                                 </ContentTemplate>
@@ -317,7 +317,7 @@
                                             <ContentTemplate>
                                                 <label for="TxtQQProd">Quintales producidos en campo: </label>
                                                 <asp:Label ID="lbQQProd" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off" AutoPostBack="true" OnTextChanged="TxtQQProd_TextChanged" />
+                                                <asp:TextBox ID="TxtQQProd" runat="server" CssClass="form-control" autocomplete="off" onkeypress="return numericOnly(this)" AutoPostBack="true" OnTextChanged="TxtQQProd_TextChanged" />
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="TxtQQProd" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
@@ -331,15 +331,15 @@
                                         <br />
                                         <div id="DIVproduccion" runat="server">
                                             <label for="TxtSemilla">Cantidad de quintales clasificados como semilla</label>
-                                            <asp:TextBox ID="TxtSemilla" runat="server" CssClass="form-control" autocomplete="off" />
+                                            <asp:TextBox ID="TxtSemilla" runat="server" CssClass="form-control" autocomplete="off" onkeypress="return numericOnly(this)"/>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator11" runat="server" ControlToValidate="Txtsemilla" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                             <br />
                                             <label for="TxtGrano">Cantidad de quintales clasificados como grano</label>
-                                            <asp:TextBox ID="TxtGrano" runat="server" CssClass="form-control" autocomplete="off" />
+                                            <asp:TextBox ID="TxtGrano" runat="server" CssClass="form-control" autocomplete="off" onkeypress="return numericOnly(this)" />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator12" runat="server" ControlToValidate="TxtGrano" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                             <br />
                                             <label for="TxtBasura">Cantidad de quintales clasificados como basura</label>
-                                            <asp:TextBox ID="TxtBasura" runat="server" CssClass="form-control" autocomplete="off" />
+                                            <asp:TextBox ID="TxtBasura" runat="server" CssClass="form-control" onkeypress="return numericOnly(this)" autocomplete="off" />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator13" runat="server" ControlToValidate="TxtBasura" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
 
                                         </div>
@@ -428,7 +428,7 @@
                                             <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Label ID="lbInsumo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" OnTextChanged="TxtInsumo_TextChanged" />
+                                                    <asp:TextBox ID="TxtInsumo" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" onkeypress="return numericOnly(this)" OnTextChanged="TxtInsumo_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TxtInsumo" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </ContentTemplate>
                                             </asp:UpdatePanel>
@@ -438,7 +438,7 @@
                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Label ID="lbManoObra" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtManoObra_TextChanged" />
+                                                    <asp:TextBox ID="TxtManoObra" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" onkeypress="return numericOnly(this)" CausesValidation="True" OnTextChanged="TxtManoObra_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtManoObra" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </ContentTemplate>
                                             </asp:UpdatePanel>
@@ -448,7 +448,7 @@
                                             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Label ID="lbEquiMaqui" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtEquiMaqui_TextChanged" />
+                                                    <asp:TextBox ID="TxtEquiMaqui" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" onkeypress="return numericOnly(this)" CausesValidation="True" OnTextChanged="TxtEquiMaqui_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtEquiMaqui" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </ContentTemplate>
                                             </asp:UpdatePanel>
@@ -458,7 +458,7 @@
                                             <asp:UpdatePanel ID="UpdatePanel7" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Label ID="lbinscri" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtInscri_TextChanged" />
+                                                    <asp:TextBox ID="TxtInscri" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onkeypress="return numericOnly(this)" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtInscri_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TxtInscri" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </ContentTemplate>
                                             </asp:UpdatePanel>
@@ -468,7 +468,7 @@
                                             <asp:UpdatePanel ID="UpdatePanel8" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Label ID="lbAcondiSemilla" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtAcondiSemilla_TextChanged" />
+                                                    <asp:TextBox ID="TxtAcondiSemilla" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onkeypress="return numericOnly(this)" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtAcondiSemilla_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TxtAcondiSemilla" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </ContentTemplate>
                                             </asp:UpdatePanel>
@@ -478,7 +478,7 @@
                                             <asp:UpdatePanel ID="UpdatePanel9" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Label ID="lbOtros" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                    <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" AutoPostBack="true" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtOtros_TextChanged" />
+                                                    <asp:TextBox ID="TxtOtros" runat="server" CssClass="form-control" AutoPostBack="true" onkeypress="return numericOnly(this)" autocomplete="true" onchange="calculateTotalCosto();" CausesValidation="True" OnTextChanged="TxtOtros_TextChanged" />
                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TxtOtros" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                                 </ContentTemplate>
                                             </asp:UpdatePanel>
@@ -489,7 +489,7 @@
                                         <asp:UpdatePanel ID="UpdatePanel10" runat="server">
                                             <ContentTemplate>
                                                 <asp:Label ID="lbTotal" class="label label-warning" runat="server" Text=""></asp:Label>
-                                                <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="TxtTotal_TextChanged" />
+                                                <asp:TextBox ID="TxtTotal" runat="server" CssClass="form-control" onkeypress="return numericOnly(this)" AutoPostBack="true" OnTextChanged="TxtTotal_TextChanged" />
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                         <br />

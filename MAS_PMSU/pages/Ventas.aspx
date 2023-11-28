@@ -125,9 +125,11 @@
                                                 <asp:BoundField DataField="QQ_Oro" HeaderText="QQ DE SEMILLA ORO" />
                                                 <asp:BoundField DataField="QQ_Grano" HeaderText="QQ DE SEMILLA GRANO" />
                                                 <asp:BoundField DataField="QQ_Basura" HeaderText="QQ DE SEMILLA BASURA" />
-                                                <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
+                                                <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" Visible="false" />
                                                 <asp:BoundField DataField="QQ_semilla_entregado" HeaderText="QQ DE SEMILLA ENTREGADO" />
                                                 <asp:BoundField DataField="QQ_consumo_entregado" HeaderText="QQ DE CONSUMO ENTREGADO" />
+                                                <asp:BoundField DataField="COSTO_TOTAL" HeaderText="COSTO TOTAL" />
+                                                <asp:BoundField DataField="VENTAS_TOTAL" HeaderText="VENTAS TOTAL" />
                                                 <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 
                                                 <asp:ButtonField ButtonType="Button" Text="Ventas" ControlStyle-CssClass="btn btn-success" HeaderText="Ventas" CommandName="Ventas">

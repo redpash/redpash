@@ -789,7 +789,7 @@ Public Class ProduccionCostes
 
     Protected Sub TxtAreaPerdMz_TextChanged(sender As Object, e As EventArgs) Handles TxtAreaPerdMz.TextChanged
         If TxtAreaPerdMz.Text <> "" Then
-            TxtAreaPerdHa.Text = Convert.ToString(Convert.ToDouble(TxtAreaSembMz.Text) * 0.7)
+            TxtAreaPerdHa.Text = Convert.ToString(Convert.ToDouble(TxtAreaPerdMz.Text) * 0.7)
             VerificarTextBox()
         Else
             TxtAreaPerdHa.Text = ""

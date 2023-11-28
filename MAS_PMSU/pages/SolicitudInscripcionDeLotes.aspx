@@ -48,7 +48,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Cedula de Identidad</label><asp:Label ID="Lb_CedulaIdentidad" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtIdentidad" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtIdentidad" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -66,7 +66,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Telefono</label><asp:Label ID="LblTelefono" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtTelefono" runat="server" AutoPostBack="true" MaxLength="9" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtTelefono" runat="server" AutoPostBack="true" MaxLength="9" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -87,13 +87,13 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Identidad del Multiplicador:</label><asp:Label ID="lbIdentidadRe" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="txtIdentidadRe" runat="server" AutoPostBack="true" MaxLength="13" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="txtIdentidadRe" runat="server" AutoPostBack="true" MaxLength="13" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Telefono del Multiplicador:</label><asp:Label ID="LbTelefonoRe" class="label label-warning" runat="server" Text=""></asp:Label>
-                            <asp:TextBox CssClass="form-control" ID="TxtTelefonoRe" runat="server" AutoPostBack="true" MaxLength="8" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" ID="TxtTelefonoRe" runat="server" AutoPostBack="true" MaxLength="8" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                     </section>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <label>Nombre del encargado de la finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
+                            <label>Encargado de la finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
                             <asp:TextBox CssClass="form-control" ID="TxtPersonaFinca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                         </div>
                     </div>
@@ -273,7 +273,7 @@
                                 <div class="form-group">
                                     <label>Año de Producción </label>
                                     <asp:Label ID="Label10" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox6" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox6" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -377,8 +377,8 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Superficie a Sembrar Hectareas:</label><asp:Label ID="Label12" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" CausesValidation="false"></asp:TextBox>
+                                <label>Superficie a Sembrar Ha:</label><asp:Label ID="Label12" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TxtHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" CausesValidation="false" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtHectareas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>
@@ -408,15 +408,15 @@
                     <div class ="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Produccion Estimada por Hectareas</label>
+                                <label>Produccion Estimada por Ha</label>
                                 <asp:Label ID="Label19" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtProHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" ></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtProHectareas" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtProHectareas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Produccion Estimada por Manzanas</label>
+                                <label>Produccion Estimada por Mz</label>
                                 <asp:Label ID="Label20" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TextBox7" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
                                 <asp:RegularExpressionValidator ID="RegexValidator" runat="server" ControlToValidate="TextBox7" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" style="color:red;"/>
@@ -475,4 +475,42 @@
         <br />
         <asp:Button CssClass="btn btn-primary" ID="Button3" runat="server" Text="Enviar Correo" OnClick="EnviarCorreo" visible="false"/>
     </div>
+    <script type="text/javascript">
+    function numericOnly(elementRef) {
+        var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+
+        // Un-comment to discover a key that I have forgotten to take into account...
+        //alert(keyCodeEntered);
+
+        if ((keyCodeEntered >= 48) && (keyCodeEntered <= 57)) {
+            return true;
+        }
+        // '+' sign...
+        //else if (keyCodeEntered == 43) {
+        //    // Allow only 1 plus sign ('+')...
+        //    if ((elementRef.value) && (elementRef.value.indexOf('+') >= 0))
+        //        return false;
+        //    else
+        //        return true;
+        //}
+        //    // '-' sign...
+        //else if (keyCodeEntered == 45) {
+        //    // Allow only 1 minus sign ('-')...
+        //    if ((elementRef.value) && (elementRef.value.indexOf('-') >= 0))
+        //        return false;
+        //    else
+        //        return true;
+        //}
+        // '.' decimal point...
+        else if (keyCodeEntered == 46) {
+            // Allow only 1 decimal point ('.')...
+            if ((elementRef.value) && (elementRef.value.indexOf('.') >= 0))
+                return false;
+            else
+                return true;
+        }
+
+        return false;
+    }
+    </script>
 </asp:Content>

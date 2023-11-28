@@ -75,7 +75,8 @@ Public Class Ventas
     Sub llenagrid()
 
         'import.Visible = False
-        Dim cadena As String = "ID AS ID, Departamento AS Departamento, Productor AS Productor, cultivo AS Cultivo, CICLO AS CICLO, VARIEDAD AS VARIEDAD, CATEGORIA AS CATEGORIA, AREA_HA AS AREA_HA, AREA_MZ AS AREA_MZ, QQ_Produccion_Campo AS QQ_Produccion_Campo, QQ_Oro AS QQ_Oro, QQ_Grano AS QQ_Grano, QQ_Basura AS QQ_Basura, Habilitado AS Habilitado, DATE_FORMAT(Fecha_siembra, '%d-%m-%Y') AS Fecha_siembra, QQ_semilla_entregado AS QQ_semilla_entregado, QQ_consumo_entregado AS QQ_consumo_entregado"
+
+        Dim cadena As String = "ID AS ID, Departamento AS Departamento, Productor AS Productor, cultivo AS Cultivo, CICLO AS CICLO, VARIEDAD AS VARIEDAD, CATEGORIA AS CATEGORIA, AREA_HA AS AREA_HA, AREA_MZ AS AREA_MZ, QQ_Produccion_Campo AS QQ_Produccion_Campo, QQ_Oro AS QQ_Oro, QQ_Grano AS QQ_Grano, QQ_Basura AS QQ_Basura, Habilitado AS Habilitado, DATE_FORMAT(Fecha_siembra, '%d-%m-%Y') AS Fecha_siembra, QQ_semilla_entregado AS QQ_semilla_entregado, QQ_consumo_entregado AS QQ_consumo_entregado, COSTO_TOTAL AS COSTO_TOTAL, VENTAS_TOTAL AS VENTAS_TOTAL"
 
         Dim c1 As String = ""
         Dim c2 As String = ""
