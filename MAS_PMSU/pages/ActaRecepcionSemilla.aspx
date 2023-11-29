@@ -864,7 +864,7 @@
                                     <label>% Humedad:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator33" runat="server" ControlToValidate="txtDictaMayaHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label85" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtDictaMayaHumedad" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtDictaMayaHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                     <label># Bultos:</label>
                                     <asp:Label ID="Label86" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:TextBox ID="txtBultosDictaMaya" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
@@ -876,11 +876,11 @@
                                     <label>Peso M. Prima:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator34" runat="server" ControlToValidate="txtPesoPrimDictaMaya" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label87" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtPesoPrimDictaMaya" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPesoPrimDictaMaya" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                     <label>Peso Bruto:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator35" runat="server" ControlToValidate="txtPesoBrutDictaMaya" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label88" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtPesoBrutDictaMaya" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPesoBrutDictaMaya" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -921,7 +921,7 @@
                                     <label>% Humedad:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator36" runat="server" ControlToValidate="txtDictaVictoriaHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label92" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtDictaVictoriaHumedad" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtDictaVictoriaHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                     <label># Bultos:</label>
                                     <asp:Label ID="Label93" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:TextBox ID="txtBultosDictaVictoria" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
@@ -933,11 +933,11 @@
                                     <label>Peso M. Prima:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator37" runat="server" ControlToValidate="txtPesoPrimDictaVictoria" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label94" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtPesoPrimDictaVictoria" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPesoPrimDictaVictoria" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                     <label>Peso Bruto:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator38" runat="server" ControlToValidate="txtPesoBrutDictaVictoria" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label95" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtPesoBrutDictaVictoria" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPesoBrutDictaVictoria" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -981,7 +981,7 @@
                                     <label>% Humedad:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator39" runat="server" ControlToValidate="txtOtravariedadMHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label99" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtOtravariedadMHumedad" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtOtravariedadMHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                     <label># Bultos:</label>
                                     <asp:Label ID="Label100" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:TextBox ID="txtBultosOtravariedadM" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
@@ -993,11 +993,11 @@
                                     <label>Peso M. Prima:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator40" runat="server" ControlToValidate="txtPesoPrimOtravariedadM" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label101" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtPesoPrimOtravariedadM" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPesoPrimOtravariedadM" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                     <label>Peso Bruto:</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator41" runat="server" ControlToValidate="txtPesoBrutOtravariedadM" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="Label102" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtPesoBrutOtravariedadM" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPesoBrutOtravariedadM" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
