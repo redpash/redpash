@@ -961,52 +961,83 @@ Public Class Ventas
 
     Private Sub exportar()
 
-        ' Create a DataTable to hold the data from the GridView
-        Dim dt As New DataTable()
+        Dim query As String = ""
+        Dim cadena As String = "*"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
 
-        ' Iterate through the columns in the GridView and add them to the DataTable
-        For Each field As DataControlField In GridDatos.Columns
-            If TypeOf field Is BoundField Then
-                Dim boundField As BoundField = DirectCast(field, BoundField)
-                dt.Columns.Add(boundField.DataField)
-            End If
-        Next
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND  PRODUCTOR = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
 
-        ' Iterate through the rows in the GridView and add them to the DataTable
-        For Each row As GridViewRow In GridDatos.Rows
-            Dim dr As DataRow = dt.NewRow()
-            For Each field As DataControlField In GridDatos.Columns
-                If TypeOf field Is BoundField Then
-                    Dim boundField As BoundField = DirectCast(field, BoundField)
-                    Dim cell As TableCell = row.Cells(GridDatos.Columns.IndexOf(boundField))
-                    dr(boundField.DataField) = cell.Text
-                End If
-            Next
-            dt.Rows.Add(dr)
-        Next
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND CULTIVO = '" & DDL_cultivo.SelectedItem.Text & "' "
+        End If
 
-        ' Provide a name for the DataTable
-        dt.TableName = "GridViewData"
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
 
-        ' Create an Excel workbook and add the DataTable as a worksheet
-        Using wb As New XLWorkbook()
-            ' Add DataTable as Worksheet.
-            Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND DEPARTAMENTO = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
 
-            ' Set auto width for all columns based on content.
-            ws.Columns().AdjustToContents()
+        query = "SELECT " & cadena & " FROM vista_data_bcs_ventas WHERE 1 = 1 " & c1 & c2 & c3 & c4 & c5 & " ORDER BY DEPARTAMENTO,PRODUCTOR,CICLO"
 
-            ' Export the Excel file.
-            Response.Clear()
-            Response.Buffer = True
-            Response.Charset = ""
-            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            Response.AddHeader("content-disposition", "attachment;filename=VENTAS  " & Today & ".xlsx")
-            Using MyMemoryStream As New MemoryStream()
-                wb.SaveAs(MyMemoryStream)
-                MyMemoryStream.WriteTo(Response.OutputStream)
-                Response.Flush()
-                Response.End()
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "Ventas"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Datos de Ventas  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
             End Using
         End Using
     End Sub
