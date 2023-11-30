@@ -347,15 +347,6 @@ Partial Public Class Ventas
     Protected WithEvents Dp_comprador As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control TxtCom_new.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtCom_new As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control Lb_comprador_semilla_detalle.
     '''</summary>
     '''<remarks>
@@ -489,15 +480,6 @@ Partial Public Class Ventas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents dp_comprador_grano As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control TxtCom_new2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtCom_new2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control lb_comprador_detalle_grano.

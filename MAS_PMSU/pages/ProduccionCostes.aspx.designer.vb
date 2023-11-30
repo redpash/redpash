@@ -122,15 +122,6 @@ Partial Public Class ProduccionCostes
     Protected WithEvents GridDatos As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control DDl_ExpoArch.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DDl_ExpoArch As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control LinkButton4.
     '''</summary>
     '''<remarks>

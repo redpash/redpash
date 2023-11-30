@@ -30,12 +30,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <asp:Button CssClass="btn btn-primary" ID="btnbuscarProductor" runat="server" Text="Buscar" OnClick="buscar_productor"/>
-                        <asp:Button CssClass="btn btn-primary" ID="btnNuevoProductor" runat="server" Text="Nuevo Productor" />
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="txtNombreFinca">Lotes registrados previamente:</label>
+                            <asp:DropDownList CssClass="form-control" ID="DDL_Nlote" runat="server" AutoPostBack="true">
+                                <asp:ListItem Text=""></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
                     </div>
 
-              
+                    <div class="col-lg-3">
+                        <asp:Button CssClass="btn btn-primary" ID="btnbuscarProductor" runat="server" Text="Nuevo Lote" OnClick="buscar_productor"/>
+                        <asp:Button CssClass="btn btn-primary" ID="btnNuevoProductor" runat="server" Text="Agregar Productor" />
+                    </div>
                 </div>
 
                 <div class="row" id="PanelA1" runat="server" visible="false">
@@ -453,7 +460,7 @@
     <div>
         <label></label><asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir" onclick="descargaPDF" visible="false"/>
+        <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir Hoja de Datos del Lote Registrado" onclick="descargaPDF" visible="false"/>
     </div>
     
     <div>
@@ -476,41 +483,41 @@
         <asp:Button CssClass="btn btn-primary" ID="Button3" runat="server" Text="Enviar Correo" OnClick="EnviarCorreo" visible="false"/>
     </div>
     <script type="text/javascript">
-    function numericOnly(elementRef) {
-        var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+        function numericOnly(elementRef) {
+            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
 
-        // Un-comment to discover a key that I have forgotten to take into account...
-        //alert(keyCodeEntered);
+            // Un-comment to discover a key that I have forgotten to take into account...
+            //alert(keyCodeEntered);
 
-        if ((keyCodeEntered >= 48) && (keyCodeEntered <= 57)) {
-            return true;
-        }
-        // '+' sign...
-        //else if (keyCodeEntered == 43) {
-        //    // Allow only 1 plus sign ('+')...
-        //    if ((elementRef.value) && (elementRef.value.indexOf('+') >= 0))
-        //        return false;
-        //    else
-        //        return true;
-        //}
-        //    // '-' sign...
-        //else if (keyCodeEntered == 45) {
-        //    // Allow only 1 minus sign ('-')...
-        //    if ((elementRef.value) && (elementRef.value.indexOf('-') >= 0))
-        //        return false;
-        //    else
-        //        return true;
-        //}
-        // '.' decimal point...
-        else if (keyCodeEntered == 46) {
-            // Allow only 1 decimal point ('.')...
-            if ((elementRef.value) && (elementRef.value.indexOf('.') >= 0))
-                return false;
-            else
+            if ((keyCodeEntered >= 48) && (keyCodeEntered <= 57)) {
                 return true;
-        }
+            }
+            // '+' sign...
+            //else if (keyCodeEntered == 43) {
+            //    // Allow only 1 plus sign ('+')...
+            //    if ((elementRef.value) && (elementRef.value.indexOf('+') >= 0))
+            //        return false;
+            //    else
+            //        return true;
+            //}
+            //    // '-' sign...
+            //else if (keyCodeEntered == 45) {
+            //    // Allow only 1 minus sign ('-')...
+            //    if ((elementRef.value) && (elementRef.value.indexOf('-') >= 0))
+            //        return false;
+            //    else
+            //        return true;
+            //}
+            // '.' decimal point...
+            else if (keyCodeEntered == 46) {
+                // Allow only 1 decimal point ('.')...
+                if ((elementRef.value) && (elementRef.value.indexOf('.') >= 0))
+                    return false;
+                else
+                    return true;
+            }
 
-        return false;
-    }
+            return false;
+        }
     </script>
 </asp:Content>

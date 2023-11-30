@@ -50,6 +50,15 @@ Partial Public Class SolicitudInscripcionDeLotes
     Protected WithEvents DropDownList7 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control DDL_Nlote.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Nlote As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control btnbuscarProductor.
     '''</summary>
     '''<remarks>

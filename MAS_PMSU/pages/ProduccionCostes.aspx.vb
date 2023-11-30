@@ -133,7 +133,6 @@ Public Class ProduccionCostes
         llenagrid()
     End Sub
 
-
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         If TxtDepto.SelectedItem.Text <> " " Then
             llenarcomboProductor()
@@ -881,15 +880,7 @@ Public Class ProduccionCostes
     End Sub
 
     Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
-        If DDl_ExpoArch.SelectedItem.Text = "Datos Generales" Then
-            exportar()
-        End If
-        If DDl_ExpoArch.SelectedItem.Text = "Datos de Producción" Then
-            exportarP()
-        End If
-        If DDl_ExpoArch.SelectedItem.Text = "Datos de Costos" Then
-            exportarC()
-        End If
+        exportarT()
     End Sub
 
     Private Sub exportar()
@@ -1126,6 +1117,89 @@ Public Class ProduccionCostes
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                             Response.AddHeader("content-disposition", "attachment;filename=Datos de Costes  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
+
+    Private Sub exportarT()
+
+        Dim query As String = ""
+        Dim cadena As String = "ID AS ID_REGISTRO, Departamento AS DEPARTAMENTO, Productor AS NOMBRE_PRODUCTOR, Tipo_cultivo AS TIPO_CULTIVO, CATEGORIA, CICLO, VARIEDAD, NOMBRE_LOTE_FINCA AS NUMERO_DE_LOTE, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, DATE_FORMAT(FECHA_SIEMBRA, '%d-%m-%Y') AS FECHA_SIEMBRA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, AREA_TERRENO_SEMBRADA_MZ, AREA_TERRENO_SEMBRADA_HA, FECHA_SEMBRO, TUVO_PERDIDA, AREA_TERRENO_PERDIDA_MZ, AREA_TERRENO_PERDIDA_HA, FACT_PERD_PLA_ENFER AS FACTO_PERD_PLAGA_ENFERMEDAD, FACT_PERD_SEQ_LLUV AS FACT_PERD_SEQUIA_O_LLUVIA, FACT_PERD_EXC_LLUV AS FACT_PERD_EXCESO_LLUVIA, FACT_PERD_BAJA_GERMI AS FACT_PERD_BAJA_GERMINACION, FACT_PERD_MAL_MANE_CULTI AS FACT_PERD_MAL_MANEJO_CULTIVO, FACT_PERD_OTROS_FACT, RESULT_CENTRO_PROCES, QQ_PRODU_CAMPO, CANTIDAD_QQ_SEMI, CANTIDAD_QQ_GRANO, CANTIDAD_QQ_BASURA, COSTOS_INSUMOS, COSTOS_INSCRIPCION, COSTOS_MANO, COSTOS_OTROS, COSTOS_ACONDICIONAMIENTO_SEMILLA, COSTOS_EQUIPO,COSTO_TOTAL"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c5 As String = ""
+        Dim c6 As String = ""
+        Dim c7 As String = ""
+        Dim c8 As String = ""
+
+        If (TxtProductor.SelectedItem.Text = " ") Then
+            c1 = " "
+        Else
+            c1 = "AND  Productor = '" & TxtProductor.SelectedItem.Text & "' "
+        End If
+
+        If (DDL_cultivo.SelectedItem.Text = " ") Then
+            c2 = " "
+        Else
+            c2 = "AND Tipo_cultivo = '" & DDL_cultivo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtCiclo.SelectedItem.Text = " ") Then
+            c3 = " "
+        Else
+            c3 = "AND CICLO = '" & TxtCiclo.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = " ") Then
+            c4 = " "
+        Else
+            c4 = "AND Departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+        If (DDL_Categ.SelectedItem.Text = " ") Then
+            c5 = " "
+        Else
+            c5 = "AND CATEGORIA = '" & DDL_Categ.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' AND NOMBRE_LOTE_FINCA IS NOT NULL " & c1 & c2 & c3 & c4 & c5 & " ORDER BY Departamento,Productor,CICLO"
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "bcs_inscripcion_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Datos de Producción y Costes  " & Today & " " & TxtProductor.SelectedItem.Text & " " & TxtCiclo.SelectedItem.Text & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)

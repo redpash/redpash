@@ -7424,15 +7424,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Ventas._TxtCom_new">
-<summary>
-Control TxtCom_new.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.Ventas._Lb_comprador_semilla_detalle">
 <summary>
 Control Lb_comprador_semilla_detalle.
@@ -7562,15 +7553,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Ventas._dp_comprador_grano">
 <summary>
 Control dp_comprador_grano.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.Ventas._TxtCom_new2">
-<summary>
-Control TxtCom_new2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -13796,15 +13778,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ProduccionCostes._DDl_ExpoArch">
-<summary>
-Control DDl_ExpoArch.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.ProduccionCostes._LinkButton4">
 <summary>
 Control LinkButton4.
@@ -17093,6 +17066,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DropDownList7">
 <summary>
 Control DropDownList7.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.SolicitudInscripcionDeLotes._DDL_Nlote">
+<summary>
+Control DDL_Nlote.
 </summary>
 <remarks>
 Campo generado automáticamente.

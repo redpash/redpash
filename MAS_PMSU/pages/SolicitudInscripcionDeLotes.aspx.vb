@@ -142,10 +142,10 @@ Public Class SolicitudInscripcionDeLotes
                     Button1.Visible = True
                     Button2.Visible = True
                     btnGuardarLote.Visible = False
-                    lblAdjunto.Visible = True
-                    fuArchivo.Visible = True
-                    Label24.Visible = True
-                    Button3.Visible = True
+                    lblAdjunto.Visible = False
+                    fuArchivo.Visible = False
+                    Label24.Visible = False
+                    Button3.Visible = False
 
                 End Using
             End Using
@@ -839,6 +839,7 @@ Public Class SolicitudInscripcionDeLotes
     Protected Sub DropDownList7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         Dim selectedValue As String = DropDownList7.SelectedValue
         txt_nombre_prod_new.Text = selectedValue
+        obtener_numero_lote()
         VerificarTextBox()
     End Sub
 
@@ -897,5 +898,26 @@ Public Class SolicitudInscripcionDeLotes
         End If
         Return esValida
     End Function
+
+    Protected Sub obtener_numero_lote()
+        Dim cadena As String = txt_nombre_prod_new.Text
+        DDL_Nlote.Items.Clear()
+        Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        If DtCombo.Rows.Count > 0 Then
+            DDL_Nlote.DataSource = DtCombo
+            DDL_Nlote.DataValueField = "nombre_lote"
+            DDL_Nlote.DataTextField = "nombre_lote"
+            DDL_Nlote.DataBind()
+            Dim newitem As New ListItem("", "")
+            DDL_Nlote.Items.Insert(0, newitem)
+        Else
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
+        End If
+
+    End Sub
 End Class
 

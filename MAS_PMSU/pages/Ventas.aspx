@@ -293,7 +293,7 @@
                                             <label>Comprador</label>
                                             <asp:Label ID="Lb_comprador_semilla" runat="server" CssClass="btn-warning"></asp:Label>
                                             <asp:DropDownList CssClass="form-control" ID="Dp_comprador" runat="server" AutoPostBack="True"></asp:DropDownList>
-                                            <asp:TextBox ID="TxtCom_new" runat="server" Visible="false" CssClass="form-control" AutoPostBack="True" OnTextChanged="TxtCom_new_TextChanged"></asp:TextBox>
+                                            
                                             <br />
                                             <label>Detalle Comprador</label>
                                             <asp:Label ID="Lb_comprador_semilla_detalle" runat="server" CssClass="btn-warning"></asp:Label>
@@ -352,7 +352,7 @@
                                             <label>Comprador</label>
                                             <asp:Label ID="lb_comprador_grano" runat="server" CssClass="btn-warning"></asp:Label>
                                             <asp:DropDownList CssClass="form-control" ID="dp_comprador_grano" runat="server" AutoPostBack="True"></asp:DropDownList>
-                                            <asp:TextBox ID="TxtCom_new2" runat="server" Visible="false" CssClass="form-control" autoPostBack="True" OnTextChanged="TxtCom_new2_TextChanged"></asp:TextBox>
+
                                             <br />
                                             <label>Detalle Comprador</label>
                                             <asp:Label ID="lb_comprador_detalle_grano" runat="server" CssClass="btn-warning"></asp:Label>

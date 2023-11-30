@@ -156,16 +156,6 @@
                         </div>
                         <br />
                         <div class="row" runat="server">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Seleccione que datos desea exportar:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDl_ExpoArch" runat="server" AutoPostBack="false">
-                                        <asp:ListItem Text="Datos Generales"></asp:ListItem>
-                                        <asp:ListItem Text="Datos de Producción"></asp:ListItem>
-                                        <asp:ListItem Text="Datos de Costos"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
                             <div class="col-lg-3">
                                 <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-primary" Text="Descargar"><span class="glyphicon glyphicon-save"></span>&nbsp;Descargar</asp:LinkButton>
                             </div>
@@ -513,11 +503,11 @@
                                 var otros = parseFloat(document.getElementById('<%= TxtOtros.ClientID %>').value) || 0;
                                 var total = insumo + mano_obra + equi_maqui + inscrip + acondicio + otros;
                                 var txtToltal = document.getElementById('<%= TxtTotal.ClientID %>');
-                                
+
                                 if (total !== 0 || !isNaN(total)) {
                                     document.getElementById('<%= TxtTotal.ClientID %>').value = total.toFixed(2);
                                     var lblTotal = document.getElementById('<%= lbTotal.ClientID %>');
-                                    
+
                                     lblTotal.innerText = "";
                                     txtToltal.disabled = true;
                                 }
